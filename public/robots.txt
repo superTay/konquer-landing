@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://konquerai.com/sitemap-index.xml
