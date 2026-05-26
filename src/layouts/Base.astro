@@ -69,5 +69,22 @@ const {
   </head>
   <body class="bg-white text-ink antialiased">
     <slot />
+
+    <!-- IntersectionObserver fallback for scroll animations (Firefox) -->
+    <script>
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reducedMotion && !CSS.supports('(animation-timeline: view()) and (animation-range: entry)')) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      }
+    </script>
   </body>
 </html>

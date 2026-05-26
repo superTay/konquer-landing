@@ -15,10 +15,10 @@ const faqs = [
 ---
 <section class="section-padding bg-mist" id="faq">
   <div class="container-narrow faq-inner">
-    <h2 class="faq-h2">Lo que nos preguntan más.</h2>
-    <div class="faq-list">
+    <h2 class="faq-h2 reveal">Lo que nos preguntan más.</h2>
+    <div class="faq-list reveal-stagger">
       {faqs.map(f => (
-        <details class="faq-item">
+        <details class="faq-item reveal">
           <summary class="faq-question">{f.q}</summary>
           <p class="faq-answer">{f.a}</p>
         </details>

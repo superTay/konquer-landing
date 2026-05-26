@@ -1,7 +1,7 @@
 ---
 /** CtaFinal.astro — Banda CTA final con degradado teal. Copy literal de 06. */
 ---
-<section class="cta-final" id="contacto">
+<section class="cta-final reveal" id="contacto">
   <div class="container-narrow cta-inner">
     <h2 class="cta-h2">Recupera el domingo.</h2>
     <p class="cta-body">Empieza con tu Oficina IA. Te configuramos todo. Te acompañamos. Sin permanencia. Garantía de 30 días.</p>
@@ -14,10 +14,31 @@
 
 <style>
   .cta-final {
+    position: relative;
     background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-dark) 100%);
     padding-block: 5rem;
+    overflow: hidden;
   }
-  .cta-inner { text-align: center; max-width: 640px; }
+  .cta-final::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-inner { 
+    position: relative;
+    z-index: 1;
+    text-align: center; 
+    max-width: 640px; 
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-xl);
+    padding: 3.5rem 2rem;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1);
+  }
   .cta-h2 { color: var(--color-white); font-size: clamp(1.75rem, 4vw, 2.75rem); }
   .cta-body { color: rgba(255,255,255,0.9); margin-top: 1rem; font-size: 1.0625rem; line-height: 1.7; }
   .cta-actions {
