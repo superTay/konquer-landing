@@ -1,0 +1,60 @@
+---
+/**
+ * Logo.astro
+ * Renders /public/logo.svg with a typographic fallback "KonquerAI"
+ * if the SVG fails to load. Teal brand mark + orange accent.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<a href="/" class:list={["logo-link", className]} aria-label="KonquerAI — Inicio">
+  <img
+    src="/logo.svg"
+    alt="KonquerAI"
+    class="logo-img"
+    width="160"
+    height="40"
+    loading="eager"
+    onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+  />
+  <span class="logo-fallback" style="display:none;">
+    <span class="logo-text">Konquer</span><span class="logo-accent">AI</span>
+  </span>
+</a>
+
+<style>
+  .logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo-img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .logo-fallback {
+    display: flex;
+    align-items: baseline;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .logo-text {
+    color: var(--color-teal);
+  }
+
+  .logo-accent {
+    color: var(--color-orange);
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+/** Garantia.astro — Garantía de 30 días. Copy literal de 06. */
+---
+<section class="section-padding bg-mist" id="garantia">
+  <div class="container-narrow garantia-inner">
+    <div class="garantia-icon" aria-hidden="true">
+      <div class="garantia-icon-wrap">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+      </div>
+    </div>
+    <h2>Garantía de 30 días.</h2>
+    <p class="garantia-body">
+      Si completas el onboarding y aplicas el sistema durante 30 días, garantizamos que ahorrarás tiempo administrativo y ganarás más control sobre tu negocio.
+    </p>
+    <p class="garantia-body">
+      Si no es así, seguimos trabajando contigo sin coste hasta ayudarte a conseguirlo.
+    </p>
+    <p class="garantia-close">Sin permanencia. Cancelas cuando quieras.</p>
+  </div>
+</section>
+
+<style>
+  .garantia-inner { max-width: 640px; text-align: center; }
+  .garantia-icon { margin-bottom: 1.5rem; display: flex; justify-content: center; }
+  .garantia-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-teal-light);
+    color: var(--color-teal);
+  }
+  .garantia-body { color: var(--color-slate); font-size: 1.0625rem; line-height: 1.7; margin-top: 1rem; }
+  .garantia-close { margin-top: 1.25rem; font-weight: 600; color: var(--color-teal); }
+</style>

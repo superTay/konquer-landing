@@ -1,0 +1,68 @@
+---
+/** Faq.astro — Preguntas frecuentes. Copy literal de 06. Acordeón nativo con <details>. */
+const faqs = [
+  { q: "¿Necesito saber de informática?", a: "No. Una persona de nuestro equipo te configura la app, te llama y te enseña en una hora. Si te quedas con alguna duda, nos llamas tú a nosotros. Por eso son plazas limitadas: para que esto sea de verdad." },
+  { q: "¿Y si ya tengo gestoría?", a: "Sigues teniendo gestoría. KonquerAI le manda los datos del trimestre cuadrados y ordenados. Tu gestoría te llamará solo si hay algo raro. Y normalmente no lo hay." },
+  { q: "¿Lo puedo usar desde el móvil?", a: "Sí. La app es móvil-first. Diseñada para que la uses con guantes, en obra, con mala luz. Funciona en iPhone y Android." },
+  { q: "¿Cumple con Verifactu y la normativa fiscal española?", a: "Sí. Facturación numerada, IVA correcto (21 % / 10 % reformas / 0 % inversión sujeto pasivo), IRPF al 15 % o 7 %. Y cuando Verifactu entre en vigor, la app ya estará lista. Tú no tienes que enterarte." },
+  { q: "¿Qué pasa si quiero cancelar?", a: "Cancelas y ya está. Sin permanencia. Te llevas tus datos en CSV/ZIP. Tu información es tuya." },
+  { q: "¿Hay versión gratuita?", a: "No. Lo que ofrecemos incluye configuración a mano y soporte humano real. Eso tiene un coste. Si buscas algo gratis, hay alternativas en el mercado, pero ninguna te dará lo que damos nosotros." },
+  { q: "¿Cómo es el onboarding?", a: "Una llamada de 60 minutos con una persona real. Te configuramos la app contigo, te enseñamos a hacer tu primer presupuesto, te metemos tus datos fiscales. Sales de la llamada listo para facturar." },
+  { q: "¿Y si después de 30 días no me convence?", a: "Garantía: seguimos trabajando contigo sin coste adicional hasta que recuperes tiempo y notes el cambio. No te abandonamos." },
+  { q: "¿Me sirve si soy pintor / electricista / fontanero / albañil?", a: "Sí. Hay plantillas y configuración específica por oficio. Las primeras 20 tarifas vienen precargadas para tu sector." },
+  { q: "¿Mis datos están seguros?", a: "Sí. Cumplimos con GDPR. Tus facturas y datos están alojados en servidores europeos. Solo tú accedes a ellos. Si nos pides borrarlos, los borramos." },
+];
+---
+<section class="section-padding bg-mist" id="faq">
+  <div class="container-narrow faq-inner">
+    <h2 class="faq-h2">Lo que nos preguntan más.</h2>
+    <div class="faq-list">
+      {faqs.map(f => (
+        <details class="faq-item">
+          <summary class="faq-question">{f.q}</summary>
+          <p class="faq-answer">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-inner { max-width: 720px; }
+  .faq-h2 { text-align: center; margin-bottom: 3rem; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+    padding-block: 1.25rem;
+  }
+  .faq-question {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-ink);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .faq-question::after {
+    content: "+";
+    font-size: 1.25rem;
+    color: var(--color-teal);
+    font-weight: 400;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .faq-item[open] .faq-question::after {
+    transform: rotate(45deg);
+  }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-answer {
+    margin-top: 0.75rem;
+    color: var(--color-slate);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    padding-right: 2rem;
+  }
+</style>

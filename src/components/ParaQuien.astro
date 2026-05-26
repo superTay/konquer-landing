@@ -1,0 +1,75 @@
+---
+/** ParaQuien.astro — Para quién es / para quién no. Copy literal de 06. */
+---
+<section class="section-padding" id="para-quien">
+  <div class="container-narrow">
+    <h2 class="pq-h2">Hecho para ti si...</h2>
+    <div class="pq-grid">
+      <div class="pq-col pq-yes">
+        <h3 class="pq-col-title">Es para ti si</h3>
+        <ul class="pq-list">
+          <li>Eres autónomo o pequeña empresa de reformas (pintor, albañil, electricista, fontanero, climatización, metal, reformas integrales).</li>
+          <li>Tienes entre 0 y 7 empleados.</li>
+          <li>Facturas entre 60.000 € y 350.000 € al año.</li>
+          <li>Ya estás harto del Excel, los WhatsApp con facturas y los domingos haciendo papeleo.</li>
+          <li>Quieres saber por fin si las obras que haces te dan dinero o no.</li>
+          <li>Tienes poco tiempo y aún menos paciencia para tutoriales.</li>
+        </ul>
+      </div>
+      <div class="pq-col pq-no">
+        <h3 class="pq-col-title">No es para ti si</h3>
+        <ul class="pq-list pq-list-no">
+          <li>Tienes ya un departamento administrativo con varias personas.</li>
+          <li>Eres muy bueno con la tecnología y ya tienes montado tu stack con Notion, Zapier y Holded.</li>
+          <li>Facturas menos de 30.000 € al año (todavía no te compensa).</li>
+          <li>No quieres realmente ordenar el negocio (no hay app que arregle eso).</li>
+          <li>Tu sector no es reformas (estamos especializados, no servimos a «todos los autónomos»).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pq-h2 { text-align: center; margin-bottom: 3rem; }
+  .pq-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 768px) {
+    .pq-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  }
+  .pq-col {
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+  .pq-yes { background: var(--color-teal-light); border-color: var(--color-teal); }
+  .pq-no { background: var(--color-mist); }
+  .pq-col-title { margin-bottom: 1.25rem; font-size: 1.125rem; }
+  .pq-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+  .pq-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+  .pq-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-teal);
+    font-weight: 700;
+  }
+  .pq-list-no li::before {
+    content: "✗";
+    color: var(--color-slate);
+  }
+</style>

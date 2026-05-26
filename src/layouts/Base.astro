@@ -1,0 +1,73 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "KonquerAI · Software de gestión para autónomos de reformas con IA",
+  description = "Recupera hasta 30 horas al mes y sabe qué obra te dio dinero. Presupuestos, facturas, IVA y Verifactu sin aprender tecnología. Para pintores, albañiles, electricistas y fontaneros. Garantía 30 días."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://konquerai.com" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="KonquerAI · Tu cuadrilla administrativa, ahora digital" />
+    <meta property="og:description" content="Recupera 30 horas al mes. Controla cada obra al céntimo. Sin Excel, sin gestoría sufriendo. Hecho para autónomos de reformas." />
+    <meta property="og:image" content="https://konquerai.com/og-image.png" />
+    <meta property="og:url" content="https://konquerai.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Fonts: Outfit (titulares) + Plus Jakarta Sans (cuerpo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global Styles -->
+    <style>
+      @import "../styles/global.css";
+    </style>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "KonquerAI",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "description": "Software de gestión administrativa para autónomos de reformas. Combina IA y acompañamiento humano para reducir hasta 30 horas mensuales de papeleo.",
+      "offers": {
+        "@type": "Offer",
+        "price": "97",
+        "priceCurrency": "EUR",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock"
+      }
+    })} />
+  </head>
+  <body class="bg-white text-ink antialiased">
+    <slot />
+  </body>
+</html>

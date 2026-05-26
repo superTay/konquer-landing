@@ -1,0 +1,24 @@
+<svg width="400" height="280" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="280" fill="#F6F8F9"/>
+  <text x="200" y="30" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#0B1F24">Rentabilidad por obra</text>
+  <!-- Row 1: green -->
+  <rect x="20" y="50" width="360" height="50" rx="6" fill="#FFFFFF" stroke="#E5EAEC"/>
+  <circle cx="42" cy="75" r="8" fill="#00D1B2"/>
+  <text x="60" y="70" font-family="system-ui" font-size="11" fill="#0B1F24">Obra Pepe — Pintura piso</text>
+  <text x="60" y="88" font-family="system-ui" font-size="9" fill="#4B5563">Margen: +1.840 €</text>
+  <text x="360" y="80" text-anchor="end" font-family="system-ui" font-size="12" font-weight="700" fill="#00D1B2">+41%</text>
+  <!-- Row 2: green -->
+  <rect x="20" y="110" width="360" height="50" rx="6" fill="#FFFFFF" stroke="#E5EAEC"/>
+  <circle cx="42" cy="135" r="8" fill="#00D1B2"/>
+  <text x="60" y="130" font-family="system-ui" font-size="11" fill="#0B1F24">Obra García — Baño completo</text>
+  <text x="60" y="148" font-family="system-ui" font-size="9" fill="#4B5563">Margen: +920 €</text>
+  <text x="360" y="140" text-anchor="end" font-family="system-ui" font-size="12" font-weight="700" fill="#00D1B2">+18%</text>
+  <!-- Row 3: red -->
+  <rect x="20" y="170" width="360" height="50" rx="6" fill="#FFF5F5" stroke="#E5EAEC"/>
+  <circle cx="42" cy="195" r="8" fill="#EF4444"/>
+  <text x="60" y="190" font-family="system-ui" font-size="11" fill="#0B1F24">Obra Centro — Reforma piso</text>
+  <text x="60" y="208" font-family="system-ui" font-size="9" fill="#4B5563">Margen: -320 €</text>
+  <text x="360" y="200" text-anchor="end" font-family="system-ui" font-size="12" font-weight="700" fill="#EF4444">-5%</text>
+  <rect x="20" y="235" width="360" height="30" rx="6" fill="#E6FAF6" stroke="#00D1B2" stroke-dasharray="4"/>
+  <text x="200" y="255" text-anchor="middle" font-family="system-ui" font-size="10" fill="#00D1B2" font-weight="600">PLACEHOLDER</text>
+</svg>

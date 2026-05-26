@@ -1,0 +1,145 @@
+---
+/** Pilares.astro — Cómo funciona: los 3 pilares. Copy literal de 06.
+ *  Icons: Lucide-style SVG line icons (24px viewBox, 2px stroke)
+ */
+---
+<section class="section-padding" id="como-funciona">
+  <div class="container-narrow">
+    <p class="text-eyebrow pilares-eyebrow">Así de simple</p>
+    <h2 class="pilares-h2">Tres cosas. Las tres importantes.</h2>
+
+    <div class="pilares-grid">
+      <!-- Pilar 1: Hacienda / Shield-Check -->
+      <div class="pilar-card">
+        <div class="pilar-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>Lo de Hacienda lo lleva la app.</h3>
+        <p>
+          Facturas correctas, IVA calculado, IRPF al 15 % (o al 7 % si eres nuevo).
+          Te avisamos cuándo pagar a Hacienda.
+          Verifactu listo cuando entre en vigor.
+          El ZIP del trimestre, listo para tu gestoría en un clic.
+        </p>
+        <p class="pilar-close">Cumple con Hacienda sin saber la normativa.</p>
+      </div>
+
+      <!-- Pilar 2: Rentabilidad / TrendingUp -->
+      <div class="pilar-card">
+        <div class="pilar-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+            <polyline points="16 7 22 7 22 13"/>
+          </svg>
+        </div>
+        <h3>Sabes si ganas o pierdes en cada obra.</h3>
+        <p>
+          Imputa gastos a la obra concreta. KonquerAI calcula el margen real.
+          Ves un ranking con semáforo: las obras en verde te dejan dinero. Las rojas te lo quitan.
+          Por fin sabes qué tipo de cliente buscar más. Y a cuál cobrarle más.
+        </p>
+        <p class="pilar-close">El 90 % de autónomos no sabe esto. Tú sí.</p>
+      </div>
+
+      <!-- Pilar 3: Hablas / Mic -->
+      <div class="pilar-card">
+        <div class="pilar-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" x2="12" y1="19" y2="22"/>
+          </svg>
+        </div>
+        <h3>Hablas, no escribes.</h3>
+        <p>
+          Le dices al móvil: «hazme un presupuesto para pintar tres habitaciones con gotelé».
+          Te lo monta. Lo revisas. Lo mandas.
+          Haces foto a un ticket en el bar y aparece archivado, sin teclear nada.
+          Las facturas de tus proveedores llegan solas a la app.
+        </p>
+        <p class="pilar-close">La app trabaja por ti, no al revés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pilares-eyebrow {
+    text-align: center;
+    color: var(--color-teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .pilares-h2 {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .pilares-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .pilar-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.75rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .pilar-card:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-3px);
+    border-color: var(--color-teal);
+  }
+
+  /* ── Icon wrapper ── */
+  .pilar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: var(--color-teal-light);
+    color: var(--color-teal);
+    margin-bottom: 1.5rem;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .pilar-card:hover .pilar-icon {
+    background: var(--color-teal);
+    color: var(--color-white);
+  }
+
+  .pilar-card h3 {
+    margin-bottom: 1rem;
+    color: var(--color-ink);
+    font-size: 1.125rem;
+  }
+
+  .pilar-card p {
+    color: var(--color-slate);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  .pilar-close {
+    margin-top: 1.25rem;
+    font-weight: 600;
+    color: var(--color-teal) !important;
+    font-size: 0.875rem !important;
+  }
+</style>

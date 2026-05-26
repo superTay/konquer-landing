@@ -1,0 +1,189 @@
+---
+/**
+ * Hero.astro — Versión A de 06_homepage_copy.md (Recomendada para arranque)
+ * Copy LITERAL. No se modifica.
+ */
+---
+
+<section class="hero" id="hero">
+  <div class="hero-inner container-narrow">
+    <div class="hero-content">
+      <p class="text-eyebrow hero-eyebrow">Software de gestión para autónomos de reformas</p>
+
+      <h1 class="hero-h1">Tu cuadrilla administrativa, ahora digital.</h1>
+
+      <p class="hero-sub">
+        Recupera hasta 30 horas al mes y controla cada obra al céntimo.<br />
+        Sin Excel. Sin gestoría sufriendo cada trimestre. Sin aprender tecnología.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary hero-cta-primary">
+          Pide tu demo gratis
+        </a>
+        <a href="#como-funciona" class="btn-ghost hero-cta-secondary">
+          Ver cómo funciona <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <p class="hero-trust">
+        Onboarding humano · Garantía de 30 días · Sin permanencia
+      </p>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-phone-frame">
+        <img
+          src="/screenshots/hero-mobile.png"
+          alt="Placeholder — Captura de presupuesto en la app KonquerAI"
+          width="320"
+          height="640"
+          loading="eager"
+          class="hero-screenshot"
+        />
+        <span class="placeholder-badge">Placeholder — Captura real próximamente</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: calc(100dvh - 72px);
+    display: flex;
+    align-items: center;
+    padding-block: 3rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .hero-inner {
+      grid-template-columns: 1fr 0.8fr;
+      gap: 4rem;
+    }
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-eyebrow {
+    color: var(--color-teal);
+  }
+
+  .hero-h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.1;
+    max-width: 600px;
+  }
+
+  .hero-sub {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-slate);
+    max-width: 540px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .hero-cta-primary {
+    font-size: 1.0625rem;
+    padding: 1rem 2.5rem;
+  }
+
+  .hero-cta-secondary {
+    font-size: 0.9375rem;
+    color: var(--color-slate);
+    font-weight: 500;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .hero-cta-secondary:hover {
+    color: var(--color-teal);
+  }
+
+  .hero-trust {
+    font-size: 0.8125rem;
+    color: var(--color-slate);
+    letter-spacing: 0.01em;
+    padding-top: 0.25rem;
+  }
+
+  /* ── Visual / Phone frame ── */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-phone-frame {
+    position: relative;
+    width: 280px;
+    max-width: 100%;
+    background: var(--color-mist);
+    border-radius: 28px;
+    border: 1px solid var(--color-border);
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  }
+
+  .hero-screenshot {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    aspect-ratio: 9 / 18;
+    object-fit: cover;
+    background: linear-gradient(
+      180deg,
+      var(--color-teal-light) 0%,
+      var(--color-white) 50%,
+      var(--color-mist) 100%
+    );
+  }
+
+  .placeholder-badge {
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 0.6875rem;
+    color: var(--color-slate);
+    background: var(--color-mist);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 767px) {
+    .hero {
+      min-height: auto;
+      padding-block: 2rem 3rem;
+    }
+
+    .hero-phone-frame {
+      width: 220px;
+    }
+
+    .hero-cta-primary {
+      width: 100%;
+    }
+  }
+</style>

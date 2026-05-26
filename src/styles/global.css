@@ -1,1 +1,233 @@
 @import "tailwindcss";
+
+/* ============================================
+   KonquerAI Design Tokens — Tailwind CSS v4
+   Source of truth: .stitch/DESIGN.md
+   ============================================ */
+
+@theme {
+  /* ── Colors ── */
+  --color-teal: #00D1B2;
+  --color-teal-dark: #009B89;
+  --color-teal-light: #E6FAF6;
+  --color-teal-hover: rgba(0, 209, 178, 0.08);
+  --color-teal-shadow: rgba(0, 209, 178, 0.3);
+
+  --color-orange: #FF8A00;
+  --color-orange-light: #FFF3E0;
+
+  --color-white: #FFFFFF;
+  --color-mist: #F6F8F9;
+  --color-ink: #0B1F24;
+  --color-slate: #4B5563;
+  --color-border: #E5EAEC;
+
+  /* ── Typography ── */
+  --font-heading: "Outfit", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* ── Spacing (section rhythm) ── */
+  --spacing-section: 6rem;       /* 96px desktop */
+  --spacing-section-mobile: 4rem; /* 64px mobile */
+
+  /* ── Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --shadow-btn: 0 4px 14px rgba(0, 209, 178, 0.3);
+  --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.08);
+
+  /* ── Breakpoints ── */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1200px;
+}
+
+/* ── Base resets ── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* offset for sticky header */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.625;
+    color: var(--color-ink);
+    background-color: var(--color-white);
+    overflow-x: hidden;
+  }
+
+  /* Focus-visible for keyboard accessibility */
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-ink);
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  @media (min-width: 768px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.25rem; }
+    h3 { font-size: 1.5rem; }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* ── Utility classes ── */
+@layer utilities {
+  .text-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .container-narrow {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-narrow {
+      padding-inline: 2rem;
+    }
+  }
+
+  .section-padding {
+    padding-block: var(--spacing-section-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-block: var(--spacing-section);
+    }
+  }
+
+  .bg-mist {
+    background-color: var(--color-mist);
+  }
+
+  .bg-teal-gradient {
+    background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-dark) 100%);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    padding: 0.875rem 2rem;
+    min-height: 52px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: var(--color-teal);
+    color: var(--color-white);
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-btn);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-teal);
+    border: 1.5px solid var(--color-teal);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-teal-hover);
+  }
+
+  .btn-white {
+    background-color: var(--color-white);
+    color: var(--color-teal);
+  }
+
+  .btn-white:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-card);
+  }
+
+  .btn-ghost {
+    background: none;
+    border: none;
+    color: var(--color-slate);
+    padding: 0;
+    min-height: auto;
+    font-weight: 500;
+  }
+
+  .btn-ghost:hover {
+    color: var(--color-teal);
+  }
+
+  @media (min-width: 768px) {
+    .btn {
+      min-height: 48px;
+    }
+  }
+}
