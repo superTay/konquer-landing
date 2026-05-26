@@ -1,0 +1,35 @@
+---
+/**
+ * EnPreparacion.astro — Stub reutilizable para páginas aún sin contenido.
+ * Evita enlaces a 404 mientras se redacta el contenido real.
+ */
+interface Props {
+  titulo: string;
+}
+const { titulo } = Astro.props;
+---
+<section class="section-padding prep">
+  <div class="container-narrow prep-inner">
+    <p class="text-eyebrow prep-eyebrow">KonquerAI</p>
+    <h1 class="prep-title">{titulo}</h1>
+    <p class="prep-text">
+      Estamos preparando esta página. Si necesitas algo ahora mismo, escríbenos a
+      <a href="mailto:hola@konquerai.com" class="prep-mail">hola@konquerai.com</a>.
+    </p>
+    <a href="/" class="btn btn-secondary">Volver al inicio</a>
+  </div>
+</section>
+
+<style>
+  .prep { min-height: 60vh; display: flex; align-items: center; }
+  .prep-inner { max-width: 600px; text-align: center; }
+  .prep-eyebrow { color: var(--color-teal); margin-bottom: 0.75rem; }
+  .prep-title { margin-bottom: 1.25rem; }
+  .prep-text {
+    color: var(--color-slate);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .prep-mail { color: var(--color-teal); font-weight: 600; }
+</style>

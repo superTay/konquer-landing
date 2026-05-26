@@ -1,13 +1,26 @@
 ---
+import '@fontsource/outfit/400.css';
+import '@fontsource/outfit/500.css';
+import '@fontsource/outfit/600.css';
+import '@fontsource/outfit/700.css';
+import '@fontsource/plus-jakarta-sans/400.css';
+import '@fontsource/plus-jakarta-sans/500.css';
+import '@fontsource/plus-jakarta-sans/600.css';
+import '@fontsource/plus-jakarta-sans/700.css';
+
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
   title = "KonquerAI · Software de gestión para autónomos de reformas con IA",
-  description = "Recupera hasta 30 horas al mes y sabe qué obra te dio dinero. Presupuestos, facturas, IVA y Verifactu sin aprender tecnología. Para pintores, albañiles, electricistas y fontaneros. Garantía 30 días."
+  description = "Recupera hasta 30 horas al mes y sabe qué obra te dio dinero. Presupuestos, facturas, IVA y Verifactu sin aprender tecnología. Para pintores, albañiles, electricistas y fontaneros. Garantía 30 días.",
+  noindex = false
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquerai.com").href;
 ---
 
 <!doctype html>
@@ -20,7 +33,8 @@ const {
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href="https://konquerai.com" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph -->
     <meta property="og:site_name" content="KonquerAI" />
@@ -44,13 +58,7 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
-    <!-- Fonts: Outfit (titulares) + Plus Jakarta Sans (cuerpo) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts: Outfit + Plus Jakarta Sans — self-hosted via @fontsource (imports en el frontmatter) -->
 
     <!-- Global Styles -->
     <style>
