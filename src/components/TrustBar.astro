@@ -1,23 +1,77 @@
 ---
-/** TrustBar.astro — Bandera de prueba / social proof strip */
+/** TrustBar.astro — Marquee de oficios (franja en movimiento, derecha → izquierda) */
+const oficios = [
+  "Pintura",
+  "Electricidad",
+  "Fontanería",
+  "Albañilería",
+  "Climatización",
+  "Carpintería metálica",
+  "Reformas integrales",
+  "Yeso y pladur",
+];
+const loop = [...oficios, ...oficios];
 ---
-<section class="trust-bar" id="trust-bar">
-  <div class="container-narrow">
-    <p class="trust-text">Acompañando a autónomos de reformas en España.</p>
+<section class="trust-bar" aria-label="Oficios para los que está hecho KonquerAI">
+  <div class="marquee">
+    <div class="marquee-track">
+      {loop.map((o) => (
+        <span class="marquee-item">
+          <span class="sep" aria-hidden="true">✦</span>
+          {o}
+        </span>
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
   .trust-bar {
-    padding-block: 2rem;
-    border-bottom: 1px solid var(--color-border);
     background: var(--color-mist);
+    border-block: 1px solid var(--color-border);
+    padding-block: 1.1rem;
+    overflow: hidden;
   }
-  .trust-text {
-    text-align: center;
-    font-size: 0.875rem;
-    color: var(--color-slate);
-    font-weight: 500;
-    letter-spacing: 0.02em;
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    /* Difuminado en los bordes para un acabado premium */
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-right: 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .sep {
+    color: var(--color-teal);
+    font-size: 0.7rem;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 </style>

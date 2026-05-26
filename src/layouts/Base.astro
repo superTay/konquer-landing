@@ -81,6 +81,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquera
     })} />
   </head>
   <body class="bg-white text-ink antialiased">
+    <div class="announce">
+      <p>Plazas <strong>Beta Fundadores</strong> limitadas este mes · Onboarding 1:1 con una persona real incluido</p>
+    </div>
     <slot />
 
     <!-- IntersectionObserver fallback for scroll animations (Firefox) -->
@@ -126,5 +129,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquera
         });
       }
     </script>
+
+    <style>
+      .announce {
+        background: var(--color-ink);
+        color: #fff;
+        text-align: center;
+        padding: 0.5rem 1rem;
+        font-size: 0.8125rem;
+        letter-spacing: 0.01em;
+      }
+      .announce strong { color: var(--color-teal); font-weight: 600; }
+    </style>
   </body>
 </html>
