@@ -6,6 +6,7 @@
 ---
 
 <section class="hero" id="hero">
+  <div class="hero-aurora" aria-hidden="true"></div>
   <div class="hero-inner container-narrow">
     <div class="hero-content reveal">
       <p class="text-eyebrow hero-eyebrow">Software de gestión para autónomos de reformas</p>
@@ -49,6 +50,7 @@
 
 <style>
   .hero {
+    position: relative;
     min-height: calc(100dvh - 72px);
     display: flex;
     align-items: center;
@@ -56,7 +58,28 @@
     overflow: hidden;
   }
 
+  .hero-aurora {
+    position: absolute;
+    inset: -25% -10% auto -10%;
+    height: 150%;
+    z-index: 0;
+    background:
+      radial-gradient(38% 48% at 18% 28%, rgba(0, 209, 178, 0.20), transparent 70%),
+      radial-gradient(34% 44% at 82% 18%, rgba(255, 138, 0, 0.13), transparent 70%),
+      radial-gradient(40% 50% at 72% 82%, rgba(0, 209, 178, 0.12), transparent 70%);
+    filter: blur(24px);
+    animation: aurora 20s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  @keyframes aurora {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(-2%, -3%, 0) scale(1.1); }
+  }
+
   .hero-inner {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -142,6 +165,19 @@
     border: 1px solid var(--color-border);
     padding: 12px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-aurora,
+    .hero-phone-frame {
+      animation: none;
+    }
   }
 
   .hero-screenshot {

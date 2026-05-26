@@ -141,7 +141,7 @@
   }
 
   .container-narrow {
-    max-width: 1200px;
+    max-width: 1440px;
     margin-inline: auto;
     padding-inline: 1.5rem;
   }
@@ -355,4 +355,40 @@
   .oferta-card:hover {
     transform: none !important;
   }
+}
+
+/* ============================================
+   Spotlight interactivo en tarjetas (glow sigue al cursor)
+   ============================================ */
+.pilar-card,
+.oferta-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.pilar-card > *,
+.oferta-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.pilar-card::before,
+.oferta-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    480px circle at var(--mx, 50%) var(--my, -20%),
+    rgba(0, 209, 178, 0.13),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.pilar-card:hover::before,
+.oferta-card:hover::before {
+  opacity: 1;
 }

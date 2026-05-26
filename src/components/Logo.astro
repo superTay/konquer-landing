@@ -6,12 +6,13 @@
  */
 interface Props {
   class?: string;
+  height?: number;
 }
 
-const { class: className = "" } = Astro.props;
+const { class: className = "", height = 48 } = Astro.props;
 ---
 
-<a href="/" class:list={["logo-link", className]} aria-label="KonquerAI — Inicio">
+<a href="/" class:list={["logo-link", className]} style={`--logo-h:${height}px`} aria-label="KonquerAI — Inicio">
   <img
     src="/logo.svg"
     alt="KonquerAI"
@@ -35,7 +36,7 @@ const { class: className = "" } = Astro.props;
   }
 
   .logo-img {
-    height: 36px;
+    height: var(--logo-h, 48px);
     width: auto;
     object-fit: contain;
   }
