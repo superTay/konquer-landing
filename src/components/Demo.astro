@@ -2,7 +2,7 @@
 /** Demo.astro — Demo visual / producto en acción. Capturas reales en filas alternas.
  * Captions LITERALES de 06_homepage_copy.md. */
 import { Image } from "astro:assets";
-import demoInicio from "../assets/screenshots/demo-inicio.png";
+import demoKpisWeb from "../assets/screenshots/demo-kpis-web.png";
 import demoRentabilidad from "../assets/screenshots/demo-rentabilidad.png";
 import demoChat from "../assets/screenshots/demo-chat.png";
 ---
@@ -13,14 +13,17 @@ import demoChat from "../assets/screenshots/demo-chat.png";
     <div class="demo-rows">
       <article class="demo-row reveal">
         <div class="demo-media">
-          <Image
-            src={demoInicio}
-            alt="Pantalla de inicio de la app con el balance del mes, lo pendiente de cobro y las acciones rápidas"
-            width={520}
-            densities={[1, 2]}
-            loading="lazy"
-            class="phone-shot"
-          />
+          <div class="browser-frame">
+            <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+            <Image
+              src={demoKpisWeb}
+              alt="Panel de inicio de la app en web: pendiente de cobro, cobrado del mes, pipeline, IVA del trimestre y la gráfica de ingresos vs gastos"
+              width={960}
+              densities={[1, 2]}
+              loading="lazy"
+              class="browser-shot"
+            />
+          </div>
         </div>
         <div class="demo-text">
           <span class="demo-num">01</span>
