@@ -3,6 +3,8 @@
  * Hero.astro — Versión A de 06_homepage_copy.md (Recomendada para arranque)
  * Copy LITERAL. No se modifica.
  */
+import { Image } from "astro:assets";
+import heroBalance from "../assets/screenshots/hero-balance.png";
 ---
 
 <section class="hero" id="hero">
@@ -33,17 +35,15 @@
     </div>
 
     <div class="hero-visual reveal" style="transition-delay: 0.2s;">
-      <div class="hero-phone-frame">
-        <img
-          src="/screenshots/hero-mobile.png"
-          alt="Placeholder — Captura de presupuesto en la app KonquerAI"
-          width="320"
-          height="640"
-          loading="eager"
-          class="hero-screenshot"
-        />
-        <span class="placeholder-badge">Placeholder — Captura real próximamente</span>
-      </div>
+      <Image
+        src={heroBalance}
+        alt="La app de KonquerAI en el móvil: balance del mes, pendiente de cobro y el IVA del trimestre de un vistazo"
+        width={520}
+        densities={[1, 2]}
+        loading="eager"
+        fetchpriority="high"
+        class="hero-mockup"
+      />
     </div>
   </div>
 </section>
@@ -150,21 +150,18 @@
     padding-top: 0.25rem;
   }
 
-  /* ── Visual / Phone frame ── */
+  /* ── Visual / Mockup de móvil ── */
   .hero-visual {
     display: flex;
     justify-content: center;
   }
 
-  .hero-phone-frame {
-    position: relative;
-    width: 280px;
+  .hero-mockup {
+    width: 300px;
     max-width: 100%;
-    background: var(--color-mist);
-    border-radius: 28px;
-    border: 1px solid var(--color-border);
-    padding: 12px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0 24px 70px rgba(11, 31, 36, 0.18);
     animation: float 6s ease-in-out infinite;
   }
 
@@ -175,37 +172,9 @@
 
   @media (prefers-reduced-motion: reduce) {
     .hero-aurora,
-    .hero-phone-frame {
+    .hero-mockup {
       animation: none;
     }
-  }
-
-  .hero-screenshot {
-    width: 100%;
-    height: auto;
-    border-radius: 18px;
-    aspect-ratio: 9 / 18;
-    object-fit: cover;
-    background: linear-gradient(
-      180deg,
-      var(--color-teal-light) 0%,
-      var(--color-white) 50%,
-      var(--color-mist) 100%
-    );
-  }
-
-  .placeholder-badge {
-    position: absolute;
-    bottom: -32px;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    font-size: 0.6875rem;
-    color: var(--color-slate);
-    background: var(--color-mist);
-    padding: 0.25rem 0.75rem;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--color-border);
   }
 
   @media (max-width: 767px) {
@@ -214,8 +183,8 @@
       padding-block: 2rem 3rem;
     }
 
-    .hero-phone-frame {
-      width: 220px;
+    .hero-mockup {
+      width: 240px;
     }
 
     .hero-cta-primary {
