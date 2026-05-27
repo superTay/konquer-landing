@@ -1,32 +1,53 @@
 ---
 /** Problema.astro — PAS: Problem. Copy literal de 06. */
+import { Image } from "astro:assets";
+import problema from "../assets/problema.png";
 ---
 <section class="section-padding" id="problema">
-  <div class="container-narrow problema-inner reveal">
-    <h2 class="problema-h2">
-      Pintar, soldar, fontanear, levantar tabiques. Eso lo sabes hacer.<br />
-      <span class="problema-accent">Lo que mata el negocio es lo otro.</span>
-    </h2>
-    <div class="problema-body">
-      <p>Los presupuestos que se hacen los domingos por la noche.</p>
-      <p>Las facturas perdidas en la furgoneta.</p>
-      <p>Los albaranes que no sabes si llegaron a facturarse.</p>
-      <p>El IVA del trimestre que te pilla por sorpresa.</p>
-      <p>Los clientes que te deben 3.400 € desde hace mes y medio.</p>
-      <p>La sensación de no saber, al final del mes, si has ganado o has empatado.</p>
-      <p class="problema-coda">
-        En España al autónomo se le exige como a una empresa grande y se le deja solo como a un náufrago.
-      </p>
-      <p class="problema-out">
-        Y no es culpa tuya. Es que las herramientas que existen están hechas para oficinistas, no para gente que pasa el día en obra.
-      </p>
+  <div class="container-narrow problema-grid reveal">
+    <div class="problema-text">
+      <h2 class="problema-h2">
+        Pintar, soldar, fontanear, levantar tabiques. Eso lo sabes hacer.<br />
+        <span class="problema-accent">Lo que mata el negocio es lo otro.</span>
+      </h2>
+      <div class="problema-body">
+        <p>Los presupuestos que se hacen los domingos por la noche.</p>
+        <p>Las facturas perdidas en la furgoneta.</p>
+        <p>Los albaranes que no sabes si llegaron a facturarse.</p>
+        <p>El IVA del trimestre que te pilla por sorpresa.</p>
+        <p>Los clientes que te deben 3.400 € desde hace mes y medio.</p>
+        <p>La sensación de no saber, al final del mes, si has ganado o has empatado.</p>
+        <p class="problema-coda">
+          En España al autónomo se le exige como a una empresa grande y se le deja solo como a un náufrago.
+        </p>
+        <p class="problema-out">
+          Y no es culpa tuya. Es que las herramientas que existen están hechas para oficinistas, no para gente que pasa el día en obra.
+        </p>
+      </div>
+    </div>
+    <div class="problema-media">
+      <Image
+        src={problema}
+        alt="Autónomo de reformas un domingo por la noche, agotado entre facturas y papeles en la mesa de la cocina"
+        width={720}
+        densities={[1, 2]}
+        loading="lazy"
+        class="problema-img"
+      />
     </div>
   </div>
 </section>
 
 <style>
-  .problema-inner {
-    max-width: 720px;
+  .problema-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    max-width: 1120px;
+  }
+  @media (min-width: 768px) {
+    .problema-grid { grid-template-columns: 1.05fr 0.95fr; gap: 4rem; }
   }
   .problema-h2 {
     margin-bottom: 2.5rem;
@@ -50,5 +71,11 @@
     margin-top: 0.5rem;
     font-weight: 500;
     color: var(--color-ink) !important;
+  }
+  .problema-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-elevated);
   }
 </style>
