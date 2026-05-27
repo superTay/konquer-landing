@@ -1,7 +1,18 @@
 ---
-/** CtaFinal.astro — Banda CTA final con degradado teal. Copy literal de 06. */
+/** CtaFinal.astro — Banda CTA final: foto familiar + velo teal. Copy literal de 06. */
+import { Image } from "astro:assets";
+import recuperaDomingo from "../assets/recupera-domingo.png";
 ---
 <section class="cta-final reveal" id="contacto">
+  <Image
+    src={recuperaDomingo}
+    alt=""
+    aria-hidden="true"
+    width={1600}
+    densities={[1, 2]}
+    loading="lazy"
+    class="cta-bg"
+  />
   <div class="container-narrow cta-inner">
     <h2 class="cta-h2">Recupera el domingo.</h2>
     <p class="cta-body">Empieza con tu Oficina IA. Te configuramos todo. Te acompañamos. Sin permanencia. Garantía de 30 días.</p>
@@ -15,21 +26,34 @@
 <style>
   .cta-final {
     position: relative;
-    background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-dark) 100%);
+    background: var(--color-teal-dark);
     padding-block: 5rem;
     overflow: hidden;
   }
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    z-index: 0;
+  }
+  /* Velo teal: mantiene marca y legibilidad, deja entrever la escena familiar */
   .cta-final::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top right, rgba(255,255,255,0.2) 0%, transparent 60%);
+    z-index: 1;
+    background:
+      radial-gradient(circle at top right, rgba(255,255,255,0.18) 0%, transparent 55%),
+      linear-gradient(135deg, rgba(0,209,178,0.86) 0%, rgba(0,123,109,0.92) 100%);
     pointer-events: none;
   }
-  .cta-inner { 
+  .cta-inner {
     position: relative;
-    z-index: 1;
-    text-align: center; 
+    z-index: 2;
+    text-align: center;
     max-width: 640px; 
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);

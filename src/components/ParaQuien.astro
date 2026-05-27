@@ -1,9 +1,19 @@
 ---
 /** ParaQuien.astro — Para quién es / para quién no. Copy literal de 06. */
+import { Image } from "astro:assets";
+import oficios from "../assets/oficios.png";
 ---
 <section class="section-padding" id="para-quien">
   <div class="container-narrow">
     <h2 class="pq-h2 reveal">Hecho para ti si...</h2>
+    <Image
+      src={oficios}
+      alt="Pintor, electricista, fontanera y albañil: los oficios de reformas para los que está hecha la app"
+      width={1040}
+      densities={[1, 2]}
+      loading="lazy"
+      class="pq-oficios reveal"
+    />
     <div class="pq-grid reveal-stagger">
       <div class="pq-col pq-yes reveal">
         <h3 class="pq-col-title">Es para ti si</h3>
@@ -31,7 +41,16 @@
 </section>
 
 <style>
-  .pq-h2 { text-align: center; margin-bottom: 3rem; }
+  .pq-h2 { text-align: center; margin-bottom: 2rem; }
+  .pq-oficios {
+    width: 100%;
+    max-width: 1040px;
+    height: auto;
+    margin: 0 auto 3rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    display: block;
+  }
   .pq-grid {
     display: grid;
     grid-template-columns: 1fr;
