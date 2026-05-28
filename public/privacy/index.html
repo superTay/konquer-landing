@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow">
+  <title>Política de privacidad — KonquerAI</title>
+  <meta name="description" content="Política de privacidad de KonquerAI Mobile. Información sobre el tratamiento de datos personales conforme al RGPD.">
+  <link rel="canonical" href="https://konquerai.com/privacy">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper:   #faf7f2;
+      --ink:     #1a1a1a;
+      --ink-mid: #4a4a4a;
+      --ink-soft:#7a7a7a;
+      --rule:    #d8d2c5;
+      --accent:  #a86b1e;
+      --accent-soft: #c89656;
+      --measure: 38rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      font-size: 17px;
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      line-height: 1.65;
+      font-feature-settings: 'liga', 'kern', 'onum';
+    }
+
+    .wrap {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    @media (min-width: 768px) {
+      .wrap { padding: 6rem 3rem 8rem; }
+    }
+
+    .meta {
+      max-width: var(--measure);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: 'Archivo', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3rem;
+    }
+
+    .meta a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .meta a:hover { color: var(--accent); }
+
+    h1.title {
+      max-width: var(--measure);
+      margin: 0 auto 0.4rem;
+      font-family: 'Archivo', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+
+    .subtitle {
+      max-width: var(--measure);
+      margin: 0 auto 0.4rem;
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+    }
+
+    .updated {
+      max-width: var(--measure);
+      margin: 0 auto 3.5rem;
+      font-family: 'Archivo', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .updated::before {
+      content: "";
+      display: inline-block;
+      width: 1.4rem;
+      height: 1px;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-right: 0.6rem;
+      transform: translateY(-1px);
+    }
+
+    article {
+      max-width: var(--measure);
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 600;
+      font-size: 1.45rem;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+      margin: 3.5rem 0 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      position: relative;
+    }
+
+    h2 .num {
+      display: block;
+      font-family: 'Archivo', sans-serif;
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin: 2.2rem 0 0.6rem;
+    }
+
+    p, ul, ol { margin: 0 0 1.1rem; }
+
+    ul, ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin-bottom: 0.55rem;
+    }
+
+    li::marker { color: var(--accent-soft); }
+
+    strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--accent-soft);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.15s, color 0.15s;
+    }
+
+    a:hover {
+      color: var(--accent);
+      text-decoration-color: var(--accent);
+    }
+
+    .legal-base {
+      font-family: 'Newsreader', serif;
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      padding-left: 0.9rem;
+      border-left: 2px solid var(--rule);
+      margin: 0.8rem 0 1.4rem;
+    }
+
+    .legal-base strong { color: var(--ink); }
+
+    code {
+      font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+      font-size: 0.86em;
+      background: rgba(168, 107, 30, 0.08);
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+      color: var(--ink);
+    }
+
+    .footer {
+      max-width: var(--measure);
+      margin: 5rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      font-family: 'Archivo', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer a {
+      color: var(--ink-mid);
+      text-decoration: none;
+    }
+    .footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      html { font-size: 16px; }
+      .meta { font-size: 0.66rem; }
+      h1.title { font-size: 2rem; }
+      h2 { font-size: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="meta">
+    <a href="https://konquerai.com">KonquerAI</a>
+    <span>Documento legal</span>
+  </div>
+
+  <h1 class="title">Política de privacidad</h1>
+  <p class="subtitle">KonquerAI Mobile</p>
+  <p class="updated">Última actualización: 6 de mayo de 2026</p>
+
+  <article>
+
+    <h2><span class="num">§ 01</span>Quién es el responsable del tratamiento</h2>
+    <p><strong>Responsable:</strong> Christian Marzal Della-Rovere.<br>
+       <strong>Contacto:</strong> <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
+    <p>Si tienes dudas o quieres ejercer tus derechos, escríbenos a esa dirección.</p>
+
+
+    <h2><span class="num">§ 02</span>Qué datos recogemos y por qué</h2>
+    <p>KonquerAI Mobile es una herramienta de gestión fiscal y administrativa para autónomos del sector de la construcción. Para que funcione necesitamos tratar los siguientes datos:</p>
+
+    <h3>2.1. Datos de identificación de tu cuenta</h3>
+    <ul>
+      <li>Email y contraseña (la contraseña se almacena cifrada en Supabase Auth — nosotros nunca la vemos en claro).</li>
+      <li>Nombre o razón social.</li>
+      <li>NIF / CIF / NIE.</li>
+      <li>Dirección postal, teléfono.</li>
+      <li>Logotipo (opcional).</li>
+    </ul>
+    <p class="legal-base"><strong>Base legal:</strong> ejecución del contrato (te prestamos el servicio que has contratado) y cumplimiento de obligaciones legales (Ley General Tributaria; obligación de identificar al emisor de facturas).</p>
+
+    <h3>2.2. Datos de tu actividad profesional</h3>
+    <ul>
+      <li>Clientes y proveedores que tú das de alta (nombre, NIF, email).</li>
+      <li>Presupuestos y facturas emitidas y recibidas (importes, partidas, IVA, IRPF).</li>
+      <li>Fotografías de obras o trabajos que tú decides adjuntar.</li>
+      <li>PDFs y documentos generados.</li>
+      <li>Datos del negocio (oficio, tarifas, condiciones).</li>
+    </ul>
+    <p class="legal-base"><strong>Base legal:</strong> ejecución del contrato. Estos datos son tuyos y solo se usan dentro de tu cuenta.</p>
+
+    <h3>2.3. Datos técnicos</h3>
+    <ul>
+      <li>Logs de errores y diagnóstico.</li>
+      <li>Tipo de dispositivo y versión del sistema operativo (cuando hay un problema técnico).</li>
+    </ul>
+    <p class="legal-base"><strong>Base legal:</strong> interés legítimo en mantener el servicio operativo y seguro.</p>
+
+    <h3>2.4. Lo que NO recogemos</h3>
+    <ul>
+      <li>No utilizamos cookies de seguimiento publicitario.</li>
+      <li>No recopilamos tu ubicación GPS.</li>
+      <li>No accedemos a tu agenda, contactos ni mensajes.</li>
+      <li>No compartimos tus datos con redes publicitarias.</li>
+      <li>No usamos identificadores de seguimiento entre apps (IDFA / Apple Tracking Transparency no aplica).</li>
+    </ul>
+
+
+    <h2><span class="num">§ 03</span>Permisos del dispositivo</h2>
+    <p>La app pide los siguientes permisos solo cuando los necesita y siempre puedes revocarlos desde los ajustes del sistema:</p>
+    <ul>
+      <li><strong>Cámara</strong>: para escanear facturas en papel y adjuntar fotos a presupuestos.</li>
+      <li><strong>Micrófono</strong>: para dictar mensajes al asistente por voz.</li>
+      <li><strong>Galería de fotos</strong>: para adjuntar imágenes ya guardadas a presupuestos y facturas.</li>
+    </ul>
+
+
+    <h2><span class="num">§ 04</span>Con quién compartimos tus datos</h2>
+    <p>Tus datos se almacenan y procesan en los siguientes proveedores (“encargados del tratamiento”) con los que tenemos firmado un contrato conforme al artículo 28 del RGPD:</p>
+    <ul>
+      <li><strong>Supabase Inc.</strong> — base de datos, autenticación y almacenamiento de archivos. Servidores ubicados en la Unión Europea (Irlanda, AWS eu-west-1).</li>
+      <li><strong>n8n (servidor propio)</strong> — orquestación de procesos de negocio. Servidores propios alojados en la Unión Europea.</li>
+      <li><strong>Google LLC</strong> (Google Drive API) — almacenamiento de los PDFs de tus facturas y presupuestos. Transferencia internacional a EE.UU. amparada por la adhesión de Google LLC al EU-U.S. Data Privacy Framework y, subsidiariamente, por las cláusulas contractuales tipo aprobadas por la Comisión Europea (Decisión 2021/914). Acuerdo de procesador disponible en <a href="https://privacy.google.com/businesses/processorterms/" target="_blank" rel="noopener">privacy.google.com/businesses/processorterms</a>.</li>
+    </ul>
+    <p>No vendemos ni cedemos tus datos a terceros con fines comerciales. Solo podemos divulgarlos si lo exige una autoridad judicial o administrativa con competencia para requerirlos.</p>
+
+
+    <h2><span class="num">§ 05</span>Cuánto tiempo conservamos tus datos</h2>
+    <ul>
+      <li><strong>Mientras tu cuenta esté activa</strong>: conservamos todos tus datos para que puedas usar el servicio.</li>
+      <li><strong>Cuando cierras tu cuenta</strong>: el borrado es <strong>inmediato y completo</strong>. Eliminamos en segundos tu perfil, presupuestos, facturas, clientes, proveedores, configuración del negocio y sesiones activas. La acción no se puede deshacer. El RGPD nos otorga hasta 30 días como plazo máximo legal de borrado, pero no necesitamos ese margen.</li>
+      <li><strong>Datos de facturación tras cierre de cuenta</strong>: cuando borras tu cuenta, eliminamos también todas las facturas y presupuestos que hayas creado en KonquerAI. Recuerda que, como autónomo, eres tú quien tiene la obligación legal de conservar tus registros fiscales durante 4 años (Ley 58/2003, art. 70). Antes de cerrar tu cuenta, asegúrate de descargar y guardar localmente los documentos que necesites conservar.</li>
+      <li><strong>Nuestros propios registros</strong>: conservaremos durante el plazo legal exigible los datos mínimos necesarios para acreditar nuestra relación contractual contigo (fecha de alta, fecha de baja, facturas que KonquerAI te haya emitido por el servicio). Esto deriva de <strong>nuestras</strong> obligaciones fiscales como prestadores del servicio, no del contenido que tú almacenaste en la app.</li>
+    </ul>
+
+
+    <h2><span class="num">§ 06</span>Tus derechos</h2>
+    <p>Como titular de los datos puedes ejercer en cualquier momento:</p>
+    <ul>
+      <li><strong>Acceso</strong>: pedir copia de toda la información que tenemos sobre ti.</li>
+      <li><strong>Rectificación</strong>: corregir datos inexactos.</li>
+      <li><strong>Supresión</strong> (“derecho al olvido”): pedir que borremos tus datos. Desde la app puedes hacerlo directamente: <strong>Ajustes → Cerrar cuenta y borrar mis datos</strong>.</li>
+      <li><strong>Limitación</strong>: pedir que dejemos de procesar tus datos en determinadas circunstancias.</li>
+      <li><strong>Portabilidad</strong>: recibir tus datos en un formato estructurado y legible (JSON / ZIP) para llevártelos a otro proveedor.</li>
+      <li><strong>Oposición</strong>: oponerte a que tratemos tus datos por interés legítimo.</li>
+      <li><strong>No ser objeto de decisiones automatizadas</strong>: no aplicamos perfilado ni decisiones automatizadas que produzcan efectos jurídicos sobre ti.</li>
+    </ul>
+    <p>Para ejercerlos, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>. Responderemos en un plazo máximo de un mes.</p>
+    <p>Si no estás conforme con nuestra respuesta puedes presentar una reclamación ante la <strong>Agencia Española de Protección de Datos</strong> (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+
+
+    <h2><span class="num">§ 07</span>Cómo protegemos tus datos</h2>
+    <ul>
+      <li>Toda la comunicación con nuestros servidores va cifrada por HTTPS / TLS.</li>
+      <li>Las contraseñas se almacenan con hash + salt (Supabase Auth — bcrypt).</li>
+      <li>Los tokens de sesión en el dispositivo se guardan en el almacenamiento seguro del sistema operativo (Keychain en iOS, EncryptedSharedPreferences en Android).</li>
+      <li>Aplicamos reglas de seguridad a nivel de fila (Row Level Security) para que cada usuario solo pueda acceder a sus propios datos.</li>
+    </ul>
+
+    <h3>7.1. Cómo se sirven los documentos PDF</h3>
+    <p>Los PDFs de tus facturas y presupuestos se generan en Google Drive bajo nuestra cuenta de servicio. <strong>Estos archivos son privados por defecto</strong>: ningún tercero puede acceder a ellos sin tu autorización, ni siquiera con la URL del archivo. Cuando abres un documento desde la app o el dashboard, el sistema descarga los bytes del PDF a través de nuestro servicio (autenticado mediante un token de cabecera HTTP <code>Authorization: Bearer</code>) y te los entrega directamente. En ningún momento incrustamos credenciales en URLs ni almacenamos enlaces firmados de Drive en la base de datos.</p>
+
+
+    <h2><span class="num">§ 08</span>Menores</h2>
+    <p>KonquerAI Mobile está dirigida a personas autónomas en activo, mayores de 18 años. No recopilamos conscientemente datos de menores. Si crees que un menor ha facilitado datos a través de la app, escríbenos y los borraremos.</p>
+
+
+    <h2><span class="num">§ 09</span>Cambios en esta política</h2>
+    <p>Podemos actualizar esta política para reflejar mejoras del servicio o cambios legislativos. Te notificaremos en la propia app cualquier cambio sustancial. La fecha de la última actualización aparece al principio de este documento.</p>
+
+
+    <h2><span class="num">§ 10</span>Contacto</h2>
+    <p>Para cualquier cuestión sobre privacidad, datos personales o esta política:</p>
+    <ul>
+      <li><strong>Email</strong>: <a href="mailto:info@konquerai.com">info@konquerai.com</a></li>
+      <li><strong>Asunto sugerido</strong>: “[Privacidad] tu consulta”</li>
+    </ul>
+
+  </article>
+
+  <div class="footer">
+    <span>© 2026 KonquerAI</span>
+    <a href="https://konquerai.com">konquerai.com</a>
+  </div>
+
+</div>
+
+</body>
+</html>
