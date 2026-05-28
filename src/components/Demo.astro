@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import demoKpisWeb from "../assets/screenshots/demo-kpis-web.png";
 import demoRentabilidad from "../assets/screenshots/demo-rentabilidad.png";
 import demoChat from "../assets/screenshots/demo-chat.png";
+import demoFacturasRecibidas from "../assets/screenshots/factura-recibida.png";
 ---
 <section class="section-padding bg-mist" id="demo">
   <div class="container-narrow">
@@ -65,6 +66,23 @@ import demoChat from "../assets/screenshots/demo-chat.png";
         <div class="demo-text">
           <span class="demo-num">03</span>
           <h3 class="demo-caption">Presupuesto en 5 minutos. Desde la furgoneta.</h3>
+        </div>
+      </article>
+
+      <article class="demo-row reveal">
+        <div class="demo-media">
+          <Image
+            src={demoFacturasRecibidas}
+            alt="Pestaña de facturas recibidas: total gastado, IVA soportado y la lista de facturas marcadas como recibidas automáticamente"
+            width={520}
+            densities={[1, 2]}
+            loading="lazy"
+            class="phone-shot"
+          />
+        </div>
+        <div class="demo-text">
+          <span class="demo-num">04</span>
+          <h3 class="demo-caption">Las facturas de proveedor, ordenadas sin que muevas un dedo.</h3>
         </div>
       </article>
     </div>

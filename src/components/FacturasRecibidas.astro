@@ -1,0 +1,171 @@
+---
+/** FacturasRecibidas.astro — Las facturas de proveedor se ordenan solas.
+ *  Flujo de 3 pasos con iconos de línea (Lucide-style, 24px viewBox, 2px stroke).
+ *  Misma estética que Pilares/Oferta. Sin captura: diagrama de pasos.
+ */
+const pasos = [
+  {
+    num: "01",
+    title: "Llega sola",
+    body: "Tus proveedores mandan la factura al correo de siempre. Aparece en la app, ya leída. ¿Es de papel? Le haces una foto en la furgoneta y pasa lo mismo.",
+    /* Lucide: Inbox */
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>`,
+  },
+  {
+    num: "02",
+    title: "Se ordena sola",
+    body: "La app saca el proveedor, el importe, el IVA, la fecha y los conceptos. La clasifica y la archiva por proveedor y por trimestre. Si el proveedor es nuevo, lo crea; si ya lo conoce, la guarda en su ficha.",
+    /* Lucide: FolderOpen */
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg>`,
+  },
+  {
+    num: "03",
+    title: "Tú revisas en 5 segundos",
+    body: "Solo miras si está bien y le das el visto bueno. Cinco segundos. No los siete minutos de descargar, mirar el IVA, clasificar y guardar. Factura a factura.",
+    /* Lucide: CheckCircle2 */
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>`,
+  },
+];
+---
+<section class="section-padding bg-mist" id="facturas-recibidas">
+  <div class="container-narrow">
+    <p class="text-eyebrow fr-eyebrow reveal">Lo que más tiempo te quita</p>
+    <h2 class="fr-h2 reveal">Las facturas de tus proveedores se ordenan solas.</h2>
+
+    <div class="fr-intro reveal">
+      <p>
+        Imagina que tienes a alguien que, cada vez que entra una factura, apunta el proveedor,
+        el importe y el IVA, la guarda en su carpeta y te avisa. Eso hace la app.
+        Sin sueldo y sin descansos.
+      </p>
+      <p class="fr-question">¿Cuántas facturas tienes ahora mismo sin abrir en el correo?</p>
+    </div>
+
+    <div class="fr-grid reveal-stagger">
+      {pasos.map(p => (
+        <div class="fr-card reveal">
+          <span class="fr-num">{p.num}</span>
+          <div class="fr-icon" aria-hidden="true">
+            <Fragment set:html={p.icon} />
+          </div>
+          <h3>{p.title}</h3>
+          <p>{p.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="fr-close reveal">
+      Adiós a la carpeta de «facturas pendientes». Cada factura que se traspapela es IVA que no te
+      deduces. Aquí no se pierde ninguna.
+    </p>
+  </div>
+</section>
+
+<style>
+  .fr-eyebrow {
+    text-align: center;
+    color: var(--color-teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .fr-h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .fr-intro {
+    max-width: 620px;
+    margin: 0 auto 3.5rem;
+    text-align: center;
+  }
+
+  .fr-intro p {
+    color: var(--color-slate);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+
+  .fr-question {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--color-ink) !important;
+  }
+
+  .fr-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .fr-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .fr-card {
+    position: relative;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.75rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .fr-card:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-3px);
+    border-color: var(--color-teal);
+  }
+
+  .fr-num {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .fr-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: var(--color-teal-light);
+    color: var(--color-teal);
+    margin-bottom: 1.25rem;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .fr-card:hover .fr-icon {
+    background: var(--color-teal);
+    color: var(--color-white);
+  }
+
+  .fr-card h3 {
+    margin-bottom: 0.75rem;
+    color: var(--color-ink);
+    font-size: 1.125rem;
+  }
+
+  .fr-card p {
+    color: var(--color-slate);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  .fr-close {
+    max-width: 680px;
+    margin: 3rem auto 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--color-ink);
+  }
+</style>
