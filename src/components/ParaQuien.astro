@@ -15,7 +15,7 @@ import oficios from "../assets/oficios.png";
       class="pq-oficios reveal"
     />
     <div class="pq-grid reveal-stagger">
-      <div class="pq-col pq-yes reveal">
+      <div class="pq-col pq-yes reveal reveal-left">
         <h3 class="pq-col-title">Es para ti si</h3>
         <ul class="pq-list">
           <li>Eres autónomo o pequeña empresa de reformas (pintor, albañil, electricista, fontanero, climatización, metal, reformas integrales).</li>
@@ -26,7 +26,7 @@ import oficios from "../assets/oficios.png";
           <li>Tienes poco tiempo y aún menos paciencia para tutoriales.</li>
         </ul>
       </div>
-      <div class="pq-col pq-no reveal">
+      <div class="pq-col pq-no reveal reveal-right">
         <h3 class="pq-col-title">No es para ti si</h3>
         <ul class="pq-list pq-list-no">
           <li>Tienes ya un departamento administrativo con varias personas.</li>
@@ -63,6 +63,11 @@ import oficios from "../assets/oficios.png";
     padding: 2rem;
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border);
+    transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s ease;
+  }
+  .pq-col:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
   }
   .pq-yes { background: var(--color-teal-light); border-color: var(--color-teal); }
   .pq-no { background: var(--color-mist); }

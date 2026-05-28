@@ -1,7 +1,9 @@
 ---
 /** Promesa.astro — PAS: Agitate + Solution. Copy literal de 06. */
 ---
-<section class="section-padding bg-mist" id="promesa">
+<section class="section-padding bg-mist promesa-section" id="promesa">
+  <span class="section-accent promesa-accent-1" aria-hidden="true"></span>
+  <span class="section-accent is-orange promesa-accent-2" aria-hidden="true"></span>
   <div class="container-narrow promesa-inner reveal">
     <h2>Hay otra forma. Y esta vez no la lleva una app rara.</h2>
     <div class="promesa-body">
@@ -20,7 +22,10 @@
 </section>
 
 <style>
-  .promesa-inner { max-width: 720px; }
+  .promesa-section { position: relative; overflow: hidden; }
+  .promesa-accent-1 { top: -12rem; right: -10rem; }
+  .promesa-accent-2 { bottom: -14rem; left: -10rem; }
+  .promesa-inner { max-width: 720px; position: relative; z-index: 1; }
   .promesa-body { margin-top: 2rem; }
   .promesa-body p {
     color: var(--color-slate);

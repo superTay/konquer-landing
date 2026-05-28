@@ -6,7 +6,7 @@
     <h2 class="reveal">Una sola tarifa. Sin sorpresas.</h2>
     <p class="pricing-sub reveal">Beta Fundadores. Precio especial para los primeros clientes.</p>
 
-    <div class="pricing-card reveal">
+    <div class="pricing-card card-spotlight reveal">
       <span class="pricing-badge">Beta Fundadores</span>
       <h3 class="pricing-title">Tu Oficina IA</h3>
 
@@ -53,6 +53,11 @@
     padding: 2.5rem 2rem;
     box-shadow: var(--shadow-elevated);
     position: relative;
+    transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s ease;
+  }
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
   }
   .pricing-badge {
     display: inline-block;

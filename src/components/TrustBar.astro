@@ -27,8 +27,8 @@ const loop = [...oficios, ...oficios];
 
 <style>
   .trust-bar {
-    background: var(--color-mist);
-    border-block: 1px solid var(--color-border);
+    background: var(--color-ink);
+    border-block: 1px solid rgba(0, 209, 178, 0.18);
     padding-block: 1.1rem;
     overflow: hidden;
   }
@@ -56,12 +56,13 @@ const loop = [...oficios, ...oficios];
     font-family: var(--font-heading);
     font-size: 1.0625rem;
     font-weight: 600;
-    color: var(--color-ink);
+    color: var(--color-white);
     white-space: nowrap;
   }
   .sep {
     color: var(--color-teal);
     font-size: 0.7rem;
+    text-shadow: 0 0 10px rgba(0, 209, 178, 0.6);
   }
   @keyframes marquee {
     from { transform: translateX(0); }

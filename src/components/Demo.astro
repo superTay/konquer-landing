@@ -180,4 +180,20 @@ import demoFacturasRecibidas from "../assets/screenshots/factura-recibida.png";
     .demo-text { text-align: center; }
     .demo-caption { margin-inline: auto; }
   }
+
+  /* ── Parallax sutil en las capturas: scroll-driven nativo, cero JS ── */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .demo-media {
+        animation: demo-parallax linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+        will-change: transform;
+      }
+      @keyframes demo-parallax {
+        from { transform: translateY(22px); }
+        to   { transform: translateY(-22px); }
+      }
+    }
+  }
 </style>

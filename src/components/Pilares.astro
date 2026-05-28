@@ -99,9 +99,9 @@
   }
 
   .pilar-card:hover {
-    box-shadow: var(--shadow-card);
-    transform: translateY(-3px);
-    border-color: var(--color-teal);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-6px);
+    border-color: rgba(0, 209, 178, 0.6);
   }
 
   /* ── Icon wrapper ── */
@@ -109,18 +109,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-md);
-    background: var(--color-teal-light);
+    width: 58px;
+    height: 58px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(150deg, var(--color-teal-light), #ffffff);
     color: var(--color-teal);
+    border: 1px solid rgba(0, 209, 178, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
     margin-bottom: 1.5rem;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: transform 0.35s var(--ease-spring), background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   }
 
+  .pilar-icon svg { width: 28px; height: 28px; }
+
   .pilar-card:hover .pilar-icon {
-    background: var(--color-teal);
+    background: linear-gradient(150deg, var(--color-teal), var(--color-teal-dark));
     color: var(--color-white);
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: var(--shadow-glow-soft);
   }
 
   .pilar-card h3 {

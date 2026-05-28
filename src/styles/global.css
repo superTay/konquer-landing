@@ -43,10 +43,14 @@
   --shadow-btn: 0 4px 14px rgba(0, 209, 178, 0.3);
   --shadow-btn-hover: 0 8px 24px rgba(0, 209, 178, 0.35);
   --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 0 1px rgba(0, 209, 178, 0.18), 0 18px 50px -14px rgba(0, 209, 178, 0.38);
+  --shadow-glow-soft: 0 14px 44px -18px rgba(0, 209, 178, 0.32);
 
   /* ── Transitions ── */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.5, 1);
   --duration-reveal: 0.7s;
+  --blur-glass: 24px;
 
   /* ── Breakpoints ── */
   --breakpoint-sm: 640px;
@@ -170,6 +174,60 @@
     background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-dark) 100%);
   }
 
+  /* ── Liquid glass surfaces (Vision Pro style) ── */
+  .glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(var(--blur-glass)) saturate(1.6);
+    -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(1.6);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.02),
+      var(--shadow-elevated);
+  }
+
+  /* ── Decorative texture: grain + radial accents + dot grid ── */
+  /* Apply .grain to an aria-hidden absolutely-positioned div behind content */
+  .grain {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    mix-blend-mode: soft-light;
+  }
+
+  /* Soft radial glow blob to give flat sections atmosphere */
+  .section-accent {
+    position: absolute;
+    z-index: 0;
+    width: 38rem;
+    height: 38rem;
+    max-width: 90vw;
+    border-radius: var(--radius-full);
+    background: radial-gradient(circle, rgba(0, 209, 178, 0.12), transparent 68%);
+    filter: blur(30px);
+    pointer-events: none;
+  }
+
+  .section-accent.is-orange {
+    background: radial-gradient(circle, rgba(255, 138, 0, 0.10), transparent 68%);
+  }
+
+  /* Subtle dot grid that fades out — for technical/premium feel */
+  .bg-dots {
+    background-image: radial-gradient(rgba(11, 31, 36, 0.06) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
   /* Buttons */
   .btn {
     display: inline-flex;
@@ -184,8 +242,11 @@
     min-height: 52px;
     cursor: pointer;
     border: none;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
   }
 
   .btn-primary {
@@ -193,9 +254,33 @@
     color: var(--color-white);
   }
 
+  /* Shine sweep that crosses the button on hover */
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -90%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.45) 50%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    transition: left 0.65s var(--ease-out-expo);
+    pointer-events: none;
+    z-index: -1;
+  }
+
   .btn-primary:hover {
     transform: translateY(-2px) scale(1.01);
-    box-shadow: var(--shadow-btn-hover);
+    box-shadow: var(--shadow-btn-hover), var(--shadow-glow-soft);
+  }
+
+  .btn-primary:hover::before {
+    left: 130%;
   }
 
   .btn-primary:active {
@@ -264,7 +349,7 @@
 /* ── Reveal base state (fallback path) ── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(32px);
   transition:
     opacity var(--duration-reveal) var(--ease-out-expo),
     transform var(--duration-reveal) var(--ease-out-expo);
@@ -275,6 +360,21 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ── Directional + blur variants (modifiers, use alongside .reveal) ── */
+.reveal-left { transform: translateX(-32px); }
+.reveal-right { transform: translateX(32px); }
+.reveal-blur {
+  transform: translateY(16px);
+  filter: blur(10px);
+  transition:
+    opacity var(--duration-reveal) var(--ease-out-expo),
+    transform var(--duration-reveal) var(--ease-out-expo),
+    filter var(--duration-reveal) var(--ease-out-expo);
+}
+.reveal-left.is-visible,
+.reveal-right.is-visible { transform: translateX(0); }
+.reveal-blur.is-visible { transform: translateY(0); filter: blur(0); }
 
 /* Staggered children (cards in grids) */
 .reveal-stagger > .reveal:nth-child(2) { transition-delay: 0.1s; }
@@ -289,7 +389,7 @@
     @keyframes reveal-in {
       from {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(32px);
       }
     }
 
@@ -304,6 +404,20 @@
       animation-timeline: view();
       animation-range: entry 0% entry 100%;
     }
+
+    @keyframes reveal-left-in {
+      from { opacity: 0; transform: translateX(-32px); }
+    }
+    @keyframes reveal-right-in {
+      from { opacity: 0; transform: translateX(32px); }
+    }
+    @keyframes reveal-blur-in {
+      from { opacity: 0; transform: translateY(16px); filter: blur(10px); }
+    }
+
+    .reveal-left { animation-name: reveal-left-in; }
+    .reveal-right { animation-name: reveal-right-in; }
+    .reveal-blur { animation-name: reveal-blur-in; }
 
     .reveal.is-visible {
       /* Not needed when scroll-driven is active, but keep for specificity */
@@ -338,9 +452,13 @@
 
 /* ── Reduced motion: disable all reveal animations ── */
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-blur {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     transition: none !important;
     animation: none !important;
   }
@@ -351,8 +469,14 @@
     transform: none !important;
   }
 
+  .btn-primary::before {
+    display: none;
+  }
+
   .pilar-card:hover,
-  .oferta-card:hover {
+  .oferta-card:hover,
+  .fr-card:hover,
+  .card-spotlight:hover {
     transform: none !important;
   }
 }
@@ -361,19 +485,22 @@
    Spotlight interactivo en tarjetas (glow sigue al cursor)
    ============================================ */
 .pilar-card,
-.oferta-card {
+.oferta-card,
+.card-spotlight {
   position: relative;
   overflow: hidden;
 }
 
 .pilar-card > *,
-.oferta-card > * {
+.oferta-card > *,
+.card-spotlight > * {
   position: relative;
   z-index: 1;
 }
 
 .pilar-card::before,
-.oferta-card::before {
+.oferta-card::before,
+.card-spotlight::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -389,6 +516,7 @@
 }
 
 .pilar-card:hover::before,
-.oferta-card:hover::before {
+.oferta-card:hover::before,
+.card-spotlight:hover::before {
   opacity: 1;
 }

@@ -83,6 +83,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquera
     })} />
   </head>
   <body class="bg-white text-ink antialiased">
+    <!-- Sentinel para condensar la navbar al hacer scroll (sin listener de scroll) -->
+    <div id="nav-sentinel" aria-hidden="true"></div>
     <div class="announce">
       <p>Plazas <strong>Beta Fundadores</strong> limitadas este mes · Puesta en marcha 1:1 con una persona real incluida</p>
     </div>
@@ -110,7 +112,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquera
       const rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       // Spotlight: la luz sigue al cursor sobre las tarjetas
-      document.querySelectorAll<HTMLElement>('.pilar-card, .oferta-card').forEach((card) => {
+      document.querySelectorAll<HTMLElement>('.pilar-card, .oferta-card, .card-spotlight').forEach((card) => {
         card.addEventListener('mousemove', (e) => {
           const r = card.getBoundingClientRect();
           card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
@@ -132,7 +134,64 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquera
       }
     </script>
 
+    <!-- Contadores animados (cuentan al entrar en viewport; respeta reduced-motion) -->
+    <script>
+      const counters = document.querySelectorAll<HTMLElement>('[data-counter]');
+      if (counters.length) {
+        const reduceCounters = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const animateCounter = (el: HTMLElement) => {
+          const target = parseFloat(el.dataset.counter ?? '0');
+          const suffix = el.dataset.suffix ?? '';
+          const prefix = el.dataset.prefix ?? '';
+          if (reduceCounters) { el.textContent = prefix + target + suffix; return; }
+          const duration = 1400;
+          const start = performance.now();
+          const frame = (now: number) => {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = prefix + Math.floor(target * eased) + suffix;
+            if (p < 1) requestAnimationFrame(frame);
+            else el.textContent = prefix + target + suffix;
+          };
+          requestAnimationFrame(frame);
+        };
+        if (!('IntersectionObserver' in window)) {
+          counters.forEach(animateCounter);
+        } else {
+          const cObs = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target as HTMLElement);
+                cObs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.4 });
+          counters.forEach((c) => cObs.observe(c));
+        }
+      }
+    </script>
+
+    <!-- Navbar flotante: se condensa al salir del top (sin listener de scroll) -->
+    <script>
+      const headerEl = document.getElementById('header');
+      const sentinel = document.getElementById('nav-sentinel');
+      if (headerEl && sentinel) {
+        const navObs = new IntersectionObserver(([entry]) => {
+          headerEl.classList.toggle('is-scrolled', !entry.isIntersecting);
+        }, { threshold: 0 });
+        navObs.observe(sentinel);
+      }
+    </script>
+
     <style>
+      #nav-sentinel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 56px;
+        pointer-events: none;
+      }
       .announce {
         background: var(--color-ink);
         color: #fff;

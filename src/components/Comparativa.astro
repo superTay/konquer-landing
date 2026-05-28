@@ -60,6 +60,10 @@ const rows = [
     background: var(--color-teal-light);
     color: var(--color-ink);
     font-weight: 500;
+    transition: background 0.25s ease;
+  }
+  .comp-row:hover .comp-cell-con {
+    background: rgba(0, 209, 178, 0.18);
   }
   @media (max-width: 767px) {
     .comp-header, .comp-row {

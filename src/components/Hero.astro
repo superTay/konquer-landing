@@ -9,8 +9,9 @@ import heroBalance from "../assets/screenshots/hero-balance.png";
 
 <section class="hero" id="hero">
   <div class="hero-aurora" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
   <div class="hero-inner container-narrow">
-    <div class="hero-content reveal">
+    <div class="hero-content">
       <p class="text-eyebrow hero-eyebrow">App de gestión para autónomos de reformas</p>
 
       <h1 class="hero-h1">Tu cuadrilla administrativa, ahora digital.</h1>
@@ -34,7 +35,7 @@ import heroBalance from "../assets/screenshots/hero-balance.png";
       </p>
     </div>
 
-    <div class="hero-visual reveal" style="transition-delay: 0.2s;">
+    <div class="hero-visual">
       <Image
         src={heroBalance}
         alt="La app de KonquerAI en el móvil: balance del mes, pendiente de cobro y el IVA del trimestre de un vistazo"
@@ -61,14 +62,15 @@ import heroBalance from "../assets/screenshots/hero-balance.png";
   .hero-aurora {
     position: absolute;
     inset: -25% -10% auto -10%;
-    height: 150%;
+    height: 160%;
     z-index: 0;
     background:
-      radial-gradient(38% 48% at 18% 28%, rgba(0, 209, 178, 0.20), transparent 70%),
-      radial-gradient(34% 44% at 82% 18%, rgba(255, 138, 0, 0.13), transparent 70%),
-      radial-gradient(40% 50% at 72% 82%, rgba(0, 209, 178, 0.12), transparent 70%);
-    filter: blur(24px);
-    animation: aurora 20s ease-in-out infinite alternate;
+      radial-gradient(38% 48% at 16% 26%, rgba(0, 209, 178, 0.24), transparent 70%),
+      radial-gradient(34% 44% at 84% 16%, rgba(255, 138, 0, 0.15), transparent 70%),
+      radial-gradient(42% 52% at 74% 84%, rgba(0, 209, 178, 0.15), transparent 70%),
+      radial-gradient(30% 38% at 48% 54%, rgba(0, 209, 178, 0.07), transparent 75%);
+    filter: blur(26px);
+    animation: aurora 22s ease-in-out infinite alternate;
     pointer-events: none;
   }
 
@@ -98,6 +100,29 @@ import heroBalance from "../assets/screenshots/hero-balance.png";
     flex-direction: column;
     gap: 1.5rem;
   }
+
+  /* ── Entrada coreografiada al cargar (above-the-fold = wow inmediato) ── */
+  @keyframes heroEnter {
+    from { opacity: 0; transform: translateY(28px); }
+  }
+  @keyframes heroEnterH1 {
+    from { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+  }
+  @keyframes heroEnterVisual {
+    from { opacity: 0; transform: translateY(44px) scale(0.93); filter: blur(8px); }
+  }
+
+  .hero-content > * {
+    animation: heroEnter 0.8s var(--ease-out-expo) backwards;
+  }
+  .hero-eyebrow { animation-delay: 0.05s; }
+  .hero-h1 {
+    animation: heroEnterH1 0.95s var(--ease-out-expo) backwards;
+    animation-delay: 0.15s;
+  }
+  .hero-sub     { animation-delay: 0.30s; }
+  .hero-actions { animation-delay: 0.42s; }
+  .hero-trust   { animation-delay: 0.52s; }
 
   .hero-eyebrow {
     color: var(--color-teal);
@@ -154,6 +179,8 @@ import heroBalance from "../assets/screenshots/hero-balance.png";
   .hero-visual {
     display: flex;
     justify-content: center;
+    animation: heroEnterVisual 1s var(--ease-out-expo) backwards;
+    animation-delay: 0.35s;
   }
 
   .hero-mockup {
@@ -172,8 +199,14 @@ import heroBalance from "../assets/screenshots/hero-balance.png";
 
   @media (prefers-reduced-motion: reduce) {
     .hero-aurora,
-    .hero-mockup {
-      animation: none;
+    .hero-mockup,
+    .hero-content > *,
+    .hero-h1,
+    .hero-visual {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
     }
   }
 
