@@ -1,17 +1,49 @@
 ---
-import Base from "../../layouts/Base.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import EnPreparacion from "../../components/EnPreparacion.astro";
+import LegalDoc from "../../components/LegalDoc.astro";
 ---
-<Base
-  title="Cumplimiento GDPR · KonquerAI"
-  description="Cómo cumple KonquerAI con el RGPD y la protección de datos."
-  noindex={true}
+<LegalDoc
+  title="Cumplimiento del RGPD · KonquerAI"
+  description="Cómo cumple KonquerAI con el RGPD en la protección de tus datos personales."
+  titulo="Compromiso con el RGPD"
+  subtitulo="Un resumen en claro de cómo protegemos tus datos. El detalle completo está en la política de privacidad."
+  actualizado="28 de mayo de 2026"
 >
-  <Header />
-  <main>
-    <EnPreparacion titulo="Cumplimiento GDPR" />
-  </main>
-  <Footer />
-</Base>
+  <p class="legal-note">
+    Esta página es un resumen. Para el detalle del tratamiento de datos de la web, consulta la
+    <a href="/legal/privacidad">política de privacidad</a>. La app móvil tiene su propia política en
+    <a href="/privacy">konquerai.com/privacy</a>.
+  </p>
+
+  <section>
+    <h2><span class="legal-num">01</span> Quién responde de tus datos</h2>
+    <p><strong>Responsable:</strong> Christian Marzal Della-Rovere · <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">02</span> Qué tratamos y con qué base</h2>
+    <p>En esta web solo tratamos los datos que nos dejas en el formulario de contacto (nombre, teléfono y, si quieres, email, oficio y un mensaje), con la única finalidad de ponernos en contacto contigo.</p>
+    <p class="legal-base"><strong>Base legal:</strong> tu consentimiento (art. 6.1.a del RGPD), que das al enviar el formulario y puedes retirar cuando quieras.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">03</span> Principios que aplicamos</h2>
+    <ul>
+      <li><strong>Minimización</strong>: solo te pedimos lo necesario para llamarte.</li>
+      <li><strong>Finalidad limitada</strong>: no usamos tus datos para otra cosa distinta de atender tu solicitud.</li>
+      <li><strong>Transparencia</strong>: te decimos quién trata tus datos y dónde (ver privacidad).</li>
+      <li><strong>Seguridad</strong>: comunicación cifrada por HTTPS / TLS y acceso restringido.</li>
+      <li><strong>No venta de datos</strong>: nunca vendemos ni cedemos tus datos con fines comerciales.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">04</span> Tus derechos</h2>
+    <p>Puedes ejercer acceso, rectificación, supresión, limitación, portabilidad y oposición, y retirar tu consentimiento, escribiéndonos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>. Te respondemos en un plazo máximo de un mes.</p>
+    <p>Si no estás conforme, puedes reclamar ante la <strong>Agencia Española de Protección de Datos</strong> (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">05</span> Encargados y transferencias</h2>
+    <p>Usamos Web3Forms (recibe y reenvía el formulario) y Google Workspace (correo). Esto implica transferencias internacionales que detallamos en la <a href="/legal/privacidad">política de privacidad</a>.</p>
+  </section>
+</LegalDoc>

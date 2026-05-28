@@ -1,0 +1,114 @@
+---
+/**
+ * LegalDoc.astro — Layout compartido para páginas legales (/legal/*).
+ * Renderiza Base + Header + Footer + la cabecera del documento.
+ * El cuerpo (secciones) va en el slot por defecto.
+ */
+import Base from "../layouts/Base.astro";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  titulo: string;
+  subtitulo?: string;
+  actualizado?: string;
+}
+
+const { title, description, noindex = true, titulo, subtitulo, actualizado } = Astro.props;
+---
+<Base title={title} description={description} noindex={noindex}>
+  <Header />
+  <main class="legal">
+    <div class="container-narrow legal-inner">
+      <p class="text-eyebrow legal-eyebrow">Documento legal</p>
+      <h1 class="legal-title">{titulo}</h1>
+      {subtitulo && <p class="legal-sub">{subtitulo}</p>}
+      {actualizado && <p class="legal-updated">Última actualización: {actualizado}</p>}
+
+      <article class="legal-body">
+        <slot />
+      </article>
+
+      <a href="/" class="btn btn-secondary legal-back">Volver al inicio</a>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<style is:global>
+  /* Páginas legales (/legal/*) — estilos compartidos */
+  .legal { padding-block: 4rem 5rem; }
+  .legal-inner { max-width: 760px; }
+  .legal-eyebrow { color: var(--color-teal); margin-bottom: 0.75rem; }
+  .legal-title { font-size: clamp(2rem, 5vw, 2.75rem); margin-bottom: 0.75rem; }
+  .legal-sub { color: var(--color-slate); font-size: 1.0625rem; line-height: 1.7; max-width: 60ch; }
+  .legal-updated {
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-slate);
+  }
+
+  .legal-body { margin-top: 2.5rem; }
+
+  .legal-note {
+    background: var(--color-mist);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    font-size: 0.9375rem;
+    color: var(--color-slate);
+    margin-bottom: 2.5rem;
+  }
+  .legal-note a { color: var(--color-teal); font-weight: 600; }
+
+  .legal-body section { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--color-border); }
+  .legal-body section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+
+  .legal-body h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: 1.375rem;
+    margin-bottom: 1rem;
+  }
+  .legal-num {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-teal);
+    letter-spacing: 0.04em;
+  }
+  .legal-body h3 {
+    font-size: 1.0625rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .legal-body p { color: var(--color-slate); line-height: 1.75; margin-bottom: 1rem; }
+  .legal-body ul { margin: 0 0 1rem 1.25rem; color: var(--color-slate); line-height: 1.75; }
+  .legal-body li { margin-bottom: 0.5rem; }
+  .legal-body strong { color: var(--color-ink); }
+  .legal-body a { color: var(--color-teal); text-decoration: underline; text-underline-offset: 2px; }
+  .legal-body code {
+    font-size: 0.9em;
+    background: var(--color-mist);
+    padding: 0.1em 0.4em;
+    border-radius: var(--radius-sm);
+    color: var(--color-ink);
+  }
+  .legal-base {
+    border-left: 3px solid var(--color-teal);
+    padding-left: 1rem;
+    background: var(--color-teal-light);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding-block: 0.75rem;
+    padding-right: 1rem;
+  }
+  .legal-base strong { color: var(--color-ink); }
+
+  .legal-back { margin-top: 3rem; }
+</style>

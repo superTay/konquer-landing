@@ -1,183 +1,92 @@
 ---
-import Base from "../../layouts/Base.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-
-const actualizado = "28 de mayo de 2026";
+import LegalDoc from "../../components/LegalDoc.astro";
 ---
-<Base
+<LegalDoc
   title="Política de privacidad · KonquerAI"
   description="Cómo trata KonquerAI los datos que nos dejas en el formulario de contacto de konquerai.com, conforme al RGPD."
-  noindex={true}
+  titulo="Política de privacidad"
+  subtitulo="Esta política explica cómo tratamos los datos que nos dejas en konquerai.com, principalmente a través del formulario de contacto."
+  actualizado="28 de mayo de 2026"
 >
-  <Header />
-  <main class="legal">
-    <div class="container-narrow legal-inner">
-      <p class="text-eyebrow legal-eyebrow">Documento legal</p>
-      <h1 class="legal-title">Política de privacidad</h1>
-      <p class="legal-sub">Esta política explica cómo tratamos los datos que nos dejas en <strong>konquerai.com</strong>, principalmente a través del formulario de contacto.</p>
-      <p class="legal-updated">Última actualización: {actualizado}</p>
+  <p class="legal-note">
+    ¿Buscas la política de la app móvil KonquerAI? Está en
+    <a href="/privacy">konquerai.com/privacy</a>. Esta página cubre solo la web pública.
+  </p>
 
-      <article class="legal-body">
-        <p class="legal-note">
-          ¿Buscas la política de la app móvil KonquerAI? Está en
-          <a href="/privacy">konquerai.com/privacy</a>. Esta página cubre solo la web pública.
-        </p>
+  <section>
+    <h2><span class="legal-num">01</span> Quién es el responsable</h2>
+    <p><strong>Responsable:</strong> Christian Marzal Della-Rovere.<br />
+      <strong>Contacto:</strong> <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
+    <p>Si tienes cualquier duda o quieres ejercer tus derechos, escríbenos a esa dirección.</p>
+  </section>
 
-        <section>
-          <h2><span class="legal-num">01</span> Quién es el responsable</h2>
-          <p><strong>Responsable:</strong> Christian Marzal Della-Rovere.<br />
-            <strong>Contacto:</strong> <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
-          <p>Si tienes cualquier duda o quieres ejercer tus derechos, escríbenos a esa dirección.</p>
-        </section>
+  <section>
+    <h2><span class="legal-num">02</span> Qué datos recogemos en esta web y por qué</h2>
+    <p>Cuando rellenas el formulario de contacto nos facilitas:</p>
+    <ul>
+      <li><strong>Nombre</strong> y <strong>teléfono</strong> (obligatorios).</li>
+      <li><strong>Email</strong>, <strong>oficio</strong> y un <strong>mensaje</strong> (opcionales).</li>
+    </ul>
+    <p><strong>Para qué los usamos:</strong> para ponernos en contacto contigo, informarte sobre KonquerAI y, si lo pides, agendar una demostración. Es decir, para responder a tu propia solicitud.</p>
+    <p class="legal-base"><strong>Base legal:</strong> tu consentimiento, que das al marcar la casilla antes de enviar el formulario (art. 6.1.a del RGPD). Puedes retirarlo en cualquier momento escribiéndonos.</p>
 
-        <section>
-          <h2><span class="legal-num">02</span> Qué datos recogemos en esta web y por qué</h2>
-          <p>Cuando rellenas el formulario de contacto nos facilitas:</p>
-          <ul>
-            <li><strong>Nombre</strong> y <strong>teléfono</strong> (obligatorios).</li>
-            <li><strong>Email</strong>, <strong>oficio</strong> y un <strong>mensaje</strong> (opcionales).</li>
-          </ul>
-          <p><strong>Para qué los usamos:</strong> para ponernos en contacto contigo, informarte sobre KonquerAI y, si lo pides, agendar una demostración. Es decir, para responder a tu propia solicitud.</p>
-          <p class="legal-base"><strong>Base legal:</strong> tu consentimiento, que das al marcar la casilla antes de enviar el formulario (art. 6.1.a del RGPD). Puedes retirarlo en cualquier momento escribiéndonos.</p>
+    <h3>2.1. Lo que NO hacemos en esta web</h3>
+    <ul>
+      <li>Actualmente la web <strong>no utiliza cookies</strong> de analítica ni de publicidad. Si en el futuro las añadimos, te lo pediremos con un aviso y actualizaremos esta política.</li>
+      <li>No hacemos perfilado ni decisiones automatizadas con tus datos.</li>
+      <li>No vendemos ni cedemos tus datos a terceros con fines comerciales.</li>
+    </ul>
+  </section>
 
-          <h3>2.1. Lo que NO hacemos en esta web</h3>
-          <ul>
-            <li>Actualmente la web <strong>no utiliza cookies</strong> de analítica ni de publicidad. Si en el futuro las añadimos, te lo pediremos con un aviso y actualizaremos esta política.</li>
-            <li>No hacemos perfilado ni decisiones automatizadas con tus datos.</li>
-            <li>No vendemos ni cedemos tus datos a terceros con fines comerciales.</li>
-          </ul>
-        </section>
+  <section>
+    <h2><span class="legal-num">03</span> Con quién se comparten</h2>
+    <p>Para hacer llegar tu mensaje a nuestro correo usamos un proveedor que actúa como encargado del tratamiento:</p>
+    <ul>
+      <li><strong>Web3Forms</strong> (Web3Creative, India) — recibe el envío del formulario y nos lo reenvía por email. <strong>No almacena los envíos de forma permanente</strong>: los procesa y los reenvía, y sus registros con datos personales se eliminan periódicamente. Sus servidores están en Estados Unidos.</li>
+      <li><strong>Google Workspace</strong> (Google Ireland Ltd.) — el servicio de correo con el que gestionamos <code>info@konquerai.com</code>, donde recibimos y conservamos tu mensaje. Google está adherida al marco <em>EU-U.S. Data Privacy Framework</em> y aplica las cláusulas contractuales tipo de la Comisión Europea para las transferencias a Estados Unidos.</li>
+    </ul>
+    <h3>3.1. Transferencia internacional</h3>
+    <p>Al enviar el formulario, tus datos pasan por <strong>Web3Forms</strong>, cuyos servidores están en <strong>Estados Unidos</strong> y cuya empresa está establecida en <strong>India</strong>, es decir, fuera del Espacio Económico Europeo. Hemos elegido este proveedor por su modelo de minimización de datos (no conserva los envíos). El mensaje queda después almacenado en Google Workspace, con las garantías indicadas arriba. Si quieres más detalle sobre estas transferencias, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
+  </section>
 
-        <section>
-          <h2><span class="legal-num">03</span> Con quién se comparten</h2>
-          <p>Para hacer llegar tu mensaje a nuestro correo usamos un proveedor que actúa como encargado del tratamiento:</p>
-          <ul>
-            <li><strong>Web3Forms</strong> (Web3Creative, India) — recibe el envío del formulario y nos lo reenvía por email. <strong>No almacena los envíos de forma permanente</strong>: los procesa y los reenvía, y sus registros con datos personales se eliminan periódicamente. Sus servidores están en Estados Unidos.</li>
-            <li><strong>Google Workspace</strong> (Google Ireland Ltd.) — el servicio de correo con el que gestionamos <code>info@konquerai.com</code>, donde recibimos y conservamos tu mensaje. Google está adherida al marco <em>EU-U.S. Data Privacy Framework</em> y aplica las cláusulas contractuales tipo de la Comisión Europea para las transferencias a Estados Unidos.</li>
-          </ul>
-          <h3>3.1. Transferencia internacional</h3>
-          <p>Al enviar el formulario, tus datos pasan por <strong>Web3Forms</strong>, cuyos servidores están en <strong>Estados Unidos</strong> y cuya empresa está establecida en <strong>India</strong>, es decir, fuera del Espacio Económico Europeo. Hemos elegido este proveedor por su modelo de minimización de datos (no conserva los envíos). El mensaje queda después almacenado en Google Workspace, con las garantías indicadas arriba. Si quieres más detalle sobre estas transferencias, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
-        </section>
+  <section>
+    <h2><span class="legal-num">04</span> Cuánto tiempo conservamos tus datos</h2>
+    <p>Conservamos tus datos de contacto el tiempo necesario para atender tu solicitud y valorar el posible inicio de una relación comercial. Si esa relación no llega a producirse, los conservamos durante un máximo de <strong>12 meses</strong> desde el último contacto, salvo que nos pidas antes que los borremos.</p>
+  </section>
 
-        <section>
-          <h2><span class="legal-num">04</span> Cuánto tiempo conservamos tus datos</h2>
-          <p>Conservamos tus datos de contacto el tiempo necesario para atender tu solicitud y valorar el posible inicio de una relación comercial. Si esa relación no llega a producirse, los conservamos durante un máximo de <strong>12 meses</strong> desde el último contacto, salvo que nos pidas antes que los borremos.</p>
-        </section>
+  <section>
+    <h2><span class="legal-num">05</span> Tus derechos</h2>
+    <p>En cualquier momento puedes ejercer:</p>
+    <ul>
+      <li><strong>Acceso</strong>: pedir copia de la información que tenemos sobre ti.</li>
+      <li><strong>Rectificación</strong>: corregir datos inexactos.</li>
+      <li><strong>Supresión</strong> ("derecho al olvido"): pedir que borremos tus datos.</li>
+      <li><strong>Limitación</strong>: pedir que dejemos de tratarlos en ciertos casos.</li>
+      <li><strong>Portabilidad</strong>: recibir tus datos en un formato legible.</li>
+      <li><strong>Oposición</strong>: oponerte al tratamiento.</li>
+      <li><strong>Retirar el consentimiento</strong> que diste, sin que afecte a lo anterior.</li>
+    </ul>
+    <p>Para ejercerlos, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>. Te responderemos en un plazo máximo de un mes.</p>
+    <p>Si no estás conforme con nuestra respuesta, puedes reclamar ante la <strong>Agencia Española de Protección de Datos</strong> (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+  </section>
 
-        <section>
-          <h2><span class="legal-num">05</span> Tus derechos</h2>
-          <p>En cualquier momento puedes ejercer:</p>
-          <ul>
-            <li><strong>Acceso</strong>: pedir copia de la información que tenemos sobre ti.</li>
-            <li><strong>Rectificación</strong>: corregir datos inexactos.</li>
-            <li><strong>Supresión</strong> ("derecho al olvido"): pedir que borremos tus datos.</li>
-            <li><strong>Limitación</strong>: pedir que dejemos de tratarlos en ciertos casos.</li>
-            <li><strong>Portabilidad</strong>: recibir tus datos en un formato legible.</li>
-            <li><strong>Oposición</strong>: oponerte al tratamiento.</li>
-            <li><strong>Retirar el consentimiento</strong> que diste, sin que afecte a lo anterior.</li>
-          </ul>
-          <p>Para ejercerlos, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>. Te responderemos en un plazo máximo de un mes.</p>
-          <p>Si no estás conforme con nuestra respuesta, puedes reclamar ante la <strong>Agencia Española de Protección de Datos</strong> (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
-        </section>
+  <section>
+    <h2><span class="legal-num">06</span> Cómo protegemos tus datos</h2>
+    <p>Toda la comunicación con la web y con nuestros servicios va cifrada por HTTPS / TLS. Limitamos el acceso a tus datos de contacto a lo estrictamente necesario para atenderte.</p>
+  </section>
 
-        <section>
-          <h2><span class="legal-num">06</span> Cómo protegemos tus datos</h2>
-          <p>Toda la comunicación con la web y con nuestros servicios va cifrada por HTTPS / TLS. Limitamos el acceso a tus datos de contacto a lo estrictamente necesario para atenderte.</p>
-        </section>
+  <section>
+    <h2><span class="legal-num">07</span> Menores</h2>
+    <p>Esta web está dirigida a profesionales autónomos mayores de 18 años. No recogemos conscientemente datos de menores. Si crees que un menor nos ha facilitado datos, escríbenos y los borraremos.</p>
+  </section>
 
-        <section>
-          <h2><span class="legal-num">07</span> Menores</h2>
-          <p>Esta web está dirigida a profesionales autónomos mayores de 18 años. No recogemos conscientemente datos de menores. Si crees que un menor nos ha facilitado datos, escríbenos y los borraremos.</p>
-        </section>
+  <section>
+    <h2><span class="legal-num">08</span> Cambios en esta política</h2>
+    <p>Podemos actualizar esta política para reflejar mejoras del servicio o cambios legislativos. La fecha de la última actualización aparece al principio del documento.</p>
+  </section>
 
-        <section>
-          <h2><span class="legal-num">08</span> Cambios en esta política</h2>
-          <p>Podemos actualizar esta política para reflejar mejoras del servicio o cambios legislativos. La fecha de la última actualización aparece al principio del documento.</p>
-        </section>
-
-        <section>
-          <h2><span class="legal-num">09</span> Contacto</h2>
-          <p>Para cualquier cuestión sobre privacidad o esta política, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
-        </section>
-      </article>
-
-      <a href="/" class="btn btn-secondary legal-back">Volver al inicio</a>
-    </div>
-  </main>
-  <Footer />
-</Base>
-
-<style>
-  .legal { padding-block: 4rem 5rem; }
-  .legal-inner { max-width: 760px; }
-  .legal-eyebrow { color: var(--color-teal); margin-bottom: 0.75rem; }
-  .legal-title { font-size: clamp(2rem, 5vw, 2.75rem); margin-bottom: 0.75rem; }
-  .legal-sub { color: var(--color-slate); font-size: 1.0625rem; line-height: 1.7; max-width: 60ch; }
-  .legal-updated {
-    margin-top: 0.75rem;
-    font-size: 0.8125rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-slate);
-  }
-
-  .legal-body { margin-top: 2.5rem; }
-
-  .legal-note {
-    background: var(--color-mist);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: 1rem 1.25rem;
-    font-size: 0.9375rem;
-    color: var(--color-slate);
-    margin-bottom: 2.5rem;
-  }
-  .legal-note a { color: var(--color-teal); font-weight: 600; }
-
-  .legal-body section { padding-top: 2rem; margin-top: 2rem; border-top: 1px solid var(--color-border); }
-  .legal-body section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
-
-  .legal-body h2 {
-    display: flex;
-    align-items: baseline;
-    gap: 0.6rem;
-    font-size: 1.375rem;
-    margin-bottom: 1rem;
-  }
-  .legal-num {
-    font-family: var(--font-heading);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--color-teal);
-    letter-spacing: 0.04em;
-  }
-  .legal-body h3 {
-    font-size: 1.0625rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .legal-body p { color: var(--color-slate); line-height: 1.75; margin-bottom: 1rem; }
-  .legal-body ul { margin: 0 0 1rem 1.25rem; color: var(--color-slate); line-height: 1.75; }
-  .legal-body li { margin-bottom: 0.5rem; }
-  .legal-body strong { color: var(--color-ink); }
-  .legal-body a { color: var(--color-teal); text-decoration: underline; text-underline-offset: 2px; }
-  .legal-body code {
-    font-size: 0.9em;
-    background: var(--color-mist);
-    padding: 0.1em 0.4em;
-    border-radius: var(--radius-sm);
-    color: var(--color-ink);
-  }
-  .legal-base {
-    border-left: 3px solid var(--color-teal);
-    padding-left: 1rem;
-    background: var(--color-teal-light);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    padding-block: 0.75rem;
-    padding-right: 1rem;
-  }
-  .legal-base strong { color: var(--color-ink); }
-
-  .legal-back { margin-top: 3rem; }
-</style>
+  <section>
+    <h2><span class="legal-num">09</span> Contacto</h2>
+    <p>Para cualquier cuestión sobre privacidad o esta política, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
+  </section>
+</LegalDoc>

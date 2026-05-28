@@ -1,17 +1,41 @@
 ---
-import Base from "../../layouts/Base.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import EnPreparacion from "../../components/EnPreparacion.astro";
+import LegalDoc from "../../components/LegalDoc.astro";
 ---
-<Base
+<LegalDoc
   title="Política de cookies · KonquerAI"
-  description="Política de cookies de KonquerAI."
-  noindex={true}
+  description="Uso de cookies en konquerai.com. Actualmente la web no utiliza cookies propias ni de terceros."
+  titulo="Política de cookies"
+  subtitulo="Qué cookies usa konquerai.com. Resumen rápido: ahora mismo, ninguna."
+  actualizado="28 de mayo de 2026"
 >
-  <Header />
-  <main>
-    <EnPreparacion titulo="Política de cookies" />
-  </main>
-  <Footer />
-</Base>
+  <section>
+    <h2><span class="legal-num">01</span> Qué son las cookies</h2>
+    <p>Una cookie es un pequeño archivo que una web guarda en tu navegador para recordar información (por ejemplo, tus preferencias o tu actividad). Algunas son necesarias para que el sitio funcione; otras sirven para medir visitas o mostrar publicidad.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">02</span> Qué cookies usamos en esta web</h2>
+    <p><strong>Actualmente, esta web no utiliza cookies propias ni de terceros.</strong> En concreto:</p>
+    <ul>
+      <li>No usamos cookies de analítica (no medimos tu navegación con herramientas de terceros).</li>
+      <li>No usamos cookies de publicidad ni de seguimiento.</li>
+      <li>Las tipografías se sirven desde nuestro propio servidor, así que no se hacen peticiones a terceros que instalen cookies.</li>
+      <li>El formulario de contacto no instala cookies en tu navegador.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">03</span> Si esto cambia</h2>
+    <p>Si en el futuro añadimos analítica u otras cookies, te lo pediremos con un aviso de cookies y actualizaremos esta política antes de instalarlas. Podrás aceptarlas o rechazarlas.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">04</span> Cómo gestionar las cookies en tu navegador</h2>
+    <p>Aunque ahora no usemos cookies, recuerda que siempre puedes configurar tu navegador para bloquearlas o borrarlas. Cada navegador (Chrome, Safari, Firefox, Edge) lo explica en su sección de ajustes de privacidad.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">05</span> Contacto</h2>
+    <p>Para cualquier duda sobre esta política, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>. Consulta también nuestra <a href="/legal/privacidad">política de privacidad</a>.</p>
+  </section>
+</LegalDoc>
