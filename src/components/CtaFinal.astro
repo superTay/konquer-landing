@@ -1,7 +1,14 @@
 ---
-/** CtaFinal.astro — Banda CTA final: foto familiar + velo teal. Copy literal de 06. */
+/** CtaFinal.astro — Banda CTA final + formulario de contacto. Lead va a Web3Forms. */
 import { Image } from "astro:assets";
 import recuperaDomingo from "../assets/recupera-domingo.png";
+
+// La access_key de Web3Forms es pública por diseño (vive en el HTML cliente).
+// Se obtiene en web3forms.com con info@konquerai.com y se pone en .env (ver .env.example).
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+if (!accessKey) {
+  console.warn("[CtaFinal] Falta PUBLIC_WEB3FORMS_ACCESS_KEY: el formulario no enviará leads hasta configurarla.");
+}
 ---
 <section class="cta-final reveal" id="contacto">
   <Image
@@ -14,14 +21,116 @@ import recuperaDomingo from "../assets/recupera-domingo.png";
     class="cta-bg"
   />
   <div class="container-narrow cta-inner">
-    <h2 class="cta-h2">Recupera el domingo.</h2>
-    <p class="cta-body">Empieza con tu Oficina IA. Te configuramos todo. Te acompañamos. Sin permanencia. Garantía de 30 días.</p>
-    <div class="cta-actions">
-      <a href="mailto:info@konquerai.com?subject=Quiero%20empezar%20con%20KonquerAI" class="btn btn-white cta-btn-primary">Empieza ahora — 490 € + 97 €/mes</a>
-      <a href="mailto:info@konquerai.com" class="cta-btn-secondary">O habla primero con nosotros <span aria-hidden="true">→</span></a>
+    <div class="cta-card">
+      <h2 class="cta-h2">Recupera el domingo.</h2>
+      <p class="cta-body">Empieza con tu Oficina IA. Te configuramos todo. Te acompañamos. Sin permanencia. Garantía de 30 días.</p>
+      <p class="cta-intro">Déjanos tu teléfono y te llamamos nosotros. Sin compromiso.</p>
+
+      <form class="lead-form" id="lead-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value={accessKey} />
+        <input type="hidden" name="subject" value="Nuevo contacto desde konquerai.com" />
+        <input type="hidden" name="from_name" value="Web KonquerAI" />
+        <input type="checkbox" name="botcheck" class="lead-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <div class="lead-row">
+          <div class="lead-field">
+            <label for="lead-nombre">Nombre</label>
+            <input id="lead-nombre" name="nombre" type="text" autocomplete="name" required />
+          </div>
+          <div class="lead-field">
+            <label for="lead-telefono">Teléfono</label>
+            <input id="lead-telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required />
+          </div>
+        </div>
+
+        <div class="lead-row">
+          <div class="lead-field">
+            <label for="lead-oficio">Tu oficio</label>
+            <select id="lead-oficio" name="oficio" required>
+              <option value="" disabled selected>Elige tu oficio</option>
+              <option>Pintor</option>
+              <option>Electricista</option>
+              <option>Fontanero</option>
+              <option>Albañil</option>
+              <option>Climatización</option>
+              <option>Reformas integrales</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="lead-field">
+            <label for="lead-email">Email <span class="lead-opt">(opcional)</span></label>
+            <input id="lead-email" name="email" type="email" autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="lead-field">
+          <label for="lead-mensaje">¿Quieres contarnos algo? <span class="lead-opt">(opcional)</span></label>
+          <textarea id="lead-mensaje" name="mensaje" rows="3"></textarea>
+        </div>
+
+        <label class="lead-consent">
+          <input type="checkbox" name="consentimiento" required />
+          <span>He leído y acepto la <a href="/legal/privacidad">política de privacidad</a>.</span>
+        </label>
+
+        <button type="submit" class="btn btn-white lead-submit">Quiero que me llaméis</button>
+        <p class="lead-feedback" id="lead-feedback" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="lead-success" id="lead-success" hidden>
+        <p class="lead-success-title">Recibido.</p>
+        <p>Te llamamos en menos de 24 horas laborables. Si lo prefieres, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById("lead-form") as HTMLFormElement | null;
+  const feedback = document.getElementById("lead-feedback");
+  const success = document.getElementById("lead-success");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!feedback || !success) return;
+    feedback.textContent = "";
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const submit = form.querySelector(".lead-submit") as HTMLButtonElement | null;
+    const originalText = submit?.textContent ?? "";
+    if (submit) {
+      submit.disabled = true;
+      submit.textContent = "Enviando…";
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+      const result = await response.json();
+      if (result.success) {
+        form.hidden = true;
+        success.hidden = false;
+        success.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        throw new Error(result.message ?? "error");
+      }
+    } catch {
+      feedback.textContent =
+        "No hemos podido enviar tus datos. Inténtalo de nuevo o escríbenos a info@konquerai.com.";
+      if (submit) {
+        submit.disabled = false;
+        submit.textContent = originalText;
+      }
+    }
+  });
+</script>
 
 <style>
   .cta-final {
@@ -53,34 +162,131 @@ import recuperaDomingo from "../assets/recupera-domingo.png";
   .cta-inner {
     position: relative;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+  }
+  .cta-card {
+    width: 100%;
+    max-width: 600px;
     text-align: center;
-    max-width: 640px; 
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-xl);
-    padding: 3.5rem 2rem;
+    padding: 3rem 2rem;
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1);
   }
   .cta-h2 { color: var(--color-white); font-size: clamp(1.75rem, 4vw, 2.75rem); }
   .cta-body { color: rgba(255,255,255,0.9); margin-top: 1rem; font-size: 1.0625rem; line-height: 1.7; }
-  .cta-actions {
-    margin-top: 2.5rem;
+  .cta-intro { color: var(--color-white); margin-top: 1.5rem; font-weight: 600; }
+
+  /* ── Formulario ── */
+  .lead-form {
+    margin-top: 1.75rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
+    gap: 1rem;
+    text-align: left;
   }
-  .cta-btn-primary { font-size: 1rem; padding: 1rem 2rem; }
-  .cta-btn-secondary {
-    color: rgba(255,255,255,0.85);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
+  .lead-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .lead-field {
+    display: flex;
+    flex-direction: column;
     gap: 0.375rem;
-    transition: color 0.2s;
   }
-  .cta-btn-secondary:hover { color: var(--color-white); }
+  .lead-field label {
+    color: var(--color-white);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .lead-opt { font-weight: 400; color: rgba(255,255,255,0.7); }
+  .lead-field input,
+  .lead-field select,
+  .lead-field textarea {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-ink);
+    background: var(--color-white);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 0.875rem;
+    min-height: 48px;
+  }
+  .lead-field textarea {
+    min-height: auto;
+    resize: vertical;
+  }
+  .lead-field input:focus-visible,
+  .lead-field select:focus-visible,
+  .lead-field textarea:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 2px;
+  }
+
+  .lead-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  .lead-consent input {
+    margin-top: 0.15rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-teal);
+    flex-shrink: 0;
+  }
+  .lead-consent a {
+    color: var(--color-white);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .lead-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .lead-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  /* Honeypot anti-spam (oculto a humanos) */
+  .lead-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .lead-feedback {
+    color: var(--color-white);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  .lead-feedback:empty { display: none; }
+
+  .lead-success { color: var(--color-white); }
+  .lead-success-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .lead-success p { color: rgba(255, 255, 255, 0.92); line-height: 1.6; }
+  .lead-success a { color: var(--color-white); text-decoration: underline; }
+
+  @media (max-width: 540px) {
+    .lead-row { grid-template-columns: 1fr; }
+    .cta-card { padding: 2.25rem 1.25rem; }
+  }
 </style>
