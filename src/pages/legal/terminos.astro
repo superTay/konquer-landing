@@ -1,17 +1,73 @@
 ---
-import Base from "../../layouts/Base.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import EnPreparacion from "../../components/EnPreparacion.astro";
+import LegalDoc from "../../components/LegalDoc.astro";
 ---
-<Base
-  title="Términos y condiciones · KonquerAI"
-  description="Términos y condiciones de uso de KonquerAI."
-  noindex={true}
+<LegalDoc
+  title="Aviso legal y condiciones de uso · KonquerAI"
+  description="Aviso legal y condiciones de uso del sitio web konquerai.com, conforme a la LSSICE."
+  titulo="Aviso legal y condiciones de uso"
+  subtitulo="Identificación del titular de konquerai.com y condiciones de uso del sitio web."
+  actualizado="28 de mayo de 2026"
 >
-  <Header />
-  <main>
-    <EnPreparacion titulo="Términos y condiciones" />
-  </main>
-  <Footer />
-</Base>
+  <section>
+    <h2><span class="legal-num">01</span> Titular del sitio web</h2>
+    <p>En cumplimiento de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE), te informamos de los datos del titular de este sitio web:</p>
+    <ul>
+      <li><strong>Titular:</strong> Christian Marzal Della-Rovere (persona física).</li>
+      <li><strong>DNI:</strong> 73393592V.</li>
+      <li><strong>Localidad:</strong> Benicarló (Castellón), España.</li>
+      <li><strong>Correo de contacto:</strong> <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</li>
+      <li><strong>Sitio web:</strong> konquerai.com.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">02</span> Objeto y aceptación</h2>
+    <p>Este sitio web es de carácter informativo y presenta KonquerAI, una solución de gestión para autónomos de reformas. El acceso y la navegación por el sitio te atribuyen la condición de usuario e implican la aceptación de este aviso legal. Si no estás de acuerdo, te pedimos que no uses el sitio.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">03</span> Uso del sitio</h2>
+    <p>Te comprometes a usar el sitio conforme a la ley, este aviso legal y la buena fe. En concreto, no debes:</p>
+    <ul>
+      <li>Usar el sitio con fines ilícitos o que perjudiquen a terceros.</li>
+      <li>Introducir o difundir software malicioso o cualquier elemento que dañe los sistemas.</li>
+      <li>Intentar acceder de forma no autorizada a secciones restringidas o a datos de terceros.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">04</span> Propiedad intelectual e industrial</h2>
+    <p>Los contenidos del sitio (textos, imágenes, diseño, logotipos y la marca "KonquerAI") son titularidad del titular del sitio o se utilizan con la correspondiente licencia, y están protegidos por la normativa de propiedad intelectual e industrial. No se permite su reproducción, distribución ni transformación sin autorización previa, salvo el uso personal y privado.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">05</span> Responsabilidad</h2>
+    <p>El sitio se ofrece "tal cual". Procuramos que la información esté actualizada y sea correcta, pero no podemos garantizar que esté libre de errores ni que el acceso sea ininterrumpido.</p>
+    <p>La información comercial publicada (precios, características, plazos) tiene carácter orientativo y <strong>no constituye una oferta contractual vinculante</strong>: las condiciones del servicio se acuerdan por separado en el proceso de contratación. No nos responsabilizamos de los daños derivados de un uso indebido del sitio.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">06</span> Enlaces externos</h2>
+    <p>El sitio puede contener enlaces a páginas de terceros (por ejemplo, la aplicación en <code>app.konquerai.com</code> o sitios de proveedores). No nos hacemos responsables del contenido ni de las políticas de esos sitios, que se rigen por sus propias condiciones.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">07</span> Protección de datos y cookies</h2>
+    <p>El tratamiento de los datos que nos facilitas se rige por nuestra <a href="/legal/privacidad">política de privacidad</a>. El uso de cookies, por nuestra <a href="/legal/cookies">política de cookies</a>.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">08</span> Ley aplicable y jurisdicción</h2>
+    <p>Este aviso legal se rige por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales que resulten competentes conforme a la normativa aplicable.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">09</span> Modificaciones</h2>
+    <p>Podemos modificar este aviso legal para adaptarlo a cambios normativos o del propio sitio. Rige la versión publicada en cada momento; la fecha de la última actualización aparece al principio del documento.</p>
+  </section>
+
+  <section>
+    <h2><span class="legal-num">10</span> Contacto</h2>
+    <p>Para cualquier cuestión sobre este aviso legal, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
+  </section>
+</LegalDoc>
