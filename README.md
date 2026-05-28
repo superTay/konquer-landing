@@ -28,8 +28,12 @@
 </p>
 
 <p align="center">
-  <img src="public/og-image.png" width="640" alt="KonquerAI — Tu cuadrilla administrativa, ahora digital" />
+  <a href="https://konquerai.com">
+    <img src="docs/preview-home.png" width="780" alt="KonquerAI landing — hero with liquid-glass navbar and product mockup" />
+  </a>
 </p>
+
+<p align="center"><sub><a href="https://konquerai.com">konquerai.com</a> — live</sub></p>
 
 ---
 
