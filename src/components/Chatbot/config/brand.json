@@ -1,0 +1,46 @@
+{
+  "$schema_note": "Identidad visual y de voz del bot. Para clonar a otro cliente, edita SOLO este archivo (colores, nombre, voz).",
+  "cliente": "Konker",
+  "bot": {
+    "nombre": "Tu consultor de Obra",
+    "subtitulo": "Consultor de Konker",
+    "saludo_burbuja": "¿Echamos cuentas de lo que te roba el papeleo?",
+    "avatar_iniciales": "TC"
+  },
+  "colores": {
+    "primario": "#00D1B2",
+    "primario_oscuro": "#00A892",
+    "acento": "#FF8A00",
+    "texto": "#0F1B2D",
+    "texto_suave": "#5A6B7B",
+    "fondo": "#FFFFFF",
+    "fondo_suave": "#F4F7F9",
+    "burbuja_bot": "#F4F7F9",
+    "burbuja_usuario": "#00D1B2",
+    "exito": "#1FA971",
+    "borde": "#E3E9EE"
+  },
+  "tipografia": {
+    "titulares": "Outfit",
+    "cuerpo": "Plus Jakarta Sans"
+  },
+  "voz": {
+    "idioma": "es-ES",
+    "tuteo": true,
+    "emojis": false,
+    "tecnicismos": false,
+    "frases_cortas_max_palabras": 20,
+    "test_mental": "¿Lo entendería un pintor de 55 años en 5 segundos?"
+  },
+  "marcas_permitidas": ["WhatsApp", "Instagram", "Facebook", "Konker"],
+  "legal": {
+    "consentimiento_email": "Al dejarme tu correo, aceptas que Konker guarde tus datos para mandarte el informe y contactarte. Nada de spam.",
+    "enlace_privacidad": "/legal/privacidad"
+  },
+  "booking": {
+    "proveedor": "cal.com",
+    "url_env": "PUBLIC_CALCOM_URL",
+    "titulo": "Te lo dejamos listo en una llamada",
+    "texto": "15 minutos. Sin compromiso. Te enseñamos cómo quitarte el papeleo de encima."
+  }
+}
