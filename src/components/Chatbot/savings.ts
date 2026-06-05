@@ -57,20 +57,23 @@ export function computeSavings(input: SavingsInput): Savings {
   }
 
   const horasMes = h * C.semanas_por_mes;
-  const horasRecuperadas = Math.min(horasMes * C.pct_recuperable.default, C.cap_horas_mes);
-  const ahorroTiempoMes = horasRecuperadas * coste;
+  // Redondeamos las horas/mes primero y derivamos TODO de ahí: así el informe cuadra
+  // (horas/mes × 36 = horas/3 años, €/mes × 36 = €/3 años). Nada de descuadres por redondeo.
+  const horasRecuperadas = round1(Math.min(horasMes * C.pct_recuperable.default, C.cap_horas_mes));
+  const costeR = Math.round(coste);
+  const ahorroTiempoMes = Math.round(horasRecuperadas * costeR);
   const ahorroNetoMes = ahorroTiempoMes - C.coste_servicio_mes;
-  const proyeccion3yHoras = horasRecuperadas * 12 * 3;
-  const proyeccion3yEur = proyeccion3yHoras * coste;
+  const proyeccion3yHoras = round1(horasRecuperadas * 36);
+  const proyeccion3yEur = ahorroTiempoMes * 36;
 
   return {
     horasMes: round1(horasMes),
-    horasRecuperadas: round1(horasRecuperadas),
-    ahorroTiempoMes: Math.round(ahorroTiempoMes),
-    ahorroNetoMes: Math.round(ahorroNetoMes),
-    proyeccion3yEur: Math.round(proyeccion3yEur),
-    proyeccion3yHoras: Math.round(proyeccion3yHoras),
-    usados: { h_admin_semana: round1(h), coste_hora: Math.round(coste), estimado },
+    horasRecuperadas,
+    ahorroTiempoMes,
+    ahorroNetoMes,
+    proyeccion3yEur,
+    proyeccion3yHoras,
+    usados: { h_admin_semana: round1(h), coste_hora: costeR, estimado },
   };
 }
 

@@ -1,0 +1,218 @@
+---
+// Informe de consultoría a pantalla completa. La lógica vive en report.client.ts.
+import reportCopy from './config/report-copy.json';
+import savingsCfg from './config/savings-config.json';
+const S = (reportCopy as any).secciones;
+const calc = (savingsCfg as any).microcopy_calculo;
+---
+
+<div id="konker-report" class="kr" role="dialog" aria-modal="true" aria-labelledby="kr-title" hidden>
+  <div class="kr-card">
+    <div class="kr-topbar kr-noprint">
+      <button class="kr-close kr-back" type="button" aria-label="Volver al chat">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Volver
+      </button>
+    </div>
+
+    <header class="kr-head">
+      <h2 id="kr-title" class="kr-h1">Tu informe</h2>
+      <p id="kr-subtitle" class="kr-sub">{S.recuperas.pie}</p>
+    </header>
+
+    <!-- Situación hoy -->
+    <section class="kr-sec">
+      <h3 class="kr-h3">{S.situacion_hoy.titulo}</h3>
+      <ul id="kr-situacion" class="kr-list"></ul>
+    </section>
+
+    <!-- Lo que recuperas -->
+    <section class="kr-sec kr-recuperas">
+      <h3 class="kr-h3">{S.recuperas.titulo}</h3>
+      <div class="kr-bignums">
+        <div class="kr-num">
+          <strong id="kr-horas" class="kr-num-val">0</strong>
+          <span class="kr-num-label">{S.recuperas.horas_label}</span>
+        </div>
+        <div class="kr-num kr-num-orange">
+          <strong id="kr-dinero" class="kr-num-val">0&nbsp;€</strong>
+          <span class="kr-num-label">{S.recuperas.dinero_label}</span>
+        </div>
+      </div>
+      <p class="kr-pie">{S.recuperas.pie}</p>
+      <p id="kr-estimado" class="kr-pie kr-estimado" hidden>Algún dato lo hemos puesto de media del sector. Ajústalo abajo y verás tu número exacto.</p>
+    </section>
+
+    <!-- Quick wins -->
+    <section class="kr-sec">
+      <h3 class="kr-h3">{S.quick_wins.titulo}</h3>
+      <table class="kr-table">
+        <thead><tr><th>{S.quick_wins.columnas[0]}</th><th>{S.quick_wins.columnas[1]}</th></tr></thead>
+        <tbody id="kr-quickwins"></tbody>
+      </table>
+    </section>
+
+    <!-- Calculadora interactiva -->
+    <section class="kr-sec kr-calc">
+      <h3 class="kr-h3">{S.calculadora.titulo}</h3>
+      <div class="kr-calc-grid">
+        <label class="kr-field">
+          <span>{S.calculadora.campos.coste_hora}</span>
+          <input id="kr-in-coste" type="text" inputmode="decimal" autocomplete="off" />
+        </label>
+        <label class="kr-field">
+          <span>{S.calculadora.campos.h_admin_semana}</span>
+          <input id="kr-in-horas" type="text" inputmode="decimal" autocomplete="off" />
+        </label>
+      </div>
+      <div class="kr-calc-out">
+        <span>{S.calculadora.resultado_label}</span>
+        <strong id="kr-calc-result">0&nbsp;€</strong>
+      </div>
+    </section>
+
+    <!-- Proyección 3 años -->
+    <section class="kr-sec kr-proy">
+      <h3 class="kr-h3">{S.proyeccion.titulo}</h3>
+      <div class="kr-bignums">
+        <div class="kr-num"><strong id="kr-proy-horas" class="kr-num-val">0</strong><span class="kr-num-label">{S.proyeccion.horas_label}</span></div>
+        <div class="kr-num kr-num-orange"><strong id="kr-proy-dinero" class="kr-num-val">0&nbsp;€</strong><span class="kr-num-label">{S.proyeccion.dinero_label}</span></div>
+      </div>
+      <p class="kr-pie">{S.proyeccion.disclaimer}</p>
+    </section>
+
+    <!-- Cómo lo calculamos -->
+    <details class="kr-details">
+      <summary>{calc.titulo_desplegable}</summary>
+      <ul class="kr-list">
+        <li>{calc.paso_horas}</li>
+        <li>{calc.paso_dinero}</li>
+        <li>{calc.paso_neto}</li>
+      </ul>
+      <p class="kr-pie">{calc.disclaimer}</p>
+    </details>
+
+    <!-- Antes / Después -->
+    <section class="kr-sec">
+      <h3 class="kr-h3">{S.antes_despues.titulo}</h3>
+      <div class="kr-ad">
+        <div class="kr-ad-col kr-ad-antes">
+          <p class="kr-ad-label">{S.antes_despues.antes_label}</p>
+          <ul class="kr-list">{S.antes_despues.antes.map((t: string) => <li>{t}</li>)}</ul>
+        </div>
+        <div class="kr-ad-col kr-ad-despues">
+          <p class="kr-ad-label">{S.antes_despues.despues_label}</p>
+          <ul class="kr-list">{S.antes_despues.despues.map((t: string) => <li>{t}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / Cal.com -->
+    <section class="kr-sec kr-cta">
+      <h3 class="kr-h3">{S.cta.titulo}</h3>
+      <p class="kr-cta-text">{S.cta.texto}</p>
+      <div id="kr-cal" class="kr-cal kr-noprint"></div>
+      <a id="kr-cal-link" class="kr-cta-btn" href="#" target="_blank" rel="noopener">Agendar la llamada</a>
+    </section>
+
+    <!-- Acciones -->
+    <footer class="kr-actions kr-noprint">
+      <button id="kr-pdf" class="kr-pdf" type="button">{S.pdf.boton}</button>
+      <button class="kr-close kr-secondary" type="button">Cerrar</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+  import './report.client.ts';
+</script>
+
+<style>
+  .kr {
+    position: fixed; inset: 0; z-index: 10000;
+    background: var(--color-mist, #F6F8F9);
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: var(--color-ink, #0B1F24);
+  }
+  .kr-card { max-width: 760px; margin: 0 auto; padding: 1.2rem 1.1rem 3rem; }
+
+  .kr-topbar { position: sticky; top: 0; padding: 0.5rem 0; background: var(--color-mist, #F6F8F9); }
+  .kr-back {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    background: none; border: none; cursor: pointer; padding: 0.4rem 0.2rem;
+    color: var(--color-slate, #4B5563); font-size: 0.95rem; font-family: inherit;
+  }
+  .kr-back:hover { color: var(--color-ink, #0B1F24); }
+
+  .kr-head { margin: 0.4rem 0 1.4rem; }
+  .kr-h1 { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(1.5rem, 5vw, 2rem); line-height: 1.15; margin: 0; }
+  .kr-sub { color: var(--color-slate, #4B5563); margin: 0.4rem 0 0; }
+
+  .kr-sec { background: #fff; border: 1px solid var(--color-border, #E5EAEC); border-radius: 14px; padding: 1.1rem 1.1rem; margin-bottom: 0.9rem; }
+  .kr-h3 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.12rem; margin: 0 0 0.7rem; }
+
+  .kr-list { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .kr-list li { line-height: 1.5; }
+
+  /* Cifras grandes */
+  .kr-bignums { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .kr-num { background: var(--color-teal-light, #E6FAF6); border-radius: 12px; padding: 0.9rem; text-align: center; }
+  .kr-num-orange { background: var(--color-orange-light, #FFF3E0); }
+  .kr-num-val { display: block; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: clamp(1.6rem, 6vw, 2.2rem); color: var(--color-teal-dark, #009B89); }
+  .kr-num-orange .kr-num-val { color: var(--color-orange, #FF8A00); }
+  .kr-num-label { font-size: 0.82rem; color: var(--color-slate, #4B5563); }
+  .kr-pie { font-size: 0.8rem; color: var(--color-slate, #4B5563); margin: 0.7rem 0 0; }
+  .kr-estimado { color: var(--color-orange, #FF8A00); }
+
+  /* Tabla quick wins */
+  .kr-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .kr-table th { text-align: left; font-family: 'Outfit', sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--color-slate, #4B5563); padding: 0 0.5rem 0.5rem 0; }
+  .kr-table td { vertical-align: top; padding: 0.55rem 0.5rem 0.55rem 0; border-top: 1px solid var(--color-border, #E5EAEC); line-height: 1.45; }
+  .kr-table td:first-child { color: var(--color-ink, #0B1F24); font-weight: 600; width: 42%; }
+
+  /* Calculadora */
+  .kr-calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+  .kr-field { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.85rem; color: var(--color-slate, #4B5563); }
+  .kr-field input { height: 46px; border: 1.5px solid var(--color-border, #E5EAEC); border-radius: 10px; padding: 0 0.8rem; font-size: 1.05rem; font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--color-ink, #0B1F24); }
+  .kr-field input:focus-visible { outline: none; border-color: var(--color-teal, #00D1B2); box-shadow: 0 0 0 3px rgba(0,209,178,0.18); }
+  .kr-calc-out { display: flex; align-items: center; justify-content: space-between; margin-top: 0.9rem; padding: 0.8rem 1rem; background: var(--color-teal-light, #E6FAF6); border-radius: 12px; }
+  .kr-calc-out span { font-size: 0.9rem; color: var(--color-slate, #4B5563); }
+  .kr-calc-out strong { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--color-teal-dark, #009B89); }
+
+  .kr-details { background: #fff; border: 1px solid var(--color-border, #E5EAEC); border-radius: 14px; padding: 0.5rem 1.1rem; margin-bottom: 0.9rem; }
+  .kr-details summary { cursor: pointer; font-weight: 600; padding: 0.5rem 0; }
+
+  /* Antes / Después */
+  .kr-ad { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+  .kr-ad-col { border-radius: 12px; padding: 0.9rem; }
+  .kr-ad-antes { background: #FBF1F1; }
+  .kr-ad-despues { background: var(--color-teal-light, #E6FAF6); }
+  .kr-ad-label { font-family: 'Outfit', sans-serif; font-weight: 700; margin: 0 0 0.5rem; }
+  .kr-ad-antes .kr-ad-label { color: #C0563E; }
+  .kr-ad-despues .kr-ad-label { color: var(--color-teal-dark, #009B89); }
+
+  /* CTA */
+  .kr-cta-text { color: var(--color-slate, #4B5563); margin: 0 0 0.9rem; }
+  .kr-cal { min-height: 0; }
+  .kr-cal:not(:empty) { min-height: 480px; margin-bottom: 1rem; border-radius: 12px; overflow: hidden; }
+  .kr-cta-btn { display: inline-block; background: linear-gradient(135deg, var(--color-teal,#00D1B2), var(--color-teal-dark,#009B89)); color: #fff; text-decoration: none; font-weight: 700; padding: 0.85rem 1.4rem; border-radius: 9999px; }
+
+  .kr-actions { display: flex; gap: 0.6rem; margin-top: 1.2rem; }
+  .kr-pdf { flex: 1; background: var(--color-ink, #0B1F24); color: #fff; border: none; border-radius: 9999px; padding: 0.85rem 1rem; font-weight: 700; font-family: inherit; cursor: pointer; min-height: 48px; }
+  .kr-secondary { background: #fff; color: var(--color-slate,#4B5563); border: 1.5px solid var(--color-border,#E5EAEC); border-radius: 9999px; padding: 0.85rem 1.2rem; font-family: inherit; cursor: pointer; min-height: 48px; }
+
+  @media (max-width: 560px) {
+    .kr-bignums, .kr-calc-grid, .kr-ad { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .kr * { animation: none !important; transition: none !important; } }
+
+  /* ---------- Impresión (PDF) ---------- */
+  @media print {
+    body.kc-printing > *:not(#konker-report) { display: none !important; }
+    body.kc-printing #konker-report { position: static !important; overflow: visible !important; background: #fff !important; }
+    body.kc-printing .kr-noprint { display: none !important; }
+    body.kc-printing .kr-sec, body.kc-printing .kr-details { break-inside: avoid; box-shadow: none; }
+    body.kc-printing .kr-card { max-width: 100%; padding: 0; }
+  }
+</style>
