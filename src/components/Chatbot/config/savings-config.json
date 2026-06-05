@@ -1,0 +1,46 @@
+{
+  "$schema_note": "Fórmula HONESTA de ahorro + rangos del sector. Núcleo del 'no inventes datos'. Para clonar a otro sector, ajusta rangos y coste del servicio. Nunca subir pct_recuperable por encima de 0.7 ni quitar el tope de horas.",
+  "moneda": "EUR",
+  "constantes": {
+    "semanas_por_mes": 4.33,
+    "pct_recuperable": { "min": 0.6, "max": 0.7, "default": 0.65 },
+    "cap_horas_mes": 30,
+    "coste_servicio_mes": 97,
+    "setup_servicio": 500
+  },
+  "rangos_sector": {
+    "h_admin_semana": { "min": 6, "max": 10, "medio": 8 },
+    "coste_hora_por_oficio": {
+      "pintor":              { "min": 25, "max": 35, "medio": 28 },
+      "albañil":             { "min": 25, "max": 38, "medio": 30 },
+      "fontanero":           { "min": 30, "max": 45, "medio": 35 },
+      "electricista":        { "min": 30, "max": 45, "medio": 35 },
+      "climatizacion":       { "min": 30, "max": 48, "medio": 38 },
+      "reformas_integrales": { "min": 30, "max": 50, "medio": 38 },
+      "default":             { "min": 25, "max": 40, "medio": 30 }
+    }
+  },
+  "formula": {
+    "horas_mes_admin": "h_admin_semana * semanas_por_mes",
+    "horas_recuperadas": "min(horas_mes_admin * pct_recuperable, cap_horas_mes)",
+    "ahorro_tiempo_eur_mes": "horas_recuperadas * coste_hora",
+    "ahorro_neto_mes": "ahorro_tiempo_eur_mes - coste_servicio_mes",
+    "payback_dias": "setup_servicio / max(ahorro_neto_mes / 30, 0.01)",
+    "proyeccion_3y_eur": "horas_recuperadas * 12 * 3 * coste_hora",
+    "proyeccion_3y_horas": "horas_recuperadas * 12 * 3"
+  },
+  "reglas_honestidad": [
+    "Nunca mostrar más de 30 horas/mes recuperadas (tope honesto).",
+    "Siempre usar 'hasta', 'de media' o 'según tus números'. Nunca cifras exactas como promesa.",
+    "Mostrar el cálculo en un desplegable ('cómo lo calculamos').",
+    "Si falta un dato, usar el valor medio del rango del sector y decirlo claramente.",
+    "El % recuperable es conservador (60-70%), nunca el 100% del papeleo."
+  ],
+  "microcopy_calculo": {
+    "titulo_desplegable": "Cómo lo calculamos",
+    "disclaimer": "No son promesas. Son estimaciones con tus números y medias del sector reformas. Tú juegas con las cifras y lo ves.",
+    "paso_horas": "Las horas de papeleo al mes que se queda la app (entre el 60% y el 70%, no todo).",
+    "paso_dinero": "Esas horas, a lo que vale tu hora.",
+    "paso_neto": "Menos los 97€ al mes de Konker."
+  }
+}

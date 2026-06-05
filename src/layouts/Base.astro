@@ -8,6 +8,8 @@ import '@fontsource/plus-jakarta-sans/500.css';
 import '@fontsource/plus-jakarta-sans/600.css';
 import '@fontsource/plus-jakarta-sans/700.css';
 import '../styles/global.css';
+import Chatbot from '../components/Chatbot/Chatbot.astro';
+import Report from '../components/Chatbot/Report.astro';
 
 interface Props {
   title?: string;
@@ -89,6 +91,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquera
       <p>Plazas <strong>Beta Fundadores</strong> limitadas este mes · Puesta en marcha 1:1 con una persona real incluida</p>
     </div>
     <slot />
+
+    <!-- Chatbot "Tu consultor de Obra" + informe -->
+    <Chatbot />
+    <Report />
 
     <!-- IntersectionObserver fallback for scroll animations (Firefox) -->
     <script>

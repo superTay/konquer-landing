@@ -1,0 +1,98 @@
+{
+  "$schema_note": "Textos del informe en pantalla. Para clonar a otro cliente, reescribe títulos, quick wins y antes/después con su sector. Las cifras NO viven aquí: salen de la fórmula (savings-config.json).",
+  "cabecera": {
+    "titulo": "Informe para {nombre} — {oficio}",
+    "subtitulo": "Lo que te está costando el papeleo, con tus números."
+  },
+  "secciones": {
+    "situacion_hoy": {
+      "titulo": "Cómo lo llevas hoy",
+      "nota": "2-3 frases de espejo, en su idioma, con lo que nos ha contado."
+    },
+    "recuperas": {
+      "titulo": "Lo que recuperas",
+      "horas_label": "horas al mes",
+      "dinero_label": "al mes, en tu tiempo",
+      "pie": "De media, según tus números y el sector. No es una promesa, es una cuenta."
+    },
+    "quick_wins": {
+      "titulo": "Lo que te puedes quitar ya",
+      "columnas": ["El marrón", "Cómo se resuelve"]
+    },
+    "calculadora": {
+      "titulo": "Haz tú las cuentas",
+      "campos": {
+        "coste_hora": "Lo que vale tu hora (€)",
+        "h_admin_semana": "Horas de papeleo a la semana"
+      },
+      "resultado_label": "Ahorro estimado al mes"
+    },
+    "proyeccion": {
+      "titulo": "Si todo sigue igual 3 años",
+      "horas_label": "horas tiradas en papeleo",
+      "dinero_label": "en tu tiempo, por no cambiar nada",
+      "disclaimer": "Es el coste de no hacer nada. Estimación honesta, no un susto."
+    },
+    "antes_despues": {
+      "titulo": "Antes y después",
+      "antes_label": "Hoy",
+      "despues_label": "Con Konker",
+      "antes": [
+        "Presupuestos el domingo por la noche.",
+        "Facturas perdidas en la furgoneta.",
+        "No sabes si la obra te dio dinero.",
+        "El IVA del trimestre te pilla por sorpresa.",
+        "Persigues los cobros de memoria."
+      ],
+      "despues": [
+        "Presupuesto en 5 minutos desde la obra.",
+        "Cada factura archivada y clasificada sola.",
+        "Sabes obra a obra cuánto ganaste.",
+        "Sabes lo que vas a pagar antes del día 20.",
+        "La app te dice quién te debe y desde cuándo."
+      ]
+    },
+    "cta": {
+      "titulo": "Te lo dejamos listo",
+      "texto": "No tienes que aprender nada. Una llamada de 15 minutos y te lo montamos a tu medida.",
+      "boton": "Agendar la llamada"
+    },
+    "pdf": {
+      "boton": "Descargar el informe en PDF",
+      "nombre_archivo": "informe-konker-{nombre}.pdf"
+    }
+  },
+  "quick_wins_catalogo": {
+    "$nota": "Mapea el dolor #1 (y otros mencionados) a una solución en cristiano. El LLM elige los 3-4 más relevantes según la conversación.",
+    "presupuestos": {
+      "problema": "Tardas en sacar presupuestos y pierdes trabajos.",
+      "solucion": "Le hablas a la app como se lo cuentas al cliente y te monta el presupuesto en 5 minutos, desde la obra.",
+      "pilar": "Hablas, no escribes"
+    },
+    "facturas_papeleo": {
+      "problema": "Facturas sueltas por todas partes y horas archivando.",
+      "solucion": "Haces foto a la factura o el ticket y queda archivada y clasificada sola.",
+      "pilar": "Hablas, no escribes"
+    },
+    "cobros": {
+      "problema": "Persigues los cobros y te pagan tarde.",
+      "solucion": "La app te dice quién te debe, cuánto y desde cuándo. Dejas de tirar de memoria.",
+      "pilar": "Sabes si ganas o pierdes"
+    },
+    "iva_hacienda": {
+      "problema": "El IVA y lo de Hacienda te dan miedo y te pillan por sorpresa.",
+      "solucion": "La app calcula el IVA y te avisa cuándo pagar. El resumen del trimestre, en un clic para tu gestoría.",
+      "pilar": "Lo de Hacienda lo lleva la app"
+    },
+    "rentabilidad": {
+      "problema": "No sabes si una obra te dio dinero o te lo quitó.",
+      "solucion": "Sabes obra a obra, con número exacto, lo que ganaste. El 90% de autónomos no lo sabe.",
+      "pilar": "Sabes si ganas o pierdes"
+    }
+  },
+  "contador_vivo": {
+    "prefijo": "Llevas perdido este año aprox.",
+    "sufijo": "en tu tiempo",
+    "nota": "Cifra coherente con la fórmula, nunca inflada."
+  }
+}
