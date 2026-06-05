@@ -29,7 +29,8 @@ type LeadBody = {
 export default async function handler(req: Request): Promise<Response> {
   if (req.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);
 
-  const SUPABASE_URL = process.env.SUPABASE_URL;
+  // Tolerante: acepta la URL base con o sin "/rest/v1" o barra final.
+  const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/+$/, '').replace(/\/rest\/v1$/, '');
   const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!SUPABASE_URL || !SERVICE_KEY) {
     return json({ error: 'El guardado no está configurado ahora mismo.' }, 500);

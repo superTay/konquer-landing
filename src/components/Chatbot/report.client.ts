@@ -6,7 +6,12 @@ import { computeSavings, eur, type Savings } from './savings';
 
 const RC = reportCopy as any;
 const SC = savingsCfg as any;
-const CAL_LINK = (import.meta.env.PUBLIC_CALCOM_URL as string | undefined)?.trim();
+// Tolerante: acepta "usuario/evento", o una URL completa de cal.com. Nos quedamos con el path.
+const CAL_LINK = ((import.meta.env.PUBLIC_CALCOM_URL as string | undefined) || '')
+  .trim()
+  .replace(/^https?:\/\/(www\.)?cal\.com\//i, '')
+  .replace(/^https?:\/\/[^/]+\//i, '')
+  .replace(/^\/+|\/+$/g, '');
 
 type Collected = {
   nombre?: string; oficio?: string; equipo?: string; herramientas?: string;
