@@ -11,7 +11,7 @@ para clonar el bot a otro negocio: **solo se editan estos archivos.**
 | `chat-flow.json` | Las 9 preguntas, su orden y el campo de BD destino. | Reescribir preguntas por sector. |
 | `savings-config.json` | Fórmula honesta de ahorro + rangos del sector. | Ajustar rangos y coste del servicio. |
 | `report-copy.json` | Textos del informe (títulos, quick wins, antes/después). | Reescribir copy del sector. |
-| `system-prompt.md` | El cerebro del consultor: voz, reglas duras, guion. | Adaptar persona y reglas. |
+| `system-prompt.ts` | El cerebro del consultor: voz, reglas duras, guion. | Adaptar persona y reglas. |
 
 ## Reglas que NO se tocan al clonar (honestidad)
 
@@ -21,7 +21,7 @@ para clonar el bot a otro negocio: **solo se editan estos archivos.**
 
 ## Cómo lo consumen las edge functions y el widget
 
-- `/api/chat` inyecta `system-prompt.md` + el estado del `chat-flow.json` en cada llamada al LLM.
+- `/api/chat` inyecta `system-prompt.ts` + el estado del `chat-flow.json` en cada llamada al LLM.
 - El widget lee `brand.json` y `report-copy.json` para pintar UI e informe.
 - La calculadora y el contador en vivo usan `savings-config.json`.
 
