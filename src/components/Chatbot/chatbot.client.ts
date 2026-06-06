@@ -85,7 +85,9 @@ function initChatbot() {
     if (m) {
       try { data = JSON.parse(m[1]); } catch { data = null; }
     }
-    const clean = reply.replace(/\[\[DATA:[\s\S]*?\]\]/g, '').trim();
+    let clean = reply.replace(/\[\[DATA:[\s\S]*?\]\]/g, '');
+    clean = clean.replace(/\[\[?DATA[\s\S]*$/, ''); // por si la etiqueta quedó cortada al final
+    clean = clean.trim();
     return { clean, data };
   }
 

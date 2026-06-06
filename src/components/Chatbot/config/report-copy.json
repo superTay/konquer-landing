@@ -71,7 +71,7 @@
     },
     "facturas_papeleo": {
       "problema": "Facturas sueltas por todas partes y horas archivando.",
-      "solucion": "Haces foto a la factura o el ticket y queda archivada y clasificada sola.",
+      "solucion": "Las facturas que te llegan por correo entran solas en la app, ya clasificadas. Y si es un ticket en papel, una foto y listo.",
       "pilar": "Hablas, no escribes"
     },
     "cobros": {

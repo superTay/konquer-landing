@@ -50,8 +50,12 @@ export default async function handler(req: Request): Promise<Response> {
       body: JSON.stringify({
         model: MODEL,
         messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
-        max_tokens: 500,
-        temperature: 0.6,
+        max_tokens: 320,
+        temperature: 0.4,
+        // Frenos: que no se invente turnos del usuario ni divague.
+        stop: ['\nHuman:', '\nUser:', '\nUsuario:', 'Human:', 'Usuario:'],
+        // Enrutar a proveedores de calidad (evita corrupción de tokens en proveedores baratos).
+        provider: { order: ['Anthropic', 'Amazon Bedrock', 'Google'], allow_fallbacks: true },
       }),
     });
 
