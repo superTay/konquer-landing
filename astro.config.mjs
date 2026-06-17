@@ -6,15 +6,15 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://konquerai.com',
+  site: 'https://www.konquerai.com',
   integrations: [
     sitemap({
+      lastmod: new Date(),
       // Excluir stubs noindex hasta que tengan contenido real
       filter: (page) =>
         !page.includes('/legal/') &&
         !page.endsWith('/blog/') &&
-        !page.endsWith('/newsletter/') &&
-        !page.endsWith('/sobre-nosotros/'),
+        !page.endsWith('/newsletter/'),
     }),
   ],
   vite: {

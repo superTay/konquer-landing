@@ -12,49 +12,59 @@ const rows = [
 <section class="section-padding bg-mist" id="comparativa">
   <div class="container-narrow">
     <h2 class="comp-h2 reveal">Una semana sin KonquerAI vs una semana con KonquerAI.</h2>
-    <div class="comp-table reveal">
-      <div class="comp-header">
-        <span class="comp-label comp-label-sin">Sin KonquerAI</span>
-        <span class="comp-label comp-label-con">Con KonquerAI</span>
-      </div>
-      {rows.map(row => (
-        <div class="comp-row">
-          <div class="comp-cell comp-cell-sin">{row.sin}</div>
-          <div class="comp-cell comp-cell-con">{row.con}</div>
-        </div>
-      ))}
-    </div>
+    <table class="comp-table reveal">
+      <thead>
+        <tr class="comp-header">
+          <th scope="col" class="comp-label comp-label-sin">Sin KonquerAI</th>
+          <th scope="col" class="comp-label comp-label-con">Con KonquerAI</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map(row => (
+          <tr class="comp-row">
+            <td class="comp-cell comp-cell-sin">{row.sin}</td>
+            <td class="comp-cell comp-cell-con">{row.con}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </div>
 </section>
 
 <style>
   .comp-h2 { text-align: center; margin-bottom: 3rem; }
   .comp-table {
+    width: 100%;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--color-white);
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
   }
   .comp-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     background: var(--color-ink);
     color: var(--color-white);
     font-weight: 600;
     font-size: 0.875rem;
   }
-  .comp-label { padding: 1rem 1.25rem; }
-  .comp-label-con { background: var(--color-teal); }
-  .comp-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--color-border);
+  .comp-label {
+    width: 50%;
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-weight: 600;
   }
+  .comp-label-con { background: var(--color-teal); }
+  .comp-row { border-top: 1px solid var(--color-border); }
   .comp-cell {
+    width: 50%;
     padding: 1rem 1.25rem;
     font-size: 0.875rem;
     line-height: 1.6;
     color: var(--color-slate);
+    vertical-align: top;
+    border-top: 1px solid var(--color-border);
   }
   .comp-cell-con {
     background: var(--color-teal-light);
@@ -66,8 +76,10 @@ const rows = [
     background: rgba(0, 209, 178, 0.18);
   }
   @media (max-width: 767px) {
-    .comp-header, .comp-row {
-      grid-template-columns: 1fr;
+    .comp-table, .comp-header, .comp-row, .comp-label, .comp-cell,
+    .comp-table thead, .comp-table tbody {
+      display: block;
+      width: 100%;
     }
     .comp-label-sin { border-bottom: 1px solid rgba(255,255,255,0.15); }
     .comp-cell-sin { border-bottom: 1px solid var(--color-border); }

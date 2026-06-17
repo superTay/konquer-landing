@@ -1,4 +1,41 @@
+# robots.txt — KonquerAI
+
 User-agent: *
 Allow: /
 
-Sitemap: https://konquerai.com/sitemap-index.xml
+# Crawlers de IA — acceso explícito (búsqueda y citación)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Preferencias de contenido (contentsignals.org). Permitimos búsqueda, recuperación y entrenamiento.
+Content-Signal: search=yes, ai-train=yes, ai-retrieval=yes
+
+# Sitemap — URL final (www, HTTP 200). No usar la versión apex (redirige 307).
+Sitemap: https://www.konquerai.com/sitemap-index.xml

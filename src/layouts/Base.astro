@@ -23,7 +23,7 @@ const {
   noindex = false
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquerai.com").href;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konquerai.com").href;
 ---
 
 <!doctype html>
@@ -39,15 +39,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquera
     {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalURL} />
 
+    <!-- Verificación de buscadores: pega aquí el código cuando verifiques la propiedad.
+         Bing Webmaster Tools (ChatGPT y Copilot leen de Bing):
+         <meta name="msvalidate.01" content="TU_CODIGO_BING" />
+         Google Search Console (alternativa al DNS):
+         <meta name="google-site-verification" content="TU_CODIGO_GOOGLE" /> -->
+
     <!-- Open Graph -->
     <meta property="og:site_name" content="KonquerAI" />
     <meta property="og:title" content="KonquerAI · Tu cuadrilla administrativa, ahora digital" />
     <meta property="og:description" content="Recupera 30 horas al mes. Controla cada obra al céntimo. Sin Excel, sin gestoría sufriendo. Hecho para autónomos de reformas." />
-    <meta property="og:image" content="https://konquerai.com/og-image.png" />
+    <meta property="og:image" content="https://www.konquerai.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="KonquerAI — Tu cuadrilla administrativa, ahora digital" />
-    <meta property="og:url" content="https://konquerai.com" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
 
@@ -55,7 +61,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquera
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="KonquerAI · Tu cuadrilla administrativa, ahora digital" />
     <meta name="twitter:description" content="Recupera 30 horas al mes. Controla cada obra al céntimo. Sin Excel, sin gestoría sufriendo. Hecho para autónomos de reformas." />
-    <meta name="twitter:image" content="https://konquerai.com/og-image.png" />
+    <meta name="twitter:image" content="https://www.konquerai.com/og-image.png" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -67,21 +73,95 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://konquera
 
     <!-- Estilos globales importados en el frontmatter (procesados por Tailwind v4) -->
 
-    <!-- Schema.org -->
+    <!-- Schema.org — grafo de entidad (Organization + Person + WebSite + SoftwareApplication).
+         sameAs: rellenar con las URLs reales de LinkedIn/Wikidata/Crunchbase cuando existan. -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "KonquerAI",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web, iOS, Android",
-      "description": "Software de gestión administrativa para autónomos de reformas. Combina IA y acompañamiento humano para reducir hasta 30 horas mensuales de papeleo.",
-      "offers": {
-        "@type": "Offer",
-        "price": "97",
-        "priceCurrency": "EUR",
-        "priceValidUntil": "2026-12-31",
-        "availability": "https://schema.org/InStock"
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.konquerai.com/#organization",
+          "name": "KonquerAI",
+          "legalName": "Christian Marzal Della-Rovere",
+          "url": "https://www.konquerai.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.konquerai.com/og-image.png",
+            "width": 1200,
+            "height": 630
+          },
+          "image": "https://www.konquerai.com/og-image.png",
+          "description": "Software de gestión administrativa para autónomos de reformas: presupuestos, facturas, IVA y Verifactu, con acompañamiento humano real.",
+          "email": "info@konquerai.com",
+          "foundingDate": "2026",
+          "areaServed": { "@type": "Country", "name": "España" },
+          "knowsLanguage": "es-ES",
+          "founder": { "@id": "https://www.konquerai.com/#founder" },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "info@konquerai.com",
+            "contactType": "atención al cliente",
+            "availableLanguage": "Spanish",
+            "areaServed": "ES"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.konquerai.com/#founder",
+          "name": "Christian Marzal Della-Rovere",
+          "jobTitle": "Fundador",
+          "worksFor": { "@id": "https://www.konquerai.com/#organization" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.konquerai.com/#website",
+          "url": "https://www.konquerai.com",
+          "name": "KonquerAI",
+          "description": "Tu cuadrilla administrativa, ahora digital. Para autónomos de reformas.",
+          "inLanguage": "es-ES",
+          "publisher": { "@id": "https://www.konquerai.com/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.konquerai.com/#app",
+          "name": "KonquerAI",
+          "url": "https://www.konquerai.com",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "FinanceApplication",
+          "operatingSystem": "Web, iOS, Android",
+          "inLanguage": "es-ES",
+          "image": "https://www.konquerai.com/og-image.png",
+          "description": "Software de gestión administrativa para autónomos de reformas. Combina IA y acompañamiento humano para reducir hasta 30 horas mensuales de papeleo. Presupuestos, facturas, IVA y Verifactu sin aprender tecnología.",
+          "featureList": [
+            "Presupuestos y facturas numeradas",
+            "IVA e IRPF calculados",
+            "Listo para Verifactu",
+            "Lectura automática de facturas de proveedores",
+            "Control de rentabilidad por obra"
+          ],
+          "publisher": { "@id": "https://www.konquerai.com/#organization" },
+          "author": { "@id": "https://www.konquerai.com/#organization" },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.konquerai.com/#pricing",
+            "category": "Beta Fundadores",
+            "price": "97",
+            "priceCurrency": "EUR",
+            "priceValidUntil": "2026-12-31",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "97",
+              "priceCurrency": "EUR",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": 1,
+                "unitCode": "MON"
+              }
+            }
+          }
+        }
+      ]
     })} />
   </head>
   <body class="bg-white text-ink antialiased">

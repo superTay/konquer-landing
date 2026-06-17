@@ -1,0 +1,22 @@
+# KonquerAI
+
+> KonquerAI es un software español de gestión administrativa para autónomos y pequeñas empresas de reformas (pintores, electricistas, fontaneros, albañiles, climatización, carpintería metálica y reformas integrales). Hace presupuestos y facturas por voz, ordena solas las facturas de proveedor, calcula IVA e IRPF, avisa de los pagos a Hacienda, se adapta a Verifactu y muestra el margen real de cada obra. Combina automatización con acompañamiento humano 1:1. Funciona en web, iPhone y Android, en toda España.
+
+## Datos clave
+- Categoría: software de gestión y facturación para autónomos de reformas (España).
+- Público: autónomos y empresas de 0 a 7 empleados que facturan 60.000–350.000 €/año.
+- Precio: 490 € de configuración inicial (pago único) + 97 €/mes, sin permanencia.
+- Cumplimiento: facturación numerada, IVA (21 % / 10 % reformas / 0 % inversión sujeto pasivo), IRPF 15 % o 7 % para nuevos, adaptado a Verifactu, datos en servidores europeos (RGPD).
+- Garantía: 30 días con acompañamiento hasta lograr resultados. Datos exportables en CSV/ZIP.
+
+## Páginas principales
+- [Inicio](https://www.konquerai.com/): qué es KonquerAI, los tres pilares (Hacienda, rentabilidad por obra, gestión por voz), oferta y precio.
+- [Preguntas frecuentes](https://www.konquerai.com/#faq): IVA, Verifactu, gestoría, móvil, seguridad de datos, cancelación.
+- [Precios](https://www.konquerai.com/#pricing): tarifa Beta Fundadores y comparación de coste.
+
+## Para quién es
+- Autónomos de reformas hartos del Excel, los WhatsApp con facturas y el papeleo de los domingos.
+- Quienes quieren saber si cada obra es rentable y cumplir con Hacienda sin aprender la normativa.
+
+## Opcional
+- [Aviso legal y privacidad](https://www.konquerai.com/legal/privacidad): términos, privacidad y cookies.

@@ -2,16 +2,201 @@
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import EnPreparacion from "../components/EnPreparacion.astro";
+import { Image } from "astro:assets";
+import sobreNosotros from "../assets/sobre-nosotros.png";
+import christianFoto from "../assets/christian-fundador.jpg";
 ---
 <Base
   title="Sobre nosotros · KonquerAI"
-  description="La historia de KonquerAI: por qué construimos la cuadrilla administrativa digital para autónomos de reformas."
-  noindex={true}
+  description="Quiénes somos y por qué construimos KonquerAI: la cuadrilla administrativa digital para autónomos de reformas en España. Una herramienta hecha por y para gente de oficio."
 >
   <Header />
-  <main>
-    <EnPreparacion titulo="Sobre nosotros" />
+  <main class="about">
+    <section class="section-padding about-hero">
+      <div class="container-narrow">
+        <p class="text-eyebrow about-eyebrow">Sobre nosotros</p>
+        <h1 class="about-h1">Tú levantas obras. Nosotros levantamos el papeleo.</h1>
+        <p class="about-lead">
+          KonquerAI es un software español de gestión para autónomos y pequeñas empresas
+          de reformas: pintores, electricistas, fontaneros, albañiles y reformistas.
+          Nace de una idea sencilla: que la tecnología no sirva solo a las grandes
+          empresas, sino que ayude a un autónomo a llegar antes a casa.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-padding about-story">
+      <div class="container-narrow about-story-inner">
+        <h2>¿Por qué hacemos esto?</h2>
+        <div class="about-story-body">
+          <p>Mi padre fue pintor toda la vida. Autónomo, con su propia empresa.</p>
+          <p>De crío le echaba una mano en verano. Vi de cerca lo que era aquello.</p>
+          <p>Hoy el negocio lo lleva mi hermano. Diez trabajadores. Y hace de todo:
+            organiza los equipos, ve a los clientes, monta los presupuestos, persigue las facturas.</p>
+          <p>Se levanta a las cuatro de la mañana para hacer presupuestos. A las siete de
+            la tarde todavía está en el despacho.</p>
+          <p class="about-highlight">Tiene una hija. Le gustaría estar más con ella. Pero
+            no le da la vida.</p>
+          <p>No es porque trabaje poco. Es que, además de pintar, tiene que ser
+            administrativo, contable, comercial y gestor. Todo a la vez. Y solo.</p>
+          <p>En España al autónomo se le exige como a una empresa grande. Pero no tiene
+            detrás un sindicato, ni un equipo, ni nadie que le cubra. Saca adelante a su
+            familia y, muchas veces, a la de sus trabajadores. A pulso.</p>
+          <p>Eso es lo que vi crecer en mi casa. Y lo que veo hoy en mis amigos, casi todos
+            del gremio.</p>
+          <p>Yo cogí otro camino. Estudié empresariales. Aprendí de fiscalidad y de números.
+            Y hace un par de años me metí de lleno en el desarrollo y la inteligencia artificial.</p>
+          <p>Y un día até cabos.</p>
+          <p>Toda esa tecnología de la que habla todo el mundo, la que ya usan las grandes
+            empresas, no estaba llegando a la gente de obra. Como si no fuera para ellos.</p>
+          <p>Así que me dije: esto lo arreglo yo.</p>
+          <p>Junté las tres cosas que tengo: lo que sé de programar, lo que sé de fiscalidad
+            y de dónde vengo.</p>
+          <p>Y construí KonquerAI.</p>
+          <p>No otro programa lleno de menús. No otro sistema para oficinistas.</p>
+          <p>Una cuadrilla de asistentes que trabaja por ti. Hace los presupuestos, ordena
+            las facturas, calcula los impuestos y te dice qué obra te dio dinero.</p>
+          <p>Sin que aprendas tecnología. Sin barreras. Le hablas, y trabaja.</p>
+          <p>Por una décima parte de lo que te costaría tener a alguien en la oficina a
+            media jornada.</p>
+          <p>Para que un autónomo de reformas tenga el apoyo que casi nunca ha tenido.</p>
+          <p class="about-close">Y para que mi hermano, alguna tarde, apague el ordenador a
+            las siete y se vaya a casa con su hija.</p>
+        </div>
+        <figure class="about-story-figure">
+          <Image
+            src={sobreNosotros}
+            alt="Un autónomo de reformas llega a casa al atardecer y le recibe su familia en la puerta"
+            width={900}
+            densities={[1, 2]}
+            loading="lazy"
+            class="about-story-img"
+          />
+          <figcaption>Y esta vez, no peleas solo.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-padding about-team">
+      <div class="container-narrow">
+        <h2>Quién está detrás</h2>
+        <div class="about-founder">
+          <div class="about-founder-photo">
+            <Image
+              src={christianFoto}
+              alt="Christian Marzal Della-Rovere, fundador de KonquerAI"
+              width={960}
+              densities={[1, 2]}
+              loading="lazy"
+              class="about-founder-img"
+            />
+          </div>
+          <div class="about-founder-info">
+            <p class="about-founder-name">Christian Marzal Della-Rovere</p>
+            <p class="about-founder-role">Fundador de KonquerAI</p>
+            <p class="about-founder-bio">
+              Vengo de familia de pintores. Estudié empresariales y luego me pasé al
+              desarrollo y la IA. KonquerAI junta esas tres cosas: conozco el oficio, los
+              números y la tecnología. Aquí te responde una persona real, no una centralita.
+              Por eso la puesta en marcha es 1:1 y las plazas son limitadas: para
+              acompañarte de verdad hasta que la herramienta te dé resultados. ¿Una duda?
+              Escríbeme a <a href="mailto:info@konquerai.com">info@konquerai.com</a>.
+            </p>
+          </div>
+        </div>
+        <p class="about-trust">
+          Hecho en España, para autónomos de España. Tus datos viajan cifrados y se
+          guardan en servidores europeos, conforme al RGPD. Garantía de 30 días y sin
+          permanencia: si quieres irte, te llevas tus datos en CSV/ZIP.
+        </p>
+        <a href="/#contacto" class="btn btn-primary about-cta">Pide tu demo gratis</a>
+      </div>
+    </section>
   </main>
   <Footer />
 </Base>
+
+<style>
+  .about-eyebrow { color: var(--color-teal); margin-bottom: 0.75rem; }
+  .about-hero { padding-bottom: 0; }
+  .about-h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.1;
+    max-width: 16ch;
+    margin-bottom: 1.5rem;
+  }
+  .about-lead {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-slate);
+    max-width: 60ch;
+  }
+  .about-story-inner { max-width: 720px; }
+  .about-story-inner h2, .about-team h2 { margin-bottom: 1.5rem; }
+  .about-story-body p {
+    color: var(--color-slate);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: 0.875rem;
+  }
+  .about-story-figure { margin: 2.75rem 0 0; }
+  .about-story-figure figcaption {
+    margin-top: 1rem;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-teal);
+    font-size: 1.0625rem;
+  }
+  .about-highlight {
+    font-weight: 600;
+    color: var(--color-ink) !important;
+    font-style: italic;
+    border-left: 3px solid var(--color-teal);
+    padding-left: 1.25rem;
+    margin-block: 1.25rem;
+  }
+  .about-close { font-weight: 700; color: var(--color-teal) !important; }
+  .about-story-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-elevated);
+    display: block;
+  }
+  .about-team { background: var(--color-mist); }
+  .about-founder {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    max-width: 640px;
+    margin-bottom: 2rem;
+  }
+  .about-founder-photo { flex-shrink: 0; }
+  .about-founder-img {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    object-position: 30% 22%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-elevated);
+    background: var(--color-mist);
+    display: block;
+  }
+  @media (max-width: 600px) {
+    .about-founder { flex-direction: column; }
+    .about-founder-img { width: 140px; height: 170px; }
+  }
+  .about-founder-name { font-weight: 700; color: var(--color-ink); font-size: 1.0625rem; }
+  .about-founder-role { color: var(--color-teal); font-weight: 600; font-size: 0.9375rem; margin-bottom: 0.5rem; }
+  .about-founder-bio { color: var(--color-slate); font-size: 1rem; line-height: 1.7; }
+  .about-founder-bio a { color: var(--color-teal); font-weight: 600; }
+  .about-trust {
+    color: var(--color-slate);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    max-width: 60ch;
+    margin-bottom: 2rem;
+  }
+  .about-cta { display: inline-block; }
+</style>

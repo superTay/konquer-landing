@@ -30,6 +30,11 @@ const faqs = [
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    inLanguage: "es-ES",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".faq-question", ".faq-answer"],
+    },
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
