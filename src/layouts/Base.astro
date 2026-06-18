@@ -72,7 +72,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
     <!-- Estilos globales importados en el frontmatter (procesados por Tailwind v4) -->
 
     <!-- Schema.org — grafo de entidad (Organization + Person + WebSite + SoftwareApplication).
-         sameAs: rellenar con las URLs reales de LinkedIn/Wikidata/Crunchbase cuando existan. -->
+         sameAs Organization: Wikidata + Crunchbase. Person: LinkedIn personal.
+         Pendiente de añadir cuando existan: página de empresa en LinkedIn y Google Business Profile. -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@graph": [
@@ -101,14 +102,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
             "contactType": "atención al cliente",
             "availableLanguage": "Spanish",
             "areaServed": "ES"
-          }
+          },
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q140277090",
+            "https://www.crunchbase.com/organization/konquerai"
+          ]
         },
         {
           "@type": "Person",
           "@id": "https://www.konquerai.com/#founder",
           "name": "Christian Marzal Della-Rovere",
           "jobTitle": "Fundador",
-          "worksFor": { "@id": "https://www.konquerai.com/#organization" }
+          "worksFor": { "@id": "https://www.konquerai.com/#organization" },
+          "sameAs": [
+            "https://www.linkedin.com/in/christian-marzal-della-rovere"
+          ]
         },
         {
           "@type": "WebSite",
