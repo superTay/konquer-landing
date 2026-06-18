@@ -39,11 +39,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
     {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Verificación de buscadores: pega aquí el código cuando verifiques la propiedad.
-         Bing Webmaster Tools (ChatGPT y Copilot leen de Bing):
-         <meta name="msvalidate.01" content="TU_CODIGO_BING" />
-         Google Search Console (alternativa al DNS):
-         <meta name="google-site-verification" content="TU_CODIGO_GOOGLE" /> -->
+    <!-- Verificación de buscadores -->
+    <meta name="msvalidate.01" content="03438030CF712F11EBC711787FAF21CA" />
+    <meta name="google-site-verification" content="w0T7YcAOuuxkrM1x0M0L0-VD5xV1T5QFFyZyim8r5d8" />
 
     <!-- Open Graph -->
     <meta property="og:site_name" content="KonquerAI" />
