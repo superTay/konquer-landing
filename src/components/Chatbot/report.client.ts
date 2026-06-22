@@ -1,8 +1,12 @@
 // Informe de consultoría. Escucha el evento "konker:report" que emite el widget
 // al terminar la conversación, y renderiza el informe en un overlay a pantalla completa.
+import brand from './config/brand.json';
 import reportCopy from './config/report-copy.json';
 import savingsCfg from './config/savings-config.json';
 import { computeSavings, eur, type Savings } from './savings';
+
+// Cal.com instala cookies de terceros: no lo cargamos hasta que el usuario lo acepta.
+const CAL_CONSENT_KEY = 'konker_consent_cal';
 
 const RC = reportCopy as any;
 const SC = savingsCfg as any;
@@ -58,7 +62,7 @@ function initReport() {
     const chat = document.getElementById('konker-chat');
     if (chat) chat.style.display = 'none'; // ocultamos la burbuja/panel mientras se ve el informe
     overlay.scrollTop = 0;
-    loadCal();
+    prepareCal();
     closeBtns[0]?.focus();
   }
 
@@ -128,10 +132,41 @@ function initReport() {
   inCoste.addEventListener('input', onCalcInput);
   inHoras.addEventListener('input', onCalcInput);
 
-  // ---------- Cal.com embed (carga perezosa) ----------
+  // ---------- Cal.com embed (carga perezosa + consentimiento) ----------
+  function hasCalConsent(): boolean {
+    try { return localStorage.getItem(CAL_CONSENT_KEY) === '1'; } catch { return false; }
+  }
+  function saveCalConsent() {
+    try { localStorage.setItem(CAL_CONSENT_KEY, '1'); } catch { /* sin almacenamiento: seguimos igual */ }
+  }
+
+  // Si ya hay consentimiento, carga directa. Si no, muestra el aviso y espera al clic.
+  function prepareCal() {
+    if (calLoaded || !CAL_LINK) return;
+    if (hasCalConsent()) { loadCal(); return; }
+    calMount.innerHTML = '';
+    const box = document.createElement('div');
+    box.className = 'kr-cal-consent';
+    const text = document.createElement('p');
+    text.className = 'kr-cal-consent-text';
+    text.textContent = brand.legal.consentimiento_cal;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'kr-cal-consent-btn';
+    btn.textContent = brand.legal.consentimiento_cal_boton;
+    btn.addEventListener('click', () => {
+      saveCalConsent();
+      calMount.innerHTML = '';
+      loadCal();
+    });
+    box.append(text, btn);
+    calMount.appendChild(box);
+  }
+
   function loadCal() {
     if (calLoaded || !CAL_LINK) return;
     calLoaded = true;
+    calMount.classList.add('kr-cal--loaded');
     // Snippet oficial de Cal.com (embed inline)
     (function (C: any, A: string, L: string) {
       const p = function (a: any, ar: any) { a.q.push(ar); };

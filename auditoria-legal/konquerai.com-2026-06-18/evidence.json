@@ -1,0 +1,156 @@
+{
+  "metadata": {
+    "auditDate": "2026-06-18",
+    "urls": [
+      "https://www.konquerai.com/",
+      "https://www.konquerai.com/sobre-nosotros",
+      "https://www.konquerai.com/legal/privacidad",
+      "https://www.konquerai.com/legal/cookies",
+      "https://www.konquerai.com/legal/terminos",
+      "https://www.konquerai.com/legal/gdpr"
+    ],
+    "domain": "konquerai.com",
+    "stack": "Astro 4 (estático) en Vercel · Web3Forms (formulario) · Cal.com (agenda) · Chatbot propio (OpenRouter/Anthropic, Groq, Supabase)",
+    "jurisdiction": "España / UE"
+  },
+  "findings": [
+    {
+      "id": "RGPD-001",
+      "category": "rgpd",
+      "severity": "high",
+      "title": "La política de privacidad no informa de los tratamientos del asistente del chat ni de sus encargados",
+      "evidence": "El asistente de la web envía datos a proveedores no declarados en la política. Evidencia en código: api/chat.ts -> fetch('https://openrouter.ai/api/v1/chat/completions', modelo 'anthropic/claude-3.5-haiku'); api/transcribe.ts -> fetch('https://api.groq.com/openai/v1/audio/transcriptions', 'whisper-large-v3'); api/lead.ts -> inserta en Supabase tablas 'leads' y 'conversations'. La política de privacidad (antes de la remediación) solo mencionaba Web3Forms y Google Workspace, y declaraba 'principalmente a través del formulario de contacto'.",
+      "norm": "Arts. 13 y 14 RGPD (UE) 2016/679; art. 11 LOPDGDD 3/2018",
+      "url": "https://www.konquerai.com/legal/privacidad",
+      "recommendation": "Declarar el tratamiento del chat (texto y voz), el almacenamiento de la conversación y todos los encargados (OpenRouter, Anthropic, Groq, Supabase, Cal.com), con su base legal, finalidad, conservación y transferencias. APLICADO en esta sesión.",
+      "recommendationRef": "assets/templates/politica-privacidad.md",
+      "requiresHumanReview": false
+    },
+    {
+      "id": "RGPD-002",
+      "category": "rgpd",
+      "severity": "high",
+      "title": "Tratamiento de voz (micrófono) y almacenamiento de conversaciones sin información ni base legal explícita",
+      "evidence": "chatbot.client.ts línea 244: navigator.mediaDevices.getUserMedia({ audio: true }); el audio se envía a /api/transcribe (Groq, EE. UU.). api/lead.ts guarda la conversación completa (campo 'mensajes') y el informe en Supabase. vercel.json concede Permissions-Policy: microphone=(self). Nada de esto estaba informado.",
+      "norm": "Arts. 5.1.a, 6.1.a y 13 RGPD",
+      "url": "https://www.konquerai.com/",
+      "recommendation": "Informar del tratamiento de voz y del guardado de la conversación, y recabar consentimiento previo. APLICADO: aviso de consentimiento en el chat antes de procesar/guardar nada.",
+      "recommendationRef": "assets/templates/politica-privacidad.md",
+      "requiresHumanReview": false
+    },
+    {
+      "id": "COOKIES-001",
+      "category": "cookies",
+      "severity": "high",
+      "title": "La política de cookies declaraba 'cero cookies' pero el embed de Cal.com instala cookies de terceros",
+      "evidence": "src/components/Chatbot/report.client.ts líneas 132-149 cargan 'https://app.cal.com/embed/embed.js' (Cal.com), que instala cookies propias de terceros. La política de cookies afirmaba: 'Actualmente, esta web no utiliza cookies propias ni de terceros'. ATENUANTE verificado: la carga es perezosa (solo al generar el informe, no en la primera carga), por lo que NO concurre la infracción de 'cookies en la primera carga sin banner'.",
+      "norm": "Art. 22.2 LSSI-CE (Ley 34/2002); Guía AEPD sobre el uso de cookies; Directiva 2002/58/CE",
+      "url": "https://www.konquerai.com/",
+      "recommendation": "Corregir la política de cookies para declarar Cal.com y recabar consentimiento previo a su carga. APLICADO: política reescrita + gate de consentimiento (Cal.com no se carga hasta que el usuario lo acepta).",
+      "recommendationRef": "assets/templates/politica-cookies.md",
+      "requiresHumanReview": false
+    },
+    {
+      "id": "SEC-001",
+      "category": "security",
+      "severity": "medium",
+      "title": "Content-Security-Policy en modo report-only (no bloquea)",
+      "evidence": "vercel.json enviaba la cabecera 'Content-Security-Policy-Report-Only', que solo reporta y no aplica la política. El resto de cabeceras de seguridad eran correctas (HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy).",
+      "norm": "Buenas prácticas de seguridad (RGPD art. 32 — medidas técnicas apropiadas)",
+      "url": "https://www.konquerai.com/",
+      "recommendation": "Promover la CSP a modo enforcing tras validar que el allowlist cubre los orígenes legítimos. APLICADO: cabecera cambiada a 'Content-Security-Policy'. Requiere validación en preview de Vercel (reservar una cita de prueba en Cal).",
+      "recommendationRef": "assets/templates/security-headers.md",
+      "requiresHumanReview": true
+    },
+    {
+      "id": "LSSI-001",
+      "category": "lssi",
+      "severity": "low",
+      "title": "Sobreexposición del DNI del titular en el aviso legal",
+      "evidence": "src/pages/legal/terminos.astro publicaba 'DNI: 73393592V'. El art. 10 LSSI exige identificar al prestador (nombre, domicilio, email) pero no obliga a publicar el DNI; su publicación es un dato identificativo innecesario (principio de minimización) y aumenta el riesgo de suplantación.",
+      "norm": "Art. 10 LSSI-CE; art. 5.1.c RGPD (minimización)",
+      "url": "https://www.konquerai.com/legal/terminos",
+      "recommendation": "Retirar el DNI manteniendo nombre, localidad y email. APLICADO.",
+      "requiresHumanReview": false
+    },
+    {
+      "id": "FORMS-001",
+      "category": "forms",
+      "severity": "low",
+      "title": "Formulario de contacto sin texto informativo breve junto al checkbox",
+      "evidence": "src/components/CtaFinal.astro tenía un checkbox de consentimiento NO premarcado con enlace a la política de privacidad (correcto), pero sin una línea informativa sobre el uso de los datos.",
+      "norm": "Art. 13 RGPD (información en el momento de la recogida)",
+      "url": "https://www.konquerai.com/",
+      "recommendation": "Añadir una línea breve de protección de datos. APLICADO: 'Usamos tu teléfono solo para llamarte. Nada de spam, y puedes pedirnos que borremos tus datos cuando quieras.'",
+      "recommendationRef": "assets/templates/form-consent-snippet.html",
+      "requiresHumanReview": false
+    },
+    {
+      "id": "RGPD-003",
+      "category": "rgpd",
+      "severity": "medium",
+      "title": "Región de la base de datos (Supabase) y DPA/SCC con los encargados sin confirmar",
+      "evidence": "api/lead.ts usa SUPABASE_URL (variable de entorno) sin que pueda determinarse por caja negra la región del proyecto (UE vs EE. UU.). No es verificable automáticamente la existencia de contratos de encargado (DPA) ni de cláusulas contractuales tipo (SCC) con OpenRouter, Anthropic, Groq, Supabase, Cal.com, Web3Forms y Google.",
+      "norm": "Arts. 28 (encargados) y 44-49 (transferencias) RGPD",
+      "url": "https://www.konquerai.com/",
+      "recommendation": "Confirmar la región de Supabase y, si está fuera del EEE, reflejar la transferencia con sus garantías. Firmar/recopilar los DPA y SCC con cada encargado. Pendiente del titular.",
+      "requiresHumanReview": true
+    }
+  ],
+  "trackers": [
+    {
+      "name": "Cal.com (embed de agenda)",
+      "urls": ["https://app.cal.com/embed/embed.js", "https://cal.com"],
+      "triggered": "Carga perezosa: solo al generar el informe del chat, no en la primera carga. Tras la remediación, solo tras consentimiento explícito.",
+      "country": "Según configuración del proveedor",
+      "purposes": ["Calendario de reservas (cookies de terceros)"],
+      "normCited": ["art. 22.2 LSSI-CE"]
+    },
+    {
+      "name": "OpenRouter / Anthropic (respuestas del chat)",
+      "urls": ["https://openrouter.ai/api/v1/chat/completions"],
+      "triggered": "Al enviar un mensaje en el chat (vía /api/chat, same-origin). No instala cookies en el navegador.",
+      "country": "Estados Unidos",
+      "purposes": ["Generación de las respuestas del asistente"],
+      "normCited": ["arts. 13, 28, 44-49 RGPD"]
+    },
+    {
+      "name": "Groq (transcripción de voz)",
+      "urls": ["https://api.groq.com/openai/v1/audio/transcriptions"],
+      "triggered": "Al usar la entrada por voz (vía /api/transcribe, same-origin). No instala cookies en el navegador.",
+      "country": "Estados Unidos",
+      "purposes": ["Transcripción de audio a texto (whisper-large-v3)"],
+      "normCited": ["arts. 9, 13, 44-49 RGPD"]
+    },
+    {
+      "name": "Supabase (almacenamiento de leads y conversaciones)",
+      "urls": ["{SUPABASE_URL}/rest/v1/leads", "{SUPABASE_URL}/rest/v1/conversations"],
+      "triggered": "Al finalizar la conversación (vía /api/lead, same-origin). No instala cookies en el navegador.",
+      "country": "Según región del proyecto (sin confirmar)",
+      "purposes": ["Base de datos / CRM: guarda el lead y la conversación"],
+      "normCited": ["arts. 13, 28, 44-49 RGPD"]
+    }
+  ],
+  "revenue": {
+    "reported": 0,
+    "source": "No aportado por el titular",
+    "relevance": "Sin cifra de facturación vinculada a la URL no procede el cálculo del 4% (art. 83.5 RGPD). Los escenarios se construyen sobre mínimos legales y precedentes equivalentes."
+  },
+  "exposureScenarios": {
+    "conservative": {
+      "min": 0,
+      "max": 5000,
+      "description": "Las infracciones detectadas son de información/transparencia y de cookies con fuerte atenuante (carga perezosa, sin tracking publicitario, sin afectados masivos). La AEPD suele resolver casos análogos en PYME con apercibimiento o multas bajas (p. ej. 3.000-5.000 € por defecto de cláusula informativa, art. 13). Tras la remediación aplicada, la exposición tiende a 0."
+    },
+    "medium": {
+      "min": 5000,
+      "max": 20000,
+      "description": "Si no se hubiera corregido y la AEPD valorase la acumulación (info art. 13 incompleta + cookies de Cal.com no informadas), precedentes equivalentes se mueven en torno a SEAT (16.000 € por cookies sin consentimiento) y las multas tipo de art. 13 en PYME."
+    },
+    "aggravated": {
+      "min": 30000,
+      "max": 150000,
+      "description": "Escenario teórico de máximos para cookies sin consentimiento (LSSI art. 39.1.b: 30.001-150.000 €), aplicable solo a conductas persistentes, con tracking activo y sin atenuantes — NO es el caso aquí. Se incluye solo como techo legal de referencia."
+    }
+  }
+}

@@ -6,7 +6,7 @@ import LegalDoc from "../../components/LegalDoc.astro";
   description="Cómo cumple KonquerAI con el RGPD en la protección de tus datos personales."
   titulo="Compromiso con el RGPD"
   subtitulo="Un resumen en claro de cómo protegemos tus datos. El detalle completo está en la política de privacidad."
-  actualizado="28 de mayo de 2026"
+  actualizado="18 de junio de 2026"
 >
   <p class="legal-note">
     Esta página es un resumen. Para el detalle del tratamiento de datos de la web, consulta la
@@ -21,8 +21,12 @@ import LegalDoc from "../../components/LegalDoc.astro";
 
   <section>
     <h2><span class="legal-num">02</span> Qué tratamos y con qué base</h2>
-    <p>En esta web solo tratamos los datos que nos dejas en el formulario de contacto (nombre, teléfono y, si quieres, email, oficio y un mensaje), con la única finalidad de ponernos en contacto contigo.</p>
-    <p class="legal-base"><strong>Base legal:</strong> tu consentimiento (art. 6.1.a del RGPD), que das al enviar el formulario y puedes retirar cuando quieras.</p>
+    <p>En esta web tratamos los datos que nos dejas por dos vías:</p>
+    <ul>
+      <li>El <strong>formulario de contacto</strong> (nombre, teléfono y, si quieres, email, oficio y un mensaje), para ponernos en contacto contigo.</li>
+      <li>El <strong>asistente del chat</strong>, si lo usas: lo que escribes o dictas, el correo que das al final y, en caso de hablar por voz, el audio (que se transcribe y no se conserva). Sirve para prepararte un informe orientativo y guardarlo junto con la conversación.</li>
+    </ul>
+    <p class="legal-base"><strong>Base legal:</strong> tu consentimiento (art. 6.1.a del RGPD), que das al enviar el formulario o al aceptar el aviso antes de hablar con el asistente, y que puedes retirar cuando quieras.</p>
   </section>
 
   <section>
@@ -44,6 +48,6 @@ import LegalDoc from "../../components/LegalDoc.astro";
 
   <section>
     <h2><span class="legal-num">05</span> Encargados y transferencias</h2>
-    <p>Usamos Web3Forms (recibe y reenvía el formulario) y Google Workspace (correo). Esto implica transferencias internacionales que detallamos en la <a href="/legal/privacidad">política de privacidad</a>.</p>
+    <p>Para el formulario usamos Web3Forms (recibe y reenvía el envío) y Google Workspace (correo). Para el asistente del chat usamos OpenRouter y Anthropic (respuestas del chat), Groq (transcripción de la voz), Supabase (base de datos donde guardamos el lead y la conversación) y Cal.com (agenda, solo si la cargas). Algunos están en Estados Unidos, con las garantías que detallamos en la <a href="/legal/privacidad">política de privacidad</a>.</p>
   </section>
 </LegalDoc>

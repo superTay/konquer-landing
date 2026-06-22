@@ -73,6 +73,7 @@ if (!accessKey) {
           <input type="checkbox" name="consentimiento" required />
           <span>He leído y acepto la <a href="/legal/privacidad">política de privacidad</a>.</span>
         </label>
+        <p class="lead-note">Usamos tu teléfono solo para llamarte. Nada de spam, y puedes pedirnos que borremos tus datos cuando quieras.</p>
 
         <button type="submit" class="btn btn-white lead-submit">Quiero que me llaméis</button>
         <p class="lead-feedback" id="lead-feedback" role="status" aria-live="polite"></p>
@@ -255,6 +256,12 @@ if (!accessKey) {
     color: var(--color-white);
     text-decoration: underline;
     font-weight: 600;
+  }
+  .lead-note {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    margin-top: -0.25rem;
   }
 
   .lead-submit {

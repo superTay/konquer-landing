@@ -22,6 +22,10 @@ const GREETING =
   'Hola. Soy tu consultor de obra. En un par de minutos te enseño, con tus números, lo que te está costando el papeleo. ' +
   flow.preguntas[0].pregunta;
 
+// Consentimiento del chat: hasta que el usuario lo acepta no se manda nada a los
+// proveedores externos (chat/voz) ni se guarda la conversación. Se recuerda en el navegador.
+const CHAT_CONSENT_KEY = 'konker_consent_chat';
+
 function initChatbot() {
   const root = document.getElementById('konker-chat');
   if (!root) return;
@@ -43,6 +47,7 @@ function initChatbot() {
   let sending = false;
   let counterShown = false;
   let finalized = false;
+  let consentPending = false;
 
   // ---------- UI helpers ----------
   function scrollToBottom() {
@@ -215,10 +220,67 @@ function initChatbot() {
     if (isMobile()) document.body.style.overflow = 'hidden';
     if (!started) {
       started = true;
-      addBubble('assistant', GREETING);
-      messages.push({ role: 'assistant', content: flow.preguntas[0].pregunta });
+      if (hasChatConsent()) beginConversation();
+      else renderConsentGate();
     }
-    requestAnimationFrame(() => textField.focus());
+    if (!consentPending) requestAnimationFrame(() => textField.focus());
+  }
+
+  // ---------- Consentimiento (chat/voz/guardado) ----------
+  function hasChatConsent(): boolean {
+    try { return localStorage.getItem(CHAT_CONSENT_KEY) === '1'; } catch { return false; }
+  }
+  function saveChatConsent() {
+    try { localStorage.setItem(CHAT_CONSENT_KEY, '1'); } catch { /* sin almacenamiento: seguimos igual */ }
+  }
+  function setInputEnabled(on: boolean) {
+    textField.disabled = !on;
+    sendBtn.disabled = !on;
+    micBtn.disabled = !on;
+  }
+
+  function beginConversation() {
+    consentPending = false;
+    setInputEnabled(true);
+    addBubble('assistant', GREETING);
+    messages.push({ role: 'assistant', content: flow.preguntas[0].pregunta });
+  }
+
+  function renderConsentGate() {
+    consentPending = true;
+    setInputEnabled(false);
+    const wrap = document.createElement('div');
+    wrap.className = 'kc-msg kc-msg-assistant kc-consent';
+    const box = document.createElement('div');
+    box.className = 'kc-bubble-text';
+
+    const text = document.createElement('p');
+    text.className = 'kc-consent-text';
+    text.textContent = brand.legal.aviso_chat;
+
+    const link = document.createElement('a');
+    link.href = brand.legal.enlace_privacidad;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.className = 'kc-consent-link';
+    link.textContent = 'Ver política de privacidad';
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'kc-consent-btn';
+    btn.textContent = brand.legal.aviso_chat_boton;
+    btn.addEventListener('click', () => {
+      saveChatConsent();
+      wrap.remove();
+      beginConversation();
+      requestAnimationFrame(() => textField.focus());
+    });
+
+    box.append(text, link, btn);
+    wrap.appendChild(box);
+    messagesEl.appendChild(wrap);
+    scrollToBottom();
+    requestAnimationFrame(() => btn.focus());
   }
 
   function closePanel() {

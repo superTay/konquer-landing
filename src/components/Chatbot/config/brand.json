@@ -35,7 +35,13 @@
   "marcas_permitidas": ["WhatsApp", "Instagram", "Facebook", "Konker"],
   "legal": {
     "consentimiento_email": "Al dejarme tu correo, aceptas que Konker guarde tus datos para mandarte el informe y contactarte. Nada de spam.",
-    "enlace_privacidad": "/legal/privacidad"
+    "enlace_privacidad": "/legal/privacidad",
+    "enlace_cookies": "/legal/cookies",
+    "aviso_chat": "Antes de empezar: lo que me cuentes aquí, por escrito o por voz, lo usamos para prepararte un informe con tus números. Para eso lo procesan proveedores externos y guardamos la conversación. Puedes verlo en la política de privacidad. ¿Seguimos?",
+    "aviso_chat_boton": "Sí, empezamos",
+    "pie_chat": "Lo que escribas o digas aquí lo procesan proveedores externos para darte el informe, y guardamos la conversación.",
+    "consentimiento_cal": "Para ver la agenda aquí dentro cargamos Cal.com, que instala cookies suyas. Si lo prefieres, ábrela en su web con el botón de abajo.",
+    "consentimiento_cal_boton": "Ver la agenda aquí"
   },
   "booking": {
     "proveedor": "cal.com",
