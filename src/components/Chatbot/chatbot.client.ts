@@ -22,7 +22,7 @@ const reduceMotion = () =>
 const isMobile = () => window.matchMedia('(max-width: 640px)').matches;
 
 const GREETING =
-  'Hola. Soy tu consultor de obra. Te hago unas preguntas rápidas y te digo, con tus números, qué te está costando el papeleo. Y si esto te encaja o no, te lo diré claro. ' +
+  'Hola, soy LucIA, tu consultora de obra. Te hago unas preguntas rápidas y te digo, con tus números, qué te está costando el papeleo. Y si esto te encaja o no, te lo diré claro. ' +
   flow.preguntas[0].pregunta;
 
 // Consentimiento del chat: hasta que el usuario lo acepta no se manda nada a los

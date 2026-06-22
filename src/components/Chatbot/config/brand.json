@@ -2,10 +2,11 @@
   "$schema_note": "Identidad visual y de voz del bot. Para clonar a otro cliente, edita SOLO este archivo (colores, nombre, voz).",
   "cliente": "KonquerAI",
   "bot": {
-    "nombre": "Tu consultor de Obra",
-    "subtitulo": "Consultor de KonquerAI",
-    "saludo_burbuja": "¿Echamos cuentas de lo que te roba el papeleo?",
-    "avatar_iniciales": "TC"
+    "nombre": "LucIA",
+    "subtitulo": "Tu consultora de obra · KonquerAI",
+    "saludo_burbuja": "Hola, soy LucIA. ¿Echamos cuentas del papeleo?",
+    "avatar_iniciales": "L",
+    "avatar_foto": "/lucia.png"
   },
   "colores": {
     "primario": "#00D1B2",
