@@ -1,6 +1,7 @@
 // POST /api/chat — Conversación del consultor vía OpenRouter.
 // La OPENROUTER_API_KEY vive SOLO aquí (servidor), nunca llega al navegador.
 import { SYSTEM_PROMPT } from '../src/components/Chatbot/config/system-prompt';
+import { checkOrigin } from './_lib/security';
 
 export const config = { runtime: 'edge' };
 
@@ -19,6 +20,9 @@ type Msg = { role: 'user' | 'assistant'; content: string };
 
 export default async function handler(req: Request): Promise<Response> {
   if (req.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);
+
+  const originErr = checkOrigin(req);
+  if (originErr) return originErr;
 
   const key = process.env.OPENROUTER_API_KEY;
   if (!key) return json({ error: 'No está configurado el chat ahora mismo.' }, 500);
