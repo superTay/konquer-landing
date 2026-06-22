@@ -1,0 +1,54 @@
+{
+  "capturedAt": "2026-06-18",
+  "target": "https://www.konquerai.com/",
+  "method": "Inspección de cabeceras HTTP (curl) + análisis del código cliente (carga diferida por evento). No se ejecutó tracking en la primera carga.",
+  "phases": [
+    {
+      "phase": "Primera carga (sin interacción, sin aceptar nada)",
+      "thirdPartyRequests": [],
+      "setCookie": false,
+      "note": "No se dispara ninguna petición a terceros ni se instala ninguna cookie. Confirmado: respuesta de la home sin cabecera Set-Cookie y sin scripts de analytics/marketing (GA4, GTM, Meta, TikTok, Hotjar, Clarity, LinkedIn, Pinterest: NINGUNO)."
+    },
+    {
+      "phase": "Interacción con el chat (enviar un mensaje)",
+      "thirdPartyRequests": [
+        { "url": "/api/chat", "origin": "same-origin", "downstream": "https://openrouter.ai/api/v1/chat/completions (modelo anthropic/claude-3.5-haiku)", "country": "EE. UU." }
+      ],
+      "setCookie": false,
+      "note": "El texto del usuario se reenvía server-side a OpenRouter/Anthropic. No se instalan cookies en el navegador."
+    },
+    {
+      "phase": "Entrada por voz",
+      "thirdPartyRequests": [
+        { "url": "/api/transcribe", "origin": "same-origin", "downstream": "https://api.groq.com/openai/v1/audio/transcriptions (whisper-large-v3)", "country": "EE. UU." }
+      ],
+      "setCookie": false,
+      "note": "Requiere permiso de micrófono del navegador (getUserMedia). El audio se transcribe en Groq y no se conserva."
+    },
+    {
+      "phase": "Finalizar conversación (guardado)",
+      "thirdPartyRequests": [
+        { "url": "/api/lead", "origin": "same-origin", "downstream": "Supabase REST (tablas leads y conversations) + Web3Forms (aviso por email)", "country": "Supabase: sin confirmar; Web3Forms: EE. UU." }
+      ],
+      "setCookie": false,
+      "note": "Guarda el lead y la conversación completa en Supabase. Tras la remediación, requiere consentimiento previo aceptado en el chat."
+    },
+    {
+      "phase": "Generar informe / agenda (Cal.com)",
+      "thirdPartyRequests": [
+        { "url": "https://app.cal.com/embed/embed.js", "origin": "third-party", "downstream": "Cal.com", "country": "según configuración" }
+      ],
+      "setCookie": true,
+      "note": "ÚNICO punto que instala cookies de terceros. Carga perezosa (no en la primera carga). Tras la remediación, solo se carga si el usuario pulsa 'ver la agenda aquí'."
+    }
+  ],
+  "responseHeadersObserved": {
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+    "x-frame-options": "SAMEORIGIN",
+    "x-content-type-options": "nosniff",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "permissions-policy": "geolocation=(), microphone=(self), camera=()",
+    "content-security-policy": "PRE-REMEDIACIÓN: enviada como Content-Security-Policy-Report-Only (no bloqueaba). POST-REMEDIACIÓN: Content-Security-Policy (enforcing).",
+    "set-cookie": "ninguna en la home"
+  }
+}

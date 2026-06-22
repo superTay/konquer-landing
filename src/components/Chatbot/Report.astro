@@ -195,7 +195,21 @@ const calc = (savingsCfg as any).microcopy_calculo;
   /* CTA */
   .kr-cta-text { color: var(--color-slate, #4B5563); margin: 0 0 0.9rem; }
   .kr-cal { min-height: 0; }
-  .kr-cal:not(:empty) { min-height: 480px; margin-bottom: 1rem; border-radius: 12px; overflow: hidden; }
+  .kr-cal--loaded { min-height: 480px; margin-bottom: 1rem; border-radius: 12px; overflow: hidden; }
+  .kr-cal-consent {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem;
+    margin-bottom: 1rem; padding: 1rem 1.1rem;
+    background: var(--color-mist, #F6F8F9);
+    border: 1px solid var(--color-border, #E5EAEC); border-radius: 12px;
+  }
+  .kr-cal-consent-text { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--color-slate, #4B5563); }
+  .kr-cal-consent-btn {
+    border: none; border-radius: 9999px; padding: 0.7rem 1.3rem;
+    background: linear-gradient(135deg, var(--color-teal,#00D1B2), var(--color-teal-dark,#009B89));
+    color: #fff; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.95rem;
+    cursor: pointer; min-height: 46px;
+  }
+  .kr-cal-consent-btn:focus-visible { outline: 3px solid var(--color-ink, #0B1F24); outline-offset: 2px; }
   .kr-cta-btn { display: inline-block; background: linear-gradient(135deg, var(--color-teal,#00D1B2), var(--color-teal-dark,#009B89)); color: #fff; text-decoration: none; font-weight: 700; padding: 0.85rem 1.4rem; border-radius: 9999px; }
 
   .kr-actions { display: flex; gap: 0.6rem; margin-top: 1.2rem; }

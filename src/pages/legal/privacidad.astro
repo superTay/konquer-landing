@@ -3,10 +3,10 @@ import LegalDoc from "../../components/LegalDoc.astro";
 ---
 <LegalDoc
   title="Política de privacidad · KonquerAI"
-  description="Cómo trata KonquerAI los datos que nos dejas en el formulario de contacto de konquerai.com, conforme al RGPD."
+  description="Cómo trata KonquerAI los datos que nos dejas en konquerai.com: el formulario de contacto y el asistente del chat, conforme al RGPD."
   titulo="Política de privacidad"
-  subtitulo="Esta política explica cómo tratamos los datos que nos dejas en konquerai.com, principalmente a través del formulario de contacto."
-  actualizado="28 de mayo de 2026"
+  subtitulo="Esta política explica cómo tratamos los datos que nos dejas en konquerai.com, ya sea en el formulario de contacto o hablando con el asistente del chat."
+  actualizado="18 de junio de 2026"
 >
   <p class="legal-note">
     ¿Buscas la política de la app móvil KonquerAI? Está en
@@ -30,28 +30,49 @@ import LegalDoc from "../../components/LegalDoc.astro";
     <p><strong>Para qué los usamos:</strong> para ponernos en contacto contigo, informarte sobre KonquerAI y, si lo pides, agendar una demostración. Es decir, para responder a tu propia solicitud.</p>
     <p class="legal-base"><strong>Base legal:</strong> tu consentimiento, que das al marcar la casilla antes de enviar el formulario (art. 6.1.a del RGPD). Puedes retirarlo en cualquier momento escribiéndonos.</p>
 
-    <h3>2.1. Lo que NO hacemos en esta web</h3>
+    <h3>2.1. Si usas el asistente del chat</h3>
+    <p>En la web hay un asistente con el que puedes hablar (por texto o por voz) para que te preparemos un informe orientativo con tus números. Antes de empezar te avisamos y tienes que aceptarlo. Si lo usas, tratamos:</p>
     <ul>
-      <li>Actualmente la web <strong>no utiliza cookies</strong> de analítica ni de publicidad. Si en el futuro las añadimos, te lo pediremos con un aviso y actualizaremos esta política.</li>
-      <li>No hacemos perfilado ni decisiones automatizadas con tus datos.</li>
+      <li><strong>Lo que escribes o dictas</strong> en la conversación (por ejemplo, tu oficio, cómo trabajas, las horas de papeleo o lo que más te quema).</li>
+      <li>Si hablas por voz, <strong>la grabación de audio</strong>, que se transcribe a texto y no se conserva una vez transcrita.</li>
+      <li>El <strong>correo</strong> que nos das al final para enviarte el informe.</li>
+    </ul>
+    <p><strong>Para qué:</strong> generar tu informe, guardarlo junto con la conversación para poder atenderte después y, si lo pides, agendar una llamada.</p>
+    <p class="legal-base"><strong>Base legal:</strong> tu consentimiento (art. 6.1.a del RGPD), que das al aceptar el aviso antes de empezar la conversación. Puedes retirarlo escribiéndonos.</p>
+
+    <h3>2.2. Lo que NO hacemos</h3>
+    <ul>
+      <li>Las páginas de la web <strong>no instalan cookies</strong> de analítica ni de publicidad. La única excepción es la herramienta de agenda (Cal.com), que solo se carga si tú lo aceptas; lo explicamos en la <a href="/legal/cookies">política de cookies</a>.</li>
+      <li>No hacemos perfilado ni decisiones automatizadas que produzcan efectos jurídicos sobre ti.</li>
       <li>No vendemos ni cedemos tus datos a terceros con fines comerciales.</li>
     </ul>
   </section>
 
   <section>
     <h2><span class="legal-num">03</span> Con quién se comparten</h2>
-    <p>Para hacer llegar tu mensaje a nuestro correo usamos un proveedor que actúa como encargado del tratamiento:</p>
+    <p>Trabajamos con proveedores que actúan como <strong>encargados del tratamiento</strong>, cada uno solo para lo que indicamos:</p>
+    <p><strong>Para el formulario de contacto:</strong></p>
     <ul>
       <li><strong>Web3Forms</strong> (Web3Creative, India) — recibe el envío del formulario y nos lo reenvía por email. <strong>No almacena los envíos de forma permanente</strong>: los procesa y los reenvía, y sus registros con datos personales se eliminan periódicamente. Sus servidores están en Estados Unidos.</li>
       <li><strong>Google Workspace</strong> (Google Ireland Ltd.) — el servicio de correo con el que gestionamos <code>info@konquerai.com</code>, donde recibimos y conservamos tu mensaje. Google está adherida al marco <em>EU-U.S. Data Privacy Framework</em> y aplica las cláusulas contractuales tipo de la Comisión Europea para las transferencias a Estados Unidos.</li>
     </ul>
+    <p><strong>Para el asistente del chat (si lo usas):</strong></p>
+    <ul>
+      <li><strong>OpenRouter</strong> (OpenRouter, Inc., Estados Unidos) — enruta lo que escribes hacia el modelo de lenguaje que genera las respuestas del asistente.</li>
+      <li><strong>Anthropic</strong> (Anthropic PBC, Estados Unidos) — el modelo de lenguaje que elabora las respuestas a partir de la conversación.</li>
+      <li><strong>Groq</strong> (Groq, Inc., Estados Unidos) — transcribe a texto el audio cuando hablas por voz. El audio no se conserva una vez transcrito.</li>
+      <li><strong>Supabase</strong> (Supabase, Inc., Unión Europea) — la base de datos donde guardamos el lead y la conversación para poder atenderte después. El proyecto está alojado en la Unión Europea.</li>
+      <li><strong>Cal.com</strong> (Cal.com, Inc.) — la herramienta de agenda, solo si aceptas cargarla para reservar la llamada.</li>
+    </ul>
     <h3>3.1. Transferencia internacional</h3>
-    <p>Al enviar el formulario, tus datos pasan por <strong>Web3Forms</strong>, cuyos servidores están en <strong>Estados Unidos</strong> y cuya empresa está establecida en <strong>India</strong>, es decir, fuera del Espacio Económico Europeo. Hemos elegido este proveedor por su modelo de minimización de datos (no conserva los envíos). El mensaje queda después almacenado en Google Workspace, con las garantías indicadas arriba. Si quieres más detalle sobre estas transferencias, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
+    <p>Algunos de estos proveedores están en <strong>Estados Unidos</strong>, fuera del Espacio Económico Europeo: Web3Forms, OpenRouter, Anthropic y Groq. En esos casos la transferencia se ampara en las <strong>cláusulas contractuales tipo</strong> de la Comisión Europea y, cuando procede, en el marco <em>EU-U.S. Data Privacy Framework</em>. La base de datos (Supabase) está alojada en la <strong>Unión Europea</strong>. La agenda (Cal.com) opera según su propia configuración de región.</p>
+    <p>Si quieres más detalle sobre estas transferencias o copia de las garantías, escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a>.</p>
   </section>
 
   <section>
     <h2><span class="legal-num">04</span> Cuánto tiempo conservamos tus datos</h2>
     <p>Conservamos tus datos de contacto el tiempo necesario para atender tu solicitud y valorar el posible inicio de una relación comercial. Si esa relación no llega a producirse, los conservamos durante un máximo de <strong>12 meses</strong> desde el último contacto, salvo que nos pidas antes que los borremos.</p>
+    <p>Si usaste el asistente del chat, guardamos el lead y la conversación con el mismo criterio: un máximo de <strong>12 meses</strong> desde el último contacto, salvo petición previa de borrado. La grabación de voz no se conserva: se transcribe y se descarta.</p>
   </section>
 
   <section>

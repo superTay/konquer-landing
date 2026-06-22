@@ -81,7 +81,7 @@ const contador = (reportCopy as any).contador_vivo;
     </form>
 
     <p class="kc-legal">
-      Al dejarme tu correo aceptas la <a href={brand.legal.enlace_privacidad}>política de privacidad</a>. Nada de spam.
+      {brand.legal.pie_chat} Más detalle en <a href={brand.legal.enlace_privacidad}>privacidad</a> y <a href={brand.legal.enlace_cookies}>cookies</a>.
     </p>
   </div>
 </div>
@@ -303,6 +303,25 @@ const contador = (reportCopy as any).contador_vivo;
     text-align: center;
   }
   .kc-legal a { color: var(--kc-teal); text-decoration: underline; }
+
+  /* ---------- Aviso de consentimiento (antes de empezar) ---------- */
+  .kc-consent .kc-bubble-text { max-width: 92%; display: flex; flex-direction: column; gap: 0.6rem; }
+  .kc-consent-text { margin: 0; line-height: 1.5; }
+  .kc-consent-link { align-self: flex-start; color: var(--kc-teal); text-decoration: underline; font-size: 0.9rem; }
+  .kc-consent-btn {
+    align-self: flex-start;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.6rem 1.1rem;
+    background: linear-gradient(135deg, var(--kc-teal) 0%, var(--kc-teal-dark) 100%);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .kc-consent-btn:focus-visible { outline: 3px solid var(--kc-ink); outline-offset: 2px; }
 
   /* ---------- Móvil: pantalla completa ---------- */
   @media (max-width: 640px) {
