@@ -1,6 +1,8 @@
 // POST /api/lead — Guarda el lead + la conversación en Supabase (CRM) y, en paralelo,
 // dispara el aviso por email con Web3Forms (best-effort, no bloquea).
 // Las claves de Supabase (service role) viven SOLO aquí.
+import { checkOrigin, clampJson } from './_lib/security';
+
 export const config = { runtime: 'edge' };
 
 function json(data: unknown, status = 200): Response {
@@ -28,6 +30,9 @@ type LeadBody = {
 
 export default async function handler(req: Request): Promise<Response> {
   if (req.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);
+
+  const originErr = checkOrigin(req);
+  if (originErr) return originErr;
 
   // Tolerante: acepta la URL base con o sin "/rest/v1" o barra final.
   const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/+$/, '').replace(/\/rest\/v1$/, '');
@@ -89,8 +94,8 @@ export default async function handler(req: Request): Promise<Response> {
     if (leadId) {
       const conv = {
         lead_id: leadId,
-        mensajes: body.mensajes ?? null,
-        informe: body.informe ?? null,
+        mensajes: clampJson(body.mensajes),
+        informe: clampJson(body.informe),
         user_agent: req.headers.get('user-agent')?.slice(0, 500) ?? null,
         started_at: str(body.started_at, 40),
         ended_at: str(body.ended_at, 40),

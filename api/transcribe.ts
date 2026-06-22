@@ -1,5 +1,7 @@
 // POST /api/transcribe — Audio del micro -> texto, vía Groq Whisper Large V3.
 // La GROQ_API_KEY vive SOLO aquí. Recibe multipart/form-data con campo "audio".
+import { checkOrigin } from './_lib/security';
+
 export const config = { runtime: 'edge' };
 
 const MAX_BYTES = 20 * 1024 * 1024; // 20 MB de audio máximo
@@ -13,6 +15,9 @@ function json(data: unknown, status = 200): Response {
 
 export default async function handler(req: Request): Promise<Response> {
   if (req.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);
+
+  const originErr = checkOrigin(req);
+  if (originErr) return originErr;
 
   const key = process.env.GROQ_API_KEY;
   if (!key) return json({ error: 'La voz no está disponible ahora mismo.' }, 500);
