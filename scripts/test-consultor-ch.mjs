@@ -34,7 +34,7 @@ if (!API_KEY) {
 const BOT_MODEL = process.env.BOT_MODEL || process.env.OPENROUTER_MODEL || 'anthropic/claude-haiku-4.5';
 const ACTOR_MODEL = process.env.ACTOR_MODEL || BOT_MODEL;
 const JUDGE_MODEL = process.env.JUDGE_MODEL || BOT_MODEL;
-const MAX_TURNS = Number(process.env.MAX_TURNS || 16);
+const MAX_TURNS = Number(process.env.MAX_TURNS || 24);
 const ONLY = (process.env.ONLY || '').split(',').map((s) => s.trim()).filter(Boolean);
 
 // ---------- 1) Prompt real (bundle de la TS = mismo precio interpolado que prod) ----------
@@ -144,16 +144,20 @@ Criterios (cada uno 0-10):
 
 Devuelve SOLO un JSON válido, sin texto alrededor:
 {"score": <0-100>, "pass": <true|false>, "criterios": {"voz_marca":N,...todos...}, "aciertos": "1-2 frases", "fallos": "1-2 frases con lo más importante a corregir"}
-"score" = media ponderada 0-100. "pass" = true si score>=75 y ningún criterio crítico (brecha, email_momento, precio_correcto, descalifica si aplica) por debajo de 5.`;
+"score" = media ponderada 0-100. "pass" = true si score>=75 y ningún criterio crítico (brecha, email_momento, precio_correcto, descalifica si aplica) por debajo de 5.
+IMPORTANTE: si la conversación se corta antes del cierre (no por culpa del consultor, sino porque se acabó), no penalices precio_correcto como si fuera un error grave; nótalo en "fallos".
+Devuelve el JSON en UNA sola línea, sin markdown ni triple-backtick, y sin saltos de línea dentro de los textos.`;
 
 async function judgeConversation(transcript, persona) {
   const convo = transcript.map((m) => `${m.who === 'bot' ? 'CONSULTOR' : 'CLIENTE'}: ${m.text}`).join('\n');
   const raw = await chat(JUDGE_MODEL, [
     { role: 'system', content: RUBRIC },
     { role: 'user', content: `PERFIL DEL CLIENTE: ${persona.label} — ${persona.brief}\n\nCONVERSACIÓN:\n${convo}` },
-  ], { max_tokens: 700, temperature: 0 });
-  const m = raw.match(/\{[\s\S]*\}/);
-  try { return JSON.parse(m ? m[0] : raw); } catch { return { score: null, pass: null, fallos: 'No se pudo parsear el juicio', _raw: raw.slice(0, 400) }; }
+  ], { max_tokens: 1200, temperature: 0 });
+  const cleaned = raw.replace(/```json/gi, '').replace(/```/g, '');
+  const m = cleaned.match(/\{[\s\S]*\}/);
+  const candidate = (m ? m[0] : cleaned).replace(/,\s*(\}|\])/g, '$1'); // quita comas colgantes
+  try { return JSON.parse(candidate); } catch { return { score: null, pass: null, fallos: 'No se pudo parsear el juicio (sube JUDGE_MODEL a un modelo más fuerte)', _raw: raw.slice(0, 500) }; }
 }
 
 // ---------- 5) Main ----------
