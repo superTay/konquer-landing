@@ -35,7 +35,9 @@ const contador = (reportCopy as any).contador_vivo;
     hidden
   >
     <header class="kc-header">
-      <span class="kc-avatar" aria-hidden="true">{bot.avatar_iniciales}</span>
+      <span class="kc-avatar" aria-hidden="true">
+        {bot.avatar_foto ? <img class="kc-avatar-img" src={bot.avatar_foto} alt="" /> : bot.avatar_iniciales}
+      </span>
       <span class="kc-headtext">
         <span id="kc-title" class="kc-title">{bot.nombre}</span>
         <span class="kc-subtitle">{bot.subtitulo}</span>
@@ -173,11 +175,13 @@ const contador = (reportCopy as any).contador_vivo;
     width: 40px; height: 40px;
     display: grid; place-items: center;
     border-radius: 9999px;
+    overflow: hidden;
     background: rgba(255, 255, 255, 0.18);
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
   }
+  .kc-avatar-img { width: 100%; height: 100%; object-fit: cover; }
   .kc-headtext { display: flex; flex-direction: column; line-height: 1.2; flex: 1; min-width: 0; }
   .kc-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.02rem; }
   .kc-subtitle { font-size: 0.78rem; opacity: 0.85; }
