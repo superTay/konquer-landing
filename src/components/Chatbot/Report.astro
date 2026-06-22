@@ -43,6 +43,22 @@ const calc = (savingsCfg as any).microcopy_calculo;
       <p id="kr-estimado" class="kr-pie kr-estimado" hidden>Algún dato lo hemos puesto de media del sector. Ajústalo abajo y verás tu número exacto.</p>
     </section>
 
+    <!-- Lo que podrías facturar de más -->
+    <section class="kr-sec kr-ganas">
+      <h3 class="kr-h3">{S.ganas.titulo}</h3>
+      <div class="kr-bignums">
+        <div class="kr-num">
+          <strong id="kr-ganas-mes" class="kr-num-val">0&nbsp;€</strong>
+          <span class="kr-num-label">{S.ganas.mes_label}</span>
+        </div>
+        <div class="kr-num kr-num-orange">
+          <strong id="kr-ganas-anio" class="kr-num-val">0&nbsp;€</strong>
+          <span class="kr-num-label">{S.ganas.anio_label}</span>
+        </div>
+      </div>
+      <p class="kr-pie">{S.ganas.pie}</p>
+    </section>
+
     <!-- Quick wins -->
     <section class="kr-sec">
       <h3 class="kr-h3">{S.quick_wins.titulo}</h3>

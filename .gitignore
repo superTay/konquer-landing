@@ -1,5 +1,8 @@
 # build output
 dist/
+
+# test harness output (transcripciones y notas de cada ronda)
+scripts/test-output/
 # generated types
 .astro/
 

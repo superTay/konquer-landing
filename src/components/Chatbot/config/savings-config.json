@@ -6,7 +6,7 @@
     "pct_recuperable": { "min": 0.6, "max": 0.7, "default": 0.65 },
     "cap_horas_mes": 30,
     "coste_servicio_mes": 97,
-    "setup_servicio": 500
+    "setup_servicio": 490
   },
   "rangos_sector": {
     "h_admin_semana": { "min": 6, "max": 10, "medio": 8 },
@@ -41,6 +41,24 @@
     "disclaimer": "No son promesas. Son estimaciones con tus números y medias del sector reformas. Tú juegas con las cifras y lo ves.",
     "paso_horas": "Las horas de papeleo al mes que se queda la app (entre el 60% y el 70%, no todo).",
     "paso_dinero": "Esas horas, a lo que vale tu hora.",
-    "paso_neto": "Menos los 97€ al mes de Konker."
+    "paso_neto": "Menos los 97€ al mes de KonquerAI."
+  },
+  "oportunidad_facturacion": {
+    "$nota": "Estimación HONESTA del upside de ingresos. No inventa cifras: usa el ticket del propio lead. Por ir más rápido (presupuesto al instante desde la obra), cierra de forma conservadora 1 presupuesto más al mes.",
+    "presupuestos_extra_mes": 1,
+    "ticket_medio_sector": {
+      "pintor":              1000,
+      "albañil":             1500,
+      "fontanero":           800,
+      "electricista":        1000,
+      "climatizacion":       2000,
+      "reformas_integrales": 4000,
+      "default":             1200
+    },
+    "formula": {
+      "extra_mes_eur": "presupuestos_extra_mes * ticket_medio",
+      "extra_anio_eur": "extra_mes_eur * 12"
+    },
+    "framing": "No es promesa. Es lo que entra si, por contestar el primero, cierras solo un presupuesto más al mes a tu ticket medio."
   }
 }

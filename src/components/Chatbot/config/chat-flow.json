@@ -1,95 +1,32 @@
 {
-  "$schema_note": "Guion de las 9 preguntas. El LLM las conduce en orden, UNA por turno, conversando natural. Para clonar a otro sector, reescribe las preguntas y su 'campo' destino.",
-  "version": 1,
+  "$schema_note": "Guion del consultor (método Consultor Hacker). El LLM lo conduce conversando, una idea por turno, NO como formulario. La lógica fina vive en system-prompt.ts; aquí queda el mapa de bloques y la primera pregunta (la usa el saludo). Para clonar a otro sector, reescribe los bloques y la primera pregunta.",
+  "version": 2,
+  "metodo": "consultor-hacker",
   "una_pregunta_por_turno": true,
   "repreguntar_si_vago": 1,
   "contador_ahorro": {
-    "activar_tras_pregunta": 7,
-    "nota": "Tras P7 ya tenemos horas/semana y €/hora: el contador de ahorro empieza a subir en pantalla."
+    "activar_tras": "los dos números de tiempo (horas/semana y €/hora) del bloque problema",
+    "nota": "El contador de lo que pierde empieza a subir en cuanto hay h_admin_semana y coste_hora."
   },
+  "bloques": [
+    { "paso": 0, "id": "marco", "objetivo": "Encuadrar y conseguir el sí. Posicionarse como consultor, no vendedor." },
+    { "paso": 1, "id": "situacion", "objetivo": "Contexto rápido + filtro de descalificación.", "saca": ["nombre", "oficio", "equipo", "herramientas"] },
+    { "paso": 2, "id": "problema", "objetivo": "Crear tensión: marrón nº1, impacto, números y oportunidad.", "saca": ["dolor_principal", "tarea_tiempo", "h_admin_semana", "coste_hora", "presupuestos_mes", "tasa_cierre", "ticket_medio"] },
+    { "paso": 3, "id": "solucion", "objetivo": "Intentos previos + ancla (equipo de asistentes vs secretaria) + norte.", "saca": ["intento_previo", "barrera_contratar", "norte"] },
+    { "paso": 4, "id": "email", "objetivo": "Captar el email como puerta del informe.", "saca": ["email"] },
+    { "paso": 5, "id": "presentacion", "objetivo": "Informe + presentación anclada (3 pilares, el del dolor nº1 primero)." },
+    { "paso": 6, "id": "compromiso", "objetivo": "Temp check + frame de compromiso.", "saca": ["compromiso"] },
+    { "paso": 7, "id": "cierre", "objetivo": "Precio, prueba de 15 días o llamada, y manejo de objeciones." }
+  ],
   "preguntas": [
     {
       "n": 1,
       "id": "nombre",
       "campo": "nombre",
       "tipo": "texto",
-      "proposito": "Personalizar todo el resto de la conversación y el informe.",
-      "pregunta": "Antes de nada, ¿cómo te llamas?",
+      "proposito": "Primera pregunta del bot (la usa el saludo). Personaliza todo el resto.",
+      "pregunta": "Para empezar, ¿cómo te llamas?",
       "repregunta": "Solo tu nombre, para tratarte como toca."
-    },
-    {
-      "n": 2,
-      "id": "oficio",
-      "campo": "oficio",
-      "tipo": "texto",
-      "proposito": "Oficio para usar ejemplos y plantillas concretas del gremio.",
-      "pregunta": "¿Y qué eres tú? Pintor, albañil, fontanero, electricista... ¿o llevas reformas completas?",
-      "repregunta": "Dime tu oficio principal, el que más curras."
-    },
-    {
-      "n": 3,
-      "id": "equipo",
-      "campo": "equipo",
-      "tipo": "texto",
-      "proposito": "Tamaño (0-7) para dimensionar el dolor administrativo.",
-      "pregunta": "¿Trabajas solo o tienes gente contigo? Si tienes, ¿cuántos?",
-      "repregunta": "Solo para hacerme una idea: ¿vas por libre o sois unos cuantos?"
-    },
-    {
-      "n": 4,
-      "id": "herramientas",
-      "campo": "herramientas",
-      "tipo": "texto",
-      "proposito": "Detectar con qué se apaña ahora para elegir el ángulo de ataque.",
-      "pregunta": "Para los presupuestos y las facturas, ¿con qué te apañas ahora? ¿La hoja de cálculo, papel, algún programa...?",
-      "repregunta": "¿A mano, en el ordenador, en el móvil? Lo que sea que uses hoy."
-    },
-    {
-      "n": 5,
-      "id": "canal_clientes",
-      "campo": "canal_clientes",
-      "tipo": "texto",
-      "proposito": "Contexto comercial: por dónde le entra el trabajo.",
-      "pregunta": "¿Por dónde te entran los clientes? Boca a boca, WhatsApp, redes...",
-      "repregunta": "Más o menos, ¿de dónde te llega la mayoría del trabajo?"
-    },
-    {
-      "n": 6,
-      "id": "tarea_tiempo",
-      "campo": "tarea_tiempo",
-      "tipo": "texto",
-      "proposito": "Cualificar en qué se le va el tiempo que no es obra.",
-      "pregunta": "De toda la semana, ¿en qué se te va el tiempo que no es estar en obra?",
-      "repregunta": "Lo que más te coma: presupuestos, facturas, llamadas, ir a la gestoría..."
-    },
-    {
-      "n": 7,
-      "id": "horas_y_coste",
-      "campo": ["h_admin_semana", "coste_hora"],
-      "tipo": "numero_doble",
-      "proposito": "Inputs duros de la fórmula: horas/semana de papeleo y lo que vale su hora.",
-      "pregunta": "Dos cuentas rápidas y te enseño lo que te está costando. ¿Cuántas horas a la semana dirías que te comen los papeles? Y si tuvieras que ponerte precio por hora, ¿cuánto cobrarías?",
-      "repregunta": "Un número aproximado vale: horas a la semana con papeleo, y cuánto vale tu hora de trabajo.",
-      "rango_si_falta": "Si no lo sabe, usa el rango medio del sector y dilo claro."
-    },
-    {
-      "n": 8,
-      "id": "dolor_principal",
-      "campo": "dolor_principal",
-      "tipo": "texto",
-      "proposito": "Dolor #1 para saber qué pilar de Konker enfatizar en el informe.",
-      "pregunta": "Si pudieras quitarte UN marrón mañana, ¿cuál? Los presupuestos, perseguir los cobros, el IVA, no saber si ganas en cada obra...",
-      "repregunta": "El que más te quema, el que dices 'esto no lo aguanto más'."
-    },
-    {
-      "n": 9,
-      "id": "email",
-      "campo": "email",
-      "tipo": "email",
-      "proposito": "Captar el lead al final, cuando ya hay valor entregado.",
-      "pregunta": "Te tengo el informe listo. ¿A qué correo te lo dejo para que lo tengas guardado?",
-      "repregunta": "Un correo donde lo mires, y te lo mando ahora mismo.",
-      "consentimiento": true
     }
   ]
 }

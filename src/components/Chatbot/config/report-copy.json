@@ -15,6 +15,12 @@
       "dinero_label": "al mes, en tu tiempo",
       "pie": "De media, según tus números y el sector. No es una promesa, es una cuenta."
     },
+    "ganas": {
+      "titulo": "Lo que podrías facturar de más",
+      "mes_label": "al mes, cerrando un presupuesto más",
+      "anio_label": "al año",
+      "pie": "No es promesa. Es lo que entra si, por contestar el primero, cierras solo un presupuesto más al mes a tu ticket medio."
+    },
     "quick_wins": {
       "titulo": "Lo que te puedes quitar ya",
       "columnas": ["El marrón", "Cómo se resuelve"]
@@ -36,7 +42,7 @@
     "antes_despues": {
       "titulo": "Antes y después",
       "antes_label": "Hoy",
-      "despues_label": "Con Konker",
+      "despues_label": "Con KonquerAI",
       "antes": [
         "Presupuestos el domingo por la noche.",
         "Facturas perdidas en la furgoneta.",
@@ -59,14 +65,14 @@
     },
     "pdf": {
       "boton": "Descargar el informe en PDF",
-      "nombre_archivo": "informe-konker-{nombre}.pdf"
+      "nombre_archivo": "informe-konquerai-{nombre}.pdf"
     }
   },
   "quick_wins_catalogo": {
     "$nota": "Mapea el dolor #1 (y otros mencionados) a una solución en cristiano. El LLM elige los 3-4 más relevantes según la conversación.",
     "presupuestos": {
       "problema": "Tardas en sacar presupuestos y pierdes trabajos.",
-      "solucion": "Le hablas a la app como se lo cuentas al cliente y te monta el presupuesto en 5 minutos, desde la obra.",
+      "solucion": "Le hablas a la app como se lo cuentas al cliente y te monta el presupuesto en 5 minutos, desde la obra. Y la factura sale del presupuesto aceptado con un botón, lista para Verifactu, y la mandas por WhatsApp.",
       "pilar": "Hablas, no escribes"
     },
     "facturas_papeleo": {
@@ -81,7 +87,7 @@
     },
     "iva_hacienda": {
       "problema": "El IVA y lo de Hacienda te dan miedo y te pillan por sorpresa.",
-      "solucion": "La app calcula el IVA y te avisa cuándo pagar. El resumen del trimestre, en un clic para tu gestoría.",
+      "solucion": "La app calcula el IVA y te avisa cuándo pagar. El resumen del trimestre, en un clic para tu gestoría. Y queda lista para Verifactu, sin que tú hagas nada.",
       "pilar": "Lo de Hacienda lo lleva la app"
     },
     "rentabilidad": {

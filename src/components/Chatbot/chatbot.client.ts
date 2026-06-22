@@ -10,6 +10,9 @@ type Msg = { role: Role; content: string };
 type Collected = {
   nombre?: string; oficio?: string; equipo?: string; herramientas?: string;
   canal_clientes?: string; tarea_tiempo?: string; dolor_principal?: string;
+  presupuestos_mes?: number | null; tasa_cierre?: number | null; ticket_medio?: number | null;
+  intento_previo?: string; barrera_contratar?: string; norte?: string;
+  cualifica?: boolean; motivo_descarte?: string; compromiso?: boolean | null;
   email?: string; h_admin_semana?: number | null; coste_hora?: number | null;
   done?: boolean;
 };
@@ -19,7 +22,7 @@ const reduceMotion = () =>
 const isMobile = () => window.matchMedia('(max-width: 640px)').matches;
 
 const GREETING =
-  'Hola. Soy tu consultor de obra. En un par de minutos te enseño, con tus números, lo que te está costando el papeleo. ' +
+  'Hola. Soy tu consultor de obra. Te hago unas preguntas rápidas y te digo, con tus números, qué te está costando el papeleo. Y si esto te encaja o no, te lo diré claro. ' +
   flow.preguntas[0].pregunta;
 
 // Consentimiento del chat: hasta que el usuario lo acepta no se manda nada a los

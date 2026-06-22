@@ -18,7 +18,23 @@ export type Savings = {
   usados: { h_admin_semana: number; coste_hora: number; estimado: boolean };
 };
 
+export type OportunidadInput = {
+  presupuestos_mes?: number | null;
+  tasa_cierre?: number | null;   // contexto/cualificación; la estimación usa el +1 conservador
+  ticket_medio?: number | null;
+  oficio?: string | null;
+};
+
+export type Oportunidad = {
+  presupuestosExtraMes: number;
+  ticketUsado: number;
+  extraMes: number;
+  extraAnio: number;
+  estimado: boolean;
+};
+
 const C = cfg.constantes;
+const OP = cfg.oportunidad_facturacion;
 
 function normalizaOficio(oficio?: string | null): string {
   if (!oficio) return 'default';
@@ -39,6 +55,12 @@ export function costeHoraSugerido(oficio?: string | null): number {
   const key = normalizaOficio(oficio);
   const rangos = cfg.rangos_sector.coste_hora_por_oficio as Record<string, { medio: number }>;
   return (rangos[key] ?? rangos.default).medio;
+}
+
+export function ticketMedioSugerido(oficio?: string | null): number {
+  const key = normalizaOficio(oficio);
+  const t = OP.ticket_medio_sector as Record<string, number>;
+  return t[key] ?? t.default;
 }
 
 export function computeSavings(input: SavingsInput): Savings {
@@ -75,6 +97,29 @@ export function computeSavings(input: SavingsInput): Savings {
     proyeccion3yHoras,
     usados: { h_admin_semana: round1(h), coste_hora: costeR, estimado },
   };
+}
+
+// Estimación HONESTA del upside de ingresos: por ir más rápido cierra ~1 presupuesto más al
+// mes, a su ticket medio. No inventa: si no da el ticket, usa la media conservadora del sector.
+export function computeOportunidad(input: OportunidadInput): Oportunidad {
+  let estimado = false;
+
+  let ticket = input.ticket_medio;
+  if (ticket == null || !Number.isFinite(ticket) || ticket <= 0) {
+    ticket = ticketMedioSugerido(input.oficio);
+    estimado = true;
+  }
+  const ticketUsado = Math.round(ticket);
+
+  // Conservador: 1 presupuesto más al mes (nunca más de los que ya hace).
+  let extra = OP.presupuestos_extra_mes;
+  const pm = input.presupuestos_mes;
+  if (pm != null && Number.isFinite(pm) && pm > 0) extra = Math.min(extra, pm);
+
+  const extraMes = Math.round(extra * ticketUsado);
+  const extraAnio = extraMes * 12;
+
+  return { presupuestosExtraMes: extra, ticketUsado, extraMes, extraAnio, estimado };
 }
 
 // Valor "perdido este año" para el contador en vivo (meses transcurridos del año).
