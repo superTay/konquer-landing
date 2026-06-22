@@ -1,9 +1,9 @@
 {
   "$schema_note": "Identidad visual y de voz del bot. Para clonar a otro cliente, edita SOLO este archivo (colores, nombre, voz).",
-  "cliente": "Konker",
+  "cliente": "KonquerAI",
   "bot": {
     "nombre": "Tu consultor de Obra",
-    "subtitulo": "Consultor de Konker",
+    "subtitulo": "Consultor de KonquerAI",
     "saludo_burbuja": "¿Echamos cuentas de lo que te roba el papeleo?",
     "avatar_iniciales": "TC"
   },
@@ -32,9 +32,9 @@
     "frases_cortas_max_palabras": 20,
     "test_mental": "¿Lo entendería un pintor de 55 años en 5 segundos?"
   },
-  "marcas_permitidas": ["WhatsApp", "Instagram", "Facebook", "Konker"],
+  "marcas_permitidas": ["WhatsApp", "Instagram", "Facebook", "KonquerAI"],
   "legal": {
-    "consentimiento_email": "Al dejarme tu correo, aceptas que Konker guarde tus datos para mandarte el informe y contactarte. Nada de spam.",
+    "consentimiento_email": "Al dejarme tu correo, aceptas que KonquerAI guarde tus datos para mandarte el informe y contactarte. Nada de spam.",
     "enlace_privacidad": "/legal/privacidad",
     "enlace_cookies": "/legal/cookies",
     "aviso_chat": "Antes de empezar: lo que me cuentes aquí, por escrito o por voz, lo usamos para prepararte un informe con tus números. Para eso lo procesan proveedores externos y guardamos la conversación. Puedes verlo en la política de privacidad. ¿Seguimos?",

@@ -24,6 +24,10 @@ type LeadBody = {
   canal_clientes?: string; tarea_tiempo?: string; dolor_principal?: string;
   email?: string; h_admin_semana?: number | string; coste_hora?: number | string;
   ahorro_calculado?: number | string;
+  // Cualificación CH (van al aviso por email; persistirlos en Supabase necesitaría
+  // columnas nuevas en la tabla leads -> fase 2).
+  presupuestos_mes?: number | string; tasa_cierre?: number | string; ticket_medio?: number | string;
+  compromiso?: boolean; cualifica?: boolean; motivo_descarte?: string;
   mensajes?: unknown; informe?: unknown;
   started_at?: string; ended_at?: string;
 };
@@ -125,6 +129,9 @@ export default async function handler(req: Request): Promise<Response> {
           horas_papeleo_semana: lead.h_admin_semana,
           coste_hora: lead.coste_hora,
           ahorro_estimado_mes: lead.ahorro_calculado,
+          presupuestos_mes: num(body.presupuestos_mes),
+          ticket_medio: num(body.ticket_medio),
+          dispuesto_a_cambiar: body.compromiso === true ? 'sí' : '—',
         }),
       }).catch((e) => console.error('Web3Forms error', e));
     }

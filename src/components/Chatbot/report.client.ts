@@ -3,7 +3,7 @@
 import brand from './config/brand.json';
 import reportCopy from './config/report-copy.json';
 import savingsCfg from './config/savings-config.json';
-import { computeSavings, eur, type Savings } from './savings';
+import { computeSavings, computeOportunidad, eur, type Savings } from './savings';
 
 // Cal.com instala cookies de terceros: no lo cargamos hasta que el usuario lo acepta.
 const CAL_CONSENT_KEY = 'konker_consent_cal';
@@ -20,6 +20,7 @@ const CAL_LINK = ((import.meta.env.PUBLIC_CALCOM_URL as string | undefined) || '
 type Collected = {
   nombre?: string; oficio?: string; equipo?: string; herramientas?: string;
   canal_clientes?: string; tarea_tiempo?: string; dolor_principal?: string;
+  presupuestos_mes?: number | null; tasa_cierre?: number | null; ticket_medio?: number | null;
   email?: string; h_admin_semana?: number | null; coste_hora?: number | null;
 };
 
@@ -33,6 +34,8 @@ function initReport() {
   const situacion = $<HTMLUListElement>('kr-situacion');
   const horasEl = $('kr-horas');
   const dineroEl = $('kr-dinero');
+  const ganasMes = $('kr-ganas-mes');
+  const ganasAnio = $('kr-ganas-anio');
   const quickwins = $<HTMLTableSectionElement>('kr-quickwins');
   const inCoste = $<HTMLInputElement>('kr-in-coste');
   const inHoras = $<HTMLInputElement>('kr-in-horas');
@@ -103,6 +106,16 @@ function initReport() {
 
     // Antes/después (estáticos en el HTML, ya renderizados por Astro)
     updateNumbers(s0);
+
+    // Oportunidad de facturar más (no depende de la calculadora de tiempo)
+    const opp = computeOportunidad({
+      presupuestos_mes: collected.presupuestos_mes,
+      ticket_medio: collected.ticket_medio,
+      oficio: collected.oficio,
+    });
+    ganasMes.textContent = eur(opp.extraMes);
+    ganasAnio.textContent = eur(opp.extraAnio);
+
     calLinkA.textContent = 'Agendar la llamada';
     if (CAL_LINK) calLinkA.href = `https://cal.com/${CAL_LINK}`;
     else calLinkA.href = '#';

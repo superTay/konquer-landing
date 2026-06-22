@@ -15,6 +15,12 @@
       "dinero_label": "al mes, en tu tiempo",
       "pie": "De media, según tus números y el sector. No es una promesa, es una cuenta."
     },
+    "ganas": {
+      "titulo": "Lo que podrías facturar de más",
+      "mes_label": "al mes, cerrando un presupuesto más",
+      "anio_label": "al año",
+      "pie": "No es promesa. Es lo que entra si, por contestar el primero, cierras solo un presupuesto más al mes a tu ticket medio."
+    },
     "quick_wins": {
       "titulo": "Lo que te puedes quitar ya",
       "columnas": ["El marrón", "Cómo se resuelve"]
@@ -36,7 +42,7 @@
     "antes_despues": {
       "titulo": "Antes y después",
       "antes_label": "Hoy",
-      "despues_label": "Con Konker",
+      "despues_label": "Con KonquerAI",
       "antes": [
         "Presupuestos el domingo por la noche.",
         "Facturas perdidas en la furgoneta.",
@@ -59,7 +65,7 @@
     },
     "pdf": {
       "boton": "Descargar el informe en PDF",
-      "nombre_archivo": "informe-konker-{nombre}.pdf"
+      "nombre_archivo": "informe-konquerai-{nombre}.pdf"
     }
   },
   "quick_wins_catalogo": {

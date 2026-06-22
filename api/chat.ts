@@ -49,7 +49,7 @@ export default async function handler(req: Request): Promise<Response> {
         Authorization: `Bearer ${key}`,
         'Content-Type': 'application/json',
         'HTTP-Referer': 'https://konquerai.com',
-        'X-Title': 'Konker - Tu consultor de Obra',
+        'X-Title': 'KonquerAI - Tu consultor de Obra',
       },
       body: JSON.stringify({
         model: MODEL,
