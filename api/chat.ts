@@ -5,7 +5,7 @@ import { checkOrigin } from './_lib/security';
 
 export const config = { runtime: 'edge' };
 
-const MODEL = process.env.OPENROUTER_MODEL || 'anthropic/claude-3.5-haiku';
+const MODEL = process.env.OPENROUTER_MODEL || 'anthropic/claude-haiku-4.5';
 const MAX_HISTORY = 24;      // turnos máximos que reenviamos (control de coste)
 const MAX_CHARS = 2000;      // tope por mensaje del usuario (anti-abuso)
 
