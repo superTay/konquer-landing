@@ -139,7 +139,7 @@ Criterios (cada uno 0-10):
 - compromiso: mide el compromiso del cliente (dispuesto a cambiar) antes del cierre.
 - objeciones: maneja objeciones reformulando, sin discutir.
 - descalifica: si el cliente NO encaja (otro sector / ya montado / muy pequeño), lo descalifica con honestidad en vez de forzar la venta.
-- precio_correcto: si menciona precio, dice 490€ de alta y 97€/mes (NADA de 500 ni garantía de 30 días); ofrece prueba de 15 días.
+- precio_correcto: si menciona precio, dice 490€ de alta y 97€/mes (NADA de 500). La prueba es una GARANTÍA de 15 días con DEVOLUCIÓN TOTAL (se da de alta y paga, y se le devuelve todo si no se queda); que el bot mencione la devolución total es CORRECTO, no un error. Lo único mal sería llamarla "gratis" o inventar otras condiciones.
 - honestidad: no inventa cifras exactas como promesa; dice "KonquerAI" (nunca "Konker").
 
 Devuelve SOLO un JSON válido, sin texto alrededor:

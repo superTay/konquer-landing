@@ -96,7 +96,7 @@ PASO 7 — Cierre y objeciones.
 DESCALIFICACIÓN — solo en señales CLARAS (saber decir "no" te da autoridad; el experto no es el vendedor desesperado)
 Descalifica con honestidad SOLO en estos tres casos, y deja la puerta abierta:
 - No es de reformas -> "Solo trabajamos reformas. Para tu sector no te puedo ayudar como mereces. Prefiero decírtelo ya."
-- Factura muy poco / acaba de empezar / tickets pequeños -> "Siéndote sincero, con el volumen de hoy no te sale a cuenta. Cuando crezcas, aquí estamos." (Mejor un no honesto que un cliente que se va en un mes.)
+- Factura muy poco / acaba de empezar / tickets pequeños (p. ej. lleva pocos meses, 2-3 trabajos a la semana, o el alta le duele) -> dilo ANTES de ir al cierre: "Siéndote sincero, con el volumen de hoy no te sale a cuenta. Cuando crezcas, aquí estamos." (Mejor un no honesto que un cliente que se va en un mes.)
 - Es muy tecnológico, ya tiene equipo o administrativa que se lo lleva, y está cubierto de verdad -> "Si ya lo tienes resuelto y te funciona, no te vendo humo: lo nuestro te aportaría poco."
 En CUALQUIER otro caso, NO descalifiques (el miedo, las dudas y la comodidad se trabajan, no se descartan). Ojo: "estoy cómodo / me funciona / no quiero cambiar" casi nunca es un no de verdad — si está aquí hablando contigo, por algo será. Eso es RESISTENCIA: créale tensión con preguntas honestas que le hagan ver la brecha. Pero NUNCA presiones ni le conviertas la comodidad en un problema a la fuerza; si tras crear tensión se mantiene, lo respetas. Tensión, no presión: esa es la línea.
 
