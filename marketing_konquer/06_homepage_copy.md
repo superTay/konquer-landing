@@ -55,7 +55,7 @@
 > (texto con flecha, en gris)
 
 **Trust line debajo:**
-> Onboarding humano · Garantía de 30 días · Sin permanencia
+> Puesta en marcha guiada · Garantía de 30 días · Sin permanencia
 
 **Visual hero:** `[IMG: split screen — a la izquierda un autónomo en obra hablando al móvil; a la derecha el presupuesto generándose en pantalla del móvil con su logo]`
 
@@ -80,7 +80,7 @@
 > Habla con nosotros →
 
 **Trust line:**
-> Recupera hasta 30 horas al mes · Configurado a mano por nuestro equipo
+> Recupera hasta 30 horas al mes · Puesta en marcha guiada paso a paso
 
 ---
 
@@ -293,9 +293,9 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 
 ---
 
-### Tarjeta 1 — Implantación personalizada
+### Tarjeta 1 — Implantación paso a paso
 
-> Una persona real te configura la app, te enseña a usarla y te acompaña las primeras semanas.
+> Te guiamos para configurar la app, te enseñamos a usarla y te acompañamos las primeras semanas.
 
 ---
 
@@ -385,7 +385,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 > ## Estamos empezando. Por eso somos cercanos.
 
 **Cuerpo:**
-> KonquerAI está en fase Beta Fundadores. Eso significa que cada cliente nuevo entra con configuración a mano, soporte directo y voz en lo que viene.
+> KonquerAI está en fase Beta Fundadores. Eso significa que cada cliente nuevo entra con puesta en marcha guiada paso a paso, soporte directo y voz en lo que viene.
 >
 > Eres uno de los primeros. Y se nota.
 
@@ -409,7 +409,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 >
 > Incluye:
 > · App completa (web + móvil)
-> · Onboarding 1:1 con una persona real
+> · Puesta en marcha guiada paso a paso
 > · Configuración adaptada a tu oficio
 > · Soporte cercano continuo
 > · Todos los bonus
@@ -436,7 +436,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 > ## Garantía de 30 días.
 
 **Cuerpo:**
-> Si completas el onboarding y aplicas el sistema durante 30 días, garantizamos que ahorrarás tiempo administrativo y ganarás más control sobre tu negocio.
+> Si completas la puesta en marcha y aplicas el sistema durante 30 días, garantizamos que ahorrarás tiempo administrativo y ganarás más control sobre tu negocio.
 >
 > Si no es así, seguimos trabajando contigo sin coste hasta ayudarte a conseguirlo.
 >
@@ -480,7 +480,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 
 **¿Necesito saber de informática?**
 
-> No. Una persona de nuestro equipo te configura la app, te llama y te enseña en una hora. Si te quedas con alguna duda, nos llamas tú a nosotros. Por eso son plazas limitadas: para que esto sea de verdad.
+> No. Te guiamos paso a paso: una guía y unos asistentes que te acompañan en pantalla mientras configuras la app. En unos 15 minutos estás funcionando. Y si te atascas con algo, nos escribes y te contestamos enseguida.
 
 ---
 
@@ -510,13 +510,13 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 
 **¿Hay versión gratuita?**
 
-> No. Lo que ofrecemos incluye configuración a mano y soporte humano real. Eso tiene un coste. Si buscas algo gratis, hay alternativas en el mercado, pero ninguna te dará lo que damos nosotros.
+> No. Lo que ofrecemos incluye la puesta en marcha guiada paso a paso, los asistentes que te acompañan y nuestro soporte cuando lo necesites. Eso tiene un coste. Si buscas algo gratis, hay alternativas en el mercado, pero ninguna te dará lo que damos nosotros.
 
 ---
 
-**¿Cómo es el onboarding?**
+**¿Cómo es la puesta en marcha?**
 
-> Una llamada de 60 minutos con una persona real. Te configuramos la app contigo, te enseñamos a hacer tu primer presupuesto, te metemos tus datos fiscales. Sales de la llamada listo para facturar.
+> Guiada y paso a paso. Sigues cuatro pasos sencillos —tus datos, tu logo, el reenvío de facturas y tus tarifas— con una guía y unos asistentes que te acompañan en pantalla. En unos 15 minutos haces tu primer presupuesto. Si te surge cualquier duda, nos escribes y te contestamos enseguida.
 
 ---
 
@@ -546,7 +546,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 > ## Recupera el domingo.
 
 **Cuerpo:**
-> Empieza con tu Oficina IA. Te configuramos todo. Te acompañamos. Sin permanencia. Garantía de 30 días.
+> Empieza con tu Oficina IA. Te guiamos paso a paso para dejarlo todo listo y te quitamos el papeleo de encima. Sin permanencia. Garantía de 30 días.
 
 **CTA principal (botón blanco grande):**
 > [ EMPIEZA AHORA — 500€ + 97€/mes ]

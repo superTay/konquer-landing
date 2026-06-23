@@ -544,7 +544,7 @@ Estos son los primeros 10 artículos que hay que publicar, en orden recomendado.
       "name": "¿Necesito saber de informática?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Una persona de nuestro equipo te configura la app..."
+        "text": "No. Te guiamos paso a paso: una guía y unos asistentes que te acompañan en pantalla mientras configuras la app. En unos 15 minutos estás funcionando..."
       }
     }
     /* ... */

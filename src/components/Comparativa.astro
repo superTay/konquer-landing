@@ -1,87 +1,121 @@
 ---
-/** Comparativa.astro — Semana sin vs con KonquerAI. Copy literal de 06. */
+/** Comparativa.astro — Semana sin vs con KonquerAI. Copy literal de 06.
+ *  Punto 8: rediseño en tarjetas por día (mejor en móvil que la tabla anterior). */
 const rows = [
   { sin: "Lunes: cliente nuevo pide presupuesto. Le dices «esta tarde te lo paso».", con: "Lunes: cliente nuevo pide presupuesto. Lo haces en 5 minutos desde la obra y se lo envías antes de salir." },
   { sin: "Martes: doce facturas sin abrir en el correo. Cada una, siete minutos: descargar, mirar el IVA, guardarla. Las dejas para «después».", con: "Martes: las doce ya están en la app, ordenadas por proveedor. Las revisas en un minuto." },
-  { sin: "Miércoles: la gestoría te pide los gastos del mes. Buscas en 6 carpetas distintas.", con: "Miércoles: tu gestoría tiene acceso de lectura. No te pide nada." },
+  { sin: "Miércoles: la gestoría te pide los gastos del mes. Buscas en 6 carpetas distintas.", con: "Miércoles: la gestoría te pide los gastos del mes. Los descargas con un clic, ya ordenados." },
   { sin: "Jueves: terminas una obra. No tienes ni idea de si fue rentable.", con: "Jueves: terminas una obra. La app te dice «1.840 € de margen, semáforo verde»." },
   { sin: "Viernes: cliente te debe 3.400 € desde hace 47 días. Te acabas de acordar.", con: "Viernes: el sistema le mandó recordatorio el día 30. Ya está pagada." },
   { sin: "Domingo, 22:30: cena fría, tres facturas por hacer.", con: "Domingo, 22:30: cena con la familia. La app ya cerró el día." },
 ];
+
+// Separa el día (antes del primer ":" seguido de espacio) del resto.
+// Así "Domingo, 22:30: cena…" → día "Domingo, 22:30", resto "cena…".
+function partir(texto: string): { dia: string; resto: string } {
+  const i = texto.search(/:\s/);
+  if (i === -1) return { dia: "", resto: texto };
+  return { dia: texto.slice(0, i).trim(), resto: texto.slice(i + 1).trim() };
+}
+const dias = rows.map((r) => {
+  const s = partir(r.sin);
+  const c = partir(r.con);
+  return { dia: s.dia, sin: s.resto, con: c.resto };
+});
 ---
 <section class="section-padding bg-mist" id="comparativa">
   <div class="container-narrow">
     <h2 class="comp-h2 reveal">Una semana sin KonquerAI vs una semana con KonquerAI.</h2>
-    <table class="comp-table reveal">
-      <thead>
-        <tr class="comp-header">
-          <th scope="col" class="comp-label comp-label-sin">Sin KonquerAI</th>
-          <th scope="col" class="comp-label comp-label-con">Con KonquerAI</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map(row => (
-          <tr class="comp-row">
-            <td class="comp-cell comp-cell-sin">{row.sin}</td>
-            <td class="comp-cell comp-cell-con">{row.con}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+
+    <div class="comp-days reveal-stagger">
+      {dias.map((d) => (
+        <article class="comp-day reveal">
+          <span class="comp-daypill">{d.dia}</span>
+          <div class="comp-sides">
+            <div class="comp-side comp-side-sin">
+              <span class="comp-side-label">Sin KonquerAI</span>
+              <p>{d.sin}</p>
+            </div>
+            <div class="comp-side comp-side-con">
+              <span class="comp-side-label">Con KonquerAI</span>
+              <p>{d.con}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
   .comp-h2 { text-align: center; margin-bottom: 3rem; }
-  .comp-table {
-    width: 100%;
+
+  .comp-days {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .comp-day {
+    background: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: var(--color-white);
-    border-collapse: separate;
-    border-spacing: 0;
-    table-layout: fixed;
+    padding: 1.5rem;
   }
-  .comp-header {
-    background: var(--color-ink);
-    color: var(--color-white);
-    font-weight: 600;
-    font-size: 0.875rem;
-  }
-  .comp-label {
-    width: 50%;
-    padding: 1rem 1.25rem;
-    text-align: left;
-    font-weight: 600;
-  }
-  .comp-label-con { background: var(--color-teal); }
-  .comp-row { border-top: 1px solid var(--color-border); }
-  .comp-cell {
-    width: 50%;
-    padding: 1rem 1.25rem;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: var(--color-slate);
-    vertical-align: top;
-    border-top: 1px solid var(--color-border);
-  }
-  .comp-cell-con {
+
+  .comp-daypill {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.03em;
+    color: var(--color-teal);
     background: var(--color-teal-light);
-    color: var(--color-ink);
-    font-weight: 500;
+    border-radius: var(--radius-full);
+    padding: 0.3rem 0.85rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .comp-sides {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  @media (min-width: 768px) {
+    .comp-sides { grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: stretch; }
+  }
+
+  .comp-side {
+    border-radius: var(--radius-md);
+    padding: 1rem 1.15rem;
+  }
+
+  .comp-side-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+  }
+
+  .comp-side p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .comp-side-sin { background: var(--color-mist); }
+  .comp-side-sin .comp-side-label { color: var(--color-slate); }
+  .comp-side-sin p { color: var(--color-slate); }
+
+  .comp-side-con {
+    background: var(--color-teal-light);
+    border: 1px solid rgba(0, 209, 178, 0.25);
     transition: background 0.25s ease;
   }
-  .comp-row:hover .comp-cell-con {
-    background: rgba(0, 209, 178, 0.18);
-  }
-  @media (max-width: 767px) {
-    .comp-table, .comp-header, .comp-row, .comp-label, .comp-cell,
-    .comp-table thead, .comp-table tbody {
-      display: block;
-      width: 100%;
-    }
-    .comp-label-sin { border-bottom: 1px solid rgba(255,255,255,0.15); }
-    .comp-cell-sin { border-bottom: 1px solid var(--color-border); }
-  }
+  .comp-side-con .comp-side-label { color: var(--color-teal-dark); }
+  .comp-side-con p { color: var(--color-ink); font-weight: 500; }
+  .comp-day:hover .comp-side-con { background: rgba(0, 209, 178, 0.18); }
 </style>

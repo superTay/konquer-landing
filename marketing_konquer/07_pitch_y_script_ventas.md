@@ -18,7 +18,7 @@ Memoriza al menos el de 10s y el de 30s. Los otros dos puedes adaptarlos.
 
 ### Pitch 30 segundos — primera impresión
 
-> "Ayudamos a autónomos de reformas a recuperar hasta 30 horas al mes y a saber por fin si las obras que hacen les dan dinero o no. Combina IA (la app hace presupuestos cuando le hablas, organiza facturas cuando les haces foto) con acompañamiento humano (una persona te configura todo y te enseña). Lo usan pintores, electricistas, albañiles y fontaneros que están hartos del Excel pero no quieren aprender un software complicado."
+> "Ayudamos a autónomos de reformas a recuperar hasta 30 horas al mes y a saber por fin si las obras que hacen les dan dinero o no. Combina IA (la app hace presupuestos cuando le hablas, organiza facturas cuando les haces foto) con acompañamiento de verdad (te guiamos paso a paso para arrancar y, si te atascas, te responde una persona). Lo usan pintores, electricistas, albañiles y fontaneros que están hartos del Excel pero no quieren aprender un software complicado."
 
 **Cuándo usarlo:** en networking, en un evento, en una primera llamada de presentación.
 
@@ -28,11 +28,11 @@ Memoriza al menos el de 10s y el de 30s. Los otros dos puedes adaptarlos.
 
 > "Antes de nada, una pregunta: ¿cuántos domingos has pasado este año haciendo facturas o presupuestos?
 >
-> Eso es lo que resolvemos. KonquerAI es un sistema híbrido para autónomos de reformas — pintores, albañiles, electricistas, fontaneros. Combina IA y acompañamiento humano.
+> Eso es lo que resolvemos. KonquerAI es un sistema para autónomos de reformas — pintores, albañiles, electricistas, fontaneros. Combina IA y acompañamiento de verdad (guía paso a paso para arrancar y soporte humano cuando lo necesitas).
 >
 > La parte de IA: le hablas a la app y te hace el presupuesto. Le mandas la foto del ticket y queda archivado solo. Te dice obra a obra si ganaste o perdiste.
 >
-> La parte humana: nadie te deja tirado. Una persona real te configura la app, te enseña en una llamada, y te acompaña los primeros meses.
+> El acompañamiento: nadie te deja tirado. Te guiamos paso a paso para configurar la app, con asistentes que te acompañan en pantalla; y si te atascas, te responde una persona de verdad. Te acompañamos los primeros meses.
 >
 > El cliente típico recupera unas 30 horas al mes. Lo que vale la pena no son las 30 horas — es no llegar a casa los domingos con la cabeza llena de facturas pendientes.
 >
@@ -62,7 +62,7 @@ Memoriza al menos el de 10s y el de 30s. Los otros dos puedes adaptarlos.
 >
 > Le imputa el gasto a la obra de Pepe: la app le dice 'la obra de Pepe te dejó 1.840€ de margen, semáforo verde'.
 >
-> Y además, una persona real le configura todo. Le llama. Le enseña. No es 'aquí tienes el login, búscate la vida'. Es 'mañana a las seis te llamo y te lo dejamos listo'."
+> Y además, no le soltamos un login y a buscarse la vida. Le guiamos paso a paso: unos asistentes le acompañan en pantalla mientras lo configura, y en quince minutos está funcionando. Y si se atasca, le responde una persona de verdad."
 
 **[2:15–3:00] El cierre**
 
@@ -164,7 +164,7 @@ La respuesta a esta última suele ser "no, ni idea", "más o menos", "creo que s
 >
 > Y lo más importante, me has dicho que no sabes si la obra de [nombre cliente que mencionó] te dejó dinero. Eso es lo que más nos diferencia. KonquerAI te dice obra a obra, con número exacto, lo que ganaste o perdiste. Imputas los materiales que compraste para esa obra, las horas, los desplazamientos, y la app te dice el margen.
 >
-> Y todo esto lo configuramos nosotros. No tienes que sentarte tú a montarlo. Una persona del equipo — yo o un compañero — te llamamos, te configuramos la app contigo, te enseñamos a hacer tu primer presupuesto en 5 minutos, y te dejamos listo. Si te quedas con cualquier duda en las primeras semanas, nos llamas. No te dejamos tirado."
+> Y arrancar es fácil. No tienes que pelearte tú solo: te guiamos paso a paso, con unos asistentes que te acompañan en pantalla mientras lo configuras. En quince minutos haces tu primer presupuesto. Si te quedas con cualquier duda en las primeras semanas, nos escribes y te respondemos enseguida. No te dejamos tirado."
 
 **Aquí menciona el mecanismo único:**
 
@@ -184,7 +184,7 @@ La respuesta a esta última suele ser "no, ni idea", "más o menos", "creo que s
 >
 > Una: estamos en Beta Fundadores. Los primeros clientes tienen este precio. Cuando lleguemos a un número, sube. Y los que entren ahora se mantienen al precio de entrada. Eres uno de los primeros.
 >
-> Dos: garantía de 30 días. Si haces tu parte, completas el onboarding, usas la app, y a los 30 días no notas que recuperas tiempo, no te dejamos. Seguimos trabajando contigo sin coste adicional hasta que lo notes. No es 'te devuelvo el dinero y a otra cosa'. Es 'me quedo contigo hasta que funcione'.
+> Dos: garantía de 30 días. Si haces tu parte, completas la puesta en marcha, usas la app, y a los 30 días no notas que recuperas tiempo, no te dejamos. Seguimos trabajando contigo sin coste adicional hasta que lo notes. No es 'te devuelvo el dinero y a otra cosa'. Es 'me quedo contigo hasta que funcione'.
 >
 > ¿Cómo lo ves?"
 
@@ -213,10 +213,10 @@ Lista exhaustiva. Cada objeción tiene **respuesta corta** (para llamada en vivo
 ### Objeción 1 — "No soy bueno con la tecnología"
 
 **Respuesta corta:**
-> "Por eso te configuramos la app nosotros. Una llamada de una hora y lo tienes listo. Tú solo le hablas. Hablar sabes, ¿no?"
+> "Por eso te guiamos paso a paso. En unos quince minutos lo tienes funcionando, con asistentes que te acompañan en pantalla. Tú solo le hablas. Hablar sabes, ¿no?"
 
 **Respuesta larga:**
-> "Es la objeción que más oímos. Por eso el producto se diseñó así. Tú no tienes que aprender ningún software. Una persona de nuestro equipo te llama, te configura la app dentro de tu móvil, te enseña en una hora a hacer un presupuesto. A partir de ahí, lo único que tienes que hacer es hablarle. Le dices 'hazme un presupuesto para pintar tres habitaciones', y te lo monta. Lo único que sabes hacer hace 30 años es hablar de tu oficio. La app aprende a entenderte. Tú no aprendes nada nuevo."
+> "Es la objeción que más oímos. Por eso el producto se diseñó así. Tú no tienes que aprender ningún software. Te guiamos paso a paso: unos asistentes te acompañan en pantalla mientras configuras la app en tu móvil, y en un rato haces tu primer presupuesto. Y si te atascas, te responde una persona de verdad. A partir de ahí, lo único que tienes que hacer es hablarle. Le dices 'hazme un presupuesto para pintar tres habitaciones', y te lo monta. Lo único que sabes hacer hace 30 años es hablar de tu oficio. La app aprende a entenderte. Tú no aprendes nada nuevo."
 
 ---
 
@@ -247,10 +247,10 @@ Lista exhaustiva. Cada objeción tiene **respuesta corta** (para llamada en vivo
 ### Objeción 4 — "No tengo tiempo para implementar otra herramienta"
 
 **Respuesta corta:**
-> "Por eso lo implementamos nosotros. Tú dedicas una hora. Nada más."
+> "Por eso te guiamos paso a paso. En quince minutos lo tienes funcionando. Nada más."
 
 **Respuesta larga:**
-> "Exactamente por eso lo hacemos así. La queja típica con los softwares es 'me lo das y me dejas con un manual'. Eso aquí no pasa. La implementación la hace una persona de nuestro equipo: te configura la app contigo en una llamada, te mete tus datos fiscales, te deja las plantillas de tu oficio listas. Tú dedicas una hora. A partir de ahí, todo el tiempo que dedicas a la app es tiempo que estás recuperando, no perdiendo."
+> "Exactamente por eso lo hacemos así. La queja típica con los softwares es 'me lo das y me dejas con un manual'. Eso aquí no pasa. La puesta en marcha es guiada paso a paso: unos asistentes te acompañan en pantalla mientras configuras la app, metes tus datos fiscales y dejas listas las plantillas de tu oficio. En unos quince minutos. Y si te atascas, te responde una persona de verdad. A partir de ahí, todo el tiempo que dedicas a la app es tiempo que estás recuperando, no perdiendo."
 
 ---
 
@@ -302,7 +302,7 @@ Lista exhaustiva. Cada objeción tiene **respuesta corta** (para llamada en vivo
 > "Las versiones gratis te las cobran en tiempo de configuración. Y ninguna te calcula la rentabilidad por obra."
 
 **Respuesta larga:**
-> "Es verdad que hay opciones gratis o más baratas. Mira lo que NO tienen: una persona que te configura todo a mano el primer día, IA generativa para hacer presupuestos hablando, control de rentabilidad por obra, especialización en sector reformas, y acompañamiento humano cuando te atascas. Las gratuitas son tipo Excel pero en la nube: te dan una herramienta y te dejan ahí. Nosotros te damos la herramienta + la implementación + el acompañamiento. Por eso no competimos por precio. Si lo único que necesitas es facturación básica, una gratuita te sirve. Si quieres además saber qué obras te dan dinero, no."
+> "Es verdad que hay opciones gratis o más baratas. Mira lo que NO tienen: una puesta en marcha guiada paso a paso desde el primer día, IA generativa para hacer presupuestos hablando, control de rentabilidad por obra, especialización en sector reformas, y acompañamiento humano cuando te atascas. Las gratuitas son tipo Excel pero en la nube: te dan una herramienta y te dejan ahí. Nosotros te damos la herramienta + la implementación + el acompañamiento. Por eso no competimos por precio. Si lo único que necesitas es facturación básica, una gratuita te sirve. Si quieres además saber qué obras te dan dinero, no."
 
 ---
 
@@ -352,8 +352,8 @@ Usa estas para empujar amablemente sin presionar:
 
 Cuando el cliente está claramente cerca de decir sí:
 
-- "Perfecto. Lo que voy a hacer es enviarte ahora mismo el link de pago. Mientras llega, te pregunto: ¿qué día de esta semana te va bien para la llamada de configuración?"
-- "Vale. Te pongo en cola para el onboarding del jueves. ¿Mañana mismo te paso el contrato y arrancamos?"
+- "Perfecto. Lo que voy a hacer es enviarte ahora mismo el link de pago. Mientras llega, te pregunto: ¿qué día de esta semana te va bien para arrancar la puesta en marcha?"
+- "Vale. Te pongo en cola para arrancar el jueves. ¿Mañana mismo te paso el contrato y arrancamos?"
 - "Excelente. Una pregunta práctica: ¿qué oficio pongo en tu configuración inicial, pintor o reformas integrales?"
 
 ---
@@ -372,7 +372,7 @@ Si el cliente quedó interesado pero no cerró:
 >
 > · Vas a recuperar unas 30 horas al mes en tareas administrativas.
 > · Vas a saber obra a obra cuánto ganas (es lo que más te interesaba).
-> · Te configuramos todo nosotros: tu hora de trabajo es una llamada.
+> · Te guiamos paso a paso: en quince minutos lo tienes funcionando.
 > · 500€ una vez + 97€/mes, sin permanencia, garantía de 30 días.
 >
 > Plaza disponible para esta semana o la siguiente. Si me dices, te bloqueo hueco.

@@ -5,9 +5,9 @@
  *  Los números cuentan al entrar en viewport (JS en Base.astro, gated reduced-motion).
  */
 const cifras = [
-  { n: 30, suffix: "", label: "horas al mes que dejas de perder en papeleo" },
-  { n: 90, suffix: " %", label: "de autónomos no sabe qué obra le da dinero. Tú sí." },
-  { n: 5, suffix: " s", label: "para aprobar una factura de proveedor" },
+  { n: 200, suffix: "", label: "horas al año en papeleo y trámites, de media por autónomo" },
+  { n: 90, suffix: " %", label: "de los autónomos dice que la burocracia no para de crecer" },
+  { n: 5, suffix: " s", label: "lo que tardas en aprobar una factura con KonquerAI" },
 ];
 ---
 <section class="cifras" id="cifras" aria-label="KonquerAI en números">
@@ -21,6 +21,9 @@ const cifras = [
       </div>
     ))}
   </div>
+  <p class="cifras-fuente reveal">
+    Fuente: <a href="https://www.autonomosyemprendedor.es/articulo/info-ata/autonomos-han-invertido-200-horas-3000-euros-tramites-burocraticos-2025-ata/20251219150531047332.html" target="_blank" rel="noopener">ATA, 2025</a> (papeleo y burocracia). El dato de 5&nbsp;s es el tiempo de aprobación de una factura en la app.
+  </p>
 </section>
 
 <style>
@@ -85,5 +88,21 @@ const cifras = [
     line-height: 1.5;
     max-width: 22rem;
     margin-inline: auto;
+  }
+
+  .cifras-fuente {
+    position: relative;
+    z-index: 1;
+    max-width: 44rem;
+    margin: 2.5rem auto 0;
+    padding-inline: 1.5rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+  .cifras-fuente a {
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: underline;
   }
 </style>

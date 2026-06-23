@@ -145,7 +145,7 @@ Lo que el cliente quiere conseguir, pintado lo más vívidamente posible:
 
 Las pruebas y argumentos que hacen creíble que va a funcionar:
 
-- **Onboarding humano**: una persona te configura la app y te enseña. No estás solo el primer día.
+- **Puesta en marcha guiada**: te guiamos paso a paso, con asistentes que te acompañan en pantalla. No estás solo el primer día.
 - **Configuración personalizada por oficio**: plantillas precargadas de pintor, electricista, fontanero, albañil.
 - **Especialización en reformas**: no es genérico, está pensado para tu sector.
 - **Soporte cercano**: una persona te coge el teléfono. No bots.
@@ -216,7 +216,7 @@ Cada pieza debería tener **uno emocional + uno racional**. Ni solo emoción (no
 |-----------|----------|
 | "Recupera el domingo" | "Hasta 30 horas al mes" |
 | "Sabes si ganas o pierdes" | "Margen real por obra con costes imputados" |
-| "No peleas solo" | "Onboarding humano 1:1 y soporte cercano" |
+| "No peleas solo" | "Puesta en marcha guiada y soporte humano cercano" |
 | "Que Hacienda no te pille" | "IVA, IRPF y Verifactu automáticos" |
 | "Tu negocio en serio" | "Sin Excel, sin gestoría sufriendo cada trimestre" |
 

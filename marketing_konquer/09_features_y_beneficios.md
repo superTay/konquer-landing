@@ -588,7 +588,7 @@
 
 ### Diferenciador frente a competidores (Holded, Quipu, Anfix, Billin)
 
-Especialización vertical en construcción + UX brutalmente simple + IA generativa en el core + acompañamiento humano.
+Especialización vertical en construcción + UX brutalmente simple + IA generativa en el core + acompañamiento de verdad (puesta en marcha guiada paso a paso y soporte humano cuando lo necesitas).
 
 ---
 

@@ -1,104 +1,91 @@
 ---
-/** Demo.astro — Demo visual / producto en acción. Capturas reales en filas alternas.
- * Captions LITERALES de 06_homepage_copy.md. */
+/** Demo.astro — Comparativa Web vs Móvil (puntos 4/5/6). Dos paneles enfrentados con
+ *  capturas reales. Web = negocio centralizado; Móvil = el día a día. */
 import { Image } from "astro:assets";
-import demoKpisWeb from "../assets/screenshots/demo-kpis-web.png";
-import demoRentabilidad from "../assets/screenshots/demo-rentabilidad.png";
-import demoChat from "../assets/screenshots/demo-chat.png";
-import demoFacturasRecibidas from "../assets/screenshots/factura-recibida.png";
+import webShot from "../assets/screenshots/factura-recibida-web.png";
+import mobileShot from "../assets/screenshots/mobile-generando.png";
 ---
-<section class="section-padding bg-mist" id="demo">
+<section class="section-padding" id="demo">
   <div class="container-narrow">
-    <h2 class="demo-h2 reveal">Esto es lo que ves cuando abres la app.</h2>
+    <h2 class="demo-h2 reveal">La oficina, en el ordenador. El día a día, en el móvil.</h2>
+    <p class="demo-intro reveal">El mismo negocio, lo lleves desde donde lo lleves. Cada cosa, en su sitio.</p>
 
-    <div class="demo-rows">
-      <article class="demo-row reveal">
-        <div class="demo-media">
+    <div class="demo-panels">
+      <!-- WEB: todo centralizado -->
+      <article class="demo-panel reveal">
+        <div class="demo-panel-media">
           <div class="browser-frame">
             <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
             <Image
-              src={demoKpisWeb}
-              alt="Panel de inicio de la app en web: pendiente de cobro, cobrado del mes, pipeline, IVA del trimestre y la gráfica de ingresos vs gastos"
-              width={960}
+              src={webShot}
+              alt="Panel web de KonquerAI: el inicio del negocio con las tareas del día y las facturas recibidas pendientes de revisar"
+              width={900}
               densities={[1, 2]}
               loading="lazy"
               class="browser-shot"
             />
           </div>
         </div>
-        <div class="demo-text">
-          <span class="demo-num">01</span>
-          <h3 class="demo-caption">El estado del negocio en tres segundos.</h3>
+        <div class="demo-panel-text">
+          <span class="demo-panel-tag">En el ordenador</span>
+          <h3>La web: tu negocio entero, en un sitio.</h3>
+          <ul class="demo-list">
+            <li>Las facturas, ordenadas por proveedor: albaranes y facturas, cada uno por su lado y sumados por periodo.</li>
+            <li>La rentabilidad de cada obra: cuánto te cuesta el material y cuánto te queda de verdad.</li>
+            <li>Conciliación de albaranes: cuando llega la factura recapitulativa, ves en dos clics si hay duplicados y si cuadra.</li>
+            <li>Tus clientes, creados solos con cada factura.</li>
+            <li>Las métricas de tu negocio y la configuración de tus asistentes.</li>
+          </ul>
         </div>
       </article>
 
-      <article class="demo-row reveal">
-        <div class="demo-media">
-          <div class="browser-frame">
-            <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-            <Image
-              src={demoRentabilidad}
-              alt="Ranking de rentabilidad por obra con semáforo: margen en verde, alerta en naranja y sobrecoste en rojo"
-              width={960}
-              densities={[1, 2]}
-              loading="lazy"
-              class="browser-shot"
-            />
-          </div>
-        </div>
-        <div class="demo-text">
-          <span class="demo-num">02</span>
-          <h3 class="demo-caption">Sabes obra a obra qué te dio dinero y qué te lo quitó.</h3>
-        </div>
-      </article>
-
-      <article class="demo-row reveal">
-        <div class="demo-media">
+      <!-- MÓVIL: el día a día -->
+      <article class="demo-panel demo-panel-mobile reveal">
+        <div class="demo-panel-media">
           <Image
-            src={demoChat}
-            alt="Presupuesto por chat: hablas, la app anota las partidas y monta el presupuesto"
-            width={520}
+            src={mobileShot}
+            alt="App de KonquerAI en el móvil generando un presupuesto por voz desde la obra"
+            width={440}
             densities={[1, 2]}
             loading="lazy"
             class="phone-shot"
           />
         </div>
-        <div class="demo-text">
-          <span class="demo-num">03</span>
-          <h3 class="demo-caption">Presupuesto en 5 minutos. Desde la furgoneta.</h3>
-        </div>
-      </article>
-
-      <article class="demo-row reveal">
-        <div class="demo-media">
-          <Image
-            src={demoFacturasRecibidas}
-            alt="Pestaña de facturas recibidas: total gastado, IVA soportado y la lista de facturas marcadas como recibidas automáticamente"
-            width={520}
-            densities={[1, 2]}
-            loading="lazy"
-            class="phone-shot"
-          />
-        </div>
-        <div class="demo-text">
-          <span class="demo-num">04</span>
-          <h3 class="demo-caption">Las facturas de proveedor, ordenadas sin que muevas un dedo.</h3>
+        <div class="demo-panel-text">
+          <span class="demo-panel-tag">En el móvil</span>
+          <h3>El móvil: tu día a día.</h3>
+          <ul class="demo-list">
+            <li>Presupuestos hablando o por chat. Los mandas por WhatsApp o correo antes de salir de la obra. Listo en un par de minutos.</li>
+            <li>Facturas al momento: desde el chat o desde un presupuesto que el cliente acepta.</li>
+            <li>Escaneas las facturas de papel y el sistema las ordena por ti.</li>
+            <li>Validas las facturas que te llegan con un vistazo.</li>
+          </ul>
         </div>
       </article>
     </div>
+
+    <p class="demo-sync reveal">Lo que haces en el móvil aparece en la web al instante. Es el mismo negocio, vayas con el teléfono o te sientes en el ordenador.</p>
   </div>
 </section>
 
 <style>
-  .demo-h2 { text-align: center; margin-bottom: 3.5rem; }
+  .demo-h2 { text-align: center; margin-bottom: 1rem; }
+  .demo-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3.5rem;
+    color: var(--color-slate);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
 
-  .demo-rows {
+  .demo-panels {
     display: flex;
     flex-direction: column;
     gap: 4rem;
   }
 
-  .demo-row {
+  .demo-panel {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -106,21 +93,18 @@ import demoFacturasRecibidas from "../assets/screenshots/factura-recibida.png";
   }
 
   @media (min-width: 768px) {
-    .demo-rows { gap: 6rem; }
-    .demo-row { grid-template-columns: 1fr 1fr; gap: 4rem; }
-    /* Filas pares: invertir orden para zig-zag */
-    .demo-row:nth-child(even) .demo-media { order: 2; }
-    .demo-row:nth-child(even) .demo-text { order: 1; }
+    .demo-panels { gap: 5.5rem; }
+    .demo-panel { grid-template-columns: 1fr 1fr; gap: 4rem; }
+    /* El panel móvil invierte el orden (captura a la derecha) */
+    .demo-panel-mobile .demo-panel-media { order: 2; }
+    .demo-panel-mobile .demo-panel-text { order: 1; }
   }
 
-  /* ── Lado media ── */
-  .demo-media {
-    display: flex;
-    justify-content: center;
-  }
+  /* ── Media ── */
+  .demo-panel-media { display: flex; justify-content: center; }
 
   .phone-shot {
-    width: 270px;
+    width: 260px;
     max-width: 100%;
     height: auto;
     border-radius: 30px;
@@ -135,7 +119,6 @@ import demoFacturasRecibidas from "../assets/screenshots/factura-recibida.png";
     overflow: hidden;
     box-shadow: var(--shadow-card-hover);
   }
-
   .browser-bar {
     display: flex;
     align-items: center;
@@ -145,54 +128,79 @@ import demoFacturasRecibidas from "../assets/screenshots/factura-recibida.png";
     background: var(--color-mist);
     border-bottom: 1px solid var(--color-border);
   }
-
   .browser-bar span {
     width: 10px;
     height: 10px;
     border-radius: var(--radius-full);
     background: var(--color-border);
   }
+  .browser-shot { width: 100%; height: auto; display: block; }
 
-  .browser-shot {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* ── Lado texto ── */
-  .demo-num {
+  /* ── Texto ── */
+  .demo-panel-tag {
     display: inline-block;
     font-family: var(--font-heading);
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--color-teal);
-    letter-spacing: 0.1em;
     margin-bottom: 0.75rem;
   }
-
-  .demo-caption {
+  .demo-panel-text h3 {
     font-size: 1.5rem;
     line-height: 1.25;
-    max-width: 420px;
+    margin-bottom: 1.25rem;
+    color: var(--color-ink);
+  }
+  .demo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .demo-list li {
+    position: relative;
+    padding-left: 1.6rem;
+    color: var(--color-slate);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  .demo-list li::before {
+    content: "";
+    position: absolute;
+    left: 0.1rem;
+    top: 0.55em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: var(--radius-full);
+    background: var(--color-teal);
   }
 
-  @media (max-width: 767px) {
-    .demo-text { text-align: center; }
-    .demo-caption { margin-inline: auto; }
+  .demo-sync {
+    text-align: center;
+    max-width: 640px;
+    margin: 4rem auto 0;
+    font-weight: 600;
+    color: var(--color-ink);
+    font-size: 1.0625rem;
+    line-height: 1.6;
   }
 
   /* ── Parallax sutil en las capturas: scroll-driven nativo, cero JS ── */
   @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
-      .demo-media {
+      .demo-panel-media {
         animation: demo-parallax linear both;
         animation-timeline: view();
         animation-range: cover 0% cover 100%;
         will-change: transform;
       }
       @keyframes demo-parallax {
-        from { transform: translateY(22px); }
-        to   { transform: translateY(-22px); }
+        from { transform: translateY(20px); }
+        to   { transform: translateY(-20px); }
       }
     }
   }

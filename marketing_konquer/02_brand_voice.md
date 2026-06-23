@@ -38,7 +38,7 @@ Conocemos su día a día. No le hablamos desde arriba. Y estamos cabreados por �
 
 Nunca prometemos lo que no podemos cumplir. Nunca inflamos cifras. Nunca usamos "miles de clientes" si tenemos 30.
 
-- ✅ "Estamos empezando. Por eso somos cercanos. Por eso te configuramos la app a mano."
+- ✅ "Estamos empezando. Por eso somos cercanos. Por eso te guiamos paso a paso al arrancar."
 - ❌ "Líder del mercado en gestión para reformas." (mentira → fuera)
 
 ### 4. Profesional
@@ -71,7 +71,7 @@ Esta es probablemente la sección más práctica del archivo. Sigue la tabla a r
 | Software | App, herramienta, sistema (rara vez "software") |
 | Dashboard | Panel, resumen, vista |
 | Workflow, proceso | Forma de trabajar |
-| Onboarding | Configuración inicial, "te montamos la app" |
+| Onboarding | Puesta en marcha, configuración guiada paso a paso |
 | Customer success | Soporte, acompañamiento |
 | Pipeline | Trabajos por cerrar, presupuestos pendientes |
 | Implementación | Puesta en marcha |
@@ -84,7 +84,7 @@ Esta es probablemente la sección más práctica del archivo. Sigue la tabla a r
 | Lead | Cliente potencial, contacto |
 | Conversión | Cerrar el presupuesto, cerrar el trabajo |
 | Funnel | Camino del cliente |
-| Onboarding humano | "Te llamamos y te lo dejamos listo" |
+| Acompañamiento al empezar | "Te guiamos paso a paso; si te atascas, te respondemos enseguida" |
 | Compliance fiscal | Que Hacienda no te pille en falso |
 | AEAT, Agencia Tributaria | Hacienda |
 | Facturación pendiente | Por cobrar |

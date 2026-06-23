@@ -6,7 +6,7 @@
 
 ## 1. La oferta en una frase
 
-> **"Te montamos tu Oficina IA: la cuadrilla administrativa digital que se encarga del papeleo, facturación y control de tu negocio de reformas. Te configuramos todo, te enseñamos a usarlo y te acompañamos. Recuperas hasta 30 horas al mes desde el primer mes o seguimos trabajando contigo sin coste hasta que las recuperes."**
+> **"Pon en marcha tu Oficina IA: la cuadrilla administrativa digital que se encarga del papeleo, facturación y control de tu negocio de reformas. Te guiamos paso a paso para dejarla lista, te enseñamos a usarla y te acompañamos. Recuperas hasta 30 horas al mes desde el primer mes o seguimos trabajando contigo sin coste hasta que las recuperes."**
 
 ---
 
@@ -14,7 +14,7 @@
 
 **Tu Oficina IA no es un software.**
 
-Es un **sistema híbrido de IA + acompañamiento humano** diseñado para autónomos de reformas que quieren recuperar tiempo, ganar control y dejar atrás el caos administrativo.
+Es un **sistema de IA con acompañamiento de verdad** —guía paso a paso para arrancar y soporte humano cuando lo necesitas— diseñado para autónomos de reformas que quieren recuperar tiempo, ganar control y dejar atrás el caos administrativo.
 
 El objetivo NO es "digitalizar empresas".
 
@@ -45,11 +45,11 @@ Todo acompañado por **soporte humano real**.
 
 La oferta se compone de seis pilares funcionales. Cada uno resuelve un problema distinto. La fuerza está en que **se vendan juntos como sistema completo**, no por separado.
 
-### CORE 1 — Implantación personalizada
+### CORE 1 — Implantación guiada paso a paso
 
 **Qué incluye:**
 
-- Onboarding 1:1 con una persona real de nuestro equipo.
+- Puesta en marcha guiada paso a paso, con asistentes que te acompañan en pantalla.
 - Configuración adaptada a tu oficio (pintor, electricista, fontanero, albañil…).
 - Ayuda según tu nivel técnico (te lo damos masticado).
 - Formación inicial guiada paso a paso.
@@ -57,7 +57,7 @@ La oferta se compone de seis pilares funcionales. Cada uno resuelve un problema 
 
 **Resultado:**
 
-> "No tienes que aprender tecnología solo. Te lo dejamos listo y te enseñamos."
+> "No tienes que aprender tecnología solo. Te guiamos paso a paso hasta dejarlo listo."
 
 ---
 
@@ -201,9 +201,9 @@ Acceso a la newsletter de KonquerAI: normativa fiscal explicada en cristiano, te
 **500€** (pago único)
 
 **Incluye:**
-- Implantación personalizada.
+- Implantación guiada paso a paso.
 - Configuración adaptada a tu oficio.
-- Onboarding 1:1.
+- Puesta en marcha guiada.
 - Formación inicial.
 - Soporte inicial intensivo (primeras 2 semanas).
 
@@ -260,13 +260,13 @@ El cliente compara contra:
 
 ### Garantía oficial
 
-> **"Si completas el onboarding y aplicas el sistema durante 30 días, garantizamos que ahorrarás tiempo administrativo y ganarás más control sobre tu negocio. Si no es así, seguimos trabajando contigo sin coste hasta ayudarte a conseguirlo."**
+> **"Si completas la puesta en marcha y aplicas el sistema durante 30 días, garantizamos que ahorrarás tiempo administrativo y ganarás más control sobre tu negocio. Si no es así, seguimos trabajando contigo sin coste hasta ayudarte a conseguirlo."**
 
 ### Por qué funciona esta garantía (no es devolución de dinero)
 
 - **Refuerza el compromiso de KonquerAI**: no te abandonamos.
 - **No incentiva el "probador" oportunista**: no es "te devuelvo el dinero", es "sigo trabajando contigo".
-- **Pone la responsabilidad compartida**: "completar el onboarding y aplicar el sistema" es condición.
+- **Pone la responsabilidad compartida**: "completar la puesta en marcha y aplicar el sistema" es condición.
 - **Refuerza el mecanismo único** (acompañamiento humano): el equipo se queda contigo.
 
 ### Cómo presentarla en venta
@@ -279,11 +279,11 @@ El cliente compara contra:
 
 La escasez de la oferta Beta Fundadores es **legítima**, no inventada. Y por eso funciona.
 
-**Razón real:** el onboarding humano 1:1 requiere tiempo del equipo. No podemos configurar 100 clientes nuevos al mes. Tenemos plazas limitadas.
+**Razón real:** estamos en Beta Fundadores y damos soporte cercano a cada cliente nuevo. Para mantener ese ratio bajo, entramos a pocos al mes. Tenemos plazas limitadas.
 
 **Cómo comunicarlo:**
 
-> "Solo abrimos X plazas nuevas cada mes para garantizar que cada cliente reciba implantación personalizada y soporte cercano. Cuando las llenamos, la siguiente plaza es para el mes que viene."
+> "Solo abrimos X plazas nuevas cada mes para garantizar que cada cliente reciba acompañamiento y soporte cercano. Cuando las llenamos, la siguiente plaza es para el mes que viene."
 
 **No usar:**
 - ❌ Contadores falsos ("¡solo quedan 3 plazas!" si en realidad hay 30).
@@ -326,7 +326,7 @@ Esta tabla es la que se usa en propuestas comerciales para enseñar **cuánto va
 | Control de rentabilidad por obra (no existe en nicho) | ~80€/mes |
 | Conciliación documental automática | ~40€/mes |
 | Plantillas por oficio y formación | ~300€ (pago único) |
-| Onboarding humano 1:1 y configuración | ~500€ (pago único) |
+| Puesta en marcha guiada y configuración | ~500€ (pago único) |
 | Soporte continuo y acompañamiento | ~150€/mes |
 | Adaptación a Verifactu | ~200€ (pago único) |
 | Actualizaciones de IA | incluido |
@@ -366,7 +366,7 @@ Estos framings se incluyen **explícitamente en la oferta** para neutralizar obj
 
 ### "¿Y si es muy complicado?"
 
-> "Por eso hay onboarding humano. Una persona te configura todo, te llama, te enseña. No tienes que aprender nada solo."
+> "Por eso te guiamos paso a paso. Unos asistentes te acompañan en pantalla y, si te atascas, te responde una persona de verdad. No tienes que aprender nada solo."
 
 ### "¿Y si necesito ayuda y tardáis días en responderme?"
 
@@ -374,11 +374,11 @@ Estos framings se incluyen **explícitamente en la oferta** para neutralizar obj
 
 ### "¿Por qué pago 500€ por configurarlo si es una app?"
 
-> "Porque no te vendemos solo la app. Te vendemos la app configurada y montada para ti. Eso es lo que vale los 500€: que no tengas que pelearte con ella."
+> "Porque no te vendemos solo la app. Te vendemos la app puesta en marcha contigo, guiada paso a paso. Eso es lo que vale los 500€: que no tengas que pelearte con ella."
 
 ### "¿Por qué 97€ al mes? Otras son más baratas."
 
-> "Las otras te las cobran en horas de configuración. Y no te dan rentabilidad por obra. Ni te llaman si tienes dudas. Calcula: ¿cuánto vale para ti una hora? Multiplica por 30."
+> "Las otras te las cobran en horas de configuración. Y no te dan rentabilidad por obra. Ni te responden si tienes dudas. Calcula: ¿cuánto vale para ti una hora? Multiplica por 30."
 
 ### "¿Y si dentro de un año soy más grande y necesito más?"
 
@@ -416,7 +416,7 @@ Mencionar el roadmap en venta refuerza percepción de "esto está vivo, no es un
 ### Fase 2 — Sistema validado
 
 - Subir precios (estimado: 700€-1.000€ setup + 147€-197€/mes).
-- Onboarding más sistematizado.
+- Puesta en marcha aún más automatizada.
 - Especialización profundizada.
 - Procesos comerciales replicables.
 

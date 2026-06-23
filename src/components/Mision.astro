@@ -1,0 +1,65 @@
+---
+/** Mision.astro — Misión de marca + claim de categoría (puntos 13 y 14).
+ *  OJO: el claim "primera app hecha solo para reformas" debe ser defendible.
+ *  Verificar antes de dar por bueno en producción. */
+---
+<section class="section-padding bg-mist" id="mision">
+  <div class="container-narrow mision-inner reveal">
+    <p class="text-eyebrow mision-eyebrow">Nuestra misión</p>
+    <h2 class="mision-h2">Que la tecnología trabaje para el que pisa la obra.</h2>
+
+    <div class="mision-body">
+      <p>Tú no tienes por qué pelearte con la tecnología.</p>
+      <p>Nosotros la construimos: las herramientas, las automatizaciones, todo lo que va por debajo. Y la dejamos en una app sencilla y visual, que se entiende a la primera.</p>
+      <p>Sacarle partido a esta tecnología en tu día a día no es abrir un chat y buscarte la vida. Es que el trabajo pesado se haga solo: ahorras tiempo, ganas orden y sabes dónde está tu dinero.</p>
+      <p>Hoy esto solo lo tienen las grandes empresas. Queremos que también lo tengas tú.</p>
+    </div>
+
+    <p class="mision-claim">
+      Somos la primera app hecha solo para el mundo de las reformas. Inteligencia
+      artificial y automatizaciones avanzadas, al servicio de un único oficio: el tuyo.
+    </p>
+  </div>
+</section>
+
+<style>
+  .mision-inner {
+    max-width: 760px;
+    text-align: center;
+  }
+
+  .mision-eyebrow {
+    color: var(--color-teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .mision-h2 {
+    margin-bottom: 2rem;
+  }
+
+  .mision-body {
+    text-align: left;
+    max-width: 620px;
+    margin-inline: auto;
+  }
+
+  .mision-body p {
+    color: var(--color-slate);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin-bottom: 0.875rem;
+  }
+
+  .mision-claim {
+    margin-top: 2.75rem;
+    padding-top: 2.25rem;
+    border-top: 1px solid var(--color-border);
+    font-family: var(--font-heading);
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-ink);
+    max-width: 720px;
+    margin-inline: auto;
+  }
+</style>

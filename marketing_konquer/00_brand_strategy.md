@@ -80,7 +80,7 @@ Tres palabras que solo nosotros podemos decir juntas:
 
 1. **Especialización vertical** (solo reformas, no "todos los autónomos").
 2. **IA generativa en el core** (hablas, no escribes; haces foto, no tecleas).
-3. **Acompañamiento humano** (no eres un usuario más, tienes una persona detrás).
+3. **Acompañamiento de verdad** (no eres un usuario más: te guiamos paso a paso y hay una persona detrás cuando la necesitas).
 
 ---
 
@@ -108,7 +108,7 @@ Estas son las cosas que hacen que KonquerAI sea KonquerAI. Si dejamos de hacer a
 
 1. **Lenguaje 100% de obra.** Cero anglicismos, cero "dashboard", cero "workflow". "Por cobrar", "por pagar", "mi empresa".
 2. **Mobile-first real.** Botones grandes, pensado para uso con guantes y mala luz. Si no se puede hacer desde la furgoneta, no se hace.
-3. **Onboarding humano.** Una persona te llama, te configura la app, te enseña. Nadie tiene que ver un tutorial de YouTube.
+3. **Puesta en marcha guiada y cero fricción.** Te guiamos paso a paso, con asistentes que te acompañan en pantalla. Nadie tiene que ver un tutorial de YouTube. Y si te atascas, te responde una persona de verdad.
 4. **Cero fricción.** Cada pantalla obvia sin manual. Si necesita explicación, está mal diseñada.
 5. **Datos financieros exactos.** Nunca redondeos creativos. Cumplimiento fiscal español por defecto (IVA 21/10, ISP, IRPF 15/7, Verifactu listo).
 6. **Hablamos como el cliente, no como su gestoría.** "Lo que te deben", no "saldo deudor". "Lo que pagas", no "obligaciones tributarias".
@@ -126,7 +126,7 @@ KonquerAI (marca paraguas)
    │     └── App Android
    │
    ├── Servicios incluidos:
-   │     ├── Onboarding humano 1:1
+   │     ├── Puesta en marcha guiada paso a paso
    │     ├── Soporte cercano
    │     └── Acompañamiento continuo
    │

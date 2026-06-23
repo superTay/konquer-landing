@@ -136,7 +136,7 @@ Estas son las frases que hemos escuchado (o que escucharíamos) literalmente. Ú
 2. **Mobile-first.** Si no funciona bien en su móvil, no le sirve.
 3. **Lenguaje simple y familiar.** "Por cobrar" sí, "cuentas por cobrar" no.
 4. **Recomendado por otros autónomos o por su gestoría.** Es el canal de descubrimiento que más confianza genera.
-5. **Sensación de acompañamiento humano.** Saber que hay una persona al otro lado. Que no es una IA fría.
+5. **Sensación de acompañamiento.** Te guiamos paso a paso y, si te atascas, hay una persona de verdad al otro lado. No es una IA fría que te deja solo.
 6. **Pruebas reales del sector**: "lo usan pintores como tú", no "lo usan miles de empresas".
 
 ---
@@ -158,7 +158,7 @@ Por orden de peso real:
 
 | Objeción | Respuesta corta (más detalle en `07_pitch_y_script_ventas.md`) |
 |----------|--------------------------------------------------------------|
-| "No soy bueno con la tecnología." | "Por eso lo hacemos nosotros contigo. Tienes una persona que te configura todo y te enseña en una llamada." |
+| "No soy bueno con la tecnología." | "Por eso te guiamos paso a paso. Unos asistentes te acompañan en pantalla mientras lo configuras, y si te atascas te responde una persona de verdad." |
 | "No tengo tiempo para aprender otra herramienta." | "No hay que aprender nada. Hablas a la app y ella hace el presupuesto. Lo mismo que le explicas al cliente, se lo dices al móvil." |
 | "Seguro que es complicado." | "Una semana de prueba. Si en 7 días no has hecho tu primer presupuesto en menos de 5 minutos, no pagas nada." |
 | "Ya hago esto con Excel." | "Excel no te dice si la obra de Pepe te dio dinero o te quitó. KonquerAI sí. ¿Cuánto sacaste en la última?" |
@@ -215,7 +215,7 @@ El cliente NO busca activamente software. La compra se dispara por un evento con
 **Qué tenemos que hacer:**
 - Vídeos de 30-60 segundos de uso real (pintor haciendo presupuesto desde furgoneta).
 - Testimonios en vídeo de autónomos parecidos a él, no de "founders" ni "early adopters".
-- Demo con un humano, no demo de producto en vídeo. **Onboarding humano es el gran diferenciador.**
+- Demo cercana y guiada, no un vídeo frío de producto. **La puesta en marcha sin fricción (guiada paso a paso) y el acompañamiento son un gran diferenciador.**
 
 ### Fase 3 — Decisión (a punto de pagar)
 
@@ -242,7 +242,7 @@ El cliente NO busca activamente software. La compra se dispara por un evento con
 |------|------------------|------------------|
 | Conciencia | "Si pasas el domingo con facturas, hay otra forma." | Ads sociales, SEO |
 | Consideración | "Hecho para pintores, albañiles, electricistas y fontaneros. Por gente que conoce el sector." | Vídeo, testimonios, demo |
-| Decisión | "Onboarding humano. Garantía de 30 días. Sin permanencia." | Llamada, propuesta, página de pricing |
+| Decisión | "Puesta en marcha guiada. Garantía de 30 días. Sin permanencia." | Llamada, propuesta, página de pricing |
 | Post-compra | "Te acompañamos. No te dejamos tirado tras pagar." | Soporte, comunidad, newsletter |
 
 ---
