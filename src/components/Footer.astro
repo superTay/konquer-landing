@@ -1,21 +1,23 @@
 ---
 /** Footer.astro — 4 columnas. Copy literal de 06. */
 import Logo from "./Logo.astro";
+import StoreBadges from "./StoreBadges.astro";
 ---
 <footer class="footer" id="footer">
   <div class="container-narrow footer-inner">
     <div class="footer-col footer-brand">
       <Logo height={64} />
       <p class="footer-tagline">Tu cuadrilla administrativa, ahora digital.</p>
+      <StoreBadges size="sm" class="footer-badges" />
     </div>
 
     <div class="footer-col">
       <h4 class="footer-heading">Producto</h4>
       <ul class="footer-links">
         <li><a href="/#como-funciona">Cómo funciona</a></li>
-        <li><a href="/#pricing">Precios</a></li>
+        <li><a href="/precios">Precios</a></li>
         <li><a href="/#para-quien">Para quién es</a></li>
-        <li><a href="/#demo">App móvil</a></li>
+        <li><a href="/#app">App móvil</a></li>
         <li><a href="/#faq">Verifactu</a></li>
         <li><a href="https://app.konquerai.com" rel="noopener">Acceder a la app</a></li>
       </ul>
@@ -62,8 +64,9 @@ import Logo from "./Logo.astro";
   @media (min-width: 768px) {
     .footer-inner { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; }
   }
-  .footer-brand { display: flex; flex-direction: column; gap: 0.75rem; }
+  .footer-brand { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
   .footer-tagline { font-size: 0.875rem; }
+  .footer-badges { margin-top: 0.5rem; }
   .footer-heading {
     font-family: var(--font-heading);
     font-size: 0.875rem;

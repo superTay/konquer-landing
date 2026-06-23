@@ -4,7 +4,7 @@
   "bot": {
     "nombre": "LucIA",
     "subtitulo": "Tu consultora de obra · KonquerAI",
-    "saludo_burbuja": "Hola, soy LucIA. ¿Echamos cuentas del papeleo?",
+    "saludo_burbuja": "¿Echamos cuentas?",
     "avatar_iniciales": "L",
     "avatar_foto": "/lucia.png"
   },

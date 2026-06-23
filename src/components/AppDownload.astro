@@ -1,0 +1,65 @@
+---
+/** AppDownload.astro — Bloque "La app". Descarga en App Store / Google Play.
+ *  No es el CTA de tráfico frío: funciona como prueba de que la app es real
+ *  y vía para quien ya lo tiene claro. Va justo después de la Demo. */
+import StoreBadges from "./StoreBadges.astro";
+---
+<section class="section-padding bg-mist app-dl" id="app">
+  <div class="container-narrow app-dl-inner reveal">
+    <p class="text-eyebrow app-dl-eyebrow">La app</p>
+    <h2 class="app-dl-h2">Llévala en la furgoneta.</h2>
+    <p class="app-dl-sub">La app va contigo a la obra. iPhone y Android.</p>
+
+    <StoreBadges size="lg" class="app-dl-badges" />
+
+    <ul class="app-dl-trust">
+      <li>iPhone y Android</li>
+      <li>La usas con guantes</li>
+      <li>Hablas, no escribes</li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .app-dl-inner {
+    max-width: 640px;
+    text-align: center;
+    margin-inline: auto;
+  }
+  .app-dl-eyebrow { color: var(--color-teal); margin-bottom: 0.75rem; }
+  .app-dl-h2 { margin-bottom: 0.75rem; }
+  .app-dl-sub {
+    color: var(--color-slate);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .app-dl-badges { justify-content: center; }
+  .app-dl-trust {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1.75rem;
+    padding: 0;
+  }
+  .app-dl-trust li {
+    position: relative;
+    color: var(--color-slate);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding-left: 1.4rem;
+  }
+  .app-dl-trust li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.35em;
+    width: 0.85rem;
+    height: 0.85rem;
+    background: var(--color-teal);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+</style>

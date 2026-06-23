@@ -1,35 +1,11 @@
 ---
-/** Pricing.astro — Una sola tarifa. Copy literal de 06. */
+/** Pricing.astro — Teaser de precio en la home. La tarifa completa vive en /precios.
+ *  Mantiene el anclaje (lo que más engancha) y manda a la página de precios. */
 ---
 <section class="section-padding" id="pricing">
   <div class="container-narrow pricing-center">
-    <h2 class="reveal">Una sola tarifa. Sin sorpresas.</h2>
-    <p class="pricing-sub reveal">Beta Fundadores. Precio especial para los primeros clientes.</p>
-
-    <div class="pricing-card card-spotlight reveal">
-      <span class="pricing-badge">Beta Fundadores</span>
-      <h3 class="pricing-title">Tu Oficina IA</h3>
-
-      <div class="pricing-price">
-        <span class="pricing-setup">490 €</span>
-        <span class="pricing-setup-label">pago único de configuración</span>
-        <span class="pricing-plus">+</span>
-        <span class="pricing-monthly">97 €/mes</span>
-        <span class="pricing-monthly-label">sin permanencia</span>
-      </div>
-
-      <ul class="pricing-includes">
-        <li>App completa (web + móvil)</li>
-        <li>Puesta en marcha guiada paso a paso</li>
-        <li>Configuración adaptada a tu oficio</li>
-        <li>Soporte cercano continuo</li>
-        <li>Todos los bonus</li>
-        <li>Actualizaciones e evolución continua</li>
-      </ul>
-
-      <a href="#contacto" class="btn btn-primary pricing-cta">Empieza ahora</a>
-      <p class="pricing-limited">Plazas limitadas cada mes.</p>
-    </div>
+    <h2 class="reveal">Menos que dos horas de tu trabajo al mes.</h2>
+    <p class="pricing-sub reveal">Una sola tarifa, sin sorpresas. Beta Fundadores.</p>
 
     <div class="pricing-compare reveal">
       <p class="pricing-compare-title">¿Caro? Compara:</p>
@@ -40,76 +16,17 @@
         <li><strong>KonquerAI: 97 €/mes.</strong></li>
       </ul>
     </div>
+
+    <p class="pricing-teaser-line reveal">Desde <strong>97 €/mes</strong>, sin permanencia. Garantía de 30 días.</p>
+
+    <a href="/precios" class="btn btn-primary pricing-cta reveal">Ver precios y garantía <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
 <style>
   .pricing-center { text-align: center; max-width: 640px; }
   .pricing-sub { color: var(--color-slate); margin-top: 0.5rem; margin-bottom: 2.5rem; }
-  .pricing-card {
-    background: var(--color-white);
-    border: 2px solid var(--color-teal);
-    border-radius: var(--radius-xl);
-    padding: 2.5rem 2rem;
-    box-shadow: var(--shadow-elevated);
-    position: relative;
-    transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s ease;
-  }
-  .pricing-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-glow);
-  }
-  .pricing-badge {
-    display: inline-block;
-    background: var(--color-orange);
-    color: var(--color-white);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 0.25rem 0.75rem;
-    border-radius: var(--radius-full);
-    margin-bottom: 1rem;
-  }
-  .pricing-title { margin-bottom: 1.5rem; }
-  .pricing-price {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-    margin-bottom: 2rem;
-  }
-  .pricing-setup { font-family: var(--font-heading); font-size: 2.25rem; font-weight: 700; color: var(--color-ink); }
-  .pricing-setup-label { font-size: 0.8125rem; color: var(--color-slate); }
-  .pricing-plus { font-size: 1.25rem; color: var(--color-slate); margin-block: 0.25rem; }
-  .pricing-monthly { font-family: var(--font-heading); font-size: 2.75rem; font-weight: 700; color: var(--color-teal); }
-  .pricing-monthly-label { font-size: 0.8125rem; color: var(--color-slate); }
-  .pricing-includes {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-    text-align: left;
-    max-width: 320px;
-    margin: 0 auto 2rem;
-  }
-  .pricing-includes li {
-    padding-left: 1.5rem;
-    position: relative;
-    font-size: 0.9375rem;
-    color: var(--color-slate);
-  }
-  .pricing-includes li::before {
-    content: "·";
-    position: absolute;
-    left: 0;
-    color: var(--color-teal);
-    font-weight: 700;
-  }
-  .pricing-cta { width: 100%; max-width: 320px; }
-  .pricing-limited { margin-top: 1rem; font-size: 0.8125rem; color: var(--color-slate); font-style: italic; }
   .pricing-compare {
-    margin-top: 3rem;
     text-align: left;
     background: var(--color-mist);
     border-radius: var(--radius-lg);
@@ -135,4 +52,11 @@
     font-weight: 700;
   }
   .pricing-compare li strong { color: var(--color-teal); }
+  .pricing-teaser-line {
+    margin-top: 1.75rem;
+    font-size: 1.0625rem;
+    color: var(--color-ink);
+  }
+  .pricing-teaser-line strong { color: var(--color-teal); }
+  .pricing-cta { margin-top: 1.5rem; }
 </style>

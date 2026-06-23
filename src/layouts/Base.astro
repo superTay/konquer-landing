@@ -149,7 +149,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
           "author": { "@id": "https://www.konquerai.com/#organization" },
           "offers": {
             "@type": "Offer",
-            "url": "https://www.konquerai.com/#pricing",
+            "url": "https://www.konquerai.com/precios",
             "category": "Beta Fundadores",
             "price": "97",
             "priceCurrency": "EUR",
@@ -273,6 +273,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
         }, { threshold: 0 });
         navObs.observe(sentinel);
       }
+    </script>
+
+    <!-- Abrir a LucIA desde cualquier CTA con [data-open-lucia] (listener delegado único) -->
+    <script>
+      document.addEventListener('click', (e) => {
+        const trigger = (e.target as HTMLElement)?.closest('[data-open-lucia]');
+        if (!trigger) return;
+        const root = document.getElementById('konker-chat');
+        const bubble = document.getElementById('kc-bubble');
+        if (root && bubble && root.dataset.state !== 'open') bubble.click();
+      });
     </script>
 
     <style>
