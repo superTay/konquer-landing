@@ -6,19 +6,62 @@ no se genera su página, no aparece en el índice `/blog` ni en el sitemap.
 Mientras no haya ningún post publicado, `/blog` muestra un estado vacío con
 `noindex` y queda fuera del sitemap.
 
-## Cómo publicar un post (contrato para la automatización)
+## La cola de publicación
 
-1. Editar el frontmatter del `.md` correspondiente:
-   - `status: draft` → `status: published`
-   - `date:` → la fecha real de publicación (formato `"YYYY-MM-DD"`). Todos
-     los posts traen de origen `"2026-06-23"`; si no se actualiza, el orden
-     del índice cae en `plan_row` y el `datePublished` del schema será falso.
-2. Commit + push a `main`.
-3. Vercel reconstruye el sitio: la página `/blog/<slug>` se genera, el post
-   aparece el primero en el índice y entra en el sitemap automáticamente.
+El frontmatter es la única fuente de verdad (no hay fichero de cola aparte):
 
-No hay que tocar nada más: SEO (title, meta description, Open Graph), el
-JSON-LD del post y los enlaces internos se resuelven solos en el build.
+| Campo | Papel |
+|---|---|
+| `status: draft` | En cola, oculto. Se publicará cuando le toque. |
+| `status: published` | Publicado y visible. |
+| `status: hold` | Congelado: la automatización lo salta hasta que lo devuelvas a `draft`. |
+| `plan_row` | Orden de la cola (ascendente). |
+
+## Automatización (GitHub Actions)
+
+El workflow [`publish-blog-posts.yml`](../.github/workflows/publish-blog-posts.yml)
+corre **lunes, martes, jueves y viernes a las 07:00 UTC** (09:00 Madrid en
+verano, 08:00 en invierno) y publica **1 post por ejecución** → 4/semana,
+~13 semanas de cola. En cada ejecución:
+
+1. `scripts/publish-next-posts.mjs` toma el siguiente `draft` por `plan_row`,
+   le pone `status: published` y `date:` de hoy (hora de Madrid).
+2. Si hay cambios, commitea y hace push a `main`.
+3. El push dispara el deploy de Vercel: la página `/blog/<slug>` se genera,
+   el post entra en el índice y en el sitemap. Nada más que hacer: SEO,
+   Open Graph y JSON-LD salen del frontmatter en el build.
+4. Con la cola vacía, el script sale limpio y no se commitea nada.
+
+No necesita secretos: usa el `GITHUB_TOKEN` automático con
+`permissions: contents: write` declarado en el propio workflow.
+
+**Importante**: los crons de GitHub solo corren desde la rama por defecto
+(`main`). El workflow queda inactivo hasta mergear la rama del blog.
+
+### Probarlo a mano antes de dejarlo en automático
+
+En GitHub → pestaña **Actions** → "Publicar posts del blog (drip)" →
+**Run workflow**:
+
+- Con `dry_run = true`: muestra en el log qué post publicaría, sin tocar nada.
+- Sin dry run: publica de verdad (commit + push + deploy). Sirve también
+  para adelantar publicaciones o ponerse al día (`count = 2, 3…`).
+
+También en local: `node scripts/publish-next-posts.mjs --dry-run`.
+
+## Operaciones frecuentes
+
+- **Pausar la publicación**: Actions → workflow → menú "···" →
+  *Disable workflow* (y *Enable* para reanudar). Sin tocar código.
+- **Cambiar días u hora**: editar el `cron:` del workflow (recuerda: UTC).
+- **Reordenar la cola**: cambiar los `plan_row` de los posts en draft.
+- **Congelar un post** (p. ej. un fiscal pendiente de revisar):
+  `status: draft` → `status: hold`. Para liberarlo, devolverlo a `draft`.
+- **Publicar uno fuera de turno**: Run workflow manual, o editar a mano su
+  frontmatter (`status: published` + fecha) y hacer push.
+- **Añadir posts nuevos**: dejar el `.md` en `src/content/blog/` con el
+  mismo frontmatter (con `status: draft` y el siguiente `plan_row` libre)
+  y su imagen en `images/` (webp ≤ 1600 px). Entra al final de la cola.
 
 ## Detalles que la automatización debe respetar
 
@@ -40,8 +83,3 @@ JSON-LD del post y los enlaces internos se resuelven solos en el build.
   `src/content/blog/images/` en webp ≤ 1600 px de ancho; `astro:assets`
   genera las variantes responsive en el build.
 
-## Cadencia prevista
-
-Tres posts por semana (aprox.), automatizado (n8n o similar): elegir el
-siguiente `.md` con `status: draft` según `plan_row`, aplicar los dos cambios
-de frontmatter, commit y push.
