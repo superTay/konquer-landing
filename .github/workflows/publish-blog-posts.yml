@@ -1,0 +1,59 @@
+# Publicación por goteo del blog: 4 posts/semana (L, M, J y V), 1 por día.
+#
+# El cron de GitHub va en UTC y no entiende zonas horarias:
+# 07:00 UTC = 09:00 en Madrid en verano (CEST) y 08:00 en invierno (CET).
+#
+# Los crons SOLO se ejecutan desde la rama por defecto (main): este workflow
+# se activa al mergear la rama del blog. Para pausarlo: pestaña Actions →
+# "Publicar posts del blog (drip)" → "Disable workflow".
+
+name: Publicar posts del blog (drip)
+
+on:
+  schedule:
+    - cron: '0 7 * * 1,2,4,5' # lunes, martes, jueves y viernes
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'Cuántos posts publicar en esta ejecución'
+        required: false
+        default: '1'
+      dry_run:
+        description: 'Solo mostrar qué se publicaría, sin commitear'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-blog
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Publicar siguientes posts de la cola
+        id: publish
+        run: |
+          EXTRA=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then EXTRA="--dry-run"; fi
+          node scripts/publish-next-posts.mjs --count=${{ inputs.count || '1' }} $EXTRA
+
+      - name: Commit y push (dispara el deploy de Vercel)
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content/blog
+          if git diff --cached --quiet; then
+            echo "Sin cambios (cola vacía): no se commitea nada."
+          else
+            git commit -m "feat(blog): publish ${{ steps.publish.outputs.slugs }}"
+            git push
+          fi

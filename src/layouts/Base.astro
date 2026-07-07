@@ -15,12 +15,22 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: string;
 }
 
 const {
   title = "KonquerAI · Software de gestión para autónomos de reformas con IA",
   description = "Recupera hasta 30 horas al mes y sabe qué obra te dio dinero. Presupuestos, facturas, IVA y Verifactu sin aprender tecnología. Para pintores, albañiles, electricistas y fontaneros. Garantía 30 días.",
-  noindex = false
+  noindex = false,
+  ogTitle = "KonquerAI · Tu cuadrilla administrativa, ahora digital",
+  ogDescription = "Recupera 30 horas al mes. Controla cada obra al céntimo. Sin Excel, sin gestoría sufriendo. Hecho para autónomos de reformas.",
+  ogImage = "https://www.konquerai.com/og-image.png",
+  ogImageAlt = "KonquerAI — Tu cuadrilla administrativa, ahora digital",
+  ogType = "website"
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konquerai.com").href;
@@ -45,21 +55,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
 
     <!-- Open Graph -->
     <meta property="og:site_name" content="KonquerAI" />
-    <meta property="og:title" content="KonquerAI · Tu cuadrilla administrativa, ahora digital" />
-    <meta property="og:description" content="Recupera 30 horas al mes. Controla cada obra al céntimo. Sin Excel, sin gestoría sufriendo. Hecho para autónomos de reformas." />
-    <meta property="og:image" content="https://www.konquerai.com/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="KonquerAI — Tu cuadrilla administrativa, ahora digital" />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
+    {ogImage === "https://www.konquerai.com/og-image.png" && (
+      <>
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      </>
+    )}
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="es_ES" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="KonquerAI · Tu cuadrilla administrativa, ahora digital" />
-    <meta name="twitter:description" content="Recupera 30 horas al mes. Controla cada obra al céntimo. Sin Excel, sin gestoría sufriendo. Hecho para autónomos de reformas." />
-    <meta name="twitter:image" content="https://www.konquerai.com/og-image.png" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Extras por página (JSON-LD de posts, etc.) -->
+    <slot name="head" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
