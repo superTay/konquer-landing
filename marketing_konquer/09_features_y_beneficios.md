@@ -56,6 +56,14 @@
 
 ---
 
+### Aceptación y firma del presupuesto desde el móvil del cliente
+
+**Qué hace:** el cliente recibe el presupuesto por email con un botón de aceptar. Abre una página pública (sin registrarse), lo revisa y lo firma con el dedo. Se genera un acta de aceptación en PDF con la firma, fecha y hora, IP y huella del documento. El presupuesto pasa a "Aceptado" y la app avisa al autónomo al momento.
+
+**Beneficio:** "El cliente firma desde su móvil, al momento. Sin imprimir, sin escanear, sin perseguirle. Te queda un justificante con validez legal y la app te avisa. Cierras más presupuestos, y más rápido."
+
+---
+
 ### Edición posterior y regeneración del PDF
 
 **Qué hace:** edición de partidas con regeneración automática del PDF.
@@ -542,7 +550,6 @@
 
 | Feature | Beneficio comercial |
 |---------|---------------------|
-| Self-accept link (cliente firma/acepta presupuesto pulsando un enlace tipo DocuSign light) | "Cierra ventas más rápido. El cliente acepta desde su móvil sin imprimir/firmar/escanear." |
 | Push notifications nativas (FCM) | "Te suena el móvil cuando llega factura o cliente acepta. Negocio vivo en el bolsillo." |
 | Recordatorios automáticos por tiempo (facturas vencidas, presupuestos sin respuesta, recordatorios fiscales 303/130/390/190) | "Hacienda nunca te pilla. Es uno de los miedos n.º 1 del autónomo." |
 | Resumen mensual automático en notificación | "'Este mes facturaste 12.400€, gastaste 4.200€, balance 8.200€' — sin abrir la app." |
@@ -558,7 +565,6 @@
 | Subida y escaneo de nóminas | "Imputa el coste real del personal a cada obra. Cierra el círculo de rentabilidad real." |
 | Cotizaciones a la Seguridad Social (cuota mensual RETA, mutua) | "Gasto fijo que tampoco entra hoy. Te da el coste real del negocio." |
 | **Conciliación bancaria automática (Open Banking PSD2 — TrueLayer/GoCardless)** | "Marca facturas cobradas/pagadas automáticamente cuando entra/sale el dinero del banco. **Es la killer feature contra Holded y Quipu.**" |
-| Firma digital de presupuestos tipo DocuSign | "Firma legalmente vinculante con timestamp, IP, geolocalización. Diferenciador en obras grandes y clientes corporativos." |
 | Calendario de obras y disponibilidad | "Plan semanal: 'lunes Pepe, martes y miércoles obra Casa Sánchez'." |
 | Partes de trabajo diarios (horas por operario por obra) | "Imputa horas reales a cada obra → margen real con mano de obra incluida." |
 | Control de stock básico de almacén | "Material en furgoneta/almacén. Suma con factura recibida, resta cuando se imputa." |
