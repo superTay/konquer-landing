@@ -1,0 +1,146 @@
+# Víspera de publicación: pone el siguiente post en revisión y envía el email
+# con la preview real (deployment de Vercel de la rama preview/<slug>) y los
+# botones Aprobar / Suspender.
+#
+# Cron en UTC: 16:00 UTC = 18:00 Madrid en verano (CEST), 17:00 en invierno.
+# Corre dom/lun/mié/jue — las vísperas de los días de publicación (L,M,J,V).
+#
+# Si algo falla después de marcar el post como pending (preview, email…),
+# el último paso lo revierte a draft: ningún post queda camino de publicarse
+# sin que haya salido su email de revisión.
+
+name: Preparar revisión del blog (víspera)
+
+on:
+  schedule:
+    - cron: '0 16 * * 0,1,3,4' # domingo, lunes, miércoles y jueves
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Solo mostrar qué post se pondría en revisión'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-blog
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comprobar secretos de SMTP y revisión
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          MISSING=""
+          [ -z "${{ secrets.SMTP_HOST }}" ] && MISSING="$MISSING SMTP_HOST"
+          [ -z "${{ secrets.SMTP_USER }}" ] && MISSING="$MISSING SMTP_USER"
+          [ -z "${{ secrets.SMTP_PASSWORD }}" ] && MISSING="$MISSING SMTP_PASSWORD"
+          [ -z "${{ secrets.BLOG_REVIEW_SECRET }}" ] && MISSING="$MISSING BLOG_REVIEW_SECRET"
+          [ -z "${{ vars.REVIEW_EMAIL }}" ] && MISSING="$MISSING REVIEW_EMAIL(var)"
+          if [ -n "$MISSING" ]; then
+            echo "Faltan secretos/variables:$MISSING — no se pone nada en revisión."
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Elegir y marcar el siguiente post (pending)
+        id: prepare
+        run: |
+          EXTRA=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then EXTRA="--dry-run"; fi
+          node scripts/prepare-review.mjs $EXTRA
+
+      - name: Commit del estado pending en main
+        if: ${{ inputs.dry_run != true && steps.prepare.outputs.file != '' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content/blog
+          git commit -m "chore(blog): queue ${{ steps.prepare.outputs.slug }} for review"
+          git push
+
+      - name: Crear rama de preview (post visible solo ahí)
+        if: ${{ inputs.dry_run != true && steps.prepare.outputs.file != '' }}
+        run: |
+          BRANCH="preview/${{ steps.prepare.outputs.slug }}"
+          git checkout -b "$BRANCH"
+          node scripts/prepare-review.mjs --make-preview "${{ steps.prepare.outputs.file }}"
+          git add src/content/blog
+          git commit -m "chore(blog): preview ${{ steps.prepare.outputs.slug }}"
+          git push -f origin "$BRANCH"
+          git checkout main
+
+      - name: Esperar la URL de preview de Vercel
+        if: ${{ inputs.dry_run != true && steps.prepare.outputs.file != '' }}
+        id: preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="preview/${{ steps.prepare.outputs.slug }}"
+          for i in $(seq 1 60); do
+            DEP_ID=$(gh api "repos/${{ github.repository }}/deployments?ref=$BRANCH&per_page=1" --jq '.[0].id // empty' || true)
+            if [ -n "$DEP_ID" ]; then
+              STATE=$(gh api "repos/${{ github.repository }}/deployments/$DEP_ID/statuses" --jq '.[0].state // empty' || true)
+              URL=$(gh api "repos/${{ github.repository }}/deployments/$DEP_ID/statuses" --jq '.[0].environment_url // empty' || true)
+              if [ "$STATE" = "success" ] && [ -n "$URL" ]; then
+                echo "url=$URL" >> "$GITHUB_OUTPUT"
+                echo "Preview lista: $URL"
+                exit 0
+              fi
+              if [ "$STATE" = "failure" ] || [ "$STATE" = "error" ]; then
+                echo "El deploy de preview ha fallado en Vercel."
+                exit 1
+              fi
+            fi
+            sleep 10
+          done
+          echo "Timeout esperando la preview de Vercel (10 min)."
+          exit 1
+
+      - name: Generar el HTML del email
+        if: ${{ inputs.dry_run != true && steps.prepare.outputs.file != '' }}
+        id: email
+        env:
+          SLUG: ${{ steps.prepare.outputs.slug }}
+          FILE: ${{ steps.prepare.outputs.file }}
+          TITLE: ${{ steps.prepare.outputs.title }}
+          DESCRIPTION: ${{ steps.prepare.outputs.description }}
+          TLDR: ${{ steps.prepare.outputs.tldr }}
+          PREVIEW_URL: ${{ steps.preview.outputs.url }}
+          BLOG_REVIEW_SECRET: ${{ secrets.BLOG_REVIEW_SECRET }}
+        run: node scripts/build-review-email.mjs
+
+      - name: Enviar el email de revisión (SMTP info@konquerai.com)
+        if: ${{ inputs.dry_run != true && steps.prepare.outputs.file != '' }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          from: KonquerAI <info@konquerai.com>
+          to: ${{ vars.REVIEW_EMAIL }}
+          subject: ${{ steps.email.outputs.subject }}
+          html_body: file://review-email.html
+
+      - name: Revertir a draft si algo falló tras marcar pending
+        if: ${{ failure() && steps.prepare.outputs.file != '' }}
+        run: |
+          git checkout main
+          git pull --ff-only origin main
+          node scripts/prepare-review.mjs --unqueue "${{ steps.prepare.outputs.file }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content/blog
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(blog): unqueue ${{ steps.prepare.outputs.slug }} (review email failed)"
+            git push
+          fi
+          git push origin --delete "preview/${{ steps.prepare.outputs.slug }}" 2>/dev/null || true
