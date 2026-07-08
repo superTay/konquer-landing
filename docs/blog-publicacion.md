@@ -12,53 +12,100 @@ El frontmatter es la única fuente de verdad (no hay fichero de cola aparte):
 
 | Campo | Papel |
 |---|---|
-| `status: draft` | En cola, oculto. Se publicará cuando le toque. |
+| `status: draft` | En cola, oculto. Entrará en revisión cuando le toque. |
+| `status: pending` | Enviado a revisión la víspera. Se publica al día siguiente salvo que se suspenda. |
 | `status: published` | Publicado y visible. |
-| `status: hold` | Congelado: la automatización lo salta hasta que lo devuelvas a `draft`. |
+| `status: hold` | Suspendido (por el botón del email o a mano). No se publica hasta devolverlo a `draft`. |
+| `review:` | Auditoría: `approved <fecha>` o `suspended <fecha>` según el botón pulsado. |
 | `plan_row` | Orden de la cola (ascendente). |
+
+```
+draft ──(víspera 18:00, email de revisión)──► pending ──(mañana 9:00)──► published
+                                                 │
+                                                 └──(botón Suspender)──► hold
+```
+
+**Ningún post se publica sin haber pasado por el email de revisión.** La
+política es opt-out: si nadie toca los botones, el post sale igualmente a la
+mañana siguiente.
 
 ## Automatización (GitHub Actions)
 
-El workflow [`publish-blog-posts.yml`](../.github/workflows/publish-blog-posts.yml)
-corre **lunes, martes, jueves y viernes a las 07:00 UTC** (09:00 Madrid en
-verano, 08:00 en invierno) y publica **1 post por ejecución** → 4/semana,
-~13 semanas de cola. En cada ejecución:
+### 1. Víspera — [`prepare-review.yml`](../.github/workflows/prepare-review.yml)
 
-1. `scripts/publish-next-posts.mjs` toma el siguiente `draft` por `plan_row`,
-   le pone `status: published` y `date:` de hoy (hora de Madrid).
-2. Si hay cambios, commitea y hace push a `main`.
-3. El push dispara el deploy de Vercel: la página `/blog/<slug>` se genera,
-   el post entra en el índice y en el sitemap. Nada más que hacer: SEO,
-   Open Graph y JSON-LD salen del frontmatter en el build.
-4. Con la cola vacía, el script sale limpio y no se commitea nada.
+Corre **domingo, lunes, miércoles y jueves a las 16:00 UTC** (18:00 Madrid en
+verano) — la tarde antes de cada día de publicación. En cada ejecución:
 
-No necesita secretos: usa el `GITHUB_TOKEN` automático con
-`permissions: contents: write` declarado en el propio workflow.
+1. `scripts/prepare-review.mjs` marca el siguiente `draft` como `pending`
+   (si ya hay un `pending`, no hace nada: idempotente).
+2. Crea la rama `preview/<slug>` con el post activado solo ahí → Vercel
+   construye una **preview privada idéntica a producción**.
+3. Espera la URL del deployment (API de GitHub) y envía el **email de
+   revisión** por SMTP desde info@konquerai.com: título, descripción, TL;DR,
+   enlace a la preview y botones **Aprobar / Suspender** (enlaces firmados
+   con HMAC y caducidad, gestionados por `api/blog-review.ts`).
+4. Si algo falla tras marcar `pending` (preview, email…), el propio workflow
+   lo revierte a `draft`: nada queda camino de publicarse sin email enviado.
+
+### 2. Publicación — [`publish-blog-posts.yml`](../.github/workflows/publish-blog-posts.yml)
+
+Corre **lunes, martes, jueves y viernes a las 07:00 UTC** (09:00 Madrid en
+verano) → 4 posts/semana, ~13 semanas de cola:
+
+1. `scripts/publish-next-posts.mjs` publica el post en `pending` (`status:
+   published` + fecha de hoy). Si el revisor lo suspendió (`hold`), ese día
+   no se publica nada y la cola sigue con el siguiente en la próxima víspera.
+2. Commit + push a `main` → deploy de Vercel: página, índice y sitemap se
+   actualizan solos (SEO, Open Graph y JSON-LD salen del frontmatter).
+3. Borra las ramas `preview/*` ya consumidas.
 
 **Importante**: los crons de GitHub solo corren desde la rama por defecto
-(`main`). El workflow queda inactivo hasta mergear la rama del blog.
+(`main`).
 
-### Probarlo a mano antes de dejarlo en automático
+### Secretos y variables
 
-En GitHub → pestaña **Actions** → "Publicar posts del blog (drip)" →
-**Run workflow**:
+| Dónde | Nombre | Qué es |
+|---|---|---|
+| Actions (secret) | `SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASSWORD` | SMTP de info@konquerai.com (contraseña de aplicación) |
+| Actions (secret) | `BLOG_REVIEW_SECRET` | Clave HMAC de los botones del email |
+| Actions (variable) | `REVIEW_EMAIL` | Destinatario de la revisión |
+| Vercel (env) | `BLOG_REVIEW_SECRET` | La misma clave HMAC (verificación) |
+| Vercel (env) | `BLOG_REVIEW_GITHUB_TOKEN` | PAT fine-grained (solo este repo, contents read/write) |
 
-- Con `dry_run = true`: muestra en el log qué post publicaría, sin tocar nada.
-- Sin dry run: publica de verdad (commit + push + deploy). Sirve también
-  para adelantar publicaciones o ponerse al día (`count = 2, 3…`).
+Además, en Vercel debe estar **desactivada la protección de previews**
+(Settings → Deployment Protection → Vercel Authentication off para Preview),
+o el enlace del email pedirá login de Vercel.
 
-También en local: `node scripts/publish-next-posts.mjs --dry-run`.
+### Probarlo a mano
+
+En GitHub → **Actions**:
+
+- "Preparar revisión del blog (víspera)" → Run workflow con `dry_run = true`
+  (muestra qué post entraría en revisión) o sin dry run (envía el email real).
+- "Publicar posts del blog (drip)" → Run workflow. `mode = draft` +
+  `count = N` publica saltándose la revisión (solo emergencias).
+
+En local: `node scripts/prepare-review.mjs --dry-run` y
+`node scripts/publish-next-posts.mjs --dry-run`.
 
 ## Operaciones frecuentes
 
-- **Pausar la publicación**: Actions → workflow → menú "···" →
-  *Disable workflow* (y *Enable* para reanudar). Sin tocar código.
-- **Cambiar días u hora**: editar el `cron:` del workflow (recuerda: UTC).
+- **Pausar la publicación**: Actions → *Disable workflow* en **los dos**
+  workflows (víspera y publicación); *Enable* para reanudar. Sin tocar código.
+- **Cambiar días u hora**: editar los `cron:` de ambos workflows (recuerda:
+  UTC, y la víspera va un día por delante de la publicación).
 - **Reordenar la cola**: cambiar los `plan_row` de los posts en draft.
-- **Congelar un post** (p. ej. un fiscal pendiente de revisar):
-  `status: draft` → `status: hold`. Para liberarlo, devolverlo a `draft`.
-- **Publicar uno fuera de turno**: Run workflow manual, o editar a mano su
-  frontmatter (`status: published` + fecha) y hacer push.
+- **Congelar un post**: `status: draft` → `status: hold`. Para liberarlo,
+  devolverlo a `draft`.
+- **Reenviar el email de revisión** (se borró, no llegó…): Actions →
+  "Preparar revisión" → Run workflow. Si el post ya está `pending`, ponlo
+  antes en `draft` para que lo vuelva a preparar.
+- **Reactivar un suspendido**: botón Aprobar del mismo email (mientras el
+  enlace no caduque), o a mano `status: hold` → `draft` para que vuelva a
+  entrar en cola con revisión nueva.
+- **Publicar uno fuera de turno**: Run workflow de publicación con
+  `mode = draft`, o editar a mano su frontmatter (`status: published` +
+  fecha) y hacer push.
 - **Añadir posts nuevos**: dejar el `.md` en `src/content/blog/` con el
   mismo frontmatter (con `status: draft` y el siguiente `plan_row` libre)
   y su imagen en `images/` (webp ≤ 1600 px). Entra al final de la cola.
