@@ -68,6 +68,7 @@ jobs:
 
       - name: Crear rama de preview (post visible solo ahí)
         if: ${{ inputs.dry_run != true && steps.prepare.outputs.file != '' }}
+        id: preview_branch
         run: |
           BRANCH="preview/${{ steps.prepare.outputs.slug }}"
           git checkout -b "$BRANCH"
@@ -75,6 +76,7 @@ jobs:
           git add src/content/blog
           git commit -m "chore(blog): preview ${{ steps.prepare.outputs.slug }}"
           git push -f origin "$BRANCH"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           git checkout main
 
       - name: Esperar la URL de preview de Vercel
@@ -83,9 +85,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          BRANCH="preview/${{ steps.prepare.outputs.slug }}"
+          # Vercel registra los deployments con el SHA del commit como ref,
+          # no con el nombre de la rama: hay que buscar por sha.
+          SHA="${{ steps.preview_branch.outputs.sha }}"
           for i in $(seq 1 60); do
-            DEP_ID=$(gh api "repos/${{ github.repository }}/deployments?ref=$BRANCH&per_page=1" --jq '.[0].id // empty' || true)
+            DEP_ID=$(gh api "repos/${{ github.repository }}/deployments?sha=$SHA&per_page=1" --jq '.[0].id // empty' || true)
             if [ -n "$DEP_ID" ]; then
               STATE=$(gh api "repos/${{ github.repository }}/deployments/$DEP_ID/statuses" --jq '.[0].state // empty' || true)
               URL=$(gh api "repos/${{ github.repository }}/deployments/$DEP_ID/statuses" --jq '.[0].environment_url // empty' || true)
