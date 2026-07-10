@@ -3,6 +3,7 @@ title: "Verifactu para autónomos de reformas: la guía 2027, oficio por oficio"
 slug: "verifactu-autonomos-reformas-guia-2027"
 date: "2026-06-23"
 status: pending
+review: approved 2026-07-10T15:16:55.033Z
 silo: "A"
 type: "pilar-resource"
 plan_row: 1
