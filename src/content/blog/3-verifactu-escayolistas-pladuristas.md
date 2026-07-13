@@ -3,6 +3,7 @@ title: "Verifactu para escayolistas y pladuristas: cómo cumplir en 2027"
 slug: "verifactu-escayolistas-pladuristas"
 date: "2026-06-23"
 status: pending
+review: approved 2026-07-13T19:02:58.668Z
 silo: "A"
 type: "escalable"
 plan_row: 3
