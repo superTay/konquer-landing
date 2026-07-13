@@ -1,8 +1,8 @@
 ---
 title: "Verifactu y el IVA del 10% en reformas: cómo hacer la factura para que no te la tumben"
 slug: "verifactu-iva-10-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-07-13"
+status: published
 review: approved 2026-07-12T17:04:02.545Z
 silo: "B"
 type: "escalable"
