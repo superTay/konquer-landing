@@ -2,7 +2,7 @@
 title: "Cómo contestar todos los presupuestos a tiempo sin pasarte el día con el móvil"
 slug: "presupuestos-a-tiempo"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "C"
 type: "escalable"
 plan_row: 4
