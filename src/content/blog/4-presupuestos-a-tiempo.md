@@ -3,6 +3,7 @@ title: "Cómo contestar todos los presupuestos a tiempo sin pasarte el día con 
 slug: "presupuestos-a-tiempo"
 date: "2026-06-23"
 status: pending
+review: approved 2026-07-15T17:33:42.735Z
 silo: "C"
 type: "escalable"
 plan_row: 4
