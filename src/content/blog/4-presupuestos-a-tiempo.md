@@ -1,8 +1,8 @@
 ---
 title: "Cómo contestar todos los presupuestos a tiempo sin pasarte el día con el móvil"
 slug: "presupuestos-a-tiempo"
-date: "2026-06-23"
-status: pending
+date: "2026-07-16"
+status: published
 review: approved 2026-07-15T17:33:42.735Z
 silo: "C"
 type: "escalable"
