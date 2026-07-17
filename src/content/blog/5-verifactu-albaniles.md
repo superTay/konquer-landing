@@ -1,8 +1,8 @@
 ---
 title: "Verifactu para albañiles: qué te obliga y cómo adaptarte"
 slug: "verifactu-albaniles"
-date: "2026-06-23"
-status: pending
+date: "2026-07-17"
+status: published
 review: approved 2026-07-16T17:48:15.537Z
 silo: "A"
 type: "escalable"
