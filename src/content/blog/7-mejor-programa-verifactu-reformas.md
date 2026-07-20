@@ -3,6 +3,7 @@ title: "Qué programa elegir para cumplir con Verifactu si haces reformas y no e
 slug: "mejor-programa-verifactu-reformas"
 date: "2026-06-23"
 status: pending
+review: approved 2026-07-20T18:24:44.672Z
 silo: "A"
 type: "pilar-high-profit"
 plan_row: 7
