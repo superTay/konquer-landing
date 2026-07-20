@@ -1,8 +1,8 @@
 ---
 title: "¿Estás en módulos y haces reformas? Así te afecta Verifactu"
 slug: "verifactu-modulos-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-07-20"
+status: published
 silo: "B"
 type: "escalable"
 plan_row: 6
