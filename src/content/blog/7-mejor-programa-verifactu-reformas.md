@@ -1,8 +1,8 @@
 ---
 title: "Qué programa elegir para cumplir con Verifactu si haces reformas y no eres de ordenadores"
 slug: "mejor-programa-verifactu-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-07-21"
+status: published
 review: approved 2026-07-20T18:24:44.672Z
 silo: "A"
 type: "pilar-high-profit"
