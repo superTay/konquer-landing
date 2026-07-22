@@ -2,7 +2,7 @@
 title: "Modelo de contrato de reforma para evitar impagos (plantilla y cláusulas clave)"
 slug: "contrato-reforma-evitar-impagos"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "D"
 type: "escalable"
 plan_row: 8
