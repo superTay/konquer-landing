@@ -2,7 +2,7 @@
 title: "Verifactu para pintores autónomos: cómo facturar legal en 2027"
 slug: "verifactu-pintores"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "A"
 type: "escalable"
 plan_row: 9
