@@ -54,7 +54,9 @@ export default async function handler(req: Request): Promise<Response> {
       body: JSON.stringify({
         model: MODEL,
         messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
-        max_tokens: 320,
+        // Antes 320: la narración del Paso 5 + la etiqueta [[DATA:{...}]] (~18 campos) no
+        // cabían y la etiqueta se truncaba, así que el informe no llegaba a dispararse.
+        max_tokens: 700,
         temperature: 0.4,
         // Frenos: que no se invente turnos del usuario ni divague.
         stop: ['\nHuman:', '\nUser:', '\nUsuario:', 'Human:', 'Usuario:'],

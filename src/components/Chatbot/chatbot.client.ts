@@ -209,6 +209,13 @@ function initChatbot() {
     if (!t || sending) return;
     addBubble('user', t);
     messages.push({ role: 'user', content: t });
+    // El informe se abre en cuanto el usuario da un email válido. No dependemos de que
+    // el modelo lo devuelva intacto en la etiqueta [[DATA]] (que puede truncarse por
+    // max_tokens): lo leemos directamente de su mensaje. Así el informe siempre dispara.
+    if (!collected.email) {
+      const m = t.match(/[^\s@]+@[^\s@]+\.[^\s@]+/);
+      if (m) collected.email = m[0];
+    }
     textField.value = '';
     botTurn();
   }

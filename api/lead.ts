@@ -1,7 +1,9 @@
-// POST /api/lead — Guarda el lead + la conversación en Supabase (CRM) y, en paralelo,
-// dispara el aviso por email con Web3Forms (best-effort, no bloquea).
-// Las claves de Supabase (service role) viven SOLO aquí.
+// POST /api/lead — Guarda el lead + la conversación en Supabase (CRM), manda el informe
+// al correo del usuario (Resend) y, en paralelo, dispara el aviso interno con Web3Forms.
+// Las claves de Supabase (service role), Resend y Web3Forms viven SOLO aquí.
 import { checkOrigin, clampJson } from './_lib/security';
+import { computeSavings, computeOportunidad } from '../src/components/Chatbot/savings';
+import { buildReportEmail } from './_lib/report-email';
 
 export const config = { runtime: 'edge' };
 
@@ -111,7 +113,51 @@ export default async function handler(req: Request): Promise<Response> {
       }).catch((e) => console.error('Supabase conversation insert error', e));
     }
 
-    // 3) Aviso por email con Web3Forms (best-effort, ya existía en la landing)
+    // 3) Mandar el informe al correo del usuario (Resend). Se espera a que termine para
+    //    asegurar la entrega en la función edge. Un fallo aquí no rompe el guardado.
+    let emailSent = false;
+    const resendKey = process.env.RESEND_API_KEY;
+    if (resendKey) {
+      try {
+        const savings = computeSavings({
+          h_admin_semana: num(body.h_admin_semana),
+          coste_hora: num(body.coste_hora),
+          oficio: lead.oficio,
+        });
+        const oportunidad = computeOportunidad({
+          presupuestos_mes: num(body.presupuestos_mes),
+          ticket_medio: num(body.ticket_medio),
+          oficio: lead.oficio,
+        });
+        // Tolerante: acepta "usuario/evento" o una URL completa de cal.com; nos quedamos con el path.
+        const calLink = (process.env.PUBLIC_CALCOM_URL || '')
+          .trim()
+          .replace(/^https?:\/\/(www\.)?cal\.com\//i, '')
+          .replace(/^https?:\/\/[^/]+\//i, '')
+          .replace(/^\/+|\/+$/g, '');
+        const { subject, html, text } = buildReportEmail({
+          nombre: lead.nombre, oficio: lead.oficio, equipo: lead.equipo,
+          herramientas: lead.herramientas, tarea_tiempo: lead.tarea_tiempo,
+          dolor_principal: lead.dolor_principal,
+          savings, oportunidad, calLink,
+        });
+        const from = process.env.REPORT_EMAIL_FROM || 'LucIA de KonquerAI <lucia@konquerai.com>';
+        const mailRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ from, to: [email], subject, html, text, reply_to: 'info@konquerai.com' }),
+        });
+        emailSent = mailRes.ok;
+        if (!mailRes.ok) {
+          const detail = await mailRes.text().catch(() => '');
+          console.error('Resend error', mailRes.status, detail);
+        }
+      } catch (e) {
+        console.error('report email error', e);
+      }
+    }
+
+    // 4) Aviso interno para la empresa con Web3Forms (best-effort, ya existía en la landing)
     const w3fKey = process.env.PUBLIC_WEB3FORMS_ACCESS_KEY;
     if (w3fKey) {
       fetch('https://api.web3forms.com/submit', {
@@ -136,7 +182,7 @@ export default async function handler(req: Request): Promise<Response> {
       }).catch((e) => console.error('Web3Forms error', e));
     }
 
-    return json({ ok: true, lead_id: leadId });
+    return json({ ok: true, lead_id: leadId, email_sent: emailSent });
   } catch (e) {
     console.error('lead handler error', e);
     return json({ error: 'No he podido guardar tus datos. Inténtalo otra vez.' }, 500);

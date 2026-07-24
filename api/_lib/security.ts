@@ -9,6 +9,21 @@ const ALLOWED_ORIGINS = new Set([
   'http://localhost:3001',
 ]);
 
+// Previews de Vercel (ramas / PRs): el dominio *.vercel.app cambia por deployment y no
+// se puede meter a mano en ALLOWED_ORIGINS. Vercel expone la URL del propio deployment
+// (y la del alias de rama) en variables de entorno automáticas; permitimos SOLO esas,
+// nunca un *.vercel.app arbitrario.
+function allowedPreviewOrigins(): Set<string> {
+  const extra = new Set<string>();
+  if (process.env.VERCEL_URL) extra.add(`https://${process.env.VERCEL_URL}`);
+  if (process.env.VERCEL_BRANCH_URL) extra.add(`https://${process.env.VERCEL_BRANCH_URL}`);
+  return extra;
+}
+
+function isAllowedOrigin(origin: string): boolean {
+  return ALLOWED_ORIGINS.has(origin) || allowedPreviewOrigins().has(origin);
+}
+
 function forbidden(): Response {
   return new Response(JSON.stringify({ error: 'forbidden' }), {
     status: 403,
@@ -17,22 +32,22 @@ function forbidden(): Response {
 }
 
 /**
- * Comprueba que la petición viene de nuestro propio dominio.
- * Los navegadores siempre envían Origin en peticiones POST same-origin;
- * se hace fallback a Referer para cubrir edge cases.
+ * Comprueba que la petición viene de nuestro propio dominio (o del propio deployment
+ * de Vercel, en producción o preview). Los navegadores siempre envían Origin en
+ * peticiones POST same-origin; se hace fallback a Referer para cubrir edge cases.
  * Devuelve una Response 403 si el check falla, o null si todo está bien.
  */
 export function checkOrigin(req: Request): Response | null {
   const origin = req.headers.get('origin');
 
   if (origin !== null) {
-    return ALLOWED_ORIGINS.has(origin) ? null : forbidden();
+    return isAllowedOrigin(origin) ? null : forbidden();
   }
 
   const referer = req.headers.get('referer');
   if (referer) {
     try {
-      return ALLOWED_ORIGINS.has(new URL(referer).origin) ? null : forbidden();
+      return isAllowedOrigin(new URL(referer).origin) ? null : forbidden();
     } catch {
       return forbidden();
     }
