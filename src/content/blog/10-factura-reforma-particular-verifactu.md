@@ -1,8 +1,8 @@
 ---
 title: "Cómo hacer una factura de reforma a un particular con Verifactu (datos obligatorios)"
 slug: "factura-reforma-particular-verifactu"
-date: "2026-06-23"
-status: pending
+date: "2026-07-27"
+status: published
 review: approved 2026-07-26T18:49:50.460Z
 silo: "B"
 type: "escalable"
