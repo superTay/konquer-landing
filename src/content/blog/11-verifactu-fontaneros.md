@@ -1,8 +1,8 @@
 ---
 title: "Verifactu para fontaneros: guía rápida de plazos y qué necesitas"
 slug: "verifactu-fontaneros"
-date: "2026-06-23"
-status: pending
+date: "2026-07-28"
+status: published
 silo: "A"
 type: "escalable"
 plan_row: 11
