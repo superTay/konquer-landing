@@ -2,7 +2,7 @@
 title: "Cómo dejar hecho el parte de cada obra sin libretas ni papeles sueltos"
 slug: "parte-de-obra-sin-papeles"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "C"
 type: "escalable"
 plan_row: 12
