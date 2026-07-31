@@ -1,8 +1,8 @@
 ---
 title: "Verifactu para electricistas autónomos: qué cambia en tu facturación"
 slug: "verifactu-electricistas"
-date: "2026-06-23"
-status: pending
+date: "2026-07-31"
+status: published
 silo: "A"
 type: "escalable"
 plan_row: 13
