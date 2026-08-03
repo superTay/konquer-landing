@@ -2,7 +2,7 @@
 title: "Verifactu para carpinteros: cómo cumplir sin complicarte"
 slug: "verifactu-carpinteros"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "A"
 type: "escalable"
 plan_row: 15
