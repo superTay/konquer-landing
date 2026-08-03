@@ -1,8 +1,8 @@
 ---
 title: "Qué pasa si en 2027 sigues facturando tus reformas en Word o Excel"
 slug: "verifactu-word-excel-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-08-03"
+status: published
 silo: "B"
 type: "escalable"
 plan_row: 14
