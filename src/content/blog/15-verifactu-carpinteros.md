@@ -1,8 +1,8 @@
 ---
 title: "Verifactu para carpinteros: cómo cumplir sin complicarte"
 slug: "verifactu-carpinteros"
-date: "2026-06-23"
-status: pending
+date: "2026-08-04"
+status: published
 review: approved 2026-08-03T19:20:19.713Z
 silo: "A"
 type: "escalable"
