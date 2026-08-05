@@ -2,7 +2,7 @@
 title: "Cómo pedir un anticipo en una reforma sin que el cliente desconfíe"
 slug: "pedir-anticipo-reforma"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "D"
 type: "escalable"
 plan_row: 16
