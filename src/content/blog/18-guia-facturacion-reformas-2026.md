@@ -2,7 +2,7 @@
 title: "Guía de facturación para autónomos de reformas 2026: IVA, Verifactu e IRPF"
 slug: "guia-facturacion-reformas-2026"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "B"
 type: "pilar-resource"
 plan_row: 18
