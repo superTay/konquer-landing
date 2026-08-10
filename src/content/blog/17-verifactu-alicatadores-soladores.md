@@ -1,8 +1,8 @@
 ---
 title: "Verifactu para alicatadores y soladores: lo que tienes que saber"
 slug: "verifactu-alicatadores-soladores"
-date: "2026-06-23"
-status: pending
+date: "2026-08-10"
+status: published
 silo: "A"
 type: "escalable"
 plan_row: 17
