@@ -2,7 +2,7 @@
 title: "Verifactu para montadores de cocinas: cómo adaptarte antes de 2027"
 slug: "verifactu-montadores-cocinas"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "A"
 type: "escalable"
 plan_row: 19
