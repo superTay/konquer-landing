@@ -2,7 +2,7 @@
 title: "Cómo conseguir reseñas en Google tras cada reforma sin tener que insistir"
 slug: "resenas-google-reformas"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "C"
 type: "escalable"
 plan_row: 20
