@@ -1,8 +1,8 @@
 ---
 title: "Cómo conseguir reseñas en Google tras cada reforma sin tener que insistir"
 slug: "resenas-google-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-08-14"
+status: published
 silo: "C"
 type: "escalable"
 plan_row: 20
