@@ -2,7 +2,7 @@
 title: "Verifactu para instaladores de climatización: plazos y obligaciones"
 slug: "verifactu-climatizacion"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "A"
 type: "escalable"
 plan_row: 21
