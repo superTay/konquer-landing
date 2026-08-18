@@ -1,8 +1,8 @@
 ---
 title: "Multa de 50.000 € por Verifactu: ¿te afecta como autónomo de reformas y desde cuándo?"
 slug: "multa-50000-verifactu-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-08-18"
+status: published
 silo: "B"
 type: "escalable"
 plan_row: 22
