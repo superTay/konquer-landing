@@ -1,8 +1,8 @@
 ---
 title: "Factura con materiales y mano de obra: cómo desglosarla para el IVA del 10%"
 slug: "factura-materiales-mano-obra-iva-10"
-date: "2026-06-23"
-status: pending
+date: "2026-08-20"
+status: published
 silo: "B"
 type: "escalable"
 plan_row: 23
