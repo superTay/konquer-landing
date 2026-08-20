@@ -2,7 +2,7 @@
 title: "Las 7 partidas que los reformistas olvidan presupuestar (y que se comen el margen)"
 slug: "partidas-olvidadas-presupuesto"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "D"
 type: "escalable"
 plan_row: 24
