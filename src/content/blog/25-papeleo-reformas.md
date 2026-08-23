@@ -2,7 +2,7 @@
 title: "Cómo llevar los presupuestos y las facturas de tus reformas sin pelearte con el ordenador"
 slug: "papeleo-reformas"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "C"
 type: "pilar-resource"
 plan_row: 25
