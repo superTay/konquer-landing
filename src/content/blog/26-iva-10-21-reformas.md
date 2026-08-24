@@ -2,7 +2,7 @@
 title: "IVA del 10% o del 21% en una reforma: cómo saber cuál poner en cada factura"
 slug: "iva-10-21-reformas"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "B"
 type: "escalable"
 plan_row: 26
