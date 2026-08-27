@@ -588,7 +588,7 @@
 
 ### Tres líneas de valor
 
-1. **"Lo de Hacienda lo lleva la app"** — facturación + IVA + recordatorios trimestrales automáticos.
+1. **"Lo de Hacienda lo lleva tu oficina digital"** — facturación + IVA + recordatorios trimestrales automáticos.
 2. **"Sabe si ganas o pierdes en cada obra"** — rentabilidad real con costes imputados. **Único en su nicho.**
 3. **"Hablas, no escribes"** — IA + voz + cámara para que la app trabaje por ti, no al revés.
 

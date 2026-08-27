@@ -36,7 +36,8 @@ Estas reglas vienen de `marketing_konquer/02_brand_voice.md` y son **bloqueantes
 4. **Mensajes de error en humano**, nunca técnicos.
 5. **No mencionar "IA" en hero ni en CTAs**: el cliente compra resultado, no tecnología. "IA" se reserva para storytelling secundario.
 6. **La promesa principal de marca es**: "Lleva tu negocio en serio sin volverte loco con tecnología."
-7. **Los tres pilares de valor son**: (1) Lo de Hacienda lo lleva la app, (2) Sabe si ganas o pierdes en cada obra, (3) Hablas, no escribes.
+7. **Los tres pilares de valor son**: (1) Lo de Hacienda lo lleva tu oficina digital, (2) Sabe si ganas o pierdes en cada obra, (3) Hablas, no escribes.
+8. **Léxico de posicionamiento**: la categoría es "servicio" / "tu oficina digital", nunca "app de gestión". "App" se reserva para la app móvil que se descarga (tiendas, "llévala en la furgoneta", uso en obra). Cuando algo hace el trabajo (lee facturas, avisa, calcula), el sujeto es "tu oficina digital" o "tus asistentes/empleados digitales". Prohibido "agente de IA" en copy de cliente.
 
 ## Colores y tipografía (vienen de la app, mantener consistencia)
 

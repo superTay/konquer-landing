@@ -57,7 +57,7 @@ Regla: **cada pieza de marketing toca máximo dos niveles**. Si tocas los cuatro
 
 Cada pilar tiene una promesa, una frase de marca y un beneficio claro. Estos tres pilares son **la columna vertebral** del marketing.
 
-### Pilar 1 — "Lo de Hacienda lo lleva la app"
+### Pilar 1 — "Lo de Hacienda lo lleva tu oficina digital"
 
 **Promesa:** Tranquilidad fiscal.
 

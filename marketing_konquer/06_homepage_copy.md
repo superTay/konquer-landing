@@ -37,7 +37,7 @@
 ### Hero — Versión A (Recomendada para arranque)
 
 **Eyebrow (sobre el H1, pequeñito):**
-> Software de gestión para autónomos de reformas
+> Tu oficina digital para autónomos de reformas
 
 **H1:**
 > # Tu cuadrilla administrativa, ahora digital.
@@ -117,7 +117,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 ## [#promesa] La promesa
 
 **H2:**
-> ## Hay otra forma. Y esta vez no la lleva una app rara.
+> ## Hay otra forma. Y esta vez no es otra app: es tu oficina digital.
 
 **Cuerpo:**
 
@@ -152,7 +152,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 **Icono:** `[IMG: icono checklist con sello]`
 
 **H3:**
-> ### Lo de Hacienda lo lleva la app.
+> ### Lo de Hacienda lo lleva tu oficina digital.
 
 **Cuerpo:**
 > Facturas correctas, IVA calculado, IRPF al 15% (o al 7% si eres nuevo).
@@ -193,17 +193,17 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 > Le dices al móvil: "hazme un presupuesto para pintar tres habitaciones con gotelé".
 > Te lo monta. Lo revisas. Lo mandas.
 > Haces foto a un ticket en el bar y aparece archivado, sin teclear nada.
-> Las facturas de tus proveedores llegan solas a la app.
+> Las facturas de tus proveedores llegan solas a tu oficina digital.
 
 **Microcierre:**
-> La app trabaja por ti, no al revés.
+> Tu oficina digital trabaja por ti, 24/7.
 
 ---
 
 ## [#demo] Demo visual / producto en acción
 
 **H2:**
-> ## Esto es lo que ves cuando abres la app.
+> ## Esto es lo que ves cuando abres tu oficina digital.
 
 **Layout:** tres screenshots en carrusel o columnas.
 
@@ -257,7 +257,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 >
 > ✗ Facturas menos de 30.000€ al año (todavía no te compensa).
 >
-> ✗ No quieres realmente ordenar el negocio (no hay app que arregle eso).
+> ✗ No quieres realmente ordenar el negocio (no hay servicio que arregle eso).
 >
 > ✗ Tu sector no es reformas (estamos especializados, no servimos a "todos los autónomos").
 
@@ -273,11 +273,11 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 | Sin KonquerAI | Con KonquerAI |
 |--------------|---------------|
 | Lunes: cliente nuevo pide presupuesto. Le dices "esta tarde te lo paso". | Lunes: cliente nuevo pide presupuesto. Lo haces en 5 minutos desde la obra y se lo envías antes de salir. |
-| Martes: facturas de proveedores acumuladas en el email. Las dejas para "después". | Martes: las facturas ya están en la app, clasificadas. Solo apruebas en 3 segundos. |
+| Martes: facturas de proveedores acumuladas en el email. Las dejas para "después". | Martes: las facturas ya están en tu oficina digital, clasificadas. Solo apruebas en 3 segundos. |
 | Miércoles: la gestoría te pide los gastos del mes. Buscas en 6 carpetas distintas. | Miércoles: tu gestoría tiene acceso de lectura. No te pide nada. |
-| Jueves: terminas una obra. No tienes ni idea de si fue rentable. | Jueves: terminas una obra. La app te dice "1.840€ de margen, semáforo verde". |
+| Jueves: terminas una obra. No tienes ni idea de si fue rentable. | Jueves: terminas una obra. Tu oficina digital te dice "1.840€ de margen, semáforo verde". |
 | Viernes: cliente te debe 3.400€ desde hace 47 días. Te acabas de acordar. | Viernes: el sistema le mandó recordatorio el día 30. Ya está pagada. |
-| Domingo, 22:30: cena fría, tres facturas por hacer. | Domingo, 22:30: cena con la familia. La app ya cerró el día. |
+| Domingo, 22:30: cena fría, tres facturas por hacer. | Domingo, 22:30: cena con la familia. Tu oficina digital ya cerró el día. |
 
 ---
 
@@ -295,7 +295,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 
 ### Tarjeta 1 — Implantación paso a paso
 
-> Te guiamos para configurar la app, te enseñamos a usarla y te acompañamos las primeras semanas.
+> Te guiamos para montar tu oficina digital, te enseñamos a usarla y te acompañamos las primeras semanas.
 
 ---
 
@@ -408,7 +408,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 > **97€/mes** (sin permanencia)
 >
 > Incluye:
-> · App completa (web + móvil)
+> · Oficina digital completa (web + móvil)
 > · Puesta en marcha guiada paso a paso
 > · Configuración adaptada a tu oficio
 > · Soporte cercano continuo
@@ -480,7 +480,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 
 **¿Necesito saber de informática?**
 
-> No. Te guiamos paso a paso: una guía y unos asistentes que te acompañan en pantalla mientras configuras la app. En unos 15 minutos estás funcionando. Y si te atascas con algo, nos escribes y te contestamos enseguida.
+> No. Te guiamos paso a paso: una guía y unos asistentes que te acompañan en pantalla mientras montas tu oficina digital. En unos 15 minutos estás funcionando. Y si te atascas con algo, nos escribes y te contestamos enseguida.
 
 ---
 
@@ -498,7 +498,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 
 **¿Cumple con Verifactu y la normativa fiscal española?**
 
-> Sí. Facturación numerada, IVA correcto (21% / 10% reformas / 0% inversión sujeto pasivo), IRPF al 15% o 7%. Y cuando Verifactu entre en vigor, la app ya estará lista. Tú no tienes que enterarte.
+> Sí. Facturación numerada, IVA correcto (21% / 10% reformas / 0% inversión sujeto pasivo), IRPF al 15% o 7%. Y cuando Verifactu entre en vigor, tu oficina digital ya estará lista. Tú no tienes que enterarte.
 
 ---
 

@@ -16,6 +16,17 @@ Si alguna respuesta no es "sí", "amigo del gremio" y "no" → reescribe.
 
 ---
 
+## Cómo nombramos el producto (posicionamiento)
+
+> Actualizado 2026-08-28. No competimos como "una app de gestión más".
+
+- La **categoría** es **servicio** / **tu oficina digital**, nunca "app de gestión". Nos vendemos como el servicio que te monta y acompaña tu oficina digital, no como una app.
+- **"App"** se reserva para hablar de la **app móvil que se descarga** (tiendas, "llévala en la furgoneta", uso en obra). Ahí es honesto y se mantiene.
+- Cuando algo "hace el trabajo" (lee facturas, avisa, calcula), el sujeto es **tu oficina digital** o **tus asistentes/empleados digitales**, no "la app".
+- **Prohibido "agente de IA"** en copy de cliente: demasiado técnico. Usa "empleados/asistentes digitales" o "tu oficina digital".
+
+---
+
 ## Los cinco pilares de la voz
 
 La voz de KonquerAI es la mezcla de cinco cualidades. Ninguna domina sobre las demás. Si una falta, no suena a marca.

@@ -278,7 +278,7 @@ Frases que pueden ser headline, slogan de campaña, asunto de email o caption de
 - "Tú levantas obras. Nosotros levantamos el papeleo."
 - "Deja de llevar el negocio tú solo."
 - "Sabe si ganas o pierdes en cada obra."
-- "Lo de Hacienda lo lleva la app."
+- "Lo de Hacienda lo lleva tu oficina digital."
 - "Hablas, no escribes."
 - "Hecho para gente de obra, no para oficinistas."
 - "Tu negocio ha crecido. Tu forma de gestionarlo, no."

@@ -161,7 +161,7 @@ Toda comunicación de KonquerAI gira en torno a estos tres pilares. Ninguna piez
 
 | Pilar | Frase de marca | Beneficio que vendemos |
 |-------|----------------|------------------------|
-| **1. Hacienda en piloto automático** | "Lo de Hacienda lo lleva la app." | Tranquilidad fiscal: facturación correcta, IVA calculado, Verifactu listo, recordatorios trimestrales. |
+| **1. Hacienda en piloto automático** | "Lo de Hacienda lo lleva tu oficina digital." | Tranquilidad fiscal: facturación correcta, IVA calculado, Verifactu listo, recordatorios trimestrales. |
 | **2. Sabes si ganas o pierdes** | "Sabe si ganas o pierdes en cada obra." | Control real: margen por obra, costes imputados, dato exacto. Esto **no lo tiene nadie en el nicho**. |
 | **3. Hablas, no escribes** | "Hablas, no escribes." | UX cero fricción: IA + voz + cámara. La app trabaja por él, no al revés. |
 
