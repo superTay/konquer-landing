@@ -1,8 +1,8 @@
 ---
 title: "Pagos por fases en una reforma: cómo repartir los cobros para no quedarte sin caja"
 slug: "pagos-por-fases-reforma"
-date: "2026-06-23"
-status: pending
+date: "2026-08-27"
+status: published
 silo: "D"
 type: "escalable"
 plan_row: 27
