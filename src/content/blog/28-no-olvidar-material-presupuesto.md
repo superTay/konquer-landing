@@ -1,8 +1,8 @@
 ---
 title: "Cómo no dejarte ningún material fuera del presupuesto"
 slug: "no-olvidar-material-presupuesto"
-date: "2026-06-23"
-status: pending
+date: "2026-08-28"
+status: published
 silo: "C"
 type: "escalable"
 plan_row: 28
