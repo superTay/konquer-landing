@@ -131,7 +131,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 >
 > No tienes que aprender tecnología. La tecnología aprende a hablar tu idioma.
 >
-> Tú levantas obras. Nosotros levantamos el papeleo.
+> Tú, a lo tuyo. Nosotros levantamos el papeleo.
 
 **CTA inline:**
 > [ VER CÓMO FUNCIONA ] (scroll a sección "cómo funciona")
@@ -319,7 +319,7 @@ Línea horizontal con logos de proveedores, gestorías o casos de éxito (cuando
 
 ### Tarjeta 5 — Conciliación documental
 
-> Empareja albaranes con facturas de manera automática. Detecta duplicados antes de que pagues dos veces.
+> Empareja albaranes con facturas de manera automática, para que no pagues nada dos veces.
 
 ---
 
