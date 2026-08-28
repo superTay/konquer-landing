@@ -2,7 +2,7 @@
 title: "Cómo no dejarte ningún material fuera del presupuesto"
 slug: "no-olvidar-material-presupuesto"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "C"
 type: "escalable"
 plan_row: 28
