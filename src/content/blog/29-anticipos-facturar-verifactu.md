@@ -2,7 +2,7 @@
 title: "Anticipos en reformas: cómo facturarlos bien con Verifactu"
 slug: "anticipos-facturar-verifactu"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "B"
 type: "escalable"
 plan_row: 29
