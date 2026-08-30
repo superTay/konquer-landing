@@ -57,7 +57,7 @@ const fechaLarga = new Intl.DateTimeFormat("es-ES", {
         <div class="blog-grid">
           {posts.map((post) => (
             <article class="blog-card card-spotlight">
-              <a href={`/blog/${post.data.slug}`} class="blog-card-link">
+              <a href={`/blog/${post.data.slug}/`} class="blog-card-link">
                 <div class="blog-card-img">
                   <Image
                     src={post.data.imagen}
