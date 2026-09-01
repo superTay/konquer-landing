@@ -1,8 +1,8 @@
 ---
 title: "Papeleo y números del autónomo de reformas: guía para tenerlo todo en orden (2026)"
 slug: "papeleo-numeros-autonomo-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-09-01"
+status: published
 silo: "E"
 type: "pilar"
 plan_row: 30
