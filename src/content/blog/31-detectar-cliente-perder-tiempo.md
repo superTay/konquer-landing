@@ -1,8 +1,8 @@
 ---
 title: "Cómo detectar al cliente que te va a hacer perder el tiempo antes de ir a verlo"
 slug: "detectar-cliente-perder-tiempo"
-date: "2026-06-23"
-status: pending
+date: "2026-09-03"
+status: published
 silo: "C"
 type: "escalable"
 plan_row: 31
