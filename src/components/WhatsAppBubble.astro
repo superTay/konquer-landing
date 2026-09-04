@@ -1,0 +1,66 @@
+---
+/** WhatsAppBubble.astro — Burbuja flotante de contacto directo por WhatsApp.
+ *  Sustituye al chatbot "LucIA": ahora la consultoría la hace el fundador
+ *  en persona. Mismo hueco visual (fixed bottom-right) que ocupaba el chat. */
+const WHATSAPP_NUMBER = "34654041704"; // TODO: sustituir por el número profesional cuando esté listo
+const MESSAGE = "Hola, tengo una duda sobre KonquerAI";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(MESSAGE)}`;
+---
+<a
+  class="wa-bubble"
+  href={WHATSAPP_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Escríbenos por WhatsApp"
+>
+  <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.92C21.96 6.45 17.5 2 12.04 2Zm5.79 14.11c-.24.68-1.4 1.32-1.93 1.4-.51.08-1.15.11-1.86-.12-.43-.13-.98-.32-1.68-.62-2.96-1.28-4.89-4.26-5.04-4.46-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.47.27-.29.6-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.6.83 2.06.9 2.21.07.15.11.32.02.52-.09.2-.13.32-.27.49-.13.17-.28.37-.4.5-.13.13-.27.28-.12.55.15.27.68 1.12 1.46 1.82 1 .9 1.85 1.18 2.12 1.31.27.13.43.11.59-.07.16-.18.68-.79.87-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.2.51.31.06.11.06.66-.18 1.34Z"/>
+  </svg>
+  <span class="wa-label">Escríbenos por WhatsApp</span>
+</a>
+
+<style>
+  .wa-bubble {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 9999;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 56px;
+    padding: 0 1.1rem 0 0.95rem;
+    border-radius: 9999px;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.55);
+    transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .wa-bubble:hover {
+    box-shadow: 0 14px 38px -8px rgba(37, 211, 102, 0.65);
+    transform: translateY(-2px);
+  }
+  .wa-bubble:focus-visible {
+    outline: 3px solid var(--color-ink, #0B1F24);
+    outline-offset: 2px;
+  }
+  .wa-ico { width: 26px; height: 26px; flex: none; }
+  .wa-label {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .wa-bubble {
+      right: 0.85rem;
+      bottom: 0.85rem;
+      padding: 0;
+      width: 56px;
+      justify-content: center;
+    }
+    .wa-label { display: none; }
+  }
+</style>

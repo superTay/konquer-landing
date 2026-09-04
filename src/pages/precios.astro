@@ -2,6 +2,13 @@
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+
+// Checkout de Stripe (modo live): incluye el pago único de 490 € (alta) y la
+// suscripción de 97 €/mes (sin permanencia) en la misma sesión.
+const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/5kQ14ffGKdZs5vn9FK6oo01";
+
+const WHATSAPP_NUMBER = "34654041704";
+const WHATSAPP_URL_DUDA = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, tengo una duda sobre el precio de KonquerAI")}`;
 ---
 <Base
   title="Precios · KonquerAI"
@@ -40,7 +47,7 @@ import Footer from "../components/Footer.astro";
             <li>Actualizaciones y evolución continua</li>
           </ul>
 
-          <button type="button" class="btn btn-primary pricing-cta" data-open-lucia>Empieza ahora</button>
+          <a href={STRIPE_CHECKOUT_URL} class="btn btn-primary pricing-cta">Empieza ahora</a>
           <p class="pricing-limited">Plazas limitadas cada mes.</p>
         </div>
 
@@ -80,9 +87,9 @@ import Footer from "../components/Footer.astro";
     <section class="section-padding precios-cta-section">
       <div class="container-narrow precios-cta-inner">
         <h2>¿Empezamos?</h2>
-        <p>Habla con LucIA: te hace unas preguntas, mira tus números y te dice claro si te encaja y por dónde empezar. Gratis y en cinco minutos.</p>
-        <button type="button" class="btn btn-primary" data-open-lucia>Empieza ahora</button>
-        <p class="precios-cta-alt">¿Te surge cualquier duda? Escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a> y te contestamos enseguida.</p>
+        <p>¿No tienes claro si esto es para ti? Escríbenos por WhatsApp: te lo decimos claro y sin rollos.</p>
+        <a href={WHATSAPP_URL_DUDA} target="_blank" rel="noopener noreferrer" class="btn btn-primary">Escríbenos por WhatsApp</a>
+        <p class="precios-cta-alt">¿Prefieres email? Escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a> y te contestamos enseguida.</p>
       </div>
     </section>
   </main>

@@ -1,11 +1,16 @@
 ---
-/** LeadCtaBand.astro — Banda slim de captación (LEAD). Abre a LucIA.
- *  Va después de la Comparativa, justo cuando el visitante se ha visto reflejado. */
+/** LeadCtaBand.astro — Banda slim de captación (LEAD).
+ *  Va después de la Comparativa, justo cuando el visitante se ha visto reflejado.
+ *  CTA a WhatsApp (contacto directo, baja fricción) en vez de a /precios,
+ *  para no repetir el mismo destino que Hero/Oferta/Pricing/CtaFinal. */
+const WHATSAPP_NUMBER = "34654041704";
+const MESSAGE = "Hola, ¿cuánto tiempo y dinero me puede ahorrar KonquerAI?";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(MESSAGE)}`;
 ---
 <section class="section-padding lead-band">
   <div class="container-narrow lead-band-inner reveal">
-    <p class="lead-band-text">¿Cuánto te cuesta a ti el papeleo? Pregúntaselo a LucIA.</p>
-    <button type="button" class="btn btn-white lead-band-cta" data-open-lucia>Echa cuentas gratis</button>
+    <p class="lead-band-text">¿Cuánto te cuesta a ti el papeleo? Pregúntanoslo por WhatsApp.</p>
+    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" class="btn btn-white lead-band-cta">Escríbenos por WhatsApp</a>
   </div>
 </section>
 

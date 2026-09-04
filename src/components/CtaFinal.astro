@@ -1,10 +1,13 @@
 ---
-/** CtaFinal.astro — Banda CTA final (punto 1).
- *  El CTA principal abre a LucIA (consultoría = lead magnet), reutilizando el widget
- *  global del chatbot (vive en Base.astro). El secundario lleva a contacto por email.
- *  La estrategia completa de CTAs + lead magnet se afina en el punto 11. */
+/** CtaFinal.astro — Banda CTA final.
+ *  El CTA principal lleva a /precios. El secundario abre WhatsApp para quien
+ *  todavía no lo tiene claro (contacto directo, ya no hay chatbot). */
 import { Image } from "astro:assets";
 import recuperaDomingo from "../assets/recupera-domingo.png";
+
+const WHATSAPP_NUMBER = "34654041704";
+const MESSAGE = "Hola, no tengo claro si KonquerAI me encaja, ¿me ayudáis?";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(MESSAGE)}`;
 ---
 <section class="cta-final reveal" id="contacto">
   <Image
@@ -20,13 +23,13 @@ import recuperaDomingo from "../assets/recupera-domingo.png";
   <div class="container-narrow cta-inner">
     <div class="cta-card">
       <h2 class="cta-h2">Recupera el domingo.</h2>
-      <p class="cta-body">Empieza con tu Oficina IA. Te guiamos paso a paso para dejarlo todo listo y te quitamos el papeleo de encima. Sin permanencia. Garantía de 30 días.</p>
+      <p class="cta-body">Empieza con tu oficina digital. Te la damos montada, te enseñamos a usarla y te acompañamos las primeras semanas. Sin permanencia. Garantía de 30 días.</p>
 
-      <p class="cta-lead">¿No tienes claro si esto es para ti? Habla con LucIA. Te hace unas preguntas, mira tus números y te dice claro si te encaja y por dónde empezar. Gratis y en cinco minutos.</p>
+      <p class="cta-lead">¿No tienes claro si esto es para ti? Escríbenos por WhatsApp y te lo aclaramos en unos minutos.</p>
 
       <div class="cta-actions">
-        <button type="button" class="btn btn-white cta-primary" data-open-lucia>Habla con LucIA gratis</button>
-        <a href="/precios" class="cta-secondary">O empieza ya — desde 97 €/mes <span aria-hidden="true">→</span></a>
+        <a href="/precios" class="btn btn-white cta-primary">Ver precios y empezar</a>
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" class="cta-secondary">O escríbenos por WhatsApp <span aria-hidden="true">→</span></a>
       </div>
 
       <p class="cta-alt">¿Te surge cualquier duda? Escríbenos a <a href="mailto:info@konquerai.com">info@konquerai.com</a> y te contestamos enseguida.</p>

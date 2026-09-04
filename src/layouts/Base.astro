@@ -8,8 +8,7 @@ import '@fontsource/plus-jakarta-sans/500.css';
 import '@fontsource/plus-jakarta-sans/600.css';
 import '@fontsource/plus-jakarta-sans/700.css';
 import '../styles/global.css';
-import Chatbot from '../components/Chatbot/Chatbot.astro';
-import Report from '../components/Chatbot/Report.astro';
+import WhatsAppBubble from '../components/WhatsAppBubble.astro';
 
 interface Props {
   title?: string;
@@ -195,9 +194,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
     </div>
     <slot />
 
-    <!-- Chatbot "Tu consultor de Obra" + informe -->
-    <Chatbot />
-    <Report />
+    <!-- Contacto directo por WhatsApp -->
+    <WhatsAppBubble />
 
     <!-- IntersectionObserver fallback for scroll animations (Firefox) -->
     <script>
@@ -292,16 +290,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
       }
     </script>
 
-    <!-- Abrir a LucIA desde cualquier CTA con [data-open-lucia] (listener delegado único) -->
-    <script>
-      document.addEventListener('click', (e) => {
-        const trigger = (e.target as HTMLElement)?.closest('[data-open-lucia]');
-        if (!trigger) return;
-        const root = document.getElementById('konker-chat');
-        const bubble = document.getElementById('kc-bubble');
-        if (root && bubble && root.dataset.state !== 'open') bubble.click();
-      });
-    </script>
 
     <style>
       #nav-sentinel {
