@@ -1,8 +1,8 @@
 ---
 title: "Qué hacer si un cliente no te paga una reforma ya terminada (paso a paso)"
 slug: "cliente-no-paga-reforma"
-date: "2026-06-23"
-status: pending
+date: "2026-09-04"
+status: published
 silo: "D"
 type: "escalable"
 plan_row: 32
