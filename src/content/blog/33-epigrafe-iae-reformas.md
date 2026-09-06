@@ -2,7 +2,7 @@
 title: "Epígrafe del IAE para reformas: cuál te toca según tu oficio"
 slug: "epigrafe-iae-reformas"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "E"
 type: "escalable"
 plan_row: 33
