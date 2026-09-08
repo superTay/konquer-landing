@@ -1,8 +1,8 @@
 ---
 title: "Verifactu o factura electrónica: cuál te obliga a ti (autónomo de reformas) y desde cuándo"
 slug: "verifactu-vs-factura-electronica"
-date: "2026-06-23"
-status: pending
+date: "2026-09-08"
+status: published
 silo: "B"
 type: "escalable"
 plan_row: 34
