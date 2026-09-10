@@ -1,8 +1,8 @@
 ---
 title: "Hacer el presupuesto hablando: déjalo listo antes de salir de la obra"
 slug: "presupuesto-hablando"
-date: "2026-06-23"
-status: pending
+date: "2026-09-10"
+status: published
 silo: "C"
 type: "escalable"
 plan_row: 35
