@@ -1,8 +1,8 @@
 ---
 title: "Cómo presupuestar por partidas para que el cliente no te discuta el precio"
 slug: "presupuestar-por-partidas"
-date: "2026-06-23"
-status: pending
+date: "2026-09-11"
+status: published
 silo: "D"
 type: "escalable"
 plan_row: 36
