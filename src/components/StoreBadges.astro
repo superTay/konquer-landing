@@ -2,7 +2,6 @@
 /**
  * StoreBadges.astro — Badges de App Store y Google Play.
  * Reutilizable (bloque "La app" + footer). `size`: "lg" (default) | "sm".
- * TODO: sustituir GOOGLE_PLAY_URL por la ficha real en cuanto se publique.
  */
 interface Props {
   size?: "lg" | "sm";
@@ -14,7 +13,7 @@ interface Props {
 }
 const { size = "lg", center = false, class: extraClass = "" } = Astro.props;
 const APP_STORE_URL = "https://apps.apple.com/es/app/konquerai/id6767595664";
-const GOOGLE_PLAY_URL = "#"; // TODO: URL real de Google Play (pendiente de publicar)
+const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.konquerai.mobile&pli=1";
 ---
 <div class:list={["store-badges", `store-badges-${size}`, { "store-badges-center": center }, extraClass]}>
   <a class="store-badge" href={APP_STORE_URL} aria-label="Descárgala en el App Store">
