@@ -1,8 +1,8 @@
 ---
 title: "Cómo darte de alta como autónomo para hacer reformas (paso a paso)"
 slug: "alta-autonomo-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-09-14"
+status: published
 silo: "E"
 type: "escalable"
 plan_row: 37
