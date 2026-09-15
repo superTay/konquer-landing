@@ -1,8 +1,8 @@
 ---
 title: "Cómo entregar la obra con el papeleo en regla sin echarle horas"
 slug: "entregar-obra-papeleo-regla"
-date: "2026-06-23"
-status: pending
+date: "2026-09-15"
+status: published
 silo: "C"
 type: "escalable"
 plan_row: 38
