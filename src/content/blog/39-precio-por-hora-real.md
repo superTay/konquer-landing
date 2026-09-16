@@ -2,7 +2,7 @@
 title: "Tu precio por hora real en reformas: cuota, furgoneta y las horas que no cobras"
 slug: "precio-por-hora-real"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "D"
 type: "escalable"
 plan_row: 39
