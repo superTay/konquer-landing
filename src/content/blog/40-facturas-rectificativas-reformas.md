@@ -1,8 +1,8 @@
 ---
 title: "Facturas rectificativas en reformas: cuándo y cómo hacerlas"
 slug: "facturas-rectificativas-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-09-18"
+status: published
 silo: "B"
 type: "escalable"
 plan_row: 40
