@@ -2,7 +2,7 @@
 title: "Cómo llevar al día los pedidos de material sin volverte loco"
 slug: "pedidos-material-al-dia"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "C"
 type: "escalable"
 plan_row: 41
