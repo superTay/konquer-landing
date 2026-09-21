@@ -2,7 +2,7 @@
 title: "Seguro de responsabilidad civil para reformistas: qué cubre y por qué te lo piden"
 slug: "seguro-rc-reformistas"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "E"
 type: "escalable"
 plan_row: 42
