@@ -2,7 +2,7 @@
 title: "Cómo saber de verdad lo que ganas en cada obra"
 slug: "lo-que-ganas-cada-obra"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "C"
 type: "escalable"
 plan_row: 44
