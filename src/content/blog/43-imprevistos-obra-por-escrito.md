@@ -1,8 +1,8 @@
 ---
 title: "Imprevistos en obra: cómo dejarlos por escrito para poder cobrarlos"
 slug: "imprevistos-obra-por-escrito"
-date: "2026-06-23"
-status: pending
+date: "2026-09-24"
+status: published
 silo: "D"
 type: "escalable"
 plan_row: 43
