@@ -1,8 +1,8 @@
 ---
 title: "Gastos que puedes desgravarte como autónomo de reformas (furgoneta, herramienta, móvil)"
 slug: "gastos-desgravables-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-09-28"
+status: published
 silo: "E"
 type: "escalable"
 plan_row: 45
