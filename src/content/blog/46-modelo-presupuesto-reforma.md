@@ -1,8 +1,8 @@
 ---
 title: "Cómo hacer un presupuesto de reforma que cierra más obras (la estructura que convence)"
 slug: "modelo-presupuesto-reforma"
-date: "2026-06-23"
-status: pending
+date: "2026-09-29"
+status: published
 silo: "D"
 type: "escalable"
 plan_row: 46
