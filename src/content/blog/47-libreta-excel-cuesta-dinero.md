@@ -2,7 +2,7 @@
 title: "La libreta y el Excel te están costando dinero (y no te das cuenta)"
 slug: "libreta-excel-cuesta-dinero"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "C"
 type: "viral"
 plan_row: 47
