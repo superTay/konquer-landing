@@ -2,7 +2,7 @@
 title: "Cuánto vas a pagar de cuota de autónomo dedicándote a las reformas en 2026"
 slug: "cuota-autonomo-reformas-2026"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "E"
 type: "escalable"
 plan_row: 48
