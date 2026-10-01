@@ -1,8 +1,8 @@
 ---
 title: "La libreta y el Excel te están costando dinero (y no te das cuenta)"
 slug: "libreta-excel-cuesta-dinero"
-date: "2026-06-23"
-status: pending
+date: "2026-10-01"
+status: published
 silo: "C"
 type: "viral"
 plan_row: 47
