@@ -2,7 +2,7 @@
 title: "Cómo cobrar tus reformas a tiempo: del presupuesto al cobro sin sustos"
 slug: "cobrar-reformas-a-tiempo"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "D"
 type: "pilar"
 plan_row: 49
