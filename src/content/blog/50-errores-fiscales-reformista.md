@@ -1,8 +1,8 @@
 ---
 title: "Errores fiscales típicos del reformista autónomo (y cómo evitarlos)"
 slug: "errores-fiscales-reformista"
-date: "2026-06-23"
-status: pending
+date: "2026-10-06"
+status: published
 silo: "E"
 type: "escalable"
 plan_row: 50
