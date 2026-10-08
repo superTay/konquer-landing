@@ -2,7 +2,7 @@
 title: "De trabajar para otros a montar tu propia cuadrilla de reformas"
 slug: "montar-cuadrilla-reformas"
 date: "2026-06-23"
-status: draft
+status: pending
 silo: "E"
 type: "escalable"
 plan_row: 52
