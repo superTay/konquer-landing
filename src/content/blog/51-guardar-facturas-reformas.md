@@ -1,8 +1,8 @@
 ---
 title: "Cuántos años tienes que guardar las facturas de tus reformas (y cómo no perderlas)"
 slug: "guardar-facturas-reformas"
-date: "2026-06-23"
-status: pending
+date: "2026-10-08"
+status: published
 silo: "E"
 type: "escalable"
 plan_row: 51
