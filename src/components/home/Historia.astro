@@ -1,0 +1,105 @@
+---
+/**
+ * Historia — storytelling breve en primera persona. Todo sale de la historia de /sobre-nosotros
+ * (padre pintor, amigos autónomos de reformas, formación en gestión, salto a la IA). Sin datos nuevos.
+ */
+import { Image } from "astro:assets";
+import retrato from "../../assets/christian-retrato.jpg";
+---
+
+<section class="historia" id="historia">
+  <div class="historia-inner">
+    <div class="historia-photo reveal">
+      <Image
+        src={retrato}
+        alt="Christian Marzal, fundador de KonquerAI"
+        width={640}
+        widths={[320, 480, 640]}
+        sizes="(min-width: 900px) 320px, 60vw"
+        loading="lazy"
+        class="historia-img"
+      />
+    </div>
+
+    <div class="historia-copy">
+      <h2 class="historia-h2 reveal">Hola, soy Christian. Esto lo he visto en casa.</h2>
+
+      <div class="historia-text reveal">
+        <p>
+          Mi padre fue pintor toda la vida, y de crío le echaba una mano en verano. Hoy casi todos
+          mis amigos son autónomos de reformas, y a todos les veo hacer papeles de noche, después
+          de la obra.
+        </p>
+        <p>
+          Me formé en gestión de empresas y me metí de lleno en la inteligencia artificial. Un día
+          até cabos: esa tecnología no estaba llegando a la gente de obra. Así que monté KonquerAI,
+          para que esta vez no peleen solos.
+        </p>
+      </div>
+
+      <a href="/sobre-nosotros/" class="historia-link reveal">Lee mi historia completa <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .historia {
+    background: var(--color-mist);
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .historia-inner {
+    max-width: 1100px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+    display: grid;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .historia-inner { grid-template-columns: 320px 1fr; padding-inline: 2rem; }
+  }
+
+  .historia-photo { max-width: 280px; }
+  @media (min-width: 900px) { .historia-photo { max-width: none; } }
+
+  .historia-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 20px;
+    box-shadow: 0 30px 70px -40px rgba(11, 31, 36, 0.5);
+  }
+
+  .historia-h2 {
+    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    max-width: 18ch;
+  }
+
+  .historia-text {
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 1rem;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.65;
+    color: var(--color-slate);
+    max-width: 52ch;
+  }
+
+  .historia-link {
+    display: inline-block;
+    margin-top: 1.75rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    border-bottom: 2px solid var(--color-teal);
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+  }
+  .historia-link:hover { color: var(--color-teal-dark); }
+</style>

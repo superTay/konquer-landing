@@ -1,100 +1,232 @@
 ---
-/** Footer.astro — 4 columnas. Copy literal de 06. */
+/** Footer.astro — panel blanco sobre fondo gris claro: marca a la izquierda, tres columnas a la derecha. */
 import Logo from "./Logo.astro";
-import StoreBadges from "./StoreBadges.astro";
+import { EMAIL, LINKEDIN_URL, emailUrl, whatsappUrl } from "../lib/contact";
+
+const APP_STORE_URL = "https://apps.apple.com/es/app/konquerai/id6767595664";
+const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.konquerai.mobile&pli=1";
+
+const columns = [
+  {
+    title: "KonquerAI",
+    links: [
+      { label: "Qué hacemos", href: "/#que-hacemos" },
+      { label: "Tu equipo", href: "/#equipo" },
+      { label: "Un caso real", href: "/#caso" },
+      { label: "Preguntas", href: "/#preguntas" },
+    ],
+  },
+  {
+    title: "Recursos",
+    links: [
+      { label: "Blog", href: "/blog/" },
+      { label: "Boletín", href: "/newsletter/" },
+      { label: "Sobre nosotros", href: "/sobre-nosotros/" },
+      { label: "Contacto", href: "/#contacto" },
+    ],
+  },
+  {
+    title: "Clientes",
+    links: [
+      { label: "Acceder a tu cuenta", href: "https://app.konquerai.com", external: true },
+      { label: "App para iPhone", href: APP_STORE_URL, external: true },
+      { label: "App para Android", href: GOOGLE_PLAY_URL, external: true },
+      { label: "Escríbenos", href: emailUrl("Soy cliente de KonquerAI") },
+    ],
+  },
+];
+
+const legal = [
+  { label: "Privacidad", href: "/legal/privacidad" },
+  { label: "Términos", href: "/legal/terminos" },
+  { label: "Cookies", href: "/legal/cookies" },
+  { label: "RGPD", href: "/legal/gdpr" },
+];
 ---
+
 <footer class="footer" id="footer">
-  <div class="container-narrow footer-inner">
-    <div class="footer-col footer-brand">
-      <Logo height={64} />
-      <p class="footer-tagline">Orden es dinero. Tu oficina administrativa, montada y acompañada.</p>
-      <div class="footer-badges">
-        <StoreBadges size="sm" />
+  <div class="panel">
+    <div class="panel-top">
+      <div class="brand">
+        <Logo height={44} />
+        <p class="brand-text">
+          Montamos y acompañamos la oficina administrativa digital de autónomos y pymes de la
+          construcción, reformas y oficios.
+        </p>
+        <ul class="social" aria-label="Contacto">
+          <li>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Christian Marzal">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.6 4.77 5.98V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.75Z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.92C21.96 6.45 17.5 2 12.04 2Zm5.79 14.11c-.24.68-1.4 1.32-1.93 1.4-.51.08-1.15.11-1.86-.12-.43-.13-.98-.32-1.68-.62-2.96-1.28-4.89-4.26-5.04-4.46-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.47.27-.29.6-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.6.83 2.06.9 2.21.07.15.11.32.02.52-.09.2-.13.32-.27.49-.13.17-.28.37-.4.5-.13.13-.27.28-.12.55.15.27.68 1.12 1.46 1.82 1 .9 1.85 1.18 2.12 1.31.27.13.43.11.59-.07.16-.18.68-.79.87-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.2.51.31.06.11.06.66-.18 1.34Z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href={emailUrl()} aria-label={`Escríbenos a ${EMAIL}`}>
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+            </a>
+          </li>
+        </ul>
       </div>
+
+      <nav class="cols" aria-label="Enlaces del pie de página">
+        {columns.map((c) => (
+          <div class="col">
+            <h4 class="col-title">{c.title}</h4>
+            <ul class="col-links">
+              {c.links.map((l) => (
+                <li>
+                  <a href={l.href} {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
     </div>
 
-    <div class="footer-col">
-      <h4 class="footer-heading">KonquerAI</h4>
-      <ul class="footer-links">
-        <li><a href="/#que-hacemos">Qué hacemos</a></li>
-        <li><a href="/#equipo">Tu equipo</a></li>
-        <li><a href="/#caso">Un caso real</a></li>
-        <li><a href="/#preguntas">Preguntas</a></li>
-        <li><a href="https://app.konquerai.com" rel="noopener">Acceder (clientes)</a></li>
+    <div class="panel-bottom">
+      <p>&copy; 2026 KonquerAI · Hecho en España, para la gente de la obra.</p>
+      <ul class="legal">
+        {legal.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
       </ul>
     </div>
-
-    <div class="footer-col">
-      <h4 class="footer-heading">Más</h4>
-      <ul class="footer-links">
-        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/newsletter/">Boletín</a></li>
-        <li><a href="/#contacto">Contacto</a></li>
-        <li><a href="https://www.linkedin.com/in/christian-marzal-della-rovere" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4 class="footer-heading">Legal</h4>
-      <ul class="footer-links">
-        <li><a href="/legal/terminos">Términos y condiciones</a></li>
-        <li><a href="/legal/privacidad">Política de privacidad</a></li>
-        <li><a href="/legal/cookies">Política de cookies</a></li>
-        <li><a href="/legal/gdpr">Cumplimiento GDPR</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-bottom container-narrow">
-    <p>&copy; 2026 KonquerAI · Hecho en España, para la gente de la obra.</p>
   </div>
 </footer>
 
 <style>
   .footer {
-    background: var(--color-ink);
-    color: rgba(255,255,255,0.7);
-    padding-top: 4rem;
-    padding-bottom: 2rem;
+    background: #fafafa;
+    padding: clamp(2rem, 5vw, 4rem) 1rem;
+    color: #0a0a0a;
   }
-  .footer-inner {
+
+  .panel {
+    max-width: 1100px;
+    margin-inline: auto;
+    background: #fff;
+    border: 1px solid rgba(10, 10, 10, 0.05);
+    border-radius: 28px;
+    box-shadow: 0 1px 2px rgba(10, 10, 10, 0.03), 0 18px 40px -24px rgba(10, 10, 10, 0.12);
+    overflow: hidden;
+  }
+
+  .panel-top {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 2.5rem;
+    padding: 24px;
   }
-  @media (min-width: 768px) {
-    .footer-inner { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; }
+
+  @media (min-width: 900px) {
+    .panel-top {
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      padding: 56px 72px;
+    }
   }
-  .footer-brand { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
-  .footer-tagline { font-size: 0.875rem; }
-  .footer-badges { margin-top: 0.5rem; }
-  .footer-heading {
-    font-family: var(--font-heading);
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-white);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+
+  .brand { display: grid; gap: 1.25rem; align-content: start; justify-items: start; }
+
+  .brand-text {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #71717a;
+    max-width: 30ch;
   }
-  .footer-links {
+
+  .social {
     list-style: none;
     display: flex;
-    flex-direction: column;
     gap: 0.5rem;
   }
-  .footer-links a {
+
+  .social a {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid #e4e4e7;
+    color: #0a0a0a;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .social a:hover {
+    background: #0a0a0a;
+    border-color: #0a0a0a;
+    color: #fff;
+  }
+
+  .social svg { width: 1.125rem; height: 1.125rem; }
+
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1.5rem;
+  }
+
+  @media (min-width: 600px) {
+    .cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  .col-title {
+    font-family: var(--font-body);
     font-size: 0.875rem;
-    color: rgba(255,255,255,0.6);
-    transition: color 0.2s;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #0a0a0a;
   }
-  .footer-links a:hover { color: var(--color-teal); }
-  .footer-bottom {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
+
+  .col-links {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .col-links a,
+  .legal a {
+    font-size: 0.875rem;
+    color: #71717a;
+    transition: color 0.2s ease;
+  }
+
+  .col-links a:hover,
+  .legal a:hover { color: #0a0a0a; }
+
+  .col-links a:focus-visible,
+  .legal a:focus-visible,
+  .social a:focus-visible {
+    outline: 2px solid #0a0a0a;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .panel-bottom {
+    display: grid;
+    gap: 0.75rem;
+    padding: 20px 24px;
+    border-top: 1px solid #f4f4f5;
     font-size: 0.8125rem;
-    text-align: center;
+    color: #71717a;
   }
+
+  @media (min-width: 900px) {
+    .panel-bottom {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 22px 72px;
+    }
+  }
+
+  .legal {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+
+  .legal a { font-size: 0.8125rem; }
 </style>

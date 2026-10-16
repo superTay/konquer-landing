@@ -3,31 +3,17 @@
  * Contacto — cierre de la página. Todos los CTA aterrizan aquí.
  * Canales: WhatsApp, email y LinkedIn. Cuando haya agenda online, añadirla como primera opción.
  */
-import { Image } from "astro:assets";
-import retrato from "../../assets/christian-retrato.jpg";
 import { EMAIL, LINKEDIN_URL, emailUrl, whatsappUrl } from "../../lib/contact";
 ---
 
 <section class="contacto" id="contacto">
   <div class="container-narrow contacto-inner">
-    <div class="contacto-photo reveal">
-      <Image
-        src={retrato}
-        alt="Christian Marzal, fundador de KonquerAI"
-        width={640}
-        widths={[320, 480, 640]}
-        sizes="(min-width: 960px) 320px, 60vw"
-        loading="lazy"
-        class="contacto-img"
-      />
-    </div>
-
     <div class="contacto-copy">
       <h2 class="contacto-h2 reveal">Cuéntanos cómo trabajas. En 15 minutos sabrás si te podemos ayudar.</h2>
 
       <p class="contacto-text reveal">
-        Al otro lado no hay un comercial: hablas conmigo, Christian, fundador de KonquerAI. Primero
-        entiendo tu día a día y luego te digo, de frente, si esto te encaja o no.
+        Al otro lado no hay un comercial: hablas conmigo. Primero entiendo tu día a día y luego te
+        digo, de frente, si esto te encaja o no.
       </p>
 
       <div class="contacto-actions reveal">
@@ -64,32 +50,7 @@ import { EMAIL, LINKEDIN_URL, emailUrl, whatsappUrl } from "../../lib/contact";
   }
 
   .contacto-inner {
-    max-width: 1100px;
-    display: grid;
-    gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: center;
-  }
-
-  @media (min-width: 960px) {
-    .contacto-inner { grid-template-columns: 320px 1fr; }
-  }
-
-  .contacto-photo {
-    max-width: 280px;
-  }
-
-  @media (min-width: 960px) {
-    .contacto-photo { max-width: none; }
-  }
-
-  .contacto-img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 20px;
-    box-shadow: 0 30px 70px -40px rgba(11, 31, 36, 0.5);
+    max-width: 900px;
   }
 
   .contacto-h2 {
