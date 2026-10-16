@@ -22,13 +22,13 @@ interface Props {
 }
 
 const {
-  title = "KonquerAI · Software de gestión para autónomos de reformas con IA",
-  description = "Recupera hasta 30 horas al mes y sabe qué obra te dio dinero. Presupuestos, facturas, IVA y Verifactu sin aprender tecnología. Para pintores, albañiles, electricistas y fontaneros. Garantía 30 días.",
+  title = "KonquerAI · Tu oficina administrativa, montada | Construcción, reformas y oficios",
+  description = "Te montamos un equipo administrativo que trabaja para ti: presupuestos, facturas, cobros y tus números al día. Para autónomos y pymes de construcción, reformas y oficios. Sin aprender tecnología.",
   noindex = false,
-  ogTitle = "KonquerAI · Tu cuadrilla administrativa, ahora digital",
-  ogDescription = "Recupera 30 horas al mes. Controla cada obra al céntimo. Sin Excel, sin gestoría sufriendo. Hecho para autónomos de reformas.",
+  ogTitle = "KonquerAI · Un equipo administrativo trabajando para ti",
+  ogDescription = "Orden, control, tiempo y tranquilidad para autónomos y pymes de la construcción. Te lo dejamos montado y te acompañamos.",
   ogImage = "https://www.konquerai.com/og-image.png",
-  ogImageAlt = "KonquerAI — Tu cuadrilla administrativa, ahora digital",
+  ogImageAlt = "KonquerAI — Tu oficina administrativa, montada",
   ogType = "website"
 } = Astro.props;
 
@@ -106,7 +106,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
             "height": 630
           },
           "image": "https://www.konquerai.com/og-image.png",
-          "description": "Software de gestión administrativa para autónomos de reformas: presupuestos, facturas, IVA y Verifactu, con acompañamiento humano real.",
+          "description": "Montamos y acompañamos la oficina administrativa digital de autónomos y pymes de construcción, reformas y oficios: presupuestos, facturas, cobros y números al día.",
           "email": "info@konquerai.com",
           "foundingDate": "2026",
           "areaServed": { "@type": "Country", "name": "España" },
@@ -139,49 +139,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
           "@id": "https://www.konquerai.com/#website",
           "url": "https://www.konquerai.com",
           "name": "KonquerAI",
-          "description": "Tu cuadrilla administrativa, ahora digital. Para autónomos de reformas.",
+          "description": "Tu oficina administrativa, montada y acompañada. Para construcción, reformas y oficios.",
           "inLanguage": "es-ES",
           "publisher": { "@id": "https://www.konquerai.com/#organization" }
         },
         {
-          "@type": "SoftwareApplication",
-          "@id": "https://www.konquerai.com/#app",
-          "name": "KonquerAI",
+          "@type": "Service",
+          "@id": "https://www.konquerai.com/#service",
+          "name": "Oficina administrativa digital KonquerAI",
+          "serviceType": "Implantación y acompañamiento de oficina administrativa digital",
           "url": "https://www.konquerai.com",
-          "applicationCategory": "BusinessApplication",
-          "applicationSubCategory": "FinanceApplication",
-          "operatingSystem": "Web, iOS, Android",
           "inLanguage": "es-ES",
-          "image": "https://www.konquerai.com/og-image.png",
-          "description": "Software de gestión administrativa para autónomos de reformas. Combina IA y acompañamiento humano para reducir hasta 30 horas mensuales de papeleo. Presupuestos, facturas, IVA y Verifactu sin aprender tecnología.",
-          "featureList": [
-            "Presupuestos y facturas numeradas",
-            "IVA e IRPF calculados",
-            "Listo para Verifactu",
-            "Lectura automática de facturas de proveedores",
-            "Control de rentabilidad por obra"
-          ],
-          "publisher": { "@id": "https://www.konquerai.com/#organization" },
-          "author": { "@id": "https://www.konquerai.com/#organization" },
-          "offers": {
-            "@type": "Offer",
-            "url": "https://www.konquerai.com/precios",
-            "category": "Beta Fundadores",
-            "price": "97",
-            "priceCurrency": "EUR",
-            "priceValidUntil": "2026-12-31",
-            "availability": "https://schema.org/InStock",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": "97",
-              "priceCurrency": "EUR",
-              "referenceQuantity": {
-                "@type": "QuantitativeValue",
-                "value": 1,
-                "unitCode": "MON"
-              }
-            }
-          }
+          "areaServed": { "@type": "Country", "name": "España" },
+          "audience": {
+            "@type": "BusinessAudience",
+            "audienceType": "Autónomos y pymes de construcción, reformas y oficios"
+          },
+          "description": "Un equipo de empleados digitales que hace presupuestos, ordena compras y facturas y lleva la caja, montado y acompañado durante el primer mes. Complementa al gestor, no lo sustituye.",
+          "provider": { "@id": "https://www.konquerai.com/#organization" }
         }
       ]
     })} />
@@ -189,9 +164,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
   <body class="bg-white text-ink antialiased">
     <!-- Sentinel para condensar la navbar al hacer scroll (sin listener de scroll) -->
     <div id="nav-sentinel" aria-hidden="true"></div>
-    <div class="announce">
-      <p>Plazas <strong>Beta Fundadores</strong> limitadas este mes · Puesta en marcha guiada paso a paso, en 15 minutos</p>
-    </div>
     <slot />
 
     <!-- Contacto directo por WhatsApp -->
@@ -300,15 +272,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
         height: 56px;
         pointer-events: none;
       }
-      .announce {
-        background: var(--color-ink);
-        color: #fff;
-        text-align: center;
-        padding: 0.5rem 1rem;
-        font-size: 0.8125rem;
-        letter-spacing: 0.01em;
-      }
-      .announce strong { color: var(--color-teal); font-weight: 600; }
     </style>
   </body>
 </html>

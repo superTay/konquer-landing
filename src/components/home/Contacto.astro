@@ -1,0 +1,162 @@
+---
+/**
+ * Contacto — cierre de la página. Todos los CTA aterrizan aquí.
+ * Canales: WhatsApp, email y LinkedIn. Cuando haya agenda online, añadirla como primera opción.
+ */
+import { Image } from "astro:assets";
+import retrato from "../../assets/christian-retrato.jpg";
+import { EMAIL, LINKEDIN_URL, emailUrl, whatsappUrl } from "../../lib/contact";
+---
+
+<section class="contacto" id="contacto">
+  <div class="container-narrow contacto-inner">
+    <div class="contacto-photo reveal">
+      <Image
+        src={retrato}
+        alt="Christian Marzal, fundador de KonquerAI"
+        width={640}
+        widths={[320, 480, 640]}
+        sizes="(min-width: 960px) 320px, 60vw"
+        loading="lazy"
+        class="contacto-img"
+      />
+    </div>
+
+    <div class="contacto-copy">
+      <h2 class="contacto-h2 reveal">Cuéntanos cómo trabajas. En 15 minutos sabrás si te podemos ayudar.</h2>
+
+      <p class="contacto-text reveal">
+        Al otro lado no hay un comercial: hablas conmigo, Christian, fundador de KonquerAI. Primero
+        entiendo tu día a día y luego te digo, de frente, si esto te encaja o no.
+      </p>
+
+      <div class="contacto-actions reveal">
+        <a
+          href={whatsappUrl("Hola Christian, quiero contarte cómo trabajo y ver si KonquerAI me encaja")}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn contacto-btn is-main"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.92C21.96 6.45 17.5 2 12.04 2Zm5.79 14.11c-.24.68-1.4 1.32-1.93 1.4-.51.08-1.15.11-1.86-.12-.43-.13-.98-.32-1.68-.62-2.96-1.28-4.89-4.26-5.04-4.46-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.47.27-.29.6-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.6.83 2.06.9 2.21.07.15.11.32.02.52-.09.2-.13.32-.27.49-.13.17-.28.37-.4.5-.13.13-.27.28-.12.55.15.27.68 1.12 1.46 1.82 1 .9 1.85 1.18 2.12 1.31.27.13.43.11.59-.07.16-.18.68-.79.87-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.2.51.31.06.11.06.66-.18 1.34Z"/></svg>
+          Escríbenos por WhatsApp
+        </a>
+        <a href={emailUrl()} class="btn contacto-btn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+          Mándanos un email
+        </a>
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="btn contacto-btn">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.6 4.77 5.98V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.75Z"/></svg>
+          Hablemos por LinkedIn
+        </a>
+      </div>
+
+      <p class="contacto-small reveal">
+        Te contestamos enseguida. Si prefieres escribir tú: <a href={emailUrl()}>{EMAIL}</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contacto {
+    background: var(--color-teal-light);
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .contacto-inner {
+    max-width: 1100px;
+    display: grid;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  @media (min-width: 960px) {
+    .contacto-inner { grid-template-columns: 320px 1fr; }
+  }
+
+  .contacto-photo {
+    max-width: 280px;
+  }
+
+  @media (min-width: 960px) {
+    .contacto-photo { max-width: none; }
+  }
+
+  .contacto-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 20px;
+    box-shadow: 0 30px 70px -40px rgba(11, 31, 36, 0.5);
+  }
+
+  .contacto-h2 {
+    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .contacto-text {
+    margin-top: 1.25rem;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+    color: #2F4A50;
+    max-width: 50ch;
+  }
+
+  .contacto-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .contacto-btn {
+    background: #fff;
+    color: var(--color-ink);
+    border: 1px solid rgba(11, 31, 36, 0.12);
+    font-size: 1rem;
+    padding-inline: 1.5rem;
+  }
+
+  .contacto-btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: none;
+  }
+
+  .contacto-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -14px rgba(11, 31, 36, 0.45);
+  }
+
+  .contacto-btn.is-main {
+    background: var(--color-ink);
+    color: #fff;
+    border-color: var(--color-ink);
+  }
+
+  .contacto-btn.is-main svg { color: #25D366; }
+
+  .contacto-small {
+    margin-top: 1.25rem;
+    font-size: 0.9375rem;
+    color: #2F4A50;
+  }
+
+  .contacto-small a {
+    color: var(--color-ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-teal);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 599px) {
+    .contacto-btn { width: 100%; }
+  }
+</style>

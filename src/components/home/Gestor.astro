@@ -1,0 +1,177 @@
+---
+/**
+ * Gestor — la objeción "eso ya me lo lleva el gestor" (post LinkedIn + diapositiva del deck).
+ * El gestor es aliado, nunca enemigo. IVA = "vas acumulando", nunca cifra oficial.
+ */
+const conGestor = [
+  "Cuánto pagaste de IVA el trimestre pasado",
+  "Lo que facturaste el año pasado",
+  "Un resumen general, todo junto",
+];
+const conEquipo = [
+  "Cuánto IVA vas acumulando",
+  "Cuánto has ganado en cada obra",
+  "Cuánto gastas al mes en material",
+  "Quién te debe y qué toca pagar",
+  "Cómo tendrás la caja en las próximas semanas",
+];
+---
+
+<section class="gestor" id="gestor">
+  <div class="container-narrow gestor-inner">
+    <h2 class="gestor-h2 reveal">«Eso ya me lo lleva el gestor.»</h2>
+
+    <div class="gestor-body reveal">
+      <p>
+        Es lo que más escuchamos. Y tu gestor hace muy bien su trabajo: impuestos, modelos y cuentas
+        oficiales. Pero te cuenta lo que pasó hace tres meses, todo junto, cuando ya no puedes cambiar nada.
+      </p>
+      <p class="gestor-mirror">Es como conducir mirando por el retrovisor.</p>
+    </div>
+
+    <div class="gestor-compare reveal">
+      <div class="gestor-col is-past">
+        <h3>Con el gestor sabes, a toro pasado…</h3>
+        <ul>{conGestor.map((t) => <li>{t}</li>)}</ul>
+      </div>
+      <div class="gestor-col is-now">
+        <h3>Con tu equipo sabes, hoy…</h3>
+        <ul>{conEquipo.map((t) => <li>{t}</li>)}</ul>
+      </div>
+    </div>
+
+    <div class="gestor-why reveal">
+      <p>
+        En una obra, ganar dinero no es lo mismo que tener caja. Puedes cerrar un buen trabajo y
+        quedarte sin liquidez porque los cobros llegan después de los pagos.
+      </p>
+      <p>
+        Con tu equipo ves esa caja con semanas de adelanto: si puedes coger esa obra, si llegas
+        para adelantar el material, cuánto apartar. Dándoselo todo al gestor, eso no se ve.
+      </p>
+    </div>
+
+    <p class="gestor-close reveal">
+      No dejas de tener gestor. Dejas de ir detrás.
+      <span>Empiezas a ir por delante.</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .gestor {
+    background: var(--color-ink);
+    color: rgba(255, 255, 255, 0.82);
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .gestor-inner {
+    max-width: 1100px;
+    display: grid;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  .gestor-h2 {
+    color: #fff;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .gestor-body {
+    display: grid;
+    gap: 1.25rem;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+    max-width: 46ch;
+  }
+
+  .gestor-mirror {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-orange);
+    max-width: 22ch;
+  }
+
+  .gestor-compare {
+    display: grid;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .gestor-compare { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  }
+
+  .gestor-col {
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: 18px;
+  }
+
+  .gestor-col h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .gestor-col ul {
+    list-style: none;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .gestor-col li {
+    display: grid;
+    grid-template-columns: 1.25rem 1fr;
+    gap: 0.5rem;
+    line-height: 1.45;
+  }
+
+  .gestor-col li::before {
+    content: "";
+    width: 0.6rem;
+    height: 2px;
+    margin-top: 0.7em;
+    background: currentColor;
+    opacity: 0.6;
+  }
+
+  .is-past {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.62);
+  }
+  .is-past h3 { color: rgba(255, 255, 255, 0.78); }
+
+  .is-now {
+    background: var(--color-teal);
+    color: var(--color-ink);
+  }
+  .is-now h3 { color: var(--color-ink); }
+  .is-now li { font-weight: 600; }
+  .is-now li::before { opacity: 1; }
+
+  .gestor-why {
+    display: grid;
+    gap: 1rem;
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+    line-height: 1.6;
+    max-width: 58ch;
+  }
+
+  .gestor-close {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: #fff;
+    font-size: clamp(1.75rem, 3.6vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    max-width: 22ch;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .gestor-close span { color: var(--color-teal); }
+</style>

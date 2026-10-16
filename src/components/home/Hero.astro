@@ -1,0 +1,345 @@
+---
+/**
+ * Hero — titular "El equipo" (elegido por Christian, 2026-10-16).
+ * El visual es el organigrama: tú arriba, tu equipo debajo trabajando.
+ * Los estados de cada empleado son de ejemplo y van etiquetados como tal.
+ */
+const equipo = [
+  { name: "SofIA", role: "Clientes y presupuestos", status: "Presupuesto del baño de Marta, listo para enviar", tone: "orange" },
+  { name: "MatIAs", role: "Facturas y compras", status: "Factura de la urgencia de Pedro, emitida desde la furgoneta", tone: "teal" },
+  { name: "MarIA", role: "Tu caja", status: "El día 20 vence el pago del material", tone: "ink" },
+  { name: "LucIA", role: "Te responde", status: "«¿Quién me debe?» 2 clientes, 4.320 €", tone: "deep" },
+];
+---
+
+<section class="hero" id="inicio">
+  <div class="hero-wash" aria-hidden="true"></div>
+  <div class="hero-inner container-narrow">
+    <div class="hero-copy">
+      <h1 class="hero-h1">
+        Un equipo administrativo trabajando para ti.
+        <span class="hero-h1-turn">Sin contratar a nadie.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Te montamos la oficina que tu negocio no se podía permitir: presupuestos, facturas,
+        cobros y tus números, en un solo sitio y al día. Tú sigues en la obra.
+        Sin aprender nada de tecnología.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary hero-cta">Cuéntanos tu caso</a>
+        <a href="#equipo" class="hero-link">Conoce a tu equipo <span aria-hidden="true">→</span></a>
+      </div>
+
+      <ul class="hero-proof" aria-label="Cómo trabajamos">
+        <li>Para construcción, reformas y oficios</li>
+        <li>Te lo dejamos montado</li>
+        <li>Te acompañamos el primer mes</li>
+      </ul>
+    </div>
+
+    <figure class="org" aria-label="Ejemplo: tu equipo administrativo trabajando">
+      <div class="org-boss">
+        <span class="org-boss-name">Tú</span>
+        <span class="org-boss-role">En la obra, a lo tuyo</span>
+      </div>
+
+      <ol class="org-team">
+        {equipo.map((p, i) => (
+          <li class={`org-node tone-${p.tone}`} style={`--i:${i}`}>
+            <span class="org-avatar" aria-hidden="true">{p.name.charAt(0)}</span>
+            <span class="org-name">{p.name}</span>
+            <span class="org-role">{p.role}</span>
+            <span class="org-status"><span class="org-dot" aria-hidden="true"></span>{p.status}</span>
+          </li>
+        ))}
+      </ol>
+
+      <figcaption class="org-caption">Ejemplo de un día cualquiera</figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(3.5rem, 7vw, 6.5rem);
+    overflow: hidden;
+  }
+
+  .hero-wash {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(60% 70% at 88% 30%, rgba(0, 209, 178, 0.14), transparent 70%),
+      radial-gradient(40% 50% at 4% 100%, rgba(255, 138, 0, 0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1240px;
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr 1fr; }
+  }
+
+  .hero-h1 {
+    font-size: clamp(2.4rem, 4.4vw, 4.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    text-wrap: balance;
+    max-width: 17ch;
+  }
+
+  .hero-h1-turn {
+    display: block;
+    margin-top: 0.25em;
+    color: var(--color-teal-dark);
+  }
+
+  .hero-sub {
+    margin-top: 1.5rem;
+    font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--color-slate);
+    max-width: 36rem;
+  }
+
+  .hero-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.75rem;
+  }
+
+  .hero-cta {
+    font-size: 1.0625rem;
+    padding: 1rem 2.25rem;
+    background: var(--color-ink);
+  }
+
+  .hero-link {
+    font-weight: 600;
+    color: var(--color-ink);
+    border-bottom: 2px solid var(--color-teal);
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+  }
+  .hero-link:hover { color: var(--color-teal-dark); }
+
+  .hero-proof {
+    list-style: none;
+    margin-top: 2.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-size: 0.9375rem;
+    color: var(--color-ink);
+  }
+
+  .hero-proof li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero-proof li::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    flex: none;
+    border-radius: 50%;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2 7 10.6l4.6-5' fill='none' stroke='%230B1F24' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat,
+      var(--color-teal);
+  }
+
+  /* ── Organigrama ── */
+  .org {
+    position: relative;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 22px;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    box-shadow: 0 30px 80px -40px rgba(11, 31, 36, 0.35), 0 2px 6px rgba(11, 31, 36, 0.04);
+  }
+
+  .org-boss {
+    position: relative;
+    margin-inline: auto;
+    width: fit-content;
+    padding: 0.85rem 1.5rem;
+    border-radius: 14px;
+    background: var(--color-ink);
+    color: #fff;
+    text-align: center;
+    display: grid;
+  }
+
+  .org-boss-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.375rem;
+    line-height: 1.1;
+  }
+
+  .org-boss-role {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  /* Línea que baja del jefe al equipo */
+  .org-boss::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 2px;
+    height: 1.5rem;
+    background: var(--color-border);
+  }
+
+  .org-team {
+    list-style: none;
+    position: relative;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+
+  /* Barra horizontal del organigrama */
+  .org-team::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: var(--color-border);
+  }
+
+  .org-node {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.75rem;
+    align-items: center;
+    padding: 0.875rem;
+    border-radius: 14px;
+    background: var(--color-mist);
+  }
+
+  .org-node::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    width: 2px;
+    height: 1.5rem;
+    background: var(--color-border);
+  }
+  .org-node:nth-child(n + 3)::before { display: none; }
+
+  .org-avatar {
+    grid-row: span 2;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: #fff;
+    background: var(--tone);
+  }
+
+  .tone-orange { --tone: var(--color-orange); --tone-ink: #8A4B00; }
+  .tone-teal   { --tone: var(--color-teal-dark); --tone-ink: #00695C; }
+  .tone-ink    { --tone: #2B4A52; --tone-ink: #2B4A52; }
+  .tone-deep   { --tone: var(--color-ink); --tone-ink: var(--color-ink); }
+
+  .org-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    line-height: 1.2;
+  }
+
+  .org-role {
+    font-size: 0.8125rem;
+    color: var(--color-slate);
+    line-height: 1.3;
+  }
+
+  .org-status {
+    grid-column: 1 / -1;
+    margin-top: 0.75rem;
+    padding: 0.55rem 0.7rem;
+    border-radius: 10px;
+    background: var(--color-white);
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: var(--color-ink);
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    box-shadow: 0 1px 2px rgba(11, 31, 36, 0.06);
+  }
+
+  .org-dot {
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--tone);
+    transform: translateY(-1px);
+  }
+
+  .org-caption {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--color-slate);
+  }
+
+  /* Momento animado: el equipo se pone a trabajar, uno detrás de otro */
+  @media (prefers-reduced-motion: no-preference) {
+    .org-status {
+      animation: task-in 0.7s var(--ease-out-expo) backwards;
+      animation-delay: calc(0.6s + var(--i) * 0.45s);
+    }
+    .org-dot {
+      animation: task-pulse 2.4s ease-in-out infinite;
+      animation-delay: calc(1.2s + var(--i) * 0.45s);
+    }
+  }
+
+  @keyframes task-in {
+    from { opacity: 0; transform: translateY(8px); clip-path: inset(0 100% 0 0 round 10px); }
+    to   { opacity: 1; transform: none; clip-path: inset(0 0 0 0 round 10px); }
+  }
+
+  @keyframes task-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--tone) 45%, transparent); }
+    50%      { box-shadow: 0 0 0 5px color-mix(in srgb, var(--tone) 0%, transparent); }
+  }
+
+  @media (max-width: 479px) {
+    .org-team { grid-template-columns: 1fr; }
+    .org-team::before, .org-node::before { display: none; }
+    .hero-cta { width: 100%; }
+  }
+</style>

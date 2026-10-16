@@ -1,0 +1,235 @@
+---
+/**
+ * Caso real — empresa de pintura (confirmado por Christian 2026-10-16).
+ * Cifras de su caso: ~500 presupuestos/año, 25-30 min → 5 min, ~4 semanas/año, cierre 5 % → 10 %.
+ * Se presenta como un presupuesto: partidas antes / ahora.
+ */
+const partidas = [
+  { concepto: "Tiempo por presupuesto", antes: "25-30 min", ahora: "5 min" },
+  { concepto: "Cuándo le llega al cliente", antes: "En una semana", ahora: "El mismo día" },
+  { concepto: "Presupuestos que acaba cerrando", antes: "5 de cada 100", ahora: "10 de cada 100" },
+];
+---
+
+<section class="caso" id="caso">
+  <div class="container-narrow caso-inner">
+    <div class="caso-story">
+      <h2 class="caso-h2 reveal">500 presupuestos al año. Media hora cada uno.</h2>
+      <div class="caso-text reveal">
+        <p>
+          Una empresa de pintura con la que trabajamos hacía unos 500 presupuestos al año. Su dueño
+          iba a ver la obra, apuntaba las medidas en una libreta y por la noche, o a las cuatro de la
+          mañana, se sentaba a pasarlo todo a limpio.
+        </p>
+        <p>
+          Al cliente le decía «te lo mando en cuanto pueda». Y «en cuanto pueda» era una semana.
+        </p>
+        <p>
+          Ahora le manda sus notas al asistente desde la propia obra y en cinco minutos tiene el
+          presupuesto listo para enviar.
+        </p>
+      </div>
+    </div>
+
+    <article class="sheet reveal" aria-label="Resultado del caso">
+      <header class="sheet-head">
+        <span class="sheet-title">Resultado</span>
+        <span class="sheet-ref">Empresa de pintura · 500 presupuestos al año</span>
+      </header>
+
+      <table class="sheet-table">
+        <thead>
+          <tr>
+            <th scope="col">Concepto</th>
+            <th scope="col">Antes</th>
+            <th scope="col">Ahora</th>
+          </tr>
+        </thead>
+        <tbody>
+          {partidas.map((p) => (
+            <tr>
+              <th scope="row">{p.concepto}</th>
+              <td class="is-before">{p.antes}</td>
+              <td class="is-after">{p.ahora}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <footer class="sheet-total">
+        <span>Total recuperado</span>
+        <strong>Unas 4 semanas de trabajo al año</strong>
+      </footer>
+
+      <p class="sheet-foot">
+        Las dedica a buscar más obras. O a estar más tiempo con su hija.
+      </p>
+    </article>
+
+    <p class="caso-moral reveal">
+      No pasó por comprar una herramienta. Pasó por sentarnos con él, ver cómo trabajaba de verdad
+      y quitarle de en medio lo que más tiempo le robaba.
+    </p>
+  </div>
+</section>
+
+<style>
+  .caso {
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .caso-inner {
+    max-width: 1180px;
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  @media (min-width: 960px) {
+    .caso-inner {
+      grid-template-columns: 1fr 1.05fr;
+      column-gap: 5rem;
+      align-items: start;
+    }
+    .caso-moral { grid-column: 1 / -1; }
+  }
+
+  .caso-h2 {
+    font-size: clamp(2rem, 4.4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .caso-text {
+    margin-top: 1.75rem;
+    display: grid;
+    gap: 1rem;
+    font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
+    line-height: 1.65;
+    color: var(--color-slate);
+    max-width: 42ch;
+  }
+
+  /* ── Hoja tipo presupuesto ── */
+  .sheet {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    box-shadow: 0 30px 70px -40px rgba(11, 31, 36, 0.4);
+    transform: rotate(-0.6deg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sheet-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-ink);
+  }
+
+  .sheet-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .sheet-ref {
+    font-size: 0.875rem;
+    color: var(--color-slate);
+    align-self: end;
+  }
+
+  .sheet-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+  }
+
+  .sheet-table th,
+  .sheet-table td {
+    text-align: left;
+    padding: 0.9rem 0.5rem 0.9rem 0;
+    border-bottom: 1px dashed var(--color-border);
+    vertical-align: baseline;
+  }
+
+  .sheet-table thead th {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-slate);
+    padding-block: 0.75rem;
+  }
+
+  .sheet-table tbody th {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    width: 44%;
+  }
+
+  .sheet-table .is-before {
+    color: var(--color-slate);
+    text-decoration: line-through;
+    text-decoration-color: var(--color-orange);
+    text-decoration-thickness: 2px;
+  }
+
+  .sheet-table .is-after {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--color-teal-dark);
+  }
+
+  .sheet-total {
+    margin-top: 1.25rem;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    background: var(--color-ink);
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+  }
+
+  .sheet-total span {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .sheet-total strong {
+    font-family: var(--font-heading);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--color-teal);
+  }
+
+  .sheet-foot {
+    margin-top: 1rem;
+    font-size: 0.9375rem;
+    color: var(--color-slate);
+  }
+
+  .caso-moral {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: clamp(1.25rem, 2.4vw, 1.875rem);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    max-width: 44ch;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 599px) {
+    .sheet { transform: none; }
+    .sheet-table thead { display: none; }
+    .sheet-table tr { display: grid; grid-template-columns: 1fr 1fr; padding-block: 0.75rem; border-bottom: 1px dashed var(--color-border); }
+    .sheet-table tbody th { grid-column: 1 / -1; width: auto; padding-bottom: 0.25rem; }
+    .sheet-table th, .sheet-table td { border: 0; padding-block: 0.15rem; }
+  }
+</style>

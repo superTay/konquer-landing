@@ -1,0 +1,152 @@
+---
+/**
+ * Tres caminos — post de LinkedIn de las tres decisiones (no hacer nada / aprenderlo tú /
+ * que te lo monte un profesional). Ventaja competitiva del que se sube.
+ */
+---
+
+<section class="caminos" id="decidir">
+  <div class="container-narrow caminos-inner">
+    <div class="caminos-head">
+      <h2 class="caminos-h2 reveal">Hoy, o transformas tu negocio o te quedas atrás.</h2>
+      <p class="caminos-lead reveal">
+        La inteligencia artificial ya está cambiando cómo se lleva un negocio. Subirte a la ola o no es
+        decisión tuya, y cada camino tiene sus consecuencias.
+      </p>
+    </div>
+
+    <ol class="caminos-list">
+      <li class="camino is-muted reveal">
+        <h3>No subirte a la ola</h3>
+        <p>
+          Seguir como hasta ahora. Es una decisión como otra cualquiera. Con el tiempo, eso sí,
+          quien sí se sube manda el presupuesto antes y sabe lo que gana en cada obra.
+        </p>
+      </li>
+      <li class="camino is-muted reveal">
+        <h3>Aprenderlo y montarlo tú</h3>
+        <p>
+          Control total y sistemas a tu medida. A cambio de mucho tiempo, esfuerzo y estar siempre
+          al día en algo que cambia cada mes.
+        </p>
+      </li>
+      <li class="camino is-pick reveal">
+        <h3>Delegarlo en un profesional</h3>
+        <p>
+          Alguien que ya lo tiene hecho lo adapta a tu negocio, te lo deja funcionando y te acompaña.
+          Tú, a lo tuyo.
+        </p>
+        <a href="#contacto" class="btn camino-cta">Quiero que me lo montéis</a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<style>
+  .caminos {
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .caminos-inner {
+    max-width: 1180px;
+  }
+
+  .caminos-head {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 960px) {
+    .caminos-head { grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: end; }
+  }
+
+  .caminos-h2 {
+    font-size: clamp(2rem, 4.4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .caminos-lead {
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+
+  .caminos-list {
+    list-style: none;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    display: grid;
+    gap: 1rem;
+    counter-reset: camino;
+  }
+
+  @media (min-width: 900px) {
+    .caminos-list { grid-template-columns: 1fr 1fr 1.35fr; gap: 0; align-items: stretch; }
+  }
+
+  .camino {
+    counter-increment: camino;
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .camino h3 {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    line-height: 1.2;
+  }
+
+  .camino h3::before {
+    content: "Camino " counter(camino);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .camino p { line-height: 1.6; }
+
+  .is-muted {
+    border-top: 1px solid var(--color-border);
+    color: var(--color-slate);
+  }
+  .is-muted h3 { color: var(--color-slate); }
+
+  @media (min-width: 900px) {
+    .is-muted + .is-muted { border-left: 1px solid var(--color-border); }
+  }
+
+  .is-pick {
+    background: var(--color-teal);
+    color: var(--color-ink);
+    border-radius: 20px;
+    padding: clamp(1.75rem, 3.5vw, 2.75rem);
+    box-shadow: 0 30px 70px -36px rgba(0, 155, 137, 0.7);
+  }
+
+  @media (min-width: 900px) {
+    .is-pick { margin-block: -1.5rem; }
+  }
+
+  .is-pick h3 {
+    font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+    letter-spacing: -0.02em;
+  }
+
+  .is-pick p { font-size: 1.0625rem; }
+
+  .camino-cta {
+    margin-top: 0.75rem;
+    justify-self: start;
+    background: var(--color-ink);
+    color: #fff;
+  }
+
+  .camino-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -12px rgba(11, 31, 36, 0.6);
+  }
+</style>

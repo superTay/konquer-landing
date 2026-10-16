@@ -1,0 +1,279 @@
+---
+/**
+ * Equipo — la analogía de los empleados digitales + la puesta en marcha en 30 días.
+ * Fuente: analogia-equipo-administrativo.md. Las respuestas de LucIA son de ejemplo.
+ * Pendiente (sesión de diseño): sustituir avatares por ilustraciones/animación.
+ */
+const semanas = [
+  { cuando: "Semana 1", name: "SofIA", area: "Clientes y presupuestos", texto: "Le dictas el presupuesto desde la obra y en unos minutos lo tienes listo para enviar.", tone: "orange" },
+  { cuando: "Semana 2", name: "MatIAs", area: "Facturas y compras", texto: "Las facturas de proveedor se colocan solas y te avisa si un albarán no cuadra. Y tus facturas las emites desde la obra, con el móvil, listas para Verifactu.", tone: "teal" },
+  { cuando: "Semana 3", name: "MarIA", area: "Tu caja", texto: "Sabes quién te debe y qué toca pagar, y ves venir la caja de las próximas semanas.", tone: "ink" },
+];
+---
+
+<section class="equipo" id="equipo">
+  <div class="container-narrow equipo-inner">
+    <div class="equipo-intro">
+      <h2 class="equipo-h2 reveal">Antes, esto solo podían pagarlo las grandes empresas.</h2>
+      <p class="equipo-lead reveal">
+        Un contable, una secretaria, alguien que lleve las cuentas. Hasta hace nada, tener un equipo
+        así exigía sueldos, despacho y mucho presupuesto. Hoy lo puede tener cualquier autónomo, con
+        un poco de orden. Y dedicando menos horas, no más.
+      </p>
+    </div>
+
+    <div class="equipo-plan">
+      <div class="equipo-plan-head reveal">
+        <h3>Tu equipo, funcionando en 30 días</h3>
+        <p>
+          No tienes que aprender nada. Te lo dejamos montado y cada semana solo te pedimos dos o tres
+          cosas. Lo demás lo hace tu equipo.
+        </p>
+      </div>
+
+      <ol class="timeline">
+        {semanas.map((s) => (
+          <li class={`timeline-step tone-${s.tone} reveal`}>
+            <span class="timeline-when">{s.cuando}</span>
+            <span class="timeline-avatar" aria-hidden="true">{s.name.charAt(0)}</span>
+            <h4 class="timeline-name">{s.name} <span>· {s.area}</span></h4>
+            <p class="timeline-text">{s.texto}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="lucia reveal">
+      <div class="lucia-copy">
+        <h3 class="lucia-h3">Y desde el primer día, LucIA. Lo sabe todo. Tú solo le preguntas.</h3>
+        <p>
+          Conoce todo lo que hace el resto del equipo. Le preguntas desde el móvil, como le
+          preguntarías a una persona, y te lo cuenta al momento. Sin buscar en carpetas ni llamar
+          a nadie.
+        </p>
+        <p class="lucia-note">
+          Son asistentes de inteligencia artificial, pero no tienes que saber nada de eso. Les hablas
+          y te entienden.
+        </p>
+      </div>
+
+      <figure class="chat" aria-label="Conversación de ejemplo con LucIA">
+        <div class="chat-msg is-you">¿Quién me debe dinero?</div>
+        <div class="chat-msg is-her">Tienes 3 facturas por cobrar, 4.320 € en total. La más antigua es de hace 41 días.</div>
+        <div class="chat-msg is-you">¿Y cuánto llevo de IVA este trimestre?</div>
+        <div class="chat-msg is-her">Vas acumulando unos 2.150 €. Si cambia mucho, te aviso.</div>
+        <figcaption>Conversación de ejemplo</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .equipo {
+    background: var(--color-mist);
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .equipo-inner {
+    max-width: 1180px;
+    display: grid;
+    gap: clamp(3rem, 6vw, 5rem);
+  }
+
+  .equipo-intro {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 960px) {
+    .equipo-intro { grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: end; }
+  }
+
+  .equipo-h2 {
+    font-size: clamp(2rem, 4.4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .equipo-lead {
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+
+  .equipo-plan-head h3 {
+    font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+    letter-spacing: -0.015em;
+  }
+
+  .equipo-plan-head p {
+    margin-top: 0.5rem;
+    color: var(--color-slate);
+    max-width: 52ch;
+  }
+
+  /* ── Línea de 30 días ── */
+  .timeline {
+    list-style: none;
+    margin-top: 2.25rem;
+    display: grid;
+    gap: 2rem;
+    position: relative;
+  }
+
+  @media (min-width: 900px) {
+    .timeline { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 3.6rem;
+      left: 1.5rem;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-orange), var(--color-teal) 50%, #2B4A52);
+      opacity: 0.35;
+    }
+  }
+
+  .timeline-step {
+    position: relative;
+    display: grid;
+    gap: 0.5rem;
+    align-content: start;
+  }
+
+  .timeline-when {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--tone-ink);
+  }
+
+  .timeline-avatar {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--tone);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    box-shadow: 0 0 0 6px var(--color-mist);
+    margin-block: 0.25rem 0.5rem;
+  }
+
+  .timeline-name {
+    font-size: 1.375rem;
+    line-height: 1.2;
+  }
+
+  .timeline-name span {
+    font-weight: 500;
+    color: var(--color-slate);
+    font-size: 1.0625rem;
+  }
+
+  .timeline-text {
+    color: var(--color-slate);
+    line-height: 1.6;
+    max-width: 34ch;
+  }
+
+  .tone-orange { --tone: var(--color-orange); --tone-ink: #8A4B00; }
+  .tone-teal   { --tone: var(--color-teal-dark); --tone-ink: #00695C; }
+  .tone-ink    { --tone: #2B4A52; --tone-ink: #2B4A52; }
+
+  /* ── LucIA ── */
+  .lucia {
+    display: grid;
+    gap: 2.5rem;
+    padding: clamp(1.75rem, 4vw, 3.25rem);
+    border-radius: 24px;
+    background: var(--color-ink);
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  @media (min-width: 900px) {
+    .lucia { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  }
+
+  .lucia-copy { display: grid; gap: 1rem; }
+
+  .lucia-h3 {
+    color: #fff;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .lucia-copy p { line-height: 1.65; }
+
+  .lucia-note {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.62);
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .chat {
+    display: grid;
+    gap: 0.625rem;
+    padding: 1.25rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .chat-msg {
+    max-width: 85%;
+    padding: 0.7rem 1rem;
+    border-radius: 16px;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  .chat-msg.is-you {
+    justify-self: end;
+    background: var(--color-teal);
+    color: var(--color-ink);
+    font-weight: 600;
+    border-bottom-right-radius: 4px;
+  }
+
+  .chat-msg.is-her {
+    justify-self: start;
+    background: #fff;
+    color: var(--color-ink);
+    border-bottom-left-radius: 4px;
+  }
+
+  .chat figcaption {
+    margin-top: 0.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .chat-msg {
+        animation: msg-in linear both;
+        animation-timeline: view();
+      }
+      .chat-msg:nth-child(1) { animation-range: entry 10% cover 30%; }
+      .chat-msg:nth-child(2) { animation-range: entry 30% cover 36%; }
+      .chat-msg:nth-child(3) { animation-range: entry 50% cover 42%; }
+      .chat-msg:nth-child(4) { animation-range: entry 70% cover 48%; }
+    }
+  }
+
+  @keyframes msg-in {
+    from { opacity: 0; transform: translateY(12px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+  }
+</style>

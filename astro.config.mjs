@@ -17,12 +17,17 @@ const hasPublishedPosts = readdirSync('./src/content/blog')
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.konquerai.com',
+  // Precios ocultos: se dan en la llamada. La página vive en src/pages/_precios.astro.
+  redirects: {
+    '/precios': '/#contacto',
+  },
   integrations: [
     sitemap({
       lastmod: new Date(),
       // Excluir stubs noindex hasta que tengan contenido real
       filter: (page) =>
         !page.includes('/legal/') &&
+        !page.includes('/precios') &&
         !page.endsWith('/newsletter/') &&
         (hasPublishedPosts || !page.endsWith('/blog/')),
     }),

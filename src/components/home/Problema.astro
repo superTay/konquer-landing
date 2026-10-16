@@ -1,0 +1,111 @@
+---
+/** Problema — el dueño como administrativo de su propio negocio. Fuente: ICP + guía de venta. */
+const dolores = [
+  { hora: "23:40", texto: "Pasando presupuestos a limpio, después de todo el día en la obra." },
+  { hora: "Siempre", texto: "Facturas y albaranes repartidos entre el WhatsApp, el correo y la furgoneta." },
+  { hora: "De memoria", texto: "Quién te debe, qué toca pagar, cuánto llevas de IVA. Todo en tu cabeza." },
+  { hora: "Si faltas", texto: "El negocio se para, porque nadie más sabe dónde está cada cosa." },
+];
+---
+
+<section class="problema" id="problema">
+  <div class="container-narrow problema-inner">
+    <h2 class="problema-h2 reveal">
+      Eres el administrativo de tu propio negocio. Y nadie te lo preguntó.
+    </h2>
+
+    <ul class="problema-list">
+      {dolores.map((d) => (
+        <li class="problema-item reveal">
+          <span class="problema-when">{d.hora}</span>
+          <span class="problema-what">{d.texto}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="problema-close reveal">
+      <p class="problema-worst">
+        Lo peor no son las horas. Es no saber si este mes has ganado o perdido dinero.
+      </p>
+      <p class="problema-motto">Orden es dinero.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .problema {
+    background: var(--color-ink);
+    color: #fff;
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .problema-inner {
+    max-width: 1100px;
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .problema-h2 {
+    color: #fff;
+    font-size: clamp(2rem, 4.4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    max-width: 20ch;
+  }
+
+  .problema-list {
+    list-style: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .problema-item {
+    display: grid;
+    gap: 0.25rem 2rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  @media (min-width: 768px) {
+    .problema-item { grid-template-columns: 10rem 1fr; align-items: baseline; }
+  }
+
+  .problema-when {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-orange);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .problema-what {
+    font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .problema-close {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (min-width: 900px) {
+    .problema-close { grid-template-columns: 1fr auto; align-items: end; gap: 3rem; }
+  }
+
+  .problema-worst {
+    font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 34ch;
+  }
+
+  .problema-motto {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 4.75rem);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: var(--color-teal);
+  }
+</style>
