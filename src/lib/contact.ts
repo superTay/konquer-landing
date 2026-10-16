@@ -2,7 +2,7 @@
 // haya agenda online (entonces se añade su enlace y se cambia el CTA principal).
 export const WHATSAPP_NUMBER = "34624536640";
 export const EMAIL = "info@konquerai.com";
-export const LINKEDIN_URL = "https://www.linkedin.com/in/christian-marzal-della-rovere";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/christian-marzal-della-rovere-3455073a7/";
 
 export const whatsappUrl = (message = "Hola, quiero saber más sobre KonquerAI") =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
