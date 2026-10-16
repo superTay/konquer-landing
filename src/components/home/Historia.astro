@@ -2,105 +2,248 @@
 /**
  * Historia — storytelling breve en primera persona. Todo sale de la historia de /sobre-nosotros
  * (padre pintor, amigos autónomos de reformas, formación en gestión, salto a la IA). Sin datos nuevos.
+ * Diseño: panel oscuro, retrato circular sobre una esfera de puntos que gira (canvas ligero).
  */
 import { Image } from "astro:assets";
 import retrato from "../../assets/christian-retrato.jpg";
+import { LINKEDIN_URL, whatsappUrl } from "../../lib/contact";
 ---
 
 <section class="historia" id="historia">
-  <div class="historia-inner">
-    <div class="historia-photo reveal">
-      <Image
-        src={retrato}
-        alt="Christian Marzal, fundador de KonquerAI"
-        width={640}
-        widths={[320, 480, 640]}
-        sizes="(min-width: 900px) 320px, 60vw"
-        loading="lazy"
-        class="historia-img"
-      />
-    </div>
+  <div class="historia-frame">
+    <span class="corner c-tl" aria-hidden="true"></span>
+    <span class="corner c-tr" aria-hidden="true"></span>
+    <span class="corner c-bl" aria-hidden="true"></span>
+    <span class="corner c-br" aria-hidden="true"></span>
 
-    <div class="historia-copy">
-      <h2 class="historia-h2 reveal">Hola, soy Christian. Esto lo he visto en casa.</h2>
-
-      <div class="historia-text reveal">
-        <p>
-          Mi padre fue pintor toda la vida, y de crío le echaba una mano en verano. Por eso conozco
-          bien esta vida: terminas la jornada en la obra y empieza otra en casa, con presupuestos
-          de noche, facturas perdidas y el IVA que te pilla por sorpresa.
-        </p>
-        <p>
-          Me formé en gestión de empresas y me metí de lleno en la inteligencia artificial. Un día
-          até cabos: esa tecnología no estaba llegando a la gente de obra. Así que monté KonquerAI
-          para quitarles la barrera técnica, hacerlo todo lo más simple posible y que puedan
-          aprovechar sus ventajas sin pelear solos.
-        </p>
+    <div class="historia-inner">
+      <div class="historia-stage reveal" data-globe-stage>
+        <canvas class="historia-globe" data-globe aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+        <Image
+          src={retrato}
+          alt="Christian Marzal, fundador de KonquerAI"
+          width={720}
+          widths={[320, 480, 720]}
+          sizes="(min-width: 900px) 340px, 60vw"
+          loading="lazy"
+          class="historia-img"
+        />
       </div>
 
-      <a href="/sobre-nosotros/" class="historia-link reveal">Lee mi historia completa <span aria-hidden="true">→</span></a>
+      <div class="historia-copy">
+        <p class="historia-eyebrow reveal">Fundador de KonquerAI</p>
+        <h2 class="historia-h2 reveal">Hola, soy Christian. Esto lo he visto en casa.</h2>
+
+        <div class="historia-text reveal">
+          <p>
+            Mi padre fue pintor toda la vida, y de crío le echaba una mano en verano. Por eso conozco
+            bien esta vida: terminas la jornada en la obra y empieza otra en casa, con presupuestos
+            de noche, facturas perdidas y el IVA que te pilla por sorpresa.
+          </p>
+          <p>
+            Me formé en gestión de empresas y me metí de lleno en la inteligencia artificial. Un día
+            até cabos: esa tecnología no estaba llegando a la gente de obra. Así que monté KonquerAI
+            para quitarles la barrera técnica, hacerlo todo lo más simple posible y que puedan
+            aprovechar sus ventajas sin pelear solos.
+          </p>
+        </div>
+
+        <div class="historia-actions reveal">
+          <a href="/sobre-nosotros/" class="historia-btn is-primary">Lee mi historia completa <span aria-hidden="true">→</span></a>
+          <a href={whatsappUrl("Hola Christian, quiero hablar contigo")} target="_blank" rel="noopener noreferrer" class="historia-btn">Hablemos por WhatsApp</a>
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" class="historia-btn is-icon" aria-label="LinkedIn de Christian Marzal">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.6 4.77 5.98V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.75Z"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<script>
+  // Esfera de puntos que gira despacio. Solo se anima mientras se ve; con movimiento reducido, un fotograma fijo.
+  const stage = document.querySelector<HTMLElement>('[data-globe-stage]');
+  const canvas = document.querySelector<HTMLCanvasElement>('[data-globe]');
+  const ctx = canvas?.getContext('2d');
+  if (stage && canvas && ctx) {
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const N = 650;
+    const pts: { x: number; y: number; z: number; hot: boolean }[] = [];
+    const golden = Math.PI * (3 - Math.sqrt(5));
+    for (let i = 0; i < N; i++) {
+      const y = 1 - (i / (N - 1)) * 2;
+      const r = Math.sqrt(1 - y * y);
+      const t = golden * i;
+      pts.push({ x: Math.cos(t) * r, y, z: Math.sin(t) * r, hot: i % 97 === 0 });
+    }
+
+    let size = 0, dpr = 1, raf = 0, last = 0, angle = 0.6, visible = false;
+
+    const draw = () => {
+      ctx.clearRect(0, 0, size, size);
+      const R = size * 0.47, c = size / 2;
+      const cos = Math.cos(angle), sin = Math.sin(angle);
+      const tilt = 0.32, ct = Math.cos(tilt), st = Math.sin(tilt);
+      for (const p of pts) {
+        const x1 = p.x * cos + p.z * sin;
+        const z1 = -p.x * sin + p.z * cos;
+        const y2 = p.y * ct - z1 * st;
+        const z2 = p.y * st + z1 * ct;
+        const depth = (z2 + 1) / 2; // 0 atrás, 1 delante
+        const a = 0.12 + depth * 0.75;
+        ctx.fillStyle = p.hot ? `rgba(255, 138, 0, ${0.4 + depth * 0.6})` : `rgba(0, 209, 178, ${a})`;
+        ctx.beginPath();
+        ctx.arc(c + x1 * R, c + y2 * R, (p.hot ? 2.4 : 0.8) + depth * 0.9, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
+
+    const resize = () => {
+      size = stage.getBoundingClientRect().width;
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = canvas.height = Math.round(size * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      draw();
+    };
+
+    const tick = (t: number) => {
+      raf = requestAnimationFrame(tick);
+      if (t - last < 33) return; // ~30 fps
+      last = t;
+      angle += 0.006;
+      draw();
+    };
+    const run = () => { if (!raf && visible && !calm && !document.hidden) raf = requestAnimationFrame(tick); };
+    const stop = () => { cancelAnimationFrame(raf); raf = 0; };
+
+    new ResizeObserver(resize).observe(stage);
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; visible ? run() : stop(); }, { rootMargin: '80px' }).observe(stage);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : run()));
+  }
+</script>
+
 <style>
   .historia {
-    background: var(--color-mist);
-    padding-block: clamp(4.5rem, 9vw, 8rem);
+    background: #fafafa;
+    padding: clamp(1rem, 3vw, 2.5rem) clamp(0.75rem, 2vw, 1.5rem);
   }
 
-  .historia-inner {
-    max-width: 1100px;
+  /* Panel oscuro con marcas de esquina */
+  .historia-frame {
+    position: relative;
+    max-width: 1240px;
     margin-inline: auto;
-    padding-inline: 1.5rem;
+    padding: clamp(3.5rem, 8vw, 6.5rem) clamp(1.5rem, 5vw, 4.5rem);
+    border-radius: 28px;
+    background:
+      radial-gradient(50% 70% at 22% 50%, rgba(0, 209, 178, 0.14), transparent 70%),
+      var(--color-ink);
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 0 solid rgba(255, 255, 255, 0.28);
+  }
+  .c-tl { top: 18px; left: 18px; border-top-width: 1px; border-left-width: 1px; }
+  .c-tr { top: 18px; right: 18px; border-top-width: 1px; border-right-width: 1px; }
+  .c-bl { bottom: 18px; left: 18px; border-bottom-width: 1px; border-left-width: 1px; }
+  .c-br { bottom: 18px; right: 18px; border-bottom-width: 1px; border-right-width: 1px; }
+
+  .historia-inner {
     display: grid;
-    gap: clamp(2rem, 5vw, 4.5rem);
+    gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
   }
 
   @media (min-width: 900px) {
-    .historia-inner { grid-template-columns: 320px 1fr; padding-inline: 2rem; }
+    .historia-inner { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
   }
 
-  .historia-photo { max-width: 280px; }
-  @media (min-width: 900px) { .historia-photo { max-width: none; } }
+  /* Escenario: esfera de puntos detrás, retrato circular delante */
+  .historia-stage {
+    position: relative;
+    width: min(100%, 460px);
+    aspect-ratio: 1;
+    justify-self: center;
+  }
 
   .historia-img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 5;
+    position: absolute;
+    inset: 15%;
+    width: 70%;
+    height: 70%;
     object-fit: cover;
-    object-position: top;
-    border-radius: 20px;
-    box-shadow: 0 30px 70px -40px rgba(11, 31, 36, 0.5);
+    object-position: 50% 18%;
+    border-radius: 50%;
+    -webkit-mask-image: radial-gradient(circle, #000 62%, transparent 71%);
+    mask-image: radial-gradient(circle, #000 62%, transparent 71%);
+  }
+
+  .historia-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-orange);
   }
 
   .historia-h2 {
-    font-size: clamp(2rem, 4.2vw, 3.25rem);
-    line-height: 1.06;
-    letter-spacing: -0.03em;
+    margin-top: 0.75rem;
+    color: #fff;
+    font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
     text-wrap: balance;
-    max-width: 18ch;
+    max-width: 16ch;
   }
 
   .historia-text {
     margin-top: 1.5rem;
     display: grid;
     gap: 1rem;
-    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
     line-height: 1.65;
-    color: var(--color-slate);
-    max-width: 52ch;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 54ch;
   }
 
-  .historia-link {
-    display: inline-block;
-    margin-top: 1.75rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    border-bottom: 2px solid var(--color-teal);
-    padding-bottom: 2px;
-    transition: color 0.2s ease;
+  .historia-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
-  .historia-link:hover { color: var(--color-teal-dark); }
+
+  .historia-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .historia-btn:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.4); }
+
+  .historia-btn.is-primary {
+    background: var(--color-teal);
+    border-color: var(--color-teal);
+    color: var(--color-ink);
+  }
+  .historia-btn.is-primary:hover { background: #2fe0c4; transform: translateY(-1px); }
+
+  .historia-btn.is-icon { padding-inline: 0; width: 3rem; }
+  .historia-btn.is-icon svg { width: 1.2rem; height: 1.2rem; }
+
+  .historia-btn:focus-visible { outline: 2px solid var(--color-teal); outline-offset: 3px; }
 </style>

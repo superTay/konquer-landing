@@ -16,16 +16,35 @@ const resultados = [
       <span>Te vendemos esto.</span>
     </h2>
 
-    <dl class="vendemos-list">
-      {resultados.map((r) => (
-        <div class="vendemos-row reveal">
-          <dt>{r.palabra}</dt>
-          <dd>{r.texto}</dd>
-        </div>
-      ))}
-    </dl>
+    <div class="vendemos-grid" data-vendemos>
+      <dl class="vendemos-list">
+        {resultados.map((r, i) => (
+          <div class={`vendemos-row reveal${i === 0 ? " is-active" : ""}`} data-row={i}>
+            <dt><span class="row-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>{r.palabra}</dt>
+            <dd>{r.texto}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
   </div>
 </section>
+
+<script>
+  // La fila que cruza el centro de la pantalla se enciende.
+  const root = document.querySelector<HTMLElement>('[data-vendemos]');
+  if (root && 'IntersectionObserver' in window) {
+    const rows = Array.from(root.querySelectorAll<HTMLElement>('[data-row]'));
+    root.classList.add('is-enhanced');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const i = rows.indexOf(e.target as HTMLElement);
+        rows.forEach((r, k) => r.classList.toggle('is-active', k === i));
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    rows.forEach((r) => io.observe(r));
+  }
+</script>
 
 <style>
   .vendemos {
@@ -49,11 +68,13 @@ const resultados = [
     color: var(--color-slate);
   }
 
-  .vendemos-list {
+  .vendemos-grid {
     margin-top: clamp(2.5rem, 5vw, 4rem);
   }
 
+  /* Filas */
   .vendemos-row {
+    position: relative;
     display: grid;
     gap: 0.25rem 2.5rem;
     padding-block: clamp(1.25rem, 2.4vw, 1.75rem);
@@ -63,24 +84,64 @@ const resultados = [
 
   @media (min-width: 768px) {
     .vendemos-row { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: center; }
+    .vendemos-row dd { margin-top: 0; }
   }
+
+  /* Línea que se dibuja en la fila activa */
+  .vendemos-row::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-teal-dark);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.7s var(--ease-out-expo);
+  }
+  .vendemos-row.is-active::before { transform: scaleX(1); }
 
   .vendemos-row dt {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
     line-height: 1;
     letter-spacing: -0.035em;
     color: var(--color-ink);
-    transition: color 0.3s var(--ease-out-expo);
+    transition: color 0.3s ease, transform 0.6s var(--ease-out-expo);
+  }
+
+  .row-n {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--color-teal-dark);
   }
 
   .vendemos-row dd {
     font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
     line-height: 1.55;
     color: var(--color-slate);
-    max-width: 38ch;
+    max-width: 44ch;
+    margin-top: 0.5rem;
   }
 
-  .vendemos-row:hover dt { color: var(--color-teal-dark); }
+  /* Con JS y pantalla ancha, las filas inactivas se apagan un poco */
+  @media (min-width: 900px) {
+    .is-enhanced .vendemos-row dt,
+    .is-enhanced .vendemos-row dd { transition: opacity 0.4s ease, transform 0.6s var(--ease-out-expo), color 0.3s ease; }
+    .is-enhanced .vendemos-row:not(.is-active) dt,
+    .is-enhanced .vendemos-row:not(.is-active) dd { opacity: 0.4; }
+    .is-enhanced .vendemos-row.is-active dt { transform: translateX(10px); color: var(--color-ink); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vendemos-row::before,
+    .vendemos-row dt { transition: none; }
+    .is-enhanced .vendemos-row.is-active dt { transform: none; }
+  }
 </style>
