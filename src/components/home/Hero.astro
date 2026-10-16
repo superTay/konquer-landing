@@ -1,30 +1,18 @@
 ---
 /**
  * Hero — titular "El equipo" (elegido por Christian, 2026-10-16).
- * Derecha: cuatro fotos hiperrealistas de los empleados digitales, con su función debajo.
- * Las fotos van en src/assets/equipo/ (ver LEEME.md); si falta una se muestra una silueta.
- * Opcional: hero-fondo.jpg (autónomo de obra) activa la variante oscura con foto de fondo.
+ * Texto a la izquierda y el pintor de fondo. Las fotos de los empleados viven en la sección del equipo.
+ * Fondo: src/assets/equipo/hero-fondo.jpg (si falta, se muestra la variante clara).
  */
 import { Image } from "astro:assets";
 
 const fotos = import.meta.glob<{ default: ImageMetadata }>(
-  "../../assets/equipo/*.{jpg,jpeg,png,webp}",
+  "../../assets/equipo/hero-fondo.{jpg,jpeg,png,webp}",
   { eager: true },
 );
-const foto = (slug: string) => {
-  const key = Object.keys(fotos).find((k) => k.split("/").pop()?.startsWith(slug + "."));
-  return key ? fotos[key].default : null;
-};
-
-const fondo = foto("hero-fondo");
-
-const tiles = [
-  { slug: "sofia", name: "SofIA", title: "Clientes y presupuestos", chips: ["Presupuestos"], tone: "orange", alt: "SofIA, tu empleada de clientes y presupuestos" },
-  { slug: "matias", name: "MatIAs", title: "Facturas y compras", chips: ["Facturas", "Albaranes"], tone: "teal", alt: "MatIAs, tu empleado de facturas y compras" },
-  { slug: "maria", name: "MarIA", title: "Tu caja", chips: ["Cobros", "Pagos"], tone: "deep", alt: "MarIA, tu empleada de tesorería" },
-  { slug: "lucia", name: "LucIA", title: "Conoce todo tu negocio", chips: ["Pregúntale lo que quieras"], tone: "teal", alt: "LucIA, la asistente que conoce toda la información de tu negocio" },
-].map((t) => ({ ...t, img: foto(t.slug) }));
+const fondo = Object.values(fotos)[0]?.default ?? null;
 ---
+
 
 
 <section class:list={["hero", fondo && "is-dark"]} id="inicio">
@@ -60,42 +48,15 @@ const tiles = [
         <li>Te acompañamos el primer mes</li>
       </ul>
     </div>
-
-    <div class="mosaic" aria-label="Tu equipo administrativo: SofIA, MatIAs, MarIA y LucIA">
-      {tiles.map((t, i) => (
-        <article class={`tile tile-${t.slug} tone-${t.tone}`} style={`--i:${i}`}>
-          {t.img ? (
-            <Image
-              src={t.img}
-              alt={t.alt}
-              widths={[320, 480, 640]}
-              sizes="(min-width: 1024px) 220px, 45vw"
-              loading={i < 3 ? "eager" : "lazy"}
-              class="tile-img"
-            />
-          ) : (
-            <svg class="tile-ph" viewBox="0 0 120 150" role="img" aria-label={t.alt} preserveAspectRatio="xMidYMax slice">
-              <circle cx="60" cy="58" r="21" fill="currentColor" opacity=".9" />
-                                          <path d="M18 150c0-30 18-50 42-50s42 20 42 50z" fill="currentColor" opacity=".9" />
-            </svg>
-          )}
-          <div class="tile-label">
-            <strong class="tile-name">{t.name}</strong>
-            <span class="tile-title">{t.title}</span>
-            <span class="tile-chips">
-              {t.chips.map((c) => <span class="tile-chip">{c}</span>)}
-            </span>
-          </div>
-        </article>
-      ))}
-
-    </div>
   </div>
 </section>
 
 <style>
   .hero {
     position: relative;
+    min-height: clamp(560px, 84svh, 780px);
+    display: flex;
+    align-items: center;
     padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(3.5rem, 7vw, 6.5rem);
     overflow: hidden;
   }
@@ -111,6 +72,7 @@ const tiles = [
   }
 
   .hero-inner {
+    width: 100%;
     position: relative;
     z-index: 1;
     max-width: 1240px;
@@ -120,7 +82,7 @@ const tiles = [
   }
 
   @media (min-width: 1024px) {
-    .hero-inner { grid-template-columns: 0.95fr 1.05fr; }
+    .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   }
 
   .hero-h1 {
@@ -129,13 +91,17 @@ const tiles = [
     letter-spacing: -0.035em;
     font-weight: 700;
     text-wrap: balance;
-    max-width: 17ch;
+    max-width: 18ch;
   }
 
   .hero-h1-turn {
     display: block;
     margin-top: 0.25em;
     color: var(--color-teal-dark);
+  }
+
+  @media (min-width: 640px) {
+    .hero-h1-turn { white-space: nowrap; }
   }
 
   .hero-sub {
@@ -196,96 +162,6 @@ const tiles = [
       var(--color-teal);
   }
 
-  /* ── Mosaico del equipo ── */
-  .mosaic {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: clamp(250px, 26vw, 330px);
-    gap: 0.875rem;
-    padding-bottom: 2.25rem;
-  }
-
-  /* Segunda columna desplazada, como en la referencia */
-  .tile:nth-child(even) { translate: 0 2.25rem; }
-
-  .tile {
-    position: relative;
-    overflow: hidden;
-    border-radius: 18px;
-    color: #fff;
-    background: var(--bg);
-    isolation: isolate;
-    box-shadow: 0 24px 50px -30px rgba(11, 31, 36, 0.55);
-  }
-
-    .tone-orange { --bg: linear-gradient(160deg, #FFB25A, #E87800); }
-  .tone-teal   { --bg: linear-gradient(160deg, #3FE0C6, #009B89); }
-  .tone-deep   { --bg: linear-gradient(160deg, #3F6B73, #12303A); }
-
-  .tile-img,
-  .tile-ph {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-  .tile-img { object-fit: cover; object-position: top center; }
-  .tile-ph { color: rgba(255, 255, 255, 0.55); }
-  .tone-orange .tile-ph { color: rgba(255, 236, 214, 0.7); }
-
-  .tile-label {
-    position: absolute;
-    inset: auto 0.55rem 0.55rem 0.55rem;
-    display: grid;
-    gap: 0.15rem;
-    padding: 0.6rem 0.7rem;
-    border-radius: 12px;
-    background: rgba(11, 31, 36, 0.55);
-    backdrop-filter: blur(10px) saturate(1.3);
-    -webkit-backdrop-filter: blur(10px) saturate(1.3);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: #fff;
-  }
-
-  .tile-name {
-    font-family: var(--font-heading);
-    font-size: 1.0625rem;
-    line-height: 1.1;
-  }
-
-  .tile-title { font-size: 0.75rem; color: rgba(255, 255, 255, 0.85); line-height: 1.25; }
-
-  .tile-chips { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.3rem; }
-
-  .tile-chip {
-    padding: 0.1rem 0.5rem;
-    border-radius: 999px;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    background: var(--color-teal);
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .tile {
-      animation: tile-in 0.8s var(--ease-out-expo) backwards;
-      animation-delay: calc(0.15s + var(--i) * 0.09s);
-    }
-  }
-
-  @keyframes tile-in {
-    from { opacity: 0; transform: translateY(24px) scale(0.97); }
-  }
-
-  @media (max-width: 639px) {
-    .mosaic { grid-auto-rows: 230px; gap: 0.625rem; }
-  }
-
-  @media (max-width: 479px) {
-    .hero-cta { width: 100%; }
-  }
-
   /* ── Variante oscura: foto de fondo de un autónomo de obra ── */
   .hero-bg {
     position: absolute;
@@ -297,6 +173,7 @@ const tiles = [
     z-index: 0;
   }
 
+
   .hero-shade {
     position: absolute;
     inset: 0;
@@ -304,6 +181,12 @@ const tiles = [
     background:
       linear-gradient(90deg, rgba(5, 14, 17, 0.84) 0%, rgba(5, 14, 17, 0.7) 42%, rgba(5, 14, 17, 0.4) 100%),
       linear-gradient(0deg, rgba(5, 14, 17, 0.6), transparent 40%);
+  }
+
+  @media (max-width: 1023px) {
+    .hero-shade {
+      background: linear-gradient(180deg, rgba(5, 14, 17, 0.82), rgba(5, 14, 17, 0.7));
+    }
   }
 
   .is-dark .hero-h1 { color: #fff; }

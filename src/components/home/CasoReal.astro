@@ -4,6 +4,8 @@
  * Cifras de su caso: ~500 presupuestos/año, 25-30 min → 5 min, ~4 semanas/año, cierre 5 % → 10 %.
  * Se presenta como un presupuesto: partidas antes / ahora.
  */
+import { whatsappUrl } from "../../lib/contact";
+
 const partidas = [
   { concepto: "Tiempo por presupuesto", antes: "25-30 min", ahora: "5 min" },
   { concepto: "Cuándo le llega al cliente", antes: "En una semana", ahora: "El mismo día" },
@@ -14,6 +16,7 @@ const partidas = [
 <section class="caso" id="caso">
   <div class="container-narrow caso-inner">
     <div class="caso-story">
+      <p class="caso-badge reveal"><span class="caso-badge-dot" aria-hidden="true"></span>Caso de éxito · Empresa de pintura</p>
       <h2 class="caso-h2 reveal">500 presupuestos al año. Media hora cada uno.</h2>
       <div class="caso-text reveal">
         <p>
@@ -33,7 +36,7 @@ const partidas = [
 
     <article class="sheet reveal" aria-label="Resultado del caso">
       <header class="sheet-head">
-        <span class="sheet-title">Resultado</span>
+        <span class="sheet-title">Caso de éxito</span>
         <span class="sheet-ref">Empresa de pintura · 500 presupuestos al año</span>
       </header>
 
@@ -70,6 +73,19 @@ const partidas = [
       No pasó por comprar una herramienta. Pasó por sentarnos con él, ver cómo trabajaba de verdad
       y quitarle de en medio lo que más tiempo le robaba.
     </p>
+
+    <div class="caso-cta reveal">
+      <p class="caso-cta-text">¿Tu día a día se parece al suyo? Cuéntanos cómo trabajas y estudiamos tu caso.</p>
+      <a
+        href={whatsappUrl("Hola Christian, he visto el caso de la empresa de pintura y quiero que estudiemos mi caso")}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn caso-cta-btn"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.92C21.96 6.45 17.5 2 12.04 2Zm5.79 14.11c-.24.68-1.4 1.32-1.93 1.4-.51.08-1.15.11-1.86-.12-.43-.13-.98-.32-1.68-.62-2.96-1.28-4.89-4.26-5.04-4.46-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.47.27-.29.6-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.6.83 2.06.9 2.21.07.15.11.32.02.52-.09.2-.13.32-.27.49-.13.17-.28.37-.4.5-.13.13-.27.28-.12.55.15.27.68 1.12 1.46 1.82 1 .9 1.85 1.18 2.12 1.31.27.13.43.11.59-.07.16-.18.68-.79.87-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.44.2.51.31.06.11.06.66-.18 1.34Z"/></svg>
+        Estudiemos tu caso por WhatsApp
+      </a>
+    </div>
   </div>
 </section>
 
@@ -91,7 +107,64 @@ const partidas = [
       column-gap: 5rem;
       align-items: start;
     }
-    .caso-moral { grid-column: 1 / -1; }
+    .caso-cta {
+    display: grid;
+    gap: 1.25rem;
+    align-items: center;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: 20px;
+    background: var(--color-ink);
+    color: #fff;
+  }
+
+  @media (min-width: 900px) {
+    .caso-cta { grid-template-columns: 1fr auto; gap: 2.5rem; }
+  }
+
+  .caso-cta-text {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    max-width: 30ch;
+  }
+
+  .caso-cta-btn {
+    background: var(--color-teal);
+    color: var(--color-ink);
+  }
+
+  .caso-cta-btn svg { width: 1.25rem; height: 1.25rem; flex: none; }
+
+  @media (min-width: 960px) {
+    .caso-cta { grid-column: 1 / -1; }
+  }
+
+  .caso-moral { grid-column: 1 / -1; }
+  }
+
+  .caso-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    padding: 0.4rem 0.9rem 0.4rem 0.7rem;
+    border-radius: 999px;
+    background: var(--color-teal-light);
+    border: 1px solid rgba(0, 155, 137, 0.25);
+    color: #00695C;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .caso-badge-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2 7 10.6l4.6-5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat,
+      var(--color-teal-dark);
   }
 
   .caso-h2 {
