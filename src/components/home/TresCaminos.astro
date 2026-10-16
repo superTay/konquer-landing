@@ -7,12 +7,22 @@
 
 <section class="caminos" id="decidir">
   <div class="container-narrow caminos-inner">
-    <div class="caminos-head">
-      <h2 class="caminos-h2 reveal">Hoy, o transformas tu negocio o te quedas atrás.</h2>
-      <p class="caminos-lead reveal">
-        La inteligencia artificial ya está cambiando cómo se lleva un negocio. La decisión que tomes
-        al respecto puede marcar una diferencia enorme en tu negocio durante los próximos años.
-      </p>
+    <div class="caminos-stage" data-stage>
+      <canvas class="caminos-net" data-net aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+      <svg class="caminos-rings" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+        <circle class="ring ring-a" cx="200" cy="200" r="190" />
+        <circle class="ring ring-b" cx="200" cy="200" r="140" />
+        <circle class="ring ring-c" cx="200" cy="200" r="90" />
+        <circle class="ring-dot dot-a" cx="200" cy="10" r="5" />
+        <circle class="ring-dot dot-b" cx="340" cy="200" r="4" />
+      </svg>
+      <div class="caminos-head">
+        <h2 class="caminos-h2 reveal">Hoy, o transformas tu negocio o te quedas atrás.</h2>
+        <p class="caminos-lead reveal">
+          La inteligencia artificial ya está cambiando cómo se lleva un negocio. La decisión que tomes
+          al respecto puede marcar una diferencia enorme en tu negocio durante los próximos años.
+        </p>
+      </div>
     </div>
 
     <ol class="caminos-list">
@@ -42,6 +52,87 @@
   </div>
 </section>
 
+<script>
+  // Red de nodos: se anima solo mientras la sección se ve; en reposo o con movimiento reducido, un fotograma fijo.
+  const stage = document.querySelector<HTMLElement>('[data-stage]');
+  const canvas = document.querySelector<HTMLCanvasElement>('[data-net]');
+  const ctx = canvas?.getContext('2d');
+  if (stage && canvas && ctx) {
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    type Node = { x: number; y: number; vx: number; vy: number; hot: boolean };
+    let nodes: Node[] = [];
+    let w = 0, h = 0, dpr = 1, raf = 0, last = 0, visible = false;
+    const LINK = 120;
+
+    const seed = () => {
+      const count = Math.min(46, Math.max(18, Math.round((w * h) / 9000)));
+      nodes = Array.from({ length: count }, (_, i) => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: (Math.random() - 0.5) * 0.22,
+        hot: i % 9 === 0,
+      }));
+    };
+
+    const resize = () => {
+      const r = stage.getBoundingClientRect();
+      w = r.width; h = r.height;
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+      draw();
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < LINK * LINK) {
+            const o = (1 - Math.sqrt(d2) / LINK) * 0.35;
+            ctx.strokeStyle = `rgba(0, 209, 178, ${o})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+      for (const n of nodes) {
+        ctx.fillStyle = n.hot ? 'rgba(255, 138, 0, 0.9)' : 'rgba(0, 209, 178, 0.8)';
+        ctx.beginPath(); ctx.arc(n.x, n.y, n.hot ? 2.6 : 1.8, 0, Math.PI * 2); ctx.fill();
+      }
+    };
+
+    const tick = (t: number) => {
+      raf = requestAnimationFrame(tick);
+      if (t - last < 33) return; // ~30 fps
+      last = t;
+      for (const n of nodes) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      draw();
+    };
+
+    const run = () => { if (!raf && visible && !calm && !document.hidden) raf = requestAnimationFrame(tick); };
+    const stop = () => { cancelAnimationFrame(raf); raf = 0; };
+
+    new ResizeObserver(resize).observe(stage);
+    new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      stage.classList.toggle('is-live', visible);
+      visible ? run() : stop();
+    }, { rootMargin: '80px' }).observe(stage);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : run()));
+  }
+</script>
+
 <style>
   .caminos {
     background: var(--color-mist);
@@ -50,6 +141,74 @@
 
   .caminos-inner {
     max-width: 1180px;
+  }
+
+  /* Escenario oscuro: red de nodos y anillos que evocan IA y tecnología */
+  .caminos-stage {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(2rem, 5vw, 4rem);
+    border-radius: 28px;
+    background:
+      radial-gradient(60% 90% at 88% 20%, rgba(0, 209, 178, 0.22), transparent 70%),
+      radial-gradient(40% 70% at 5% 100%, rgba(255, 138, 0, 0.12), transparent 70%),
+      var(--color-ink);
+    color: #fff;
+  }
+
+  .caminos-net {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 1;
+  }
+
+  .caminos-rings {
+    position: absolute;
+    right: -6%;
+    top: 50%;
+    width: min(46vw, 460px);
+    aspect-ratio: 1;
+    translate: 0 -50%;
+    z-index: -1;
+    opacity: 0.85;
+    pointer-events: none;
+  }
+
+  .ring {
+    fill: none;
+    stroke: var(--color-teal);
+    stroke-width: 1.2;
+    transform-origin: 200px 200px;
+    animation: ring-spin 60s linear infinite;
+    animation-play-state: paused;
+  }
+  .ring-a { stroke-dasharray: 2 10; opacity: 0.7; }
+  .ring-b { stroke-dasharray: 90 24 6 24; animation-duration: 42s; animation-direction: reverse; opacity: 0.8; }
+  .ring-c { stroke-dasharray: 1 7; animation-duration: 28s; stroke: rgba(255, 255, 255, 0.7); }
+
+  .ring-dot {
+    fill: var(--color-orange);
+    transform-origin: 200px 200px;
+    animation: ring-spin 18s linear infinite;
+    animation-play-state: paused;
+  }
+  .dot-b { fill: var(--color-teal); animation-duration: 26s; animation-direction: reverse; }
+
+  .is-live .ring,
+  .is-live .ring-dot { animation-play-state: running; }
+
+  @keyframes ring-spin { to { transform: rotate(360deg); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ring, .ring-dot { animation: none; }
+  }
+
+  @media (max-width: 959px) {
+    .caminos-rings { width: 70vw; right: -25%; opacity: 0.5; }
   }
 
   .caminos-head {
@@ -62,6 +221,7 @@
   }
 
   .caminos-h2 {
+    color: #fff;
     font-size: clamp(2rem, 4.4vw, 3.5rem);
     line-height: 1.05;
     letter-spacing: -0.03em;
@@ -71,7 +231,7 @@
   .caminos-lead {
     font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
     line-height: 1.6;
-    color: var(--color-slate);
+    color: rgba(255, 255, 255, 0.78);
   }
 
   .caminos-list {
