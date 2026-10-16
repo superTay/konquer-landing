@@ -1,6 +1,7 @@
 ---
 /** Footer.astro — panel blanco sobre fondo gris claro: marca a la izquierda, tres columnas a la derecha. */
 import Logo from "./Logo.astro";
+import StoreBadges from "./StoreBadges.astro";
 import { EMAIL, LINKEDIN_URL, emailUrl, whatsappUrl } from "../lib/contact";
 
 const APP_STORE_URL = "https://apps.apple.com/es/app/konquerai/id6767595664";
@@ -70,6 +71,7 @@ const legal = [
             </a>
           </li>
         </ul>
+        <StoreBadges size="sm" />
       </div>
 
       <nav class="cols" aria-label="Enlaces del pie de página">

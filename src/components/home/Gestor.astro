@@ -1,19 +1,29 @@
 ---
 /**
- * Gestor — la objeción "eso ya me lo lleva el gestor" (post LinkedIn + diapositiva del deck).
- * El gestor es aliado, nunca enemigo. IVA = "vas acumulando", nunca cifra oficial.
+ * Gestor — la objeción "eso ya me lo lleva el gestor". Cuatro diferencias concretas.
+ * El gestor es aliado, nunca enemigo. IVA/IRPF = "vas acumulando", estimación de gestión.
  */
-const conGestor = [
-  "Cuánto pagaste de IVA el trimestre pasado",
-  "Lo que facturaste el año pasado",
-  "Un resumen general, todo junto",
-];
-const conEquipo = [
-  "Cuánto IVA vas acumulando",
-  "Cuánto has ganado en cada obra",
-  "Cuánto gastas al mes en material",
-  "Quién te debe y qué toca pagar",
-  "Cómo tendrás la caja en las próximas semanas",
+const filas = [
+  {
+    tema: "IVA e IRPF",
+    gestor: "Descubres lo que te toca pagar al cerrar el trimestre. Y a veces te llevas un susto.",
+    equipo: "Ves cuánto IVA e IRPF vas acumulando mes a mes. Nada te pilla por sorpresa.",
+  },
+  {
+    tema: "En qué gastas",
+    gestor: "Te llegan las compras y las ventas, todo junto. No sabes en qué se ha ido el dinero.",
+    equipo: "Todo desglosado por categorías: material, combustible, servicios, proveedores.",
+  },
+  {
+    tema: "Albaranes",
+    gestor: "Casi nunca los lleva, así que nadie los cuadra con tus facturas.",
+    equipo: "Cada albarán se cuadra con su factura, y te avisa si algo no coincide.",
+  },
+  {
+    tema: "Tu caja",
+    gestor: "Con los datos de hace tres meses no puede decirte si llegas a pagar los sueldos, si coges esa obra o si aguantas una multa.",
+    equipo: "Ves la caja con semanas de adelanto. Ganar dinero no es lo mismo que tener caja, y aquí lo ves venir.",
+  },
 ];
 ---
 
@@ -29,27 +39,25 @@ const conEquipo = [
       <p class="gestor-mirror">Es como conducir mirando por el retrovisor.</p>
     </div>
 
-    <div class="gestor-compare reveal">
-      <div class="gestor-col is-past">
-        <h3>Con el gestor sabes, a toro pasado…</h3>
-        <ul>{conGestor.map((t) => <li>{t}</li>)}</ul>
+    <div class="gestor-table reveal" role="table" aria-label="Tu gestor frente a tu equipo">
+      <div class="gestor-head" role="row">
+        <span role="columnheader" class="gestor-head-topic"></span>
+        <span role="columnheader" class="gestor-head-past">Con el gestor</span>
+        <span role="columnheader" class="gestor-head-now">Con tu equipo</span>
       </div>
-      <div class="gestor-col is-now">
-        <h3>Con tu equipo sabes, hoy…</h3>
-        <ul>{conEquipo.map((t) => <li>{t}</li>)}</ul>
-      </div>
+      {filas.map((f) => (
+        <div class="gestor-row" role="row">
+          <h3 class="gestor-topic" role="rowheader">{f.tema}</h3>
+          <p class="gestor-cell is-past" role="cell">{f.gestor}</p>
+          <p class="gestor-cell is-now" role="cell">{f.equipo}</p>
+        </div>
+      ))}
     </div>
 
-    <div class="gestor-why reveal">
-      <p>
-        En una obra, ganar dinero no es lo mismo que tener caja. Puedes cerrar un buen trabajo y
-        quedarte sin liquidez porque los cobros llegan después de los pagos.
-      </p>
-      <p>
-        Con tu equipo ves esa caja con semanas de adelanto: si puedes coger esa obra, si llegas
-        para adelantar el material, cuánto apartar. Dándoselo todo al gestor, eso no se ve.
-      </p>
-    </div>
+    <p class="gestor-note reveal">
+      Son datos de gestión para que decidas con tiempo. Las cifras oficiales y los modelos los sigue
+      presentando tu gestor.
+    </p>
 
     <p class="gestor-close reveal">
       No dejas de tener gestor. Dejas de ir detrás.
@@ -96,69 +104,101 @@ const conEquipo = [
     max-width: 22ch;
   }
 
-  .gestor-compare {
-    display: grid;
-    gap: 1rem;
+  /* ── Tabla: gestor frente a equipo ── */
+  .gestor-table {
     margin-top: 0.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .gestor-compare { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  }
-
-  .gestor-col {
-    padding: clamp(1.25rem, 3vw, 2rem);
-    border-radius: 18px;
-  }
-
-  .gestor-col h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-
-  .gestor-col ul {
-    list-style: none;
-    display: grid;
-    gap: 0.7rem;
-  }
-
-  .gestor-col li {
-    display: grid;
-    grid-template-columns: 1.25rem 1fr;
-    gap: 0.5rem;
-    line-height: 1.45;
-  }
-
-  .gestor-col li::before {
-    content: "";
-    width: 0.6rem;
-    height: 2px;
-    margin-top: 0.7em;
-    background: currentColor;
-    opacity: 0.6;
-  }
-
-  .is-past {
+    border-radius: 20px;
+    overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .gestor-head { display: none; }
+
+  .gestor-row {
+    display: grid;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .gestor-row:first-of-type { border-top: 0; }
+
+  .gestor-topic {
+    padding: 1.1rem 1.25rem 0.25rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+
+  .gestor-cell {
+    padding: 0.5rem 1.25rem;
+    font-size: clamp(1.0625rem, 1.3vw, 1.1875rem);
+    line-height: 1.5;
+  }
+
+  .gestor-cell.is-past {
     color: rgba(255, 255, 255, 0.62);
   }
-  .is-past h3 { color: rgba(255, 255, 255, 0.78); }
 
-  .is-now {
+  .gestor-cell.is-now {
+    margin-top: 0.5rem;
+    padding-block: 0.9rem 1.1rem;
     background: var(--color-teal);
     color: var(--color-ink);
+    font-weight: 600;
   }
-  .is-now h3 { color: var(--color-ink); }
-  .is-now li { font-weight: 600; }
-  .is-now li::before { opacity: 1; }
 
-  .gestor-why {
-    display: grid;
-    gap: 1rem;
-    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
-    line-height: 1.6;
-    max-width: 58ch;
+  .gestor-cell.is-past::before,
+  .gestor-cell.is-now::before {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .gestor-cell.is-past::before { content: "Con el gestor"; }
+  .gestor-cell.is-now::before { content: "Con tu equipo"; }
+
+  @media (min-width: 900px) {
+    .gestor-head {
+      display: grid;
+      grid-template-columns: 0.7fr 1.15fr 1.15fr;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .gestor-head span { padding: 1rem 1.5rem; font-size: 0.875rem; }
+    .gestor-head-past { color: rgba(255, 255, 255, 0.62); }
+    .gestor-head-now { background: var(--color-teal); color: var(--color-ink); }
+
+    .gestor-row {
+      grid-template-columns: 0.7fr 1.15fr 1.15fr;
+      align-items: stretch;
+    }
+
+    .gestor-topic { padding: 1.5rem 1.5rem; align-self: center; }
+    .gestor-cell { padding: 1.5rem; align-self: center; }
+
+    .gestor-cell.is-now {
+      margin-top: 0;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      padding-block: 1.5rem;
+      border-top: 1px solid rgba(11, 31, 36, 0.14);
+    }
+    .gestor-row:first-of-type .gestor-cell.is-now { border-top: 0; }
+
+    .gestor-cell.is-past::before,
+    .gestor-cell.is-now::before { display: none; }
+  }
+
+  .gestor-note {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 60ch;
   }
 
   .gestor-close {
