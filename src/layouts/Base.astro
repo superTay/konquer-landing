@@ -24,12 +24,12 @@ interface Props {
 }
 
 const {
-  title = "KonquerAI · Tu oficina administrativa, montada | La construcción y los oficios de reformas",
-  description = "Te montamos un equipo administrativo que trabaja para ti: presupuestos, facturas, cobros y tus números al día. Para autónomos y pymes de la construcción y los oficios de reformas. Sin aprender tecnología.",
+  title = "KonquerAI · Tu oficina administrativa digital para reformas",
+  description = "Te montamos un equipo administrativo que trabaja para ti: presupuestos, facturas, cobros y tus números al día. Para autónomos y pymes de reformas.",
   noindex = false,
   ogTitle = "KonquerAI · Un equipo administrativo trabajando para ti",
   ogDescription = "Orden, control, tiempo y tranquilidad para autónomos y pymes de la construcción. Te lo dejamos montado y te acompañamos.",
-  ogImage = "https://www.konquerai.com/og-image.png",
+  ogImage = "https://www.konquerai.com/og-konquerai.jpg",
   ogImageAlt = "KonquerAI — Tu oficina administrativa, montada",
   ogType = "website"
 } = Astro.props;
@@ -63,7 +63,7 @@ const founderImageUrl = new URL(founderImage.src, Astro.site ?? "https://www.kon
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:image" content={ogImage} />
-    {ogImage === "https://www.konquerai.com/og-image.png" && (
+    {ogImage === "https://www.konquerai.com/og-konquerai.jpg" && (
       <>
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -107,11 +107,11 @@ const founderImageUrl = new URL(founderImage.src, Astro.site ?? "https://www.kon
           "url": "https://www.konquerai.com",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://www.konquerai.com/og-image.png",
-            "width": 1200,
-            "height": 630
+            "url": "https://www.konquerai.com/logo-konquerai.png",
+            "width": 800,
+            "height": 328
           },
-          "image": "https://www.konquerai.com/og-image.png",
+          "image": "https://www.konquerai.com/og-konquerai.jpg",
           "description": "Montamos y acompañamos la oficina administrativa digital de autónomos y pymes de la construcción y los oficios de reformas: presupuestos, facturas, cobros y números al día.",
           "email": "info@konquerai.com",
           "foundingDate": "2026",

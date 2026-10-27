@@ -1,5 +1,5 @@
 /**
- * Genera los iconos derivados del favicon de marca y la og-image.
+ * Genera los iconos derivados del favicon de marca.
  * Uso: node scripts/generate-assets.mjs
  * Requiere sharp (ya presente como dependencia de Astro).
  */
@@ -34,35 +34,7 @@ function pngToIco(png, size) {
 }
 writeFileSync(`${PUB}/favicon.ico`, pngToIco(ico48, 48));
 
-// ── og-image.png (1200x630) ──
-const og = `
-<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#00D1B2"/>
-      <stop offset="1" stop-color="#009B89"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.82" cy="0.12" r="0.6">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.20"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="orange" cx="0.94" cy="0.9" r="0.55">
-      <stop offset="0" stop-color="#FF8A00" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#FF8A00" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#glow)"/>
-  <rect width="1200" height="630" fill="url(#orange)"/>
-  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#ffffff">
-    <text x="80" y="118" font-size="38" font-weight="700" letter-spacing="0.5">KonquerAI</text>
-    <rect x="82" y="196" width="64" height="6" rx="3" fill="#FF8A00"/>
-    <text x="80" y="300" font-size="62" font-weight="800">Tu cuadrilla administrativa,</text>
-    <text x="80" y="378" font-size="62" font-weight="800">ahora digital.</text>
-    <text x="80" y="466" font-size="29" font-weight="500" fill-opacity="0.92">Recupera hasta 30 horas al mes y controla cada obra al céntimo.</text>
-    <text x="80" y="566" font-size="24" font-weight="600" fill-opacity="0.85">konquerai.com</text>
-  </g>
-</svg>`;
-await sharp(Buffer.from(og)).png().toFile(`${PUB}/og-image.png`);
+// La imagen para compartir (public/og-konquerai.jpg) ya no se genera aquí: se diseña
+// aparte con el mensaje vigente de la home y el logo oficial (public/logo.svg).
 
-console.log("Generado: apple-touch-icon.png, favicon-96x96.png, favicon.ico, og-image.png");
+console.log("Generado: apple-touch-icon.png, favicon-96x96.png, favicon.ico");
