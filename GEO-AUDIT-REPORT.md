@@ -69,7 +69,16 @@ Aplicado en el repo, sin tocar el copy visible de la home. Compilado (61 página
 
 Pendiente por decisión o por no tocar contenido: A4 (párrafo de definición visible), A6 (nombrar el caso de éxito; hay permiso, falta decidir cómo), M4 (logo del schema: ver nota), M6 (título/description de la home), B1 (redirección de `/precios`; se deja como está porque es temporal), B5 (limpieza de componentes antiguos).
 
-Nota nueva: `public/og-image.png` (vista previa al compartir y logo del schema) conserva el mensaje anterior («Tu cuadrilla administrativa, ahora digital… hasta 30 horas al mes»). Es una imagen, no se ha tocado. El `logo.svg` es blanco y no sirve sobre fondo claro, y `apple-touch-icon.png` es un escudo azul y dorado distinto del teal de marca: hace falta saber cuál es el logo oficial para completar M4.
+**Segunda tanda (desplegada el 2026-10-27, commits `dbe5076` y `4f8d796`):**
+- Imagen para compartir rehecha: `og-konquerai.jpg` (97 KB) con el mensaje y la foto actuales de la home y el logo oficial. Nombre nuevo a propósito, para saltarse las cachés de WhatsApp y redes que guardaban `og-image.png`; el PNG antiguo se ha eliminado.
+- `Organization.logo` = logo oficial (`logo-konquerai.png`, generado de `logo.svg`) (M4 resuelto).
+- Título de la home 92 → 59 caracteres («KonquerAI · Tu oficina administrativa digital para reformas») y descripción 205 → 146 (M6 resuelto). Son metadatos, no texto visible de la página.
+- Search Console (propiedad de dominio `konquerai.com`): sitemap reenviado (lee 55 URLs, ahora 56 con el hub) e indexación solicitada para el hub y la home.
+- Crunchbase: el perfil **existe** (`sameAs` válido), pero su descripción sigue con el posicionamiento antiguo («SaaS software for self-employed construction and renovation contractors… Voice quotes, invoices, VAT, Verifactu, project margins»). Editarlo requiere iniciar sesión: pendiente de Christian (M8).
+
+**Indexación a 2026-10-27 (Search Console):** 53 páginas indexadas, 17 no. Motivos: 6 noindex (legales, boletín: intencionado), 4 alternativa con canonical, 3 con redirección (apex, `/precios`: esperado), 3 «descubiertas, sin indexar» y 1 «rastreada, sin indexar» (4 guías reales sin indexar; identificar cuáles en el informe de octubre). 17 clics orgánicos totales en los últimos 3 meses.
+
+Nota: `apple-touch-icon.png` y el favicon son el escudo azul y dorado (icono de la app); el logo oficial de la web es `logo.svg`.
 
 ---
 
