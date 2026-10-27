@@ -11,6 +11,8 @@ const blog = defineCollection({
         title: z.string(),
         slug: z.string(),
         date: z.coerce.date(),
+        // Última revisión de fondo de la guía (opcional). Alimenta dateModified del schema.
+        updated: z.coerce.date().optional(),
         meta_description: z.string(),
         imagen: image(),
         imagen_alt: z.string(),

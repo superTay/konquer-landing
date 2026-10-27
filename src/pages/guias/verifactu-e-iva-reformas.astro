@@ -1,0 +1,248 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { temasDeGuia } from "../../lib/guias";
+
+// Índice temático: reúne todas las guías del blog que tratan de Verifactu o del IVA en reformas.
+// Se genera solo a partir de las guías publicadas: cada guía nueva aparece aquí sin tocar nada.
+const posts = await getCollection("blog", (p) => p.data.status === "published");
+
+const PRINCIPAL = "verifactu-autonomos-reformas-guia-2027";
+const porTitulo = (a: (typeof posts)[number], b: (typeof posts)[number]) =>
+  a.data.title.localeCompare(b.data.title, "es");
+
+const verifactu = posts
+  .filter((p) => temasDeGuia(p.data.slug).includes("verifactu"))
+  .sort((a, b) => {
+    if (a.data.slug === PRINCIPAL) return -1;
+    if (b.data.slug === PRINCIPAL) return 1;
+    return porTitulo(a, b);
+  });
+const iva = posts.filter((p) => temasDeGuia(p.data.slug).includes("iva")).sort(porTitulo);
+
+const respuestas = [
+  {
+    q: "¿Desde cuándo es obligatorio Verifactu para un autónomo de reformas?",
+    a: "Desde el 1 de julio de 2027. Las sociedades, desde el 1 de enero de 2027. Hasta entonces puedes adaptarte ya, pero no es obligatorio.",
+    guia: PRINCIPAL,
+    enlace: "Verifactu para autónomos de reformas: la guía 2027",
+  },
+  {
+    q: "¿Puedo seguir facturando mis reformas en Word o Excel?",
+    a: "No a partir del 1 de julio de 2027. Word y Excel permiten cambiar o borrar una factura ya hecha, y Verifactu existe justo para impedirlo.",
+    guia: "verifactu-word-excel-reformas",
+    enlace: "Qué pasa si en 2027 sigues facturando en Word o Excel",
+  },
+  {
+    q: "¿Cuándo puedo poner el 10 % de IVA en una reforma?",
+    a: "Cuando el cliente es un particular, la reforma es en su vivienda de más de 2 años y el material que pones tú no pasa del 40 % de la factura. Si falla una de las tres condiciones, va el 21 %.",
+    guia: "iva-10-21-reformas",
+    enlace: "IVA del 10 % o del 21 % en una reforma",
+  },
+];
+
+const url = "https://www.konquerai.com/guias/verifactu-e-iva-reformas/";
+const todas = [...verifactu, ...iva.filter((p) => !verifactu.includes(p))];
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${url}#pagina`,
+      url,
+      name: "Verifactu e IVA en reformas: todas las guías",
+      description:
+        "Todas las guías de KonquerAI sobre Verifactu y sobre el IVA del 10 % y del 21 % para autónomos y pequeñas empresas de reformas.",
+      inLanguage: "es-ES",
+      isPartOf: { "@id": "https://www.konquerai.com/#website" },
+      author: { "@id": "https://www.konquerai.com/#founder" },
+      publisher: { "@id": "https://www.konquerai.com/#organization" },
+      about: [{ "@type": "Thing", name: "Verifactu" }, { "@type": "Thing", name: "IVA en reformas" }],
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: todas.length,
+        itemListElement: todas.map((p, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `https://www.konquerai.com/blog/${p.data.slug}/`,
+          name: p.data.title,
+        })),
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.konquerai.com/" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.konquerai.com/blog/" },
+        { "@type": "ListItem", position: 3, name: "Verifactu e IVA en reformas", item: url },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      inLanguage: "es-ES",
+      mainEntity: respuestas.map((r) => ({
+        "@type": "Question",
+        name: r.q,
+        acceptedAnswer: { "@type": "Answer", text: r.a },
+      })),
+    },
+  ],
+});
+---
+
+<Base
+  title="Verifactu e IVA en reformas: todas las guías · KonquerAI"
+  description="Todas las guías sobre Verifactu y el IVA del 10 % y del 21 % para autónomos de reformas: fechas, qué te obliga, cómo facturar y oficio por oficio."
+  ogTitle="Verifactu e IVA en reformas: todas las guías"
+  ogDescription="Fechas, obligaciones y cómo facturar con Verifactu y con el IVA correcto, explicado claro y oficio por oficio."
+>
+  <Header />
+  <main>
+    <section class="hub-hero">
+      <div class="container-narrow">
+        <nav class="hub-breadcrumb" aria-label="Miga de pan">
+          <a href="/blog/">← Volver al blog</a>
+        </nav>
+        <p class="text-eyebrow hub-eyebrow">Guías</p>
+        <h1>Verifactu e IVA en reformas: todas las guías</h1>
+        <p class="hub-sub">
+          Lo que tienes que saber de Verifactu y del IVA si haces reformas, explicado claro y oficio
+          por oficio. Las guías con normativa enlazan a las fuentes oficiales: la Agencia Tributaria y el BOE.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-padding bg-mist">
+      <div class="container-narrow hub-body">
+        <h2>Lo más preguntado, en corto</h2>
+        <dl class="hub-faq">
+          {respuestas.map((r) => (
+            <div class="hub-faq-item">
+              <dt>{r.q}</dt>
+              <dd>
+                {r.a}{" "}
+                <a href={`/blog/${r.guia}/`}>{r.enlace} →</a>
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <h2>Verifactu</h2>
+        <ul class="hub-list">
+          {verifactu.map((p) => (
+            <li>
+              <a href={`/blog/${p.data.slug}/`}>
+                <span class="hub-list-t">{p.data.title}</span>
+                <span class="hub-list-d">{p.data.meta_description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <h2>IVA del 10 % y del 21 % en reformas</h2>
+        <ul class="hub-list">
+          {iva.map((p) => (
+            <li>
+              <a href={`/blog/${p.data.slug}/`}>
+                <span class="hub-list-t">{p.data.title}</span>
+                <span class="hub-list-d">{p.data.meta_description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <p class="hub-more">
+          <a href="/blog/">Ver todas las guías del blog →</a>
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+</Base>
+
+<style>
+  .hub-hero {
+    padding-block: 3.5rem 3rem;
+  }
+  @media (min-width: 768px) {
+    .hub-hero { padding-block: 5rem 4rem; }
+  }
+  .hub-breadcrumb { margin-bottom: 1.5rem; }
+  .hub-breadcrumb a {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-teal-dark);
+  }
+  .hub-breadcrumb a:hover { color: var(--color-teal); }
+  .hub-eyebrow { color: var(--color-teal-dark); margin-bottom: 0.75rem; }
+  .hub-hero h1 { max-width: 28ch; }
+  .hub-sub {
+    margin-top: 1rem;
+    max-width: 58ch;
+    color: var(--color-slate);
+    font-size: 1.0625rem;
+  }
+
+  .hub-body h2 {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+  }
+  .hub-body h2:first-child { margin-top: 0; }
+
+  .hub-faq { display: flex; flex-direction: column; gap: 1.25rem; }
+  .hub-faq-item {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 1.25rem 1.5rem;
+  }
+  .hub-faq dt {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    color: var(--color-ink);
+  }
+  .hub-faq dd {
+    margin: 0.5rem 0 0;
+    color: var(--color-slate);
+    line-height: 1.6;
+  }
+  .hub-faq dd a { color: var(--color-teal-dark); font-weight: 600; }
+  .hub-faq dd a:hover { color: var(--color-teal); }
+
+  .hub-list { display: flex; flex-direction: column; }
+  .hub-list li { border-bottom: 1px solid var(--color-border); }
+  .hub-list li:first-child { border-top: 1px solid var(--color-border); }
+  .hub-list a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-block: 1rem;
+  }
+  .hub-list-t {
+    font-weight: 600;
+    color: var(--color-ink);
+    line-height: 1.35;
+  }
+  .hub-list a:hover .hub-list-t { color: var(--color-teal-dark); }
+  .hub-list-d {
+    color: var(--color-slate);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .hub-more { margin-top: 2.5rem; }
+  .hub-more a {
+    font-weight: 600;
+    color: var(--color-teal-dark);
+  }
+  .hub-more a:hover { color: var(--color-teal); }
+</style>

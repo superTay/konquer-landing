@@ -4,6 +4,7 @@ import { Image, getImage } from "astro:assets";
 import Base from "../../layouts/Base.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
+import { temasDeGuia, HUB_URL } from "../../lib/guias";
 
 export async function getStaticPaths() {
   // Solo se generan páginas de los posts publicados (status: published)
@@ -53,11 +54,25 @@ let postJsonLd: string | null = null;
 const jsonBlock = post.body?.match(/```json\s*([\s\S]*?)```/);
 if (jsonBlock) {
   try {
-    postJsonLd = JSON.stringify(JSON.parse(jsonBlock[1]));
+    const parsed = JSON.parse(jsonBlock[1]);
+    const tipo = parsed?.["@type"];
+    // La plantilla ya emite BlogPosting: un Article propio sería un duplicado del mismo contenido.
+    postJsonLd = tipo === "Article" || tipo === "BlogPosting" ? null : JSON.stringify(parsed);
   } catch {
     postJsonLd = null; // JSON inválido: mejor no inyectar nada que romper el head
   }
 }
+
+// Miga de pan estructurada: Inicio › Blog › Guía
+const breadcrumbLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://www.konquerai.com/" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.konquerai.com/blog/" },
+    { "@type": "ListItem", position: 3, name: post.data.title, item: `https://www.konquerai.com/blog/${post.data.slug}/` },
+  ],
+});
 
 // Imagen para Open Graph (versión optimizada y con URL absoluta)
 const ogImg = await getImage({
@@ -69,6 +84,10 @@ const ogImageUrl = new URL(ogImg.src, Astro.site).href;
 
 const canonicalUrl = new URL(`/blog/${post.data.slug}/`, Astro.site).href;
 const fechaISO = post.data.date.toISOString().slice(0, 10);
+// Fecha de la última revisión de fondo (campo opcional `updated` del frontmatter).
+// Si no existe, coincide con la de publicación: no se inventan revisiones.
+const modificadoISO = (post.data.updated ?? post.data.date).toISOString().slice(0, 10);
+const enHub = temasDeGuia(post.data.slug).length > 0;
 const fechaLarga = new Intl.DateTimeFormat("es-ES", {
   day: "numeric",
   month: "long",
@@ -84,10 +103,10 @@ const blogPostingLd = JSON.stringify({
   description: post.data.meta_description,
   image: ogImageUrl,
   datePublished: fechaISO,
-  dateModified: fechaISO,
+  dateModified: modificadoISO,
   inLanguage: "es-ES",
   mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
-  author: { "@id": "https://www.konquerai.com/#organization" },
+  author: { "@id": "https://www.konquerai.com/#founder" },
   publisher: { "@id": "https://www.konquerai.com/#organization" },
   isPartOf: { "@id": "https://www.konquerai.com/blog/#blog" },
 });
@@ -109,6 +128,12 @@ const blogPostingLd = JSON.stringify({
         <div class="container-narrow post-container">
           <nav class="post-breadcrumb" aria-label="Miga de pan">
             <a href="/blog/">← Volver al blog</a>
+            {enHub && (
+              <>
+                <span class="post-breadcrumb-sep" aria-hidden="true">·</span>
+                <a href={HUB_URL}>Todas las guías de Verifactu e IVA</a>
+              </>
+            )}
           </nav>
           <h1>{post.data.title}</h1>
           <p class="post-meta">
@@ -163,6 +188,7 @@ const blogPostingLd = JSON.stringify({
 
   <Fragment slot="head">
     <script type="application/ld+json" set:html={blogPostingLd} />
+    <script type="application/ld+json" set:html={breadcrumbLd} />
     {postJsonLd && <script type="application/ld+json" set:html={postJsonLd} />}
   </Fragment>
 </Base>
@@ -182,6 +208,10 @@ const blogPostingLd = JSON.stringify({
     font-size: 0.9375rem;
     font-weight: 600;
     color: var(--color-teal-dark);
+  }
+  .post-breadcrumb-sep {
+    margin-inline: 0.625rem;
+    color: var(--color-slate);
   }
   .post-breadcrumb a:hover {
     color: var(--color-teal);

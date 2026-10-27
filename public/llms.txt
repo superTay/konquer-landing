@@ -1,22 +1,27 @@
 # KonquerAI
 
-> KonquerAI es un software español de gestión administrativa para autónomos y pequeñas empresas de reformas (pintores, electricistas, fontaneros, albañiles, climatización, carpintería metálica y reformas integrales). Hace presupuestos y facturas por voz, ordena solas las facturas de proveedor, calcula IVA e IRPF, avisa de los pagos a Hacienda, se adapta a Verifactu y muestra el margen real de cada obra. Combina automatización con acompañamiento humano 1:1. Funciona en web, iPhone y Android, en toda España.
+> KonquerAI es un servicio español que monta y acompaña la oficina administrativa digital de autónomos y pequeñas empresas de la construcción y los oficios de reformas (desde quien trabaja solo hasta equipos de unas 8 personas). Un equipo de asistentes digitales hace los presupuestos, ordena facturas y albaranes, controla cobros y pagos y mantiene los números del negocio al día; durante el primer mes, una persona acompaña la puesta en marcha. Complementa a la gestoría, no la sustituye. No es una app ni un programa de gestión: es un servicio.
 
 ## Datos clave
-- Categoría: software de gestión y facturación para autónomos de reformas (España).
-- Público: autónomos y empresas de 0 a 7 empleados que facturan 60.000–350.000 €/año.
-- Precio: 490 € de configuración inicial (pago único) + 97 €/mes, sin permanencia.
-- Cumplimiento: facturación numerada, IVA (21 % / 10 % reformas / 0 % inversión sujeto pasivo), IRPF 15 % o 7 % para nuevos, adaptado a Verifactu, datos en servidores europeos (RGPD).
-- Garantía: 30 días con acompañamiento hasta lograr resultados. Datos exportables en CSV/ZIP.
+- Categoría: servicio de implantación de oficina administrativa digital para la construcción y los oficios de reformas (España).
+- Público: autónomos y pequeñas empresas de reformas, pintura, electricidad, fontanería, albañilería, climatización y carpintería.
+- Qué hace el equipo: presupuestos por voz desde la obra, facturas de proveedor contabilizadas y cuadradas con los albaranes, facturas emitidas listas para Verifactu, control de cobros, pagos y previsión de caja.
+- Precio: cerrado y a medida. Depende de cómo trabaja el negocio, de su tamaño y de lo que necesita; se define tras una llamada de 15 minutos y una fase de descubrimiento. No hay tarifas publicadas.
+- Datos: servidores europeos, cumplimiento del RGPD.
+- Contacto: WhatsApp, info@konquerai.com y LinkedIn. Fundador: Christian Marzal Della-Rovere.
 
 ## Páginas principales
-- [Inicio](https://www.konquerai.com/): qué es KonquerAI, los tres pilares (Hacienda, rentabilidad por obra, gestión por voz), oferta y precio.
-- [Preguntas frecuentes](https://www.konquerai.com/#faq): IVA, Verifactu, gestoría, móvil, seguridad de datos, cancelación.
-- [Precios](https://www.konquerai.com/#pricing): tarifa Beta Fundadores y comparación de coste.
+- [Inicio](https://www.konquerai.com/): qué es el servicio, el equipo, un caso real y preguntas frecuentes.
+- [Sobre nosotros](https://www.konquerai.com/sobre-nosotros/): quién está detrás de KonquerAI y por qué lo montó.
+- [Guías para autónomos de reformas](https://www.konquerai.com/blog/): Verifactu, IVA, facturas, presupuestos y cobros, explicados oficio por oficio.
+- [Verifactu e IVA en reformas](https://www.konquerai.com/guias/verifactu-e-iva-reformas/): índice de todas las guías sobre Verifactu y sobre el IVA del 10 % y el 21 %.
 
-## Para quién es
-- Autónomos de reformas hartos del Excel, los WhatsApp con facturas y el papeleo de los domingos.
-- Quienes quieren saber si cada obra es rentable y cumplir con Hacienda sin aprender la normativa.
+## Guías clave
+- [Verifactu para autónomos de reformas: guía 2027, oficio por oficio](https://www.konquerai.com/blog/verifactu-autonomos-reformas-guia-2027/)
+- [IVA del 10 % o del 21 % en una reforma](https://www.konquerai.com/blog/iva-10-21-reformas/)
+- [Guía de facturación para autónomos de reformas 2026](https://www.konquerai.com/blog/guia-facturacion-reformas-2026/)
+- [Cómo cobrar tus reformas a tiempo](https://www.konquerai.com/blog/cobrar-reformas-a-tiempo/)
+- [Cómo hacer un presupuesto de reforma que cierra más obras](https://www.konquerai.com/blog/modelo-presupuesto-reforma/)
 
 ## Opcional
-- [Aviso legal y privacidad](https://www.konquerai.com/legal/privacidad): términos, privacidad y cookies.
+- [Privacidad y términos](https://www.konquerai.com/legal/privacidad)

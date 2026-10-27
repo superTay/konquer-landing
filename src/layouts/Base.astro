@@ -9,6 +9,8 @@ import '@fontsource/plus-jakarta-sans/600.css';
 import '@fontsource/plus-jakarta-sans/700.css';
 import '../styles/global.css';
 import WhatsAppBubble from '../components/WhatsAppBubble.astro';
+import { getImage } from 'astro:assets';
+import christianFoto from '../assets/christian-fundador.jpg';
 
 interface Props {
   title?: string;
@@ -33,6 +35,10 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konquerai.com").href;
+
+// Foto del fundador para el nodo Person del schema (URL absoluta y optimizada).
+const founderImage = await getImage({ src: christianFoto, width: 800, format: "jpg" });
+const founderImageUrl = new URL(founderImage.src, Astro.site ?? "https://www.konquerai.com").href;
 ---
 
 <!doctype html>
@@ -120,8 +126,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
             "areaServed": "ES"
           },
           "sameAs": [
-            "https://www.wikidata.org/wiki/Q140277090",
-            "https://www.crunchbase.com/organization/konquerai"
+            "https://www.linkedin.com/company/konquerai/",
+            "https://www.crunchbase.com/organization/konquerai",
+            "https://apps.apple.com/es/app/konquerai/id6767595664",
+            "https://play.google.com/store/apps/details?id=com.konquerai.mobile"
           ]
         },
         {
@@ -129,6 +137,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://www.konq
           "@id": "https://www.konquerai.com/#founder",
           "name": "Christian Marzal Della-Rovere",
           "jobTitle": "Fundador",
+          "description": "Fundador de KonquerAI. Formado en gestión y administración de empresas, trabaja en desarrollo e inteligencia artificial aplicada a la administración de pequeños negocios. Hijo de pintor autónomo.",
+          "image": founderImageUrl,
+          "url": "https://www.konquerai.com/sobre-nosotros/",
+          "knowsAbout": [
+            "Administración de pequeñas empresas de reformas",
+            "Verifactu",
+            "IVA en reformas",
+            "Inteligencia artificial aplicada a la gestión de negocios"
+          ],
           "worksFor": { "@id": "https://www.konquerai.com/#organization" },
           "sameAs": [
             "https://www.linkedin.com/in/christian-marzal-della-rovere-3455073a7/"

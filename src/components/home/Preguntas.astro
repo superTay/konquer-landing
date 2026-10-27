@@ -39,7 +39,7 @@ const words = "Lo que nos preguntan antes de empezar".split(" ");
     <div class="faq-main">
       <h2 class="faq-title" data-faq-title>
         {words.map((w, i) => (
-          <span class="faq-word" style={`--d:${i * 70}ms`}>{w}</span>
+          <Fragment><span class="faq-word" style={`--d:${i * 70}ms`}>{w}</span>{i < words.length - 1 && <span class="faq-gap">{" "}</span>}</Fragment>
         ))}
       </h2>
 
@@ -73,6 +73,10 @@ const words = "Lo que nos preguntan antes de empezar".split(" ");
     "@context": "https://schema.org",
     "@type": "FAQPage",
     inLanguage: "es-ES",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".faq-q", ".faq-panel-inner p"],
+    },
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
@@ -168,6 +172,8 @@ const words = "Lo que nos preguntan antes de empezar".split(" ");
   }
 
   .faq-word { display: inline-block; margin-right: 0.26em; }
+  /* Espacio real entre palabras para crawlers y lectores de pantalla (sin ancho visible: el hueco lo da el margin) */
+  .faq-gap { font-size: 0; }
 
   .will-reveal .faq-word {
     opacity: 0;
